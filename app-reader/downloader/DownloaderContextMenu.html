@@ -1,0 +1,38 @@
+<div class="downloader-context-menu">
+   <ul>
+      <!-- <li ng-repeat="item in contextMenuList"> -->
+      <li ng-class="{ondevice:item.isDownloaded, outdated:item.content.outdated}">
+         <div class="item-label">
+         	<i class="i-reader"></i>
+            <span ng-bind="::info.name"></span>
+         </div>
+         <div class="item-icon">
+            <button type="button"
+               ng-class="{'i-download':!item.isDownloaded, 'i-junk':item.isDownloaded}"
+               ng-hide="info.inProgress"
+               ng-click="onItemClick(item)"
+               ng-disabled="item.content.isOnSDCard || info.audioInProgress">
+            </button>
+            <i class="i-spinner" ng-show="info.inProgress"></i>
+         </div>
+      </li>
+   </ul>
+   <ul ng-if="info.audio">
+   	<li ng-class="{ondevice:item.isAudioDownloaded, outdated: isAudioOutdated(item)}">
+         <div class="item-label">
+            <i class="i-audio"></i>
+            <span sw-localize="DownloaderContextMenu.audioSize.text"
+                  sw-data="{infoMediaSize:info.mediaSize}"></span>
+         </div>
+         <div class="item-icon">
+            <button type="button"
+               ng-class="{'i-download':!item.isAudioDownloaded, 'i-junk':item.isAudioDownloaded}"
+               ng-hide="info.audioInProgress"
+               ng-click="onAudioClick(item)"
+               ng-disabled="item.audio.isOnSDCard || info.inProgress">
+            </button>
+            <i class="i-spinner" ng-show="info.audioInProgress"></i>
+         </div>
+   	</li>
+   </ul>
+</div>

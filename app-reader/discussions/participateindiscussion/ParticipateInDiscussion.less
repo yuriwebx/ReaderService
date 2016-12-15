@@ -1,0 +1,459 @@
+@import '../base';
+
+@urls: '../../../app/style/images/menu-icons';
+
+
+.participate-in-discussion {
+   .sw-discussion-comments {
+      //      margin: 1em -1.269rem -1.269rem;
+      .class-discussion& {
+         .flex-display;
+         .flex-grow(1);
+         .flex-direction(column);
+      }
+      .sw-discussion-comments-wrapper {
+         .class-discussion& {
+            .flex-grow(1);
+            font-size: 16px;
+            position: relative;
+         }
+         .sw-discussion-comments-wrapper-wrapper {
+            .class-discussion& {
+               position: absolute;
+               top: 0;
+               right: 0;
+               bottom: 0;
+               left: 0;
+            }
+         }
+         .discussion-comments-list {
+            > li {
+               border-top: 1px solid @c-grayLight8;
+               > .item-top {
+                  .text-block {
+                     overflow: hidden;
+                     max-height: 4.5em;
+                     .reply-view&,
+                     &.full-height {
+                        max-height: none;
+                     }
+                  }
+               }
+            }
+         }
+         ul {
+            .flex-display;
+            .flex-direction(column);
+            margin: 0;
+            padding: 0 0 0 1.269rem;
+            li {
+               .flex-display;
+               .flex-direction(column);
+               .transition(all .15s ease);
+               // transition-property: max-height, opacity;
+               padding: .5em 1.269rem 0 0;
+               .reply-view& {
+                  &:not(.active) {
+                     .box-sizing;
+                     // overflow: hidden;
+                     max-height: 0;
+                     padding-top: 0;
+                     padding-bottom: 0;
+                     opacity: 0;
+                     border: none;
+
+                     order: 1;
+                  }
+                  &.active {
+                     border-top: none;
+                     border-bottom: 1px solid @c-grayLight8;
+
+                     order: 0;
+                     .text-wrapper {
+                        .reply-block {
+                           .reply-button {
+                              display: none;
+                           }
+                        }
+                     }
+                     ul {
+                        li {
+                           display: block;
+                           max-height: none;
+                           padding-top: .5em;
+                           padding-bottom: .5em;
+                           opacity: 1;
+                        }
+                     }
+                  }
+               }
+               &:first-of-type {
+                  border: none;
+               }
+               &.teacher-mess {
+                  > .item-top {
+                     .userpic-block {
+                        > span {
+                           &.userpic-block-wrapper {
+                              img {
+                                 overflow: visible;
+                                 box-shadow: 0 0 0 2px #00a888;
+                                 &:after {
+                                    @bg-size: 100% auto;
+                                    @name: 'teacher_access.svg';
+                                    .datauri_svg(@urls, @name, @bg-size);
+                                    position: absolute;
+                                    top: -10px;
+                                    right: -11px;
+                                    overflow: visible;
+                                    width: 20px;
+                                    height: 20px;
+                                    content: '';
+                                 }
+                              }
+                              .sw-discussion-user-no-photo {
+                                 @bg-size: 32px auto;
+                                 @name: 'userpic_success.svg';
+                                 .datauri_svg(@urls, @name, @bg-size);
+                                 position: relative;
+                                 display: block;
+                                 overflow: visible;
+                                 width: 40px;
+                                 height: 40px;
+                                 margin: auto 0;
+                                 border-radius: 50%;
+                                 box-shadow: 0 0 0 2px #00a888;
+                                 &:after {
+                                    @bg-size: 100% auto;
+                                    @name: 'teacher_access.svg';
+                                    .datauri_svg(@urls, @name, @bg-size);
+                                    position: absolute;
+                                    top: -10px;
+                                    right: -11px;
+                                    overflow: visible;
+                                    width: 20px;
+                                    height: 20px;
+                                    content: '';
+                                 }
+                              }
+                           }
+                        }
+                     }
+                     .text-wrapper {
+                        .text-block {
+                           .flex-grow(1);
+                           .sw-discussion-user-name {
+                              color: #00a888;
+                           }
+                        }
+                        // .reply-block {
+                        //    span {
+                        //       &:nth-of-type(1) {
+                        //          color: #00a888;
+                        //       }
+                        //    }
+                        // }
+                     }
+                  }
+               }
+               &.comments-visible {
+                  ul {
+                     li {
+                        display: block;
+                     }
+                  }
+               }
+               .item-top {
+                  .flex-display;
+                  padding: .5em 0;
+                  .userpic-block {
+                     width: 54px;
+                     min-width: 54px;
+                     > span {
+                        &.userpic-block-wrapper {
+                           .flex-display;
+                           padding: .3em 0;
+                           img {
+                              width: 40px;
+                              height: 40px;
+                              margin: auto 0;
+                              border-radius: 50%;
+                              box-shadow: 0 0 0 2px @c-lilac;
+                           }
+                           .sw-discussion-user-no-photo {
+                              @bg-size: 32px auto;
+                              @name: 'userpic.svg';
+                              .datauri_svg(@urls, @name, @bg-size);
+                              display: block;
+                              overflow: hidden;
+                              width: 40px;
+                              height: 40px;
+                              margin: auto 0;
+                              border-radius: 50%;
+                              box-shadow: 0 0 0 2px @c-lilac;
+                           }
+                        }
+                     }
+                  }
+                  .text-wrapper {
+                     .flex-display;
+                     .flex-direction(column);
+                     font-size: 16px;
+                     font-weight: 300;
+                     color: @c-gray;
+                     .text-block {
+                        .flex-grow(1);
+                        line-height: 1.5em;
+                        .sw-discussion-user-name {
+                           color: @c-lilac;
+                        }
+                        .sw-discussion-user-time {
+                           font-family: @sansFontFamily;
+                           font-size: .8em;
+                           white-space: nowrap;
+                           color: @c-gray5;
+                        }
+                        .sw-discussion-user-text {
+                           height: 100px;
+                        }
+                     }
+                     .reply-block {
+                        padding-top: .5em;
+                        color: @c-dusty-gray;
+                        .reply-button {
+                           cursor: pointer;
+                           color: @c-lilac;
+                           &:hover {
+                              opacity: .8;
+                           }
+                        }
+                     }
+                  }
+               }
+               .more-comments {
+                  font-size: 16px;
+                  font-weight: 300;
+                  line-height: 2em;
+                  padding-top: .2em;
+                  cursor: pointer;
+                  color: @c-lilac;
+                  &:hover {
+                     opacity: .8;
+                  }
+               }
+               ul {
+                  li {
+                     display: none;
+                     &:last-of-type {
+                        display: block;
+                     }
+                  }
+               }
+            }
+         }
+      }
+      .sw-discussion-my-comment {
+         .flex-display;
+         min-height: 32px;
+         padding: .5em 1.269rem;
+         border-top: 1px solid @c-grayLight8;
+         background: @c-white;
+         .class-discussion& {
+            .box-sizing;
+            .flex-grow(0);
+            height: 66px;
+            min-height: 66px;
+         }
+         > span {
+            &:nth-of-type(1) {
+               .flex-display;
+               .flex-shrink(0);
+               padding-right: 10px;
+               img {
+                  overflow: hidden;
+                  width: 32px;
+                  height: 32px;
+                  margin: auto 0;
+                  border-radius: 50%;
+                  box-shadow: 0 0 0 2px @c-lilac;
+               }
+               .sw-discussion-my-no-photo {
+                  @bg-size: 22px auto;
+                  @name: 'userpic.svg';
+                  .datauri_svg(@urls, @name, @bg-size);
+                  display: block;
+                  overflow: hidden;
+                  width: 32px;
+                  height: 32px;
+                  margin: auto 0;
+                  border-radius: 50%;
+                  box-shadow: 0 0 0 2px @c-lilac;
+               }
+            }
+            &:nth-of-type(2) {
+               .flex-display;
+               .flex-grow(1);
+               .flex-direction(column);
+               min-height: 32px;
+               input {
+                  .flex-grow(1);
+                  font-size: 16px;
+                  line-height: 32px;
+                  height: 100%;
+                  padding: 0 .6em;
+                  border: 1px solid @c-gray2;
+                  &.sw-focus {
+                     box-shadow: 0 1px 7px @c-lilac!important;
+                     border: 1px solid @c-lilac;
+                  }
+               }
+            }
+            &:nth-of-type(3) {
+               .flex-display;
+               .flex-shrink(0);
+               padding-left: 10px;
+               button {
+                  font-size: 16px;
+                  line-height: 1.5em;
+                  display: inline-block;
+                  height: 100%;
+                  margin: auto 0;
+                  padding: 0 1em;
+                  cursor: pointer;
+                  color: @c-white;
+                  border: none;
+                  border-radius: 3px;
+                  background: @c-lilac;
+                  &:hover {
+                     opacity: .8;
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+.participate-in-discussion-popup {
+   .flex-display;
+   position: fixed;
+   overflow: hidden;
+   width: 900px;
+   height: auto;
+   max-height: 760px;
+   &.full-view {
+      height: 760px;
+   }
+   .sw-popup-wrap,
+   .sw-popup-contentWrap,
+   .sw-popup-content,
+   .participate-in-discussion,
+   .sw-discussion-comments {
+      .flex-grow(1);
+      .flex-display;
+      .flex-direction(column);
+   }
+   .sw-popup-wrap {
+      overflow: hidden;
+   }
+   .sw-discussion-comments-wrapper {
+      .flex-grow(1);
+      overflow: auto;
+   }
+   .participate-in-discussion-template-header {
+      .flex-display;
+      .justify-content(space-between);
+      .align-items(center);
+      line-height: 43px;
+      border-bottom: 1px solid fade(@c-black, 6%);
+      span {
+         font-size: 18px;
+         &:first-of-type,
+         &:last-of-type {
+            min-width: 30%;
+            height: 43px;
+         }
+         // &:first-of-type {
+         //    button {
+         //       font-size: 18px;
+         //       line-height: 1em;
+         //       position: relative;
+         //       cursor: pointer;
+         //       border: none;
+         //       background: transparent;
+         //       &.ico-close {
+         //          @bg-size: 13px auto;
+         //          @name: 'close.svg';
+         //          .datauri_svg(@urls, @name, @bg-size);
+         //          line-height: 43px;
+         //          display: block;
+         //          overflow: hidden;
+         //          min-width: 50px;
+         //          height: 43px;
+         //          cursor: pointer;
+         //          text-indent: -900px;
+         //       }
+         //       &.button-back {
+         //          height: 43px;
+         //          padding: 0 2em;
+         //          color: @c-lilac;
+         //          &:after {
+         //             @bg-position: 85% center;
+         //             @bg-size: 12px;
+         //             .transform(rotate(180deg));
+         //             .datauri_svg(@urls, 'arrow_lilac.svg', @bg-size, @bg-position);
+         //             position: absolute;
+         //             top: 0;
+         //             left: .7em;
+         //             width: 43px;
+         //             height: 43px;
+         //             content: '';
+         //          }
+         //       }
+         //       &:hover {
+         //          opacity: .8;
+         //       }
+         //    }
+         // }
+         &:first-of-type {
+            button {
+               @bg-size: 13px auto;
+               @name: 'close.svg';
+               .datauri_svg(@urls, @name, @bg-size);
+               position: relative;
+               overflow: hidden;
+               min-width: 50px;
+               margin: 0 20px;
+               text-indent: -900px;
+               border: transparent;
+               background-color: transparent;
+               background-position: left center;
+            }
+         }
+         &:last-of-type {
+            text-align: right;
+            button,
+            a {
+               font-family: @sansFontFamily;
+               font-size: 18px;
+               font-weight: 300;
+               line-height: 43px;
+               display: inline-block;
+               height: 43px;
+               padding: 0 1.2em;
+               cursor: pointer;
+               color: @c-lilac;
+               border: none;
+               background: transparent;
+               &:hover {
+                  opacity: .8;
+               }
+            }
+         }
+      }
+   }
+   // .child {
+   //    background: green;
+   //    opacity: 0.5;
+   // }
+}

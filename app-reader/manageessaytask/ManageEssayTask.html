@@ -1,0 +1,24 @@
+<div ng-form="form">
+    <div class="essay-content" sw-focus-manager="{defaultPolicy: true, keyNext: 'down', keyPrev: 'up'}">
+        <label>
+            <span class="formRow_label" sw-label-for-name="'lastName'" sw-localize="Essay.topic.label"></span>
+            <sw-input type="text" ng-model="essayData.topic"
+                      name="name" sw-validate="validateField(essayData.topic)"
+                      ng-disabled="disabled" tabindex="0"></sw-input>
+            <span class="error-message" sw-error-for-name="'name'"></span>
+        </label>
+        <label>
+            <span class="formRow_label" sw-label-for-name="'lastName'" sw-localize="Essay.writtenwords.label"></span>
+            <sw-input type="text" ng-model="essayData.wordsLimit"
+                      name="numeric" sw-validate="validateFieldNumber(essayData.wordsLimit)"
+                      ng-disabled="disabled" maxlength="6" tabindex="1"></sw-input>
+            <span class="error-message" sw-error-for-name="'numeric'"></span>
+        </label>
+        <label>
+            <span class="formRow_label" sw-label-for-name="'lastName'" sw-localize="Essay.comment.label"></span>
+            <sw-input type="textArea" ng-model="essayData.comment"
+                    name="description" tabindex="2"
+                    ng-disabled="disabled"></sw-input>
+        </label>
+    </div>
+</div>

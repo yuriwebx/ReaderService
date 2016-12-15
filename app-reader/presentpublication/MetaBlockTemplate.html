@@ -1,0 +1,31 @@
+<div class="book-info-box"  data-selectable="none">
+   <div class="book-info-header" dir="auto">
+      <div class="book-image-box">
+         <img ng-src="{{image}}">
+         <i class="shadow-gen"></i>
+      </div>
+      <div class="book-info-header-wrapper">
+         <div class="book-image-box-dummy"></div>
+         <div class="book-info-text">
+            <div class="book-head-text-box">
+               <div class="book-head-text">
+                  <div class="play-button" ng-click="startPlay()" ng-if="isPlayButtonVisible()" ng-disabled="isButtonDisabled()">
+                     <span ng-if="isButtonDisabled()"><i class="loading-audio"></i>Loading</span>
+                     <span ng-if="!isAudioPlaying() && !isButtonDisabled()"><i class="play-audio"></i>Play book</span>
+                     <span ng-if="isAudioPlaying() && !isButtonDisabled()"><i class="pause-audio"></i>Pause</span>
+                  </div>
+                  <h1>{{name}}</h1>
+                  <h2>{{author}}</h2>
+                  <h3>{{category}}</h3>
+                  <h3>Time: <span>{{readingTime|TimeDurationFilter}}</span>{{difficulty}}</h3>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="book-info-text-description-wrapper">
+         <div class="book-image-box-dummy"></div>
+         <p class="book-info-text-description">{{description}}</p>
+      </div>
+   </div>
+   
+</div>

@@ -1,0 +1,15 @@
+<div>
+   <div class="filter-block" sw-sticky="{alwaysStick: true, widthControl: false}">
+      <sw-input type="text" ng-model="editorsFilter" ng-change="searchEditors()"></sw-input>
+      <i class="" ng-class="{'i-ClearInputCross': editorsFilter.length}" ng-click="resetSearch()"></i>
+   </div>
+   <ul class="editors-list">
+      <li ng-repeat="item in editorsForStudyGuide">
+         <i class="no-user-pic" ng-if="!item.user.isPhoto">Photo</i>
+         <img ng-src="{{item.user.photoLink}}" ng-if="item.user.isPhoto"/>
+         <span ng-bind-template="{{::item.user.firstName}} {{::item.user.lastName}}"></span>
+         <span class="user-invited" ng-if="item.alreadyInvited"><i></i> Invited</span>
+         <span class="user-invite" ng-if="!item.alreadyInvited" ng-click="addEditor(item, $index)">Invite</span>
+      </li>
+   </ul>
+</div>

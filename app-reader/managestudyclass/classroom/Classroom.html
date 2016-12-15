@@ -1,0 +1,343 @@
+<div class="classroom-block" ng-class="{'edit-mode' : editMode}" ng-form="form">
+   <div class="studyclass-block" name="studyClass" sw-custom-scroll="{options: {height: '100%'}}">
+      <div>
+         <div class="studyclassinfo-block" name="studyClassInfo">
+            <div class="classinfo">
+               <div class="classinfo-box">
+                  <div class="classinfo-pic-block">
+                     <div class="classinfo-pic-block-wrap">
+                        <div class="classinfo-pic-block-img" ng-class="{'no-img-select': isImageEmpty}">
+                           <img ng-src="{{studyClassInfo.class.coverSrc}}" ng-if="imgPreviewSrc"/>
+                           <span class="study-course-cover" ng-if="!imgPreviewSrc"></span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="classinfo-text-block">
+                  <div class="classinfo-text-block-item teachers-block" ng-if="isNotIndependentStudy()">
+                     <span class="teachers-block-top">
+                        <span class="classinfo-span-block">Teachers: </span>
+                     </span>
+                     <span class="teacher-info"
+                        ng-repeat="teacher in studyClassInfo.teachers"
+                        ng-class="{'edit-mode': editMode.teachers && isRemoveTeacherAllowed(teacher)}">
+                        <span class="user-pic-block"><img ng-src="{{teacher.photoLink}}"
+                                                          ng-if="teacher.photoLink"/></span>
+                        <span class="remove-teacher-button" ng-click="removeTeacher(teacher)">Remove</span>
+                        <span>
+                           <span>{{teacher.firstName}} {{teacher.lastName}}</span>
+                           <span class="teacher-occupation"></span>
+                        </span>
+                     </span>
+                     <span class="teacher-info add-teachers"
+                        ng-click="addTeachers()"
+                        ng-class="{'edit-mode': editMode.teachers}">
+                        <span class="user-pic-block"></span>
+                        <span class="add-teachers-button" ng-if="editMode.teachers">Add Teacher</span>
+                     </span>
+                     <div ng-if="showEditButton()" class="classinfo-bttn-block edit-mode-teachers" ng-class="{'edit-mode': editMode.teachers}">
+                        <sw-manage-edit-field configfunction="editConfig.teachers"></sw-manage-edit-field>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div ng-if="isNotIndependentStudy()" class="teacherinfo-block" name="teacherInfo">
+            <h3 ng-if="isTeacher" sw-localize="ManageStudyClass.Students.info.label"></h3>
+            <ul>
+               <li><span ng-if="isTeacher"><span class="imp-sign">{{studyClassInfo.summary.numberOfStudents}}</span> Students in the Course</span>
+               </li>
+            </ul>
+            <ul>
+               <li><span ng-if="isTeacher"><span
+                  class="good-sign imp-sign" ng-bind="leadStudentsCounter"></span> Lead Students</span></li>
+               <li><span ng-if="isTeacher"><span
+                  class="bad-sign imp-sign" ng-bind="lowProgressStudentsCounter"></span> Students have troubles</span></li>
+            </ul>
+            <ul>
+               <li><span ng-if="isTeacher"><span
+                  class="imp-sign">{{studyClassInfo.summary.numberOfInvitedStudents}}</span> Invited</span></li>
+               <li><span ng-if="isTeacher"><span
+                  class="imp-sign">{{studyClassInfo.summary.numberOfRequestedStudents}}</span> Requests</span></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+
+   <div class="studycourse-block" name="studyCourse" sw-custom-scroll="{options: {height: '100%'}}">
+      <div class="studyclassinfo-block" name="studyClassInfo">
+         <div class="classinfo">
+            
+            <div class="classinfo-box">
+               <div class="classinfo-pic-block">
+                  <div class="classinfo-pic-block-wrap">
+                     <div class="classinfo-pic-block-img" ng-class="{'no-img-select': isImageEmpty}">
+                        <img ng-src="{{studyClassInfo.class.coverSrc}}" ng-if="imgPreviewSrc"/>
+                        <span class="study-course-cover" ng-if="!imgPreviewSrc"></span>
+                     </div>
+                  </div>
+               </div>
+               <div class="studyclassinfo-title">
+                  <sw-autogrowtextarea ng-disabled="!editMode.info"
+                                       ng-model="studyClassInfo.class.name"></sw-autogrowtextarea>
+                  <button type="button" ng-click="onStudy()" ng-class="{'colored': isNewInCourse}">
+                     <span ng-if="isNewInCourse">Begin Study</span>
+                     <span ng-if="!isNewInCourse">Resume Study</span>
+                  </button>
+               </div>
+            </div>
+            
+            <div class="classinfo-text-block">
+               <div class="classinfo-text-block-item">
+                  <div class="classinfo-span-block">
+                     <span sw-localize="ManageStudyClass.CourseType.info.label"></span>
+                     <sw-input-select ng-show="editMode.info" options="classTypesOptions"
+                                      ng-model="currentClassType"
+                                      ng-change="setViewParams(currentClassType)"></sw-input-select>
+                     <span ng-show="!editMode.info" ng-bind="getCurrentClassType()"></span>
+                     {{isShareClass}}
+                  </div>
+               </div>
+               <div class="classinfo-text-block-item">
+                  <span ng-bind="getCurrentClassType()"></span><span sw-localize="{{currentClassType.label}}"></span>
+               </div>
+
+               <div class="classinfo-text-block-item" ng-if="editMode.info">
+                  <div class="classinfo-text-button-block">
+                     <label>
+                        <span>Course Dates</span>
+                        <button class="toggle-course-period-btn" ng-click="toggleCoursePeriodBlock()"
+                             ng-class="{'on': isCoursePeriodBlockDisabled}"></button>
+                     </label>
+                  </div>
+               </div>
+
+               <div class="classinfo-text-block-item dates" ng-class="{'disabled': isCoursePeriodBlockDisabled}">
+
+                  <div class="classinfo-text-block-part">
+                     <div class="classinfo-span-block">
+                        <span sw-localize="ManageStudyClass.CourseStarts.info.label"
+                              ng-if="!isCoursePeriodBlockDisabled"></span>
+                        <span sw-localize="ManageStudyClass.CourseCreated.info.label"
+                              ng-if="isCoursePeriodBlockDisabled"></span>
+                        <sw-input name="startDate" class="start-date" type="date"
+                                  ng-show="editMode.info && !isCoursePeriodBlockDisabled"
+                                  ng-model="studyClassInfo.class.scheduledAt"
+                                  ng-change="changeDuration(studyClassInfo.currentDuration)"></sw-input>
+                        <span ng-show="!editMode.info || isCoursePeriodBlockDisabled"
+                              ng-bind="formatDate(studyClassInfo.class.scheduledAt)"></span>
+                     </div>
+                  </div>
+
+                  <div class="classinfo-text-block-part"
+                       ng-if="!!studyClassInfo.class.joinEndDate && !isCoursePeriodBlockDisabled">
+                     <div class="classinfo-span-block">
+                        <span sw-localize="ManageStudyClass.LastDaytoEnroll.info.label"></span>
+                        <sw-input name="joinEndDate" class="end-join-date"
+                                  ng-show="editMode.info && !!studyClassInfo.class.joinEndDate && !isCoursePeriodBlockDisabled"
+                                  type="date" sw-validate="validateEndJoinDate()"
+                                  ng-model="studyClassInfo.class.joinEndDate"></sw-input>
+                        <span ng-show="!editMode.info && !!studyClassInfo.class.joinEndDate"
+                              ng-bind="formatDate(studyClassInfo.class.joinEndDate)"></span>
+                     </div>
+                  </div>
+
+                  <div class="classinfo-text-block-part period-block" ng-if="!isCoursePeriodBlockDisabled">
+                     <div class="classinfo-span-block">
+                        <span>Reading Days:</span>
+                           <span class="classinfo-days-list editable" ng-if="editMode.info">
+                             <button type="button" class="days-list-button" ng-repeat="day in daysOfWeek"
+                                     ng-click="changeStudyWeekDays(day, $index)"
+                                     ng-class="{'active': activeButtons[$index]}" ng-bind="::day"></button>
+                           </span>
+                           <span class="classinfo-days-list" ng-if="!editMode.info">
+                              <span class="days-list-text"
+                                    ng-repeat="studyWeekDay in studyClassInfo.class.studyWeekDays"
+                                    ng-class="{'sunday' : studyWeekDay === 'Sunday', 'some-day': studyWeekDay !== 'Sunday'}"
+                                    ng-bind="studyWeekDay"></span> <!-- TODO: remake ng-class -->
+                           </span>
+                     </div>
+                  </div>
+
+                  <div class="classinfo-text-block-part"
+                       ng-if="studyClassInfo.class.expectedDailyWork && !isCoursePeriodBlockDisabled">
+                     <div class="classinfo-span-block">
+                        <span sw-localize="ManageStudyClass.PlannedReading.info.label"></span>
+                        <span ng-show="!editMode.info" ng-bind="studyClassInfo.currentDuration"></span>
+                        <sw-input-select ng-show="editMode.info"
+                                         options="currentDurationOptions"
+                                         ng-model="studyClassInfo.currentDuration"
+                                         ng-change="changeDuration(studyClassInfo.currentDuration)"></sw-input-select>
+                           <span class="end-date">
+                              <span sw-localize="ManageStudyClass.EstimatedCompletion.info.label"></span>
+                              <span ng-bind="studyClassInfo.endCourse"></span>
+                           </span>
+                     </div>
+                  </div>
+               </div>
+               <sw-editable-description edit-data="editData"
+                                        item="{description : studyClassInfo.class.description, index : 0}"
+                                        is-edit-mode="editMode.info"></sw-editable-description>
+               <div class="classinfo-text-block-item teachers-block" ng-if="isNotIndependentStudy()">
+                  <span class="teachers-block-top">
+                     <span class="classinfo-span-block">Teachers: </span>
+                  </span>
+                  <span class="teacher-info"
+                     ng-repeat="teacher in studyClassInfo.teachers"
+                     ng-class="{'edit-mode': editMode.teachers && isRemoveTeacherAllowed(teacher)}">
+                     <span class="user-pic-block"><img ng-src="{{teacher.photoLink}}"
+                                                       ng-if="teacher.photoLink"/></span>
+                     <span class="remove-teacher-button" ng-click="removeTeacher(teacher)">Remove</span>
+                     <span>
+                        <span>{{teacher.firstName}} {{teacher.lastName}}</span>
+                        <span class="teacher-occupation"></span>
+                     </span>
+                  </span>
+                  <span class="teacher-info add-teachers"
+                     ng-click="addTeachers()"
+                     ng-class="{'edit-mode': editMode.teachers}">
+                     <span class="user-pic-block"></span>
+                     <span class="add-teachers-button" ng-if="editMode.teachers">Add Teacher</span>
+                  </span>
+                  <div ng-if="showEditButton()" class="classinfo-bttn-block edit-mode-teachers" ng-class="{'edit-mode': editMode.teachers}">
+                     <sw-manage-edit-field configfunction="editConfig.teachers"></sw-manage-edit-field>
+                  </div>
+               </div>
+            </div>
+            <div ng-if="showEditButton()" class="classinfo-bttn-block edit-mode-info" ng-class="{'edit-mode': editMode.info}">
+               <sw-manage-edit-field configfunction="editConfig.info"></sw-manage-edit-field>
+            </div>
+         </div>
+      </div>
+      <div class="studycourseinfo-block" name="studyCourseInfo">
+         <h3 sw-localize="ManageStudyClass.StudyCourse.info.label"></h3>
+
+         <div class="studycourseinfo">
+            <div class="studycourseinfo-pic-block">
+               <div class="studycourseinfo-pic-block-img">
+                  <img ng-src="{{imgPreviewSrcInfo}}" ng-if="imgPreviewSrcInfo"/>
+                     <span class="study-course-cover"
+                           ng-class="{'study-syllabus-cover':studyClassInfo.studyCourseInfo.course.type==='StudyCourse'}"
+                           ng-if="!imgPreviewSrcInfo"></span>
+               </div>
+            </div>
+            <div class="studycourseinfo-text-block title">
+               <div class="studycourseinfo-title" ng-if="studyClassInfo.studyCourseInfo.course.type === 'StudyGuide' && studyClassInfo.studyCourseInfo.course.bookName" ng-bind="studyClassInfo.studyCourseInfo.course.bookName"></div>
+               <div class="studycourseinfo-title" ng-if="studyClassInfo.studyCourseInfo.course.type !== 'StudyGuide' || !studyClassInfo.studyCourseInfo.course.bookName" ng-bind="studyClassInfo.studyCourseInfo.course.name"></div>
+            </div>
+            <sw-downloader
+               download-info="studyClassInfo.studyCourseInfo.course"
+               ng-if="::(!studyClassInfo.studyCourseInfo.details.length && isDownloadAvailable())">
+            </sw-downloader>
+         </div>
+         <div class="studycourseinfo">
+            <div class="studycourseinfo-text-block no-padding">
+
+               <p ng-if="isAuthorInTitle(studyClassInfo.studyCourseInfo.course) && studyClassInfo.studyCourseInfo.course.bookName"
+                  ng-bind="studyClassInfo.studyCourseInfo.course.bookName"></p>
+               <p ng-if="isAuthorInTitle(studyClassInfo.studyCourseInfo.course) && !studyClassInfo.studyCourseInfo.course.bookName"
+                  ng-bind="studyClassInfo.studyCourseInfo.course.name"></p>
+
+               <p ng-if="!isAuthorInTitle(studyClassInfo.studyCourseInfo.course) && studyClassInfo.studyCourseInfo.course.bookName"
+                  ng-class="{'title-in-two-line' : !isAuthorInTitle(publication)}"
+                  ng-bind="studyClassInfo.studyCourseInfo.course.bookName" sw-ellipsis></p>
+               <p ng-if="!isAuthorInTitle(studyClassInfo.studyCourseInfo.course) && !studyClassInfo.studyCourseInfo.course.bookName"
+                  ng-class="{'title-in-two-line' : !isAuthorInTitle(publication)}"
+                  ng-bind="studyClassInfo.studyCourseInfo.course.name" sw-ellipsis></p>
+
+               <p ng-if="isAuthorInTitle(studyClassInfo.studyCourseInfo.course) && studyClassInfo.studyCourseInfo.course.bookAuthor"><span>Author:</span> <span
+                  ng-bind="studyClassInfo.studyCourseInfo.course.bookAuthor"></span></p>
+               <p ng-if="isAuthorInTitle(studyClassInfo.studyCourseInfo.course) && !studyClassInfo.studyCourseInfo.course.bookAuthor"><span>Author:</span> <span
+                  ng-bind="studyClassInfo.studyCourseInfo.course.author"></span></p>
+
+               <p ng-if="studyClassInfo.studyCourseInfo.course.type === 'StudyGuide'"><span>Book Notes</span>: <span ng-bind="studyClassInfo.studyCourseInfo.course.name"></span>, <span ng-bind="studyClassInfo.studyCourseInfo.course.author"></span></span></p>
+
+               <p><span ng-if="studyClassInfo.studyCourseInfo.course.type !== 'StudyGuide'"
+                        ng-bind="studyClassInfo.studyCourseInfo.course.category"></span></p>
+
+               <p><span>Time: </span><span
+                  ng-bind="studyClassInfo.studyCourseInfo.course.readingTime | TimeDurationFilter"></span><span
+                  ng-if="::showDifficulty">, <span>difficulty:</span> <span
+                  ng-bind="studyClassInfo.studyCourseInfo.course.difficulty"></span></span></p>
+
+               <p ng-if="studyClassInfo.studyCourseInfo.details.length"><span>Items:</span> <span>{{studyClassInfo.studyCourseInfo.details.length}}</span></p>
+            </div>
+         </div>
+         <div class="studycourseinfo-description"
+              ng-bind="studyClassInfo.studyCourseInfo.course.description"></div>
+      </div>
+      <div class="studycoursecontents-block" name="studyCourseContents">
+         <h4 sw-localize="ManageStudyClass.StudyCourse.contents.label"></h4>
+
+         <div class="studycoursecontents" ng-repeat="publication in studyClassInfo.studyCourseInfo.details">
+            <div ng-if="publication.type !== 'section item' && publication.type !== 'vocabulary assessment item'">
+               <div class="studycoursecontents-pic-block">
+                  <img ng-if="!isStudyCourse(publication)" ng-src="{{::publication.coverSrc}}"/>
+                  <span ng-if="isStudyCourse(publication)" class="study-course-cover"></span>
+               </div>
+               <div class="studycoursecontents-text-block">
+                  <p ng-if="isAuthorInTitle(publication)" ng-bind="publication.name"></p>
+
+                  <p ng-if="!isAuthorInTitle(publication)" ng-class="{'title-in-two-line' : !isAuthorInTitle(publication)}"
+                     ng-bind="publication.name" sw-ellipsis></p>
+
+                  <p><span ng-if="isAuthorInTitle(publication)">by {{publication.author}}</span></p>
+
+                  <p ng-if="publication.studyGuideName">Book Notes: <span ng-bind="publication.studyGuideName"></span>,
+                     <span ng-bind="publication.studyGuideAutor"></span>
+                  </p>
+
+                  <p ng-if="publication.type === 'StudyGuide'">Book Notes</p>
+
+                  <p ng-if="publication.type !== 'StudyGuide'" ng-bind="publication.category"></p>
+
+                  <p>
+                     <span>Time:</span> {{publication.readingTime | TimeDurationFilter}}<span
+                     ng-if="::showDifficulty">, <span>difficulty:</span> {{publication.difficulty}}</span>
+                  </p>
+               </div>
+               <sw-downloader download-info="publication" ng-if="::isDownloadAvailable()"></sw-downloader>
+            </div>
+            <div ng-if="publication.type === 'section item'">
+               <div class="studycoursecontents-pic-block">
+                  <i class="section-pic">&nbsp;</i>
+               </div>
+               <div class="studycoursecontents-text-block">
+                  <p>{{publication.title}}</p>
+
+                  <p ng-bind="publication.description"></p>
+               </div>
+            </div>
+            <div ng-if="publication.type === 'vocabulary assessment item'">
+               <div class="studycoursecontents-pic-block">
+                  <i class="vocabulary-pic">V</i>
+               </div>
+               <div class="studycoursecontents-text-block">
+                  <p ng-bind="publication.text"></p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div>
+         <div ng-if="isNotIndependentStudy()" class="teacherinfo-block" name="teacherInfo">
+            <h3 ng-if="isTeacher" sw-localize="ManageStudyClass.Students.info.label"></h3>
+            <ul>
+               <li><span ng-if="isTeacher"><span class="imp-sign">{{studyClassInfo.summary.numberOfStudents}}</span> Students in the Course</span>
+               </li>
+            </ul>
+            <ul>
+               <li><span ng-if="isTeacher"><span
+                  class="good-sign imp-sign" ng-bind="leadStudentsCounter"></span> Lead Students</span></li>
+               <li><span ng-if="isTeacher"><span
+                  class="bad-sign imp-sign" ng-bind="lowProgressStudentsCounter"></span> Students have troubles</span></li>
+            </ul>
+            <ul>
+               <li><span ng-if="isTeacher"><span
+                  class="imp-sign">{{studyClassInfo.summary.numberOfInvitedStudents}}</span> Invited</span></li>
+               <li><span ng-if="isTeacher"><span
+                  class="imp-sign">{{studyClassInfo.summary.numberOfRequestedStudents}}</span> Requests</span></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>

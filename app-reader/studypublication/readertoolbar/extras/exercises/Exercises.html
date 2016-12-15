@@ -1,0 +1,86 @@
+<div class="exercises-wrap">
+   <div class="exercises-microjournalling" ng-show="isEditor">
+      <div>
+         <label for="switcher" sw-localize="Exercises.paragraphSummary.label"></label>
+         <span>
+            <button id="switcher" ng-click="paragraphSummarySwitch()" ng-class="{'switch-on':paragraphSummary.switcher}">switch</button>
+         </span>
+      </div>
+      <div ng-show="paragraphSummary.switcher">
+         <label for="wordslimit" sw-localize="Exercises.paragraphSummary.words"></label>
+         <span>
+            <sw-input id="wordslimit" name="wordsLimit"
+                      ng-blur="paragraphSummaryPersist()"
+                      ng-model="paragraphSummary.words"
+                      maxlength="6"></sw-input>
+         </span>
+      </div>
+   </div>
+   <div class="exercises-list">
+      <div class="exercises-list-wrapp" ng-repeat="(chapter, _exercises) in exercises" >
+         <div class="chapter-block">
+            <span>{{chapter}}</span>
+         </div>
+         <ul>
+            <li class="exercises-list-item" ng-repeat="exercise in _exercises" ng-class="{disabled: exercise.isTestStarted}">
+
+               <div class="left-block" ng-click="showExerciseEditor(exercise, $index)" data-ng-class="{'finished': exercise.completed, 'not-finished': !exercise.completed}">
+
+                  <div class="exercises-list-item-type">
+                     <div ng-if="isFlashcards(exercise)"><i class="ico-flashcards"></i></div>
+                     <div ng-if="isQuiz(exercise)"><i class="ico-quiz"></i></div>
+                     <div ng-if="isEssayTask(exercise)"><i class="ico-essay"></i></div>
+                     <div ng-if="isDiscussionTask(exercise)"><i class="ico-discussion"></i></div>
+                  </div>
+                  <div class="processing-type-block">
+                     <span ng-if="!isEditor">Start!</span>
+                     <span ng-if="isEditor">Edit</span>
+                  </div>
+                  <div class="exercises-list-item-count" ng-if="!isEditor">
+                     <p>
+                        <span ng-if="isQuiz(exercise)">
+                           <span>{{exercise.correctAnswersCount || 0}}</span>
+                           <span> / </span>
+                        </span>
+                        <span>{{exercise.testQuestionsCount}}</span>
+                     </p>
+                  </div>
+               </div>
+
+               <div class="exercises-list-item-info">
+
+                  <div class="exercises-list-stats">
+                     <div class="exercises-item-count" ng-if="isEditor">
+                        <span sw-localize="Exercises.testType1.label"
+                              class="exercises-item-count-label"
+                              ng-if="isQuiz(exercise)"></span>
+
+                        <span sw-localize="Exercises.testType2.label"
+                              class="exercises-item-count-label"
+                              ng-if="isFlashcards(exercise)"></span>
+
+                        <!-- <span sw-localize="Exercises.essayTask.label"
+                              class="exercises-item-count-label"
+                              ng-if="isEssayTask(exercise)"></span> -->
+                        <span class="exercises-item-count-label"
+                              ng-if="isEssayTask(exercise)"
+                              sw-localize="Exercises.essayTask.words">
+                                 <!-- <span sw-localize="Exercises.essayTask.words"></span> -->
+                                 <!-- <span>{{exercise.wordsLimit}}</span> -->
+                        </span>
+                        <span ng-bind="exercise.testQuestionsCount || exercise.wordsLimit"></span>
+                     </div>
+                     <div class="exercises-item-add-block">
+                        <span ng-if="isFlashcards(exercise)&&exercise.active"><a href=""><i></i>In To Do list</a></span>
+                     </div>
+                     <div class="exercises-list-section" ng-show="exercise.paraId">&sect; {{exercise.paraId}}</div>
+                  </div>
+                  <h4 ng-if="isQuiz(exercise) || isFlashcards(exercise)">{{exercise.name}}</h4>
+                  <h4 ng-if="isEssayTask(exercise) || isDiscussionTask(exercise)" ng-bind="exercise.topic"></h4>
+                  <sw-editable-description item="{description : exercise.description || exercise.comment , index : $index}"></sw-editable-description>
+               </div>
+            </li>
+         </ul>
+      </div>
+   </div>
+</div>

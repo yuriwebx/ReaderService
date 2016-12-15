@@ -1,0 +1,11 @@
+<div class="annotator-wrapper-test">
+   <div class="annotator-menu context-menu" ng-class="{'context-menu-aside': extend.isAside}">
+      <button ng-if="(extend.isEditor || !button.editor) && (!extend.isAside || !button.excludeAside) && !button.isVisibleCopyInSafari && !button.isInvisible"
+              ng-repeat="button in buttons"
+              ng-click="selectItem(button)"
+              sw-tooltip="{{extend.isEditor ? '' : button.name}}">
+              <i class="i-{{button.type}}" ng-hide="extend.isEditor"></i>
+              <span ng-show="extend.isEditor">{{button.name}}</span>
+        </button>
+   </div>
+</div>

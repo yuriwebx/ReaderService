@@ -1,0 +1,6 @@
+define([
+
+   './ManageDiscussion',
+   './ManageDiscussionService'
+
+], function(){});

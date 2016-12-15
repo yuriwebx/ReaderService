@@ -1,0 +1,64 @@
+<div class="sw-appMenu" id="readertoolbar">
+   <div class="sw-appMenu_inner reader-toolbar-menu left-side" ng-class="{'expanded':isFromClassEntered()}">
+
+      <a class="icon-wrap txt-icon-wrap toggled"
+         ng-href="{{buttonLink}}"
+         target="{{target}}"
+         ng-click="setButtonDeepLink(button, $event)"
+         ng-repeat="button in buttons"
+         ng-if="buttonsRequired(button)"
+         sw-tooltip="ApplicationMenuItem.{{button}}.hint">
+         <span class="i-{{button}}ReadMode" sw-localize="LibraryToolbar.{{button}}.label"></span>
+         <span><i class="i-{{button}} {{isNight}}"></i></span>
+      </a>
+
+      <a class="icon-wrap txt-icon-wrap"
+         ng-click="openClassInfo()"
+         ng-if="isFromClassEntered()"
+         sw-tooltip="ApplicationMenuItem.StudyCourse.hint">
+         <span class="i-StudyProject">Overview</span>
+         <span><i class="i-StudyProject {{isNight}}"></i></span>
+      </a>
+
+      <a class="extras-menu icon-wrap extras-bttn"
+         ng-if="isExtrasBtn"
+         ng-click="toggleBookExtras($event)"
+         sw-tooltip-options="BookInfoTooltip">
+         <i class="icon i-ExtrasTableOfContents"></i>
+      </a>
+
+      <div class="sw-application-menu-popup-container"></div>
+
+   </div>
+
+   <h1 class="book-title-wrap" sw-on-element-resize="onResizeElement(size, oldSize)" ng-class="{'disabled-state': isOffline}">
+      <span id="last-recent-book-reader" class="book-title" data-ng-click="openLastBooksList($event)" dir="auto">
+         <span ng-if="isStudyClass()">
+            <i class="study-class-book-title-ico1 {{isNight}}" ng-hide="isToolbarHidden"></i>
+            <i class="study-class-book-title-ico2" ng-show="isToolbarHidden"></i>
+         </span>
+         <span class="book-title-cont" data-ng-bind="getRecentItemTitle()"></span>
+         <span data-ng-bind="getRecentItemAuthor()"></span>
+      </span>
+   </h1>
+
+   <div class="sw-appMenu_inner reader-toolbar-menu right-side" ng-class="{'right-side-short': isDevelopStudyCourse()}">
+      <sw-personal-messages-toolbar-button ng-if="!isOffline"></sw-personal-messages-toolbar-button>
+      <sw-assessment-toolbar-button ng-if="!isEditor && !isOffline"></sw-assessment-toolbar-button>
+      <a class="read-mode-settings-menu icon-wrap"
+         ng-if="!isDevelopStudyCourse()"
+         ng-click="toggleMenu($event)"
+         sw-tooltip="ApplicationMenuItem.ViewOptions.tooltip">
+         <i class="icon i-SettingsReadMode sw-popup-offset"></i>
+      </a>
+
+      <a class="icon-wrap"
+         ng-hide="isOffline"
+         ng-click="toggleReadModeSearch($event)"
+         sw-tooltip-options="SearchTooltip">
+         <i class="icon i-SearchReadMode"></i>
+      </a>
+
+      <div class="sw-application-menu-popup-container"></div>
+   </div>
+</div>

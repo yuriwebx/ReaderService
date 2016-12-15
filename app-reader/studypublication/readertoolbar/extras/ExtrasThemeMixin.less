@@ -1,0 +1,81 @@
+.extras(@color-1, @color-2, @color-3, @color-4, @color-5, @color-6) {
+   .sw-menuPopup {
+      &.extras-popup {
+
+         background: @color-2;
+
+         .info-title {
+            color: @color-1;
+         }
+         &.reduced-view {
+
+            .menuPop_arrow {
+               @media @normal, @narrow {
+                  border-color: transparent transparent @color-3 transparent;
+               }
+            }
+         }
+
+         .extras-tabs {
+            box-shadow: @color-5;
+
+            .menu-item {
+               color: @color-1;
+
+               &.active {
+                  background: @color-2;
+                  color: @color-5;
+                  box-shadow: @color-5;
+               }
+            }
+         }
+
+         .book-info-block {
+
+            .book-info-body {
+
+               .book-info {
+                  color: @color-1;
+
+                  .lbl-info {
+                     color: @color-4;
+                  }
+
+                  .txt-info {
+                     color: @color-1;
+                  }
+               }
+            }
+         }
+
+         .table-of-contents-block {
+            border-top-color: fade(@color-6, 25%);
+            .active{
+               color: red;
+            }
+            .toc-body {
+               color: @color-1;
+               li{
+                  
+                  a{
+                     &:link {
+                        color: @color-1;
+                     }
+                     &:hover,
+                     &:active {
+                        color: @color-6;
+                     }
+                  }
+                  &.active{
+                     a{
+                        &:link {
+                           color: @color-6;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,1 @@
+define(['./DevelopStudyCourse', './DevelopStudyCourseService', './editcoursebookitem/module'], function(){});

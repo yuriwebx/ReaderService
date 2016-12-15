@@ -1,0 +1,198 @@
+<div ng-form="popupsettings.form">
+   <div class="manage-test-template" data-ng-show="!popupsettings.isTestImport">
+      <div>
+         <div class="test-block-title">{{popupsettings.name}}</div>
+         <div class="test-section">
+            <div>
+               <p>Quiz name</p>
+               <div>
+                  <div>
+                     <div>
+                        <sw-input type="text" name="name"
+                                  ng-model="testData.name"
+                                  ng-disabled="popupsettings.disabled"
+                                  sw-validate="validateField(testData.name)"
+                                  sw-focus-first></sw-input>
+                     </div>
+
+                     <div>
+                        <sw-button ng-click="openTestImport()"
+                                   ng-disabled="popupsettings.disabled">Import</sw-button>
+                     </div>
+
+                  </div>
+               </div>
+            </div>
+
+            <div>
+               <p>Description</p>
+
+               <div>
+                  <sw-textarea data-ng-model="testData.description"
+                            class="sw-input"
+                            name="description"
+                            sw-validate="validateField(testData.description)"
+                            ng-disabled="popupsettings.disabled">
+                  </sw-textarea>
+               </div>
+            </div>
+         </div>
+
+         <div class="test-block-title">
+            <span>Questions</span>
+                  <div class="test-switcher">
+                     <span ng-click="showPrev()"
+                           sw-focus-manager="{cycle: false, traverse: true, keyNext: 'down', keyPrev: 'up'}"> < Prev </span>
+                     <span>{{getCurrentTestIndex()}} / {{getNumberTests()}}</span>
+                     <span ng-click="showNext()"
+                           sw-focus-manager="{cycle: false, traverse: true, keyNext: 'down', keyPrev: 'up'}"> Next > </span>
+                  </div>
+               </div>
+         <div class="test-section">
+            <div>
+               <p>Question</p>
+
+               <div>
+                  <sw-input type="text" ng-model="testQuestion.question"
+                            name="question" sw-validate="validateField(testQuestion.question)"
+                            ng-disabled="popupsettings.disabled"></sw-input>
+               </div>
+            </div>
+
+            <div class="add-media-block">
+               <p>Add image</p>
+
+               <div>
+                  <div ng-class="{'error-message': error}">
+                     <div class="test-media-wrap" sw-focus-manager="{cycle: false, traverse: true, keyNext: 'down', keyPrev: 'up'}">
+                        <div class="deleteImg" ng-if="!isImageEmpty" ng-click="deleteUploadedFile('image')"></div>
+                        <input type="file" name="file" accept="image/*"
+                               sw-file-reader="testQuestion.image = data"
+                               sw-file-reader-finish="uploadFile(data)"
+                               ng-blur="reset()"/>
+
+                        <div class="test-img" ng-class="{'no-img-select': isImageEmpty}">
+                           <img ng-if="testQuestion.image" ng-src="{{imgPreviewSrc}}" alt="{{popupsettings.name}} image"/>
+                        </div>
+                     </div>
+
+                     <span>
+                         <span class="file-info">PNG, JPG, &lt;500kb, 800x600</span>
+                         <span ng-if="error">Image size must be less than 500Kb</span>
+                     </span>
+
+                  </div>
+
+                  <p>Add audio</p>
+                  <div ng-class="{'error-message': error}">
+
+                     <div class="test-media-wrap" sw-focus-manager="{cycle: false, traverse: true, keyNext: 'down', keyPrev: 'up'}">
+                        <div class="deleteAudio" ng-if="isAudioUploaded" ng-click="deleteUploadedFile('audio')"></div>
+                        <input type="file" name="file" accept="audio/*"
+                               sw-file-reader="data"
+                               sw-file-reader-start="startUpload()"
+                               sw-file-reader-finish="uploadFile(data)"
+                               ng-blur="reset()"/>
+
+                        <div id="loader" class="test-mp3"
+                             ng-class="{'loader': isLoading, 'music-select': isAudioUploaded&&!isLoading, 'no-img-select': !isAudioUploaded&&!isLoading}">
+                           <ul class="preloader-animation">
+                              <li id="floating-bars">
+                                 <span class="block" id="rotate-01"></span>
+                                 <span class="block" id="rotate-02"></span>
+                                 <span class="block" id="rotate-03"></span>
+                                 <span class="block" id="rotate-04"></span>
+                                 <span class="block" id="rotate-05"></span>
+                                 <span class="block" id="rotate-06"></span>
+                                 <span class="block" id="rotate-07"></span>
+                                 <span class="block" id="rotate-08"></span>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                        <span class="file-info">
+                         MP3 &lt;5MB
+                         <span ng-if="error">MP3 size must be less than 500Kb</span>
+                       </span>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="test-block-answers">
+            <div class="test-section">
+            <div>
+                  <p class="correct-answer"><span>Correct Answer</span></p>
+               <div>
+                  <sw-input type="text" ng-model="testQuestion.answer"
+                            name="answer_0" sw-validate="validateField(testQuestion.answer)"
+                            ng-disabled="popupsettings.disabled"></sw-input>
+               </div>
+            </div>
+            <div ng-repeat="incorrectAnswers in getIncorrectAnswersLength(incorrectAnswersLength) track by $index">
+                  <p>Answer {{$index + 2}}</p>
+
+               <div>
+                  <sw-input type="text"
+                            ng-model="testQuestion.incorrectAnswers[$index]"
+                            name="answer_{{$index + 1}}" sw-validate="validateField(testQuestion.incorrectAnswers[$index])"
+                            ng-disabled="popupsettings.disabled"></sw-input>
+               </div>
+            </div>
+         </div>
+      </div>
+         <div class="test-section">
+            <div class="test-block-buttons">
+               <p>
+                  <sw-button ng-click="addTestQuestion()" ng-disabled="popupsettings.disabled" class="extended">Add New Question</sw-button>
+               </p>
+
+               <div>
+                  <sw-button ng-click="deleteTestQuestion()" ng-disabled="popupsettings.disabled">Delete</sw-button>
+   </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="manage-test-template" data-ng-show="popupsettings.isTestImport">
+      <div data-ng-show="popupsettings.isOtherSourceImport" class="paste-testlet-block">
+         <div class="sub-header">
+            <span ng-click="selectAll()" ng-show="popupsettings.isTestExport">Select All</span>
+            <span ng-hide="popupsettings.isTestExport">Paste below the {{isQuizletImport ? "Quizlet text" : "JSON"}}</span>
+            <span ng-show="JSONIsInvalid">JSON is invalid</span>
+            <span ng-show="!popupsettings.isTestExport" ng-click="clearQuizlet()">+</span>
+         </div>
+         <div class="textarea-block">
+            <textarea rows="10" cols="70" data-ng-model="quizlet"></textarea>
+         </div>
+         <sw-button
+                 ng-click="importFromOtherSource()"
+                 ng-disabled="!quizlet"
+                 ng-hide="popupsettings.isTestExport">Import
+         </sw-button>
+      </div>
+      <ul class="test-list">
+         <li data-ng-repeat="(bookId, bookData) in testsFound">
+            <div class="test-list-item">
+               <span class="test-list-item-cover"></span>
+               <div class="test-list-item-text">
+                  <span>{{bookData.title}}</span>
+                  <span>{{bookData.author}}</span>
+               </div>
+            </div>
+            <ul class="test-sublist">
+               <li data-ng-repeat="test in bookData.tests" data-ng-click="importTest(bookData.tests[$index].id)">
+                  <div class="test-type">{{getTestIcon(test.testType)}}</div>
+                  <div class="test-text">
+                     <span>{{test.name}}</span>
+                     <span sw-ellipsis>{{test.description}}</span>
+                  </div>
+                  <div class="test-number">
+                     <span>NoQ</span>
+                     <span>{{test.testQuestionsCount}}</span>
+                  </div>
+               </li>
+            </ul>
+         </li>
+      </ul>
+   </div>
+</div>

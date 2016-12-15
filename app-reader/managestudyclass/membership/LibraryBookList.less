@@ -1,0 +1,269 @@
+@import '../base.less';
+
+@url: '../images';
+@url_general: '../../../app/style/images/menu-icons';
+
+.membership-block {
+   position: relative;
+   overflow: hidden;
+   width: 100%;
+   height: 100%;
+   h4 {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      height: 20px;
+      padding: 0 20px;
+      background: #f2f2f2;
+   }
+   .user-requests {
+      font-size: 16px;
+      display: table;
+      width: 100%;
+      .user-requests-item {
+         display: table-row;
+         div {
+            .box-sizing;
+            display: table-cell;
+            padding: 20px;
+            vertical-align: middle;
+            box-shadow: inset 0 -1px #e6e6e6;
+            &:nth-of-type(1) {
+               width: 40px;
+               i {
+                  @bg-size: 90% auto;
+                  @bg-position: center;
+                  @name: 'userpic.svg';
+                  .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                  display: block;
+                  overflow: hidden;
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+               }
+               img {
+                  @bg-size: 90% auto;
+                  @bg-position: center;
+                  @name: 'userpic.svg';
+                  .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                  display: block;
+                  overflow: hidden;
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+               }
+            }
+            &:nth-of-type(2) {
+               white-space: nowrap;
+            }
+            &:nth-of-type(3) {
+               width: 100%;
+               span {
+                  &.online {
+                     color: #54a809;
+                  }
+                  &.offline {
+                     color: #999;
+                  }
+               }
+            }
+            &:nth-of-type(4) {
+               white-space: nowrap;
+               span {
+                  @bg-size: 26px auto;
+                  @name: 'message.svg';
+                  .box-sizing;
+                  .datauri_svg(@url_general, @name, @bg-size);
+                  display: block;
+                  overflow: hidden;
+                  width: 26px;
+                  height: 36px;
+                  padding: 0 13px;
+                  cursor: pointer;
+                  text-indent: -900px;
+                  border: none;
+                  border-radius: 3px;
+                  &:hover {
+                     opacity: .8;
+                  }
+               }
+            }
+            &:nth-of-type(5) {
+               white-space: nowrap;
+               span {
+                  .box-sizing;
+                  line-height: 34px;
+                  display: block;
+                  width: 100px;
+                  height: 36px;
+                  padding: 0 13px;
+                  cursor: pointer;
+                  text-align: center;
+                  color: @c-white;
+                  border: 1px solid #54a809;
+                  border-radius: 3px;
+                  background: #54a809;
+                  &:hover {
+                     opacity: .8;
+                  }
+               }
+            }
+            &:nth-of-type(6) {
+               white-space: nowrap;
+               span {
+                  .box-sizing;
+                  line-height: 34px;
+                  display: block;
+                  width: 100px;
+                  height: 36px;
+                  padding: 0 13px;
+                  cursor: pointer;
+                  text-align: center;
+                  color: @c-lilac;
+                  border: 1px solid @c-lilac;
+                  border-radius: 3px;
+                  &:hover {
+                     opacity: .8;
+                  }
+               }
+            }
+         }
+      }
+   }
+   .class-students {
+      font-size: 16px;
+      display: table;
+      width: 100%;
+      .class-students-item {
+         display: table-row;
+         > div {
+            .box-sizing;
+            display: table-cell;
+            padding: 20px;
+            vertical-align: middle;
+            box-shadow: inset 0 -1px #e6e6e6;
+            &:nth-of-type(1) {
+               width: 40px;
+               i {
+                  @bg-size: 90% auto;
+                  @bg-position: center;
+                  @name: 'userpic.svg';
+                  .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                  display: block;
+                  overflow: hidden;
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+               }
+               img {
+                  @bg-size: 90% auto;
+                  @bg-position: center;
+                  @name: 'userpic.svg';
+                  .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                  display: block;
+                  overflow: hidden;
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+               }
+            }
+            &:nth-of-type(2) {
+               width: 100%;
+               .name-stats {
+                  .flex-display;
+                  @media @media-size-xs, @media-size-s-alt {
+                     .flex-direction(column);
+                  }
+                  > div {
+                     &:first-of-type {
+                        .flex-display;
+                        .flex-direction(column);
+                        > span {
+                           &:first-of-type {
+                              white-space: nowrap;
+                           }
+                           &:last-of-type {
+                              font-size: 14px;
+                              color: @c-dusty-gray;
+                           }
+                        }
+                     }
+                     &:last-of-type {
+                        span {
+                           &.online {
+                              color: #54a809;
+                           }
+                           &.offline {
+                              color: #999;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+            &:nth-of-type(3) {
+               white-space: nowrap;
+               a {
+                  @name: 'mail.png';
+                  .datauri(@url, @name);
+                  display: block;
+                  overflow: hidden;
+                  width: 36px;
+                  height: 36px;
+                  text-indent: -900px;
+                  &:hover {
+                     opacity: .8;
+                  }
+               }
+               span {
+                  @bg-size: 26px auto;
+                  @name: 'message.svg';
+                  .box-sizing;
+                  .datauri_svg(@url_general, @name, @bg-size);
+                  display: block;
+                  overflow: hidden;
+                  width: 26px;
+                  height: 36px;
+                  padding: 0 13px;
+                  cursor: pointer;
+                  text-indent: -900px;
+                  border: none;
+                  border-radius: 3px;
+                  &:hover {
+                     opacity: .8;
+                  }
+               }
+            }
+            &:nth-of-type(4) {
+               white-space: nowrap;
+               span {
+                  .box-sizing;
+                  line-height: 34px;
+                  display: block;
+                  height: 36px;
+                  padding: 0 13px;
+                  cursor: pointer;
+                  text-align: center;
+                  color: @c-lilac;
+                  border: 1px solid @c-lilac;
+                  border-radius: 3px;
+                  @media @media-size-xs, @media-size-s-alt {
+                     @bg-size: 26px auto;
+                     @name: 'delete.svg';
+                     .box-sizing;
+                     .datauri_svg(@url_general, @name, @bg-size);
+                     overflow: hidden;
+                     width: 26px;
+                     height: 36px;
+                     text-indent: -900px;
+                     border: none;
+                  }
+                  &:hover {
+                     opacity: .8;
+                  }
+               }
+            }
+         }
+      }
+   }
+}

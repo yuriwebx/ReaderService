@@ -1,0 +1,27 @@
+<div>
+   <div class="invite-message" ng-if="!isDiscussionView">
+      <div class="search_input_holder" ng-show="swSubmachine.state('Membership')">
+         <sw-input type="text" tabindex="10" data-ng-model="filter.text" placeholder="Filter"
+                   ng-change="refreshStudentsList()"></sw-input>
+         <i data-ng-class="{'i-ClearInputCross': filter.text.length}"
+            data-ng-click="resetSearch()"></i>
+      </div>
+      <div class="separator-full" ng-show="swSubmachine.state('Membership')"></div>
+      <div class="new-message" ng-click="sendMessage(progress)" ng-if="sendMessageRule()">Message</div>
+      <div class="separator-part" ng-if="inviteRule()"></div>
+      <div class="invite-students" ng-class="{'no-students-yet':studentsApi.classMembers.length === 0}"
+           ng-if="inviteRule()" ng-click="showInvite()">Invite Students</div>
+   </div>
+
+   <div class="toggle-discussions-menu" ng-if="isDiscussionView">
+      <label ng-if="isTeacher">
+         <span>Disable Discussions </span>
+         <button class="toggle-discussions-btn" ng-click="toggleDiscussions()"
+                 ng-class="{'off': !studyClassInfo.class.allowDiscussions}"></button>
+      </label>
+      <div class="separator-part" ng-class="{'hidden': !studyClassInfo.class.allowDiscussions}"></div>
+      <label ng-if="studyClassInfo.class.allowDiscussions">
+         <button class="create-class-discussion" type="button" ng-click="createClassDiscussion()" sw-tooltip="Add New Discussion">Add New Discussion</button>
+      </label>
+   </div>
+</div>

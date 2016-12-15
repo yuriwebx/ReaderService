@@ -1,0 +1,77 @@
+ <div  data-ng-if="showNotEmptyObject(params.grammar.Etymology)">
+     <div class="description-block" data-ng-if="showNotEmptyObject(params.grammar.Etymology)">
+       <div data-ng-repeat="gram in params.grammar.Etymology track by $index">
+        <div data-ng-class="{'current-item': !toolbarObject.clickedEtymology[params.index][$index]}">
+         <p class="dictionary-category" data-ng-click="showToolbarItem('clickedEtymology',params.index,$index)">{{gram.type}}</p>
+        </div>
+         <div ng-hide="!toolbarObject.clickedEtymology[params.index][$index]">
+           <ol data-ng-repeat="grammarParts in gram.parts track by $index">
+             <li><span ng-bind-html="getPart(grammarParts,term,'<b>','</b>')"></span></li>
+           </ol>
+          </div>
+        </div>
+     </div>
+</div>
+<div class="description-block">
+    <div data-ng-class="{'current-item': toolbarObject.clickedDefinitionsAndExamples[params.index]}">
+      <p class="dictionary-category"
+         data-ng-click="showToolbarItem('clickedDefinitionsAndExamples', params.index)"
+         sw-localize="DictionaryContent.definitionsExamples.text"></p>
+    </div>
+     <ol class="definitions_examples_list" ng-hide="toolbarObject.clickedDefinitionsAndExamples[params.index]">
+       <li data-ng-repeat="definition in params.definitions track by $index">
+          <ol>
+            <li><span ng-bind-html="getPart(definition.text,term,'<b>','</b>')"></span></li>
+            
+            <li data-ng-repeat="listInList in definition.example" data-ng-if="showExample(listInList)">
+              <span ng-bind-html="getPart(listInList.text,term,'<b>','</b>')"></span>
+            </li>
+
+            <li class="dictionary-quote" data-ng-repeat="quoteList in definition.quote track by $index">
+              <em><span ng-bind-html="getPart(quoteList.text,term,'<b>','</b>')"></span></em>
+            </li>
+
+            <li class="dictionary-note-block" data-ng-repeat="note in definition.note">
+              <span class="dictionary-category no-drop"
+                    sw-localize="DictionaryContent.note.text"></span> {{note.text}}
+              
+              <ol class="dictionary-list-fst-level" data-ng-repeat="noteList in note.example track by $index">
+                
+                <li><span ng-bind-html="getPart(noteList.text,term,'<b>','</b>')"></span></li>
+                
+                <li>
+                  <ol class="dictionary-list-snd-level">
+                    <li data-ng-repeat="noteListExample in noteList.example track by $index">{{noteListExample}}</li>
+                  </ol>
+                </li>
+                <li>
+                  <ol>
+                    <li data-ng-repeat="noteListExampleQuote in noteList.quote">
+                      <em>{{noteListExampleQuote}}</em>
+                    </li>
+                  </ol>
+                </li>
+              </ol>
+              <ol data-ng-repeat="noteQuote in note.quote">
+                <li><em>{{noteQuote.text}}</em></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+     </ol>
+</div>
+<div class="description-block" data-ng-if="showNotEmptyObject(params.synonyms)">
+  <div data-ng-class="{'current-item': !toolbarObject.clickedSynonym[params.index]}">
+    <p class="dictionary-category"
+       data-ng-click="showToolbarItem('clickedSynonym', params.index)"
+       sw-localize="DictionaryContent.synonym.text"></p>
+  </div>
+  <div ng-hide="!toolbarObject.clickedSynonym[params.index]">
+     <ol data-ng-repeat="synonym in params.synonyms" >
+         <li>{{synonym.text}}</li>
+         <ol  data-ng-repeat="synList in synonym.example">
+             <li>{{synList}}</li>
+         </ol>
+     </ol>
+  </div>
+</div>

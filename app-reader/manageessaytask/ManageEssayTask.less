@@ -1,0 +1,90 @@
+@import '../base';
+
+@url: '../../app/style/images/menu-icons';
+
+.manage-essay-task-popup {
+   width: 54%;
+   .essay-header {
+      .flex-display();
+      .justify-content(space-between);
+      border-bottom: 1px solid fade(@c-black, 6%);
+      span {
+         font-weight: 300;
+         line-height: 43px;
+         height: 43px;
+         font-size: 16px;
+         &:first-of-type,
+         &:last-of-type {
+            min-width: 80px;
+         }
+         &:first-of-type{
+            button{
+               @bg-size: 13px auto;
+               @name: 'close.svg';
+               .datauri_svg(@url, @name, @bg-size);
+               font-weight: 300;
+               position: relative;
+               overflow: hidden;
+               min-width: 50px;
+               text-indent: -900px;
+            }
+         }
+         &:last-of-type {
+            text-align: right;
+         }
+         button {
+            .transition(all .3s ease);
+            height: 43px;
+            color: @c-lilac;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            padding: 0 20px;
+            &:hover {
+               opacity: .8;
+            }
+         }
+      }
+   }
+   .essay-content {
+      padding: 5px 20px 20px;
+      label {
+         display: block;
+         &:after{
+            content: '';
+            display: block;
+            clear: both;
+         }
+         .formRow_label{
+            float: none;
+            display: block;
+            margin-top: 15px;
+         }
+         .sw-validation-error{
+            display: block;
+         }
+         textarea {
+            .box-sizing;
+            width: 100%;
+            min-width: 3.6em;
+            border: 1px solid @c-lilac;
+            border-radius: 4px;
+            box-shadow: none;
+            height: 495px;
+            resize: none;
+            &:focus {
+               box-shadow: 0 0 7px fade(@c-lilac, 75%);
+            }
+         }
+         textarea,
+         input {
+            margin-top: 5px;
+         }
+         &:nth-of-type(2){
+            input{
+               max-width: 5em;
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,12 @@
+<div>
+   <i class="menuPop-arrow"></i>
+   <div class="resentPopup-tabs" ng-hide="headerconfig.studyActivitiesList.length === 0 || headerconfig.publicationList.length === 0">
+      <div class="resentPopup-tab" ng-click="headerfn.selectRecentPublicationTab(headerconfig.tabNames.booksTab)" data-ng-class="{active: headerconfig.openedTab === headerconfig.tabNames.booksTab}">
+         <span sw-localize="RecentBook.books.label"></span>
+      </div>
+      <div class="resentPopup-tab" ng-click="headerfn.selectRecentPublicationTab(headerconfig.tabNames.studyActivitiesTab)" data-ng-class="{active: headerconfig.openedTab === headerconfig.tabNames.studyActivitiesTab}">
+         <span sw-localize="RecentBook.studyProjects.label"></span>
+      </div>
+   </div>
+</div>
+

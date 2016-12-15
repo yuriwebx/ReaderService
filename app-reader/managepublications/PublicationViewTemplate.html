@@ -1,0 +1,68 @@
+<div class="book-list-tree-item" ng-class="{'audio': publication.audio}">
+
+   <div ng-if="::!currentModeData.personalPublications">
+      <div class="corner-marker mybooks" ng-if="showMyBookCornerMarker(publication)">My Books</div> <!-- publication.personal -->
+   </div>
+
+   <div>
+      <div class="clickable-block" ng-click="::openPublication(publication)">
+         <ng-switch on="::publication.type">
+            <p>
+               <span class="img-box">
+                  <span width="73" height="97" class="studyclass-cover"
+                       ng-switch-when="StudyClass"></span>
+
+                  <span width="73" height="97" class="studycourse-cover"
+                       ng-switch-when="StudyCourse"></span>
+
+                  <span class="collection-cover"
+                        ng-switch-when="Collection"></span>
+
+                  <span class="booknotes-cover"
+                        ng-switch-when="StudyGuide"></span>
+
+                  <img width="73" height="97" ng-src="{{::publication._thumbnail}}" ng-class="::{'no-book-cover': !publication.cover}"
+                       ng-switch-default/>
+                  <i class="shadow-gen"></i>
+               </span>
+               <a ng-if="!authorInName(publication)" ng-bind="::publication.name" dir="auto"></a>
+               <a ng-if="authorInName(publication)" ng-class="{'title-in-two-line' : authorInName(publication)}" ng-bind="::publication.name" dir="auto" sw-ellipsis></a>
+               <a ng-if="!authorInName(publication)" ng-bind="::publication.author" dir="auto"></a>
+
+               <span ng-switch-when="StudyClass">
+                  <a>Type: <span>{{::publication.classType}}</span></a>
+                  <a>Students: <span>{{::publication.students}}</span></a>
+               </span>
+
+               <span ng-switch-when="Collection">
+                  <a></a>
+                  <a><span sw-localize="ManagePublications.Collection.Documents.label"></span>: <span>{{::publication.matches}}</span></a>
+               </span>
+
+               <span>
+                  <a ng-bind="::publication.category | capitalize" ng-switch-default></a>
+                  <a ng-switch-when="StudyCourse">Course Syllabus</a>
+                  <a>
+                     Time: <span ng-bind="::publication.readingTime | TimeDurationFilter"></span><span ng-if="::showDifficulty">,
+                     difficulty: <span>{{::publication.difficulty}}</span></span>
+                  </a>
+               </span>
+
+            </p>
+         </ng-switch>
+
+         <div ng-class="::(publication.type=='collection' ? 'collection-info-link' : 'info-link')"
+              ng-click="::openPublicationDetails(publication, $event)">Image for details
+         </div>
+      </div>
+
+      <div ng-if="::(!isEditor && publication.readingProgress)">
+         <sw-study-progress progress="::publication.readingProgress" numbercircls="5"></sw-study-progress>
+      </div>
+
+      <div class="book-details-switcher">
+         <i class="icon i-openInReader"></i>
+      </div>
+
+   </div>
+</div>

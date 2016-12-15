@@ -1,0 +1,40 @@
+<div>
+   <ul class="study-content-list">
+      <li ng-repeat="item in studyContentItems">
+         <div class="study-content-item hoveff"
+              ng-class="{'active' : isOpenedPublication($index)}"
+              ng-if="isPublication(item)"
+              ng-click="switchItem($index)">
+            <span class="pic-block"><img ng-src="{{::getCoverSrc(item)}}" width="42" height="55" /></span>
+            <span class="text-block text-block-book-info">
+              <p dir="auto" ng-bind="item.name"> {{$index}}</p>
+              <p dir="auto" ng-bind="item.author"></p>
+              <p class="studyGuide-info">
+                <span ng-if="!item.studyGuideName">&nbsp;</span>
+                <span class="study-guide-name" ng-if="item.studyGuideName">
+                  <span ng-bind="item.studyGuideName"></span><span ng-if="item.studyGuideAutor">, </span><span ng-bind="item.studyGuideAutor"></span>
+                </span>
+              </p>
+              <p><span class="category-name" ng-bind="item.category"></span> time: <span class="value" ng-bind="item.readingTime | TimeDurationFilter"></span><span ng-if="::showDifficulty">, difficulty: <span  class="value" ng-bind="item.difficulty"></span></span></p>
+            </span>
+            <sw-study-progress progress="item.readingProgress" numbercircls="5"></sw-study-progress>
+         </div>
+
+         <div class="study-content-item" ng-if="isSection(item)">
+            <span class="pic-block"><i class="section-cover"></i></span>
+            <span class="text-block">
+              <p ng-bind="item.title"></p>
+              <p ng-bind="item.description"></p>
+            </span>
+         </div>
+
+         <div class="study-content-item hoveff" ng-if="isVocabularyAssessment(item)"
+              ng-click="startVocabularyAssessment()">
+            <span class="pic-block"><i class="assessment-cover">V</i></span>
+            <span class="text-block">
+              <p ng-bind="item.text"></p>
+            </span>
+         </div>
+      </li>
+   </ul>
+</div>

@@ -1,0 +1,1 @@
+define(['./ReviewAssignedFlashcards', './manageflashcard/module', './ReviewAssignedFlashcardsComponentService'], function(){});

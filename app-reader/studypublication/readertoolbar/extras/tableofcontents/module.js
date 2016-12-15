@@ -1,0 +1,1 @@
+define(['./TableOfContents', './TableOfContentsService'], function(){});

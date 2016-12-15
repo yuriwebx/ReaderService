@@ -1,0 +1,1 @@
+define(['./ExploreDictionaries', './dictionarytermsearch/module'], function(){});

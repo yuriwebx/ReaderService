@@ -1,0 +1,1 @@
+define(['./Categories', './CategoriesService'], function(){});

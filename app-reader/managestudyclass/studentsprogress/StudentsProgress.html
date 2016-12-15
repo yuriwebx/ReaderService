@@ -1,0 +1,57 @@
+<div class="student-progress-layout">
+   <div class="student-progress-layout-header">
+      <div class="user-name-block">
+         <div class="user-name-block-wrapper">
+            <div class="user-pic-block"></div>
+            <div class="student-name-block">Name</div>
+            <div class="user-activity-block">Last Activity</div>
+         </div>
+         <div class="send-message-narrow-view"><span></span></div>
+      </div>
+      <div class="user-progress-block">
+         <div>Words</div>
+         <div>Reading Time</div>
+         <div>Progress</div>
+         <div class="send-message-wide-view"><span></span></div>
+         <div ng-if="showEditProgress()"></div>
+      </div>
+   </div>
+
+   <div class="student-progress-layout-item" ng-repeat="progress in studyProgresses">
+      <div class="user-name-block">
+         <div class="user-name-block-wrapper">
+            <div class="user-pic-block">
+               <i ng-if="!progress.isUserPhoto"></i>
+               <img ng-src="{{progress.userPhotoLink}}" ng-if="progress.isUserPhoto"/>
+            </div>
+            <div class="student-name-block"><span>{{progress.lastName}} {{progress.firstName}}</span></div>
+            <div class="user-activity-block"><span>{{progress.lastActivity}}</span></div>
+         </div>
+         <div class="send-message-narrow-view"><span ng-if="isTeacher&&!isCurrentUser(progress.userId)" ng-click="sendMessage(progress)">Send Message</span></div>
+      </div>
+      <div class="user-progress-block">
+         <div><sw-chart model="wordsProgressModels[$index]"></sw-chart></div>
+         <div class="blue-chart"><sw-chart model="timeProgressModels[$index]"></sw-chart></div>
+         <div class="green-chart" ng-class="{'red-chart': overallProgressModels[$index].isCritical}"><sw-chart model="overallProgressModels[$index]"></sw-chart></div>
+
+         <div class="send-message-wide-view"><span ng-if="isTeacher&&!isCurrentUser(progress.userId)" ng-click="sendMessage(progress)">Send Message</span></div>
+
+         <div ng-if="showEditProgress()">
+            <div class="edit-progress">
+               <sw-input type="text" ng-change="calculateWordsProgress($parent.$index, $index)"
+                         ng-model="wordsProgressModels[$parent.$index].values[$index]"
+                         ng-repeat="field in editProgressFieldsArr"></sw-input>
+            </div>
+            <div class="edit-progress">
+               <sw-input type="text" ng-change="calculateProgress($parent.$index, $index)"
+                         ng-model="timeProgressModels[$parent.$index].values[$index]"
+                         ng-repeat="field in editProgressFieldsArr"></sw-input>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div ng-if="showEditProgress()">
+      <button class="save-button" ng-click="saveProgress()">Save Progress</button>
+   </div>
+</div>

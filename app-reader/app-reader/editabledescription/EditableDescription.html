@@ -1,0 +1,14 @@
+<span class="book-description-block"
+      sw-on-element-resize="onResizeElement()"
+      data-ng-class="{'empty': isEmpty(item.description)}">
+   <span sw-localize="BookInfo.description.label"></span>
+   <span dir="auto"  ng-if="!showEditFields()" class="book-description-text" data-ng-class="{'dropped': isOpenedDescription(), 'arrow-icon': showArrow}" data-ng-click="showDescription()">
+      <span ng-if="!isEmpty(item.description)" sw-ellipsis="!isOpenedDescription()" class="text-desc">{{item.description}}</span>
+   </span>
+   <span dir="auto" ng-if="showEditFields()" class="book-description-text">
+      <div  class="edit-fields-box">
+         <sw-autogrowtextarea ng-attr-name="description" data-ng-model="editData.description">
+         </sw-autogrowtextarea>
+      </div>
+   </span>
+</span>

@@ -1,0 +1,26 @@
+<div class="study-project-info">
+   <div>
+      <h2 sw-localize="CreateStudyProject.wizard.step1.courseInfo"></h2>
+      <div>
+        <span sw-localize="CreateStudyProject.courseTitle.label"></span>
+         <sw-input type="text" name="name" ng-change="wizardApi.debValid()"
+                   ng-model="studyProject.name" sw-validate="wizardApi.validateRequired(studyProject.name)"></sw-input>
+      </div>
+      <div>
+        <span sw-localize="CreateStudyProject.courseDescription.label"></span>
+         <textarea name="description"
+                   ng-model="studyProject.description"></textarea>
+      </div>
+   </div>
+   <div>
+      <h2 sw-localize="CreateStudyProject.wizard.step1.courseType"></h2>
+      <div class="study-project-types-box"
+           ng-repeat="data in studyProject.types"
+           ng-class="{'active' : isActive(data.type)}"
+           ng-click="setType(data.type)">
+            <span class="study-project-type" ng-bind="::data.label"></span>
+            <span ng-bind="::data.desc"></span>
+      </div>
+
+   </div>
+</div>

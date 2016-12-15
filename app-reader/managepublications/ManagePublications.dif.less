@@ -1,0 +1,32 @@
+@import '../base.less';
+
+@url: '../../app/style/images/menu-icons';
+
+.manage-publications-layout {
+   .content-list-layout {
+      .book-list-tree {
+         ul {
+            li {
+               .box-sizing;
+               .corner-marker {
+                  font-size: .85rem;
+                  line-height: 14px;
+                  top: -6px;
+                  right: -26px;
+                  padding: 10px 15px 0;
+                  color: @c-orange;
+                  text-shadow: 0 1px fade(@c-white, 10%);
+                  .box-sizing;
+                  &.mybooks {
+                     background: #e6e6e6;
+                  }
+                  &.mycourses {
+                     background: #b9d5cf;
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+

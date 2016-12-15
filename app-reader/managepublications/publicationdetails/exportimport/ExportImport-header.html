@@ -1,0 +1,24 @@
+<div class="export-import-header">
+     <button
+         class="button-import-back sw-input sw-input-wrapper sw-input-button-wrapper sw-input-button"
+         ng-click="hidePopup()"
+         type="button"
+         sw-localize="ExportImport.close.label"></button>
+     <p class="component-mode">
+        <span ng-if="!isEmptyJson"
+              sw-localize="ExportImport.exportImport2.label"></span>
+        <span ng-if="isEmptyJson"
+              sw-localize="ExportImport.import2.label"></span>
+     </p>
+     <span>
+     	<a class="button-import-back right drop-list no-cross">{{format}}</a>
+       <ul class="sw-popup">
+         <li ng-click="switchFormat('json')">
+            <a href="" class="no-cross" sw-localize="ExportImport.json.label"></a>
+         </li>
+         <li ng-click="switchFormat('yaml')">
+            <a href="" class="no-cross" sw-localize="ExportImport.yaml.label"></a>
+         </li>
+       </ul>
+     </span>
+</div>

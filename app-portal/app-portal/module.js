@@ -1,0 +1,6 @@
+define([
+
+   './AppPortal'
+
+], function(){});
+

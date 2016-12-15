@@ -1,0 +1,138 @@
+<div>
+   <div sw-render="true" sw-render-to="'.popup-injectable-template'" class="popup-title">
+        <span>
+            <button ng-click="detailsApi.closePublicationDetails()"
+                    class="sw-input sw-input-wrapper sw-input-button-wrapper sw-input-button ng-scope"
+                    type="button"></button>
+        </span>
+      <span sw-localize="{{labelKey}}"></span>
+      <span></span>
+   </div>
+   <div class="column-layout">
+      <div class="col">
+
+         <div class="img-block" ng-class="{'preloader': isAddingToMyBooks}">
+            <img width="125" height="170" ng-src="{{getCoverSrc(publication)}}"/>
+
+            <div class="preloader-animation">
+               <div id="floating-bars">
+                  <div class="block" id="rotate-01"></div>
+                  <div class="block" id="rotate-02"></div>
+                  <div class="block" id="rotate-03"></div>
+                  <div class="block" id="rotate-04"></div>
+                  <div class="block" id="rotate-05"></div>
+                  <div class="block" id="rotate-06"></div>
+                  <div class="block" id="rotate-07"></div>
+                  <div class="block" id="rotate-08"></div>
+               </div>
+            </div>
+         </div>
+
+         <div class="btn-block btn-download-book-wrap" ng-hide="detailsApi.isOffline"">
+            <span class="m-button__dark"
+                  ng-if="publication.personal"
+                  ng-click="deletePublication()"
+                  sw-localize="PublicationDetails.remove.label"></span>
+         </div>
+
+         <div class="btn-block btn-open-book-wrap" ng-click="openPublication()" ng-if="isReadable()">
+                <span ng-if="!detailsApi.isEditor">
+                   <p ng-if="publication.readingProgress === 0"
+                      sw-localize="PublicationDetails.read.label"></p>
+                   <p ng-if="publication.readingProgress > 0"
+                      sw-localize="PublicationDetails.resumeReading.label"></p>
+                </span>
+         </div>
+
+         <div class="btn-block btn-download-book-wrap" ng-if="!detailsApi.isEditor">
+            <span class="m-button__dark"
+                  ng-click="beginNewStudy()"
+                  sw-localize="PublicationDetails.newStudyCourse.label"></span>
+         </div>
+
+         <div class="btn-block btn-open-book-wrap" ng-click="openPublication()" ng-if="detailsApi.isEditor">
+            <span sw-localize="PublicationDetails.createNewNotes.label"></span>
+         </div>
+
+         <div class="btn-block btn-open-book-wrap" ng-click="openPublication()" ng-if="detailsApi.isEditor">
+            <sw-export-import publication="publication" config="bookExportConfig"></sw-export-import>
+         </div>
+      </div>
+
+      <div class="col">
+         <div class="book-name-block">
+                <div class="title-wrapper">
+                  <div ng-if="isAuthorInTitle(publication)" ng-bind="publication.name" dir="auto"></div>
+                  <div ng-if="!isAuthorInTitle(publication)" ng-class="{'title-in-two-line' : !isAuthorInTitle(publication)}" ng-bind="publication.name" dir="auto"></div>
+                </div>
+
+                <div class="author-wrapper">
+                  <div dir="auto"><span ng-if="isAuthorInTitle(publication)" ng-bind="publication.author"></span></div>
+                  <sw-downloader download-info="publication" ng-if="::(!detailsApi.isEditor && isDownloadAvailable())"></sw-downloader>
+                </div>
+         </div>
+         <ul class="book-info-tabs">
+            <li ng-click="showMainPublicationData()" ng-class="{'active' : isMainPublicationData}">
+              <span sw-localize="PublicationDetails.info.label"></span>
+            </li>
+            <li ng-click="showAdditionalPublicationData()" ng-class="{'active' : !isMainPublicationData}">
+               <span sw-localize="PublicationDetails.relatedVal.label"
+                     sw-data="{numberOfRelatedStudyGuides:publication.numberOfRelatedStudyGuides}"></span>
+            </li>
+         </ul>
+
+         <div class="book-stats-block" ng-if="isMainPublicationData">
+            <p ng-if="publication.type === 'StudyGuide'">
+              <span class="publication-category"
+                    sw-localize="PublicationDetails.bookNotes.label"></span>
+            </p>
+
+            <p ng-if="publication.type !== 'StudyGuide'">
+              <span class="publication-category"
+                    ng-bind="publication.category">&nbsp;</span>
+            </p>
+
+            <p>
+               <span sw-localize="PublicationDetails.time.label"></span>
+                    <span ng-if="publication.readingDuration > 0">
+                       <span ng-bind="publication.readingDuration | TimeDurationFilter"></span> /
+                    </span>
+               <span ng-bind="publication.readingTime | TimeDurationFilter"></span><span ng-if="::showDifficulty">,
+                    <span sw-localize="PublicationDetails.difficulty.label"></span> <span ng-bind="publication.difficulty"></span>,</span>
+                    <span ng-if="!detailsApi.isEditor">
+                        <sw-study-progress progress="publication.readingProgress" numbercircls="5"></sw-study-progress>
+                    </span>
+            </p>
+
+            <p dir="auto">
+               <span></span>
+               <span ng-bind="publication.description"></span>
+            </p>
+         </div>
+         <div ng-if="!isMainPublicationData && isPersistDefaultAllowed()">
+            <sw-manage-book-info publication="relatedConfig"></sw-manage-book-info>
+            <!--temp-->
+         </div>
+         <div ng-if="!isMainPublicationData && !isPersistDefaultAllowed()">
+            <ul class="book-related-block">
+               <li class="book-related-item-block" ng-repeat="relatedPublication in relatedPublications">
+                  <span>
+                    <i class="study-guide-cover"></i>
+                  </span>
+                  <span>
+                     <p ng-bind="relatedPublication.name"></p>
+                     <p ng-bind="relatedPublication.author"></p>
+                     <p ng-if="relatedPublication.category === 'StudyGuide'"
+                        sw-localize="PublicationDetails.bookNotes2.label"></p>
+                     <p ng-if="relatedPublication.category !== 'StudyGuide'" ng-bind="relatedPublication.category"></p>
+                     <p>
+                        <span>Time:</span> <span
+                             ng-bind="relatedPublication.readingTime | TimeDurationFilter"></span></span>
+                     </p>
+                  </span>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>

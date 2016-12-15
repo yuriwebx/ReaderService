@@ -1,0 +1,272 @@
+<div class="develop-study-course-wrapper" ng-form="form" sw-body-class="develop-study-course-full-height">
+   <div class="develop-study-course" ng-if="!editMode.active">
+      <div class="column-1" sw-custom-scroll="{options: {height: '100%'}}">
+        <div sw-sticky="{changeWidthOnScroll: true, alwaysStick: true, useGentle: false}">
+           <div class="step-block" sw-localize="DevelopStudyCourse.stepBlock.text"></div>
+           <div class="filter-block">
+              <div class="filter-block-wrapper">
+                <div class="language-block">
+                  <sw-language-field></sw-language-field>
+                  <sw-categories></sw-categories>
+                </div>
+                <div class="field-block">
+                   <div class="search_input_holder">
+                      <input placeholder="Filter" type="text"
+                             ng-model="filter.text"
+                             ng-change="onFiltering()"
+                             ng-model-options="{debounce: 200}"
+                             sw-catch-key>
+                      <i ng-class="{'i-ClearInputCross': filter.text.length}" ng-click="resetSearch()"></i>
+                   </div>
+                </div>
+              </div>
+           </div>
+           <div class="additional-block">
+              <div class="section-add">
+                 <span>&nbsp;</span>
+                 <span sw-localize="DevelopStudyCourse.section.text"></span>
+                 <button sw-localize="DevelopStudyCourse.add.text" ng-click="addSection()"></button>
+              </div>
+              <div class="vocabulary-assessment-add">
+                 <span sw-localize="DevelopStudyCourse.v.text"></span>
+                 <span sw-localize="DevelopStudyCourse.vocabularyAssessment.text"></span>
+                 <button sw-localize="DevelopStudyCourse.add.text" ng-click="addVocabularyAssessment()"></button>
+              </div>
+              <div class="titleh"
+                   sw-localize="DevelopStudyCourse.library.text"
+                   ng-if="!isCollectionExpanded"></div>
+           </div>
+        </div>
+
+        <div class="book-list">
+           <div class="titleh multi" ng-if="isCollectionExpanded">
+             <span class="clickable" ng-click="collapseCollection()">
+                <i></i><span sw-localize="DevelopStudyCourse.back.text"></span>
+             </span>
+             <span>{{::collectionName}}</span>
+             <span class="dummy-span"></span>
+           </div>
+           <div ng-repeat="publication in publications | orderBy: publicationsOrder | limitTo:publicationsQuantity" class="publication-item">
+              <span>
+                 <ng-switch on="publication.type">
+                   <span ng-switch-when="StudyCourse" class="studycourse-cover"></span>
+                   <span ng-switch-when="Collection" class="collection-cover"></span>
+                   <span ng-switch-when="StudyGuide" class="booknotes-cover"></span>
+                   <img ng-switch-default ng-src="{{::getCover(publication)}}">
+                 </ng-switch>
+              </span>
+              <span>
+                 <p ng-if="isAuthorInTitle(publication)" ng-bind="publication.name"></p>
+                 <p ng-if="!isAuthorInTitle(publication)" ng-class="{'title-in-two-line' : !isAuthorInTitle(publication)}" ng-bind="publication.name" sw-ellipsis></p>
+                 <p ng-if="isAuthorInTitle(publication)">
+                   by <span ng-bind="publication.author"></span>
+                   <span ng-if="publication.type === 'StudyGuide' && isAuthor(publication)">(you)</span>
+                 </p>
+                 <p>
+                    <span ng-if="publication.type === 'StudyGuide'" sw-localize="DevelopStudyCourse.bookNotes.text"></span>
+                    <span ng-if="publication.type !== 'StudyGuide'">{{publication.category || 'Collection'}}.</span>
+                    <span sw-localize="DevelopStudyCourse.time.text"></span><span ng-bind="publication.readingTime | TimeDurationFilter"></span><span ng-if="::showDifficulty"><span sw-localize="DevelopStudyCourse.difficulty.text"></span><span ng-bind="publication.difficulty"></span></span>
+                 </p>
+              </span>
+              <ng-switch on="publication.type">
+                <button ng-switch-when="Collection"
+                        ng-click="expandCollection(publication)"
+                        sw-loacalize="DevelopStudyCourse.open.text"></button>
+                <button ng-switch-default 
+                        ng-click="addPublication(publication)"
+                        sw-localize="DevelopStudyCourse.add.text"></button>
+              </ng-switch>
+           </div>
+        </div>
+      </div>
+
+      <sw-resizer sw-resizer-attr="{
+                  firstColumn: '.column-1',
+                  secondColumn: '.column-2',
+                  stableListener: onChangeSize,
+                  listener: onColumnSizeChanging,
+                  position: startResizePosition,
+                  minWidthColumn: 320}">
+      </sw-resizer>
+
+      <div class="column-2">
+         <div class="concise-block" ng-class="{'concise-show': toolbarVisible}">
+            <span ng-bind="studyCourse.name"></span>
+            <span>Time: <span ng-bind="studyCourse.readingTime | TimeDurationFilter"></span><br>
+                  <span ng-if="::showDifficulty">Difficulty: <span ng-bind="studyCourse.difficulty"></span></span></span>
+         </div>
+         <div class="course-list" sw-custom-scroll="{options: {listener: scrollStudyCourseList, height: '100%'}}">
+            <div class="course-item main-item" id="course-item-main">
+               <div class="course-sub-item">
+                  <span class="book-info">
+                     <span class="course-book-info-box">
+                        <span class="book-info-block">
+                           <span class="book-info-pic">
+                              <!-- Bug #2080 Hide buttom to change class and course cover
+                                 should be unclickable until issue #2078 is implementeds
+                              -->
+                             <!-- <input type="file"> -->
+                             <!-- uncomment lines in DevelopStudyCourse.less -->
+                              <span></span>
+                           </span>
+                           <span class="book-info-text">
+                              <p></p>
+
+                              <sw-autogrowtextarea name="name" ng-disabled="studyCourse.disabled"
+                                                   data-ng-model="studyCourse.name" sw-validate="validateField(studyCourse.name)">
+                              </sw-autogrowtextarea>
+                              <p ng-if="isAuthorInTitle(studyCourse)"><span ng-bind="studyCourse.author"></span>
+
+                              <p class="study-stats">
+                                 <span>Time: <label ng-bind="studyCourse.readingTime | TimeDurationFilter"></label></span>
+                                 <span ng-if="::showDifficulty">Difficulty: <label ng-bind="studyCourse.difficulty"></label></span>
+                              </p>
+                           </span>
+                        </span>
+                        <span class="course-stats">
+                           <sw-manage-edit-field configfunction="editStudyCourseConfig"></sw-manage-edit-field>
+                        </span>
+                     </span>
+                     <sw-autogrowtextarea class="text-description" name="description" ng-disabled="studyCourse.disabled"
+                                          data-ng-model="studyCourse.description">
+                     </sw-autogrowtextarea>
+                  </span>
+                  <!-- <button class="edit-bttn"studyCourse
+                          ng-class="{'edit-mode':!.disabled}"
+                          ng-click="editStudyCourseData()">
+                     <span ng-if="!studyCourse.disabled">Save</span>
+                  </button> -->
+               </div>
+            </div>
+
+            <div class="course-item-wrapp" sw-focus-manager="{cycle: false, keyNext: 'down, tab', keyPrev: 'up'}">
+               <div class="course-item" tabindex="0"
+                    ng-repeat="studyCourseItem in studyCourseViewItems track by $index"
+                    ng-class="{'selected' : selected.item === $index, 'shifted' : studyCourseItem.sub, 'section-wrapper' : studyCourseItem.type === 'section item'}"
+                    sw-hot-key="{'down, tab': 'setSelection(selected.item, selected.item+1, studyCourseViewItems.length)', 'up': 'setSelection(selected.item, selected.item-1, studyCourseViewItems.length)'}">
+
+                  <div class="course-sub-item" ng-if="isPublication(studyCourseItem)">
+                     <div class="course-book-info-box">
+                        <span class="book-info" ng-click="setSelection($index)">
+                           <span class="book-info-block">
+                              <span class="book-info-pic">
+                                 <img ng-src="{{::getCover(studyCourseItem)}}" ng-if="studyCourseItem.cover"/>
+                                 <i ng-if="!studyCourseItem.cover"/></i>
+                              </span>
+                              <span class="book-info-text">
+                                  <p ng-if="isAuthorInTitle(studyCourseItem)" ng-bind="studyCourseItem.name"></p>
+                                  <p ng-if="!isAuthorInTitle(studyCourseItem)" ng-class="{'title-in-two-line' : !isAuthorInTitle(studyCourseItem)}" ng-bind="studyCourseItem.name" sw-ellipsis></p>
+                                  <p ng-if="isAuthorInTitle(studyCourseItem)">Author: <span ng-bind="studyCourseItem.author"></span></p>
+
+                             <!--     <p><span ng-bind="studyCourseItem.index"></span>. <span ng-bind="studyCourseItem.name"></span></p>
+                                 <p><span>Author:</span> <span ng-bind="studyCourseItem.author"></span></p> -->
+
+                                 <p ng-show="studyCourseItem.studyGuideName" class="study-guide-name"><span>Book Note: </span><span ng-bind="studyCourseItem.studyGuideName"></span>, <span ng-bind="studyCourseItem.studyGuideAuthor"></span></p>
+                                 <p class="study-category" ng-bind="studyCourseItem.category"></p>
+                                 <p class="study-stats">
+                                    <span>Time: <label ng-bind="studyCourseItem.readingTime | TimeDurationFilter"></label></span>
+                                    <span>Cumulative time: <label ng-bind="studyCourseItem.cumulativeTime | TimeDurationFilter"></label></span>
+                                    <span ng-if="::showDifficulty">Difficulty: <label ng-bind="studyCourseItem.difficulty"></label></span>
+                                 </p>
+                              </span>
+                           </span>
+                        </span>
+                        <span class="course-controls">
+                           <span>
+                              <button class="move-up-bttn"
+                                      ng-click="moveItemUp(studyCourseItem, $index)"></button>
+                              <button class="move-down-bttn"
+                                      ng-click="moveItemDown(studyCourseItem, $index)"></button>
+                              <button class="edit-bttn"
+                                      ng-if="studyCourseItem.type!=='StudyCourse'"
+                                      ng-click="editPublication(studyCourseItem, $index)"></button>
+                              <button class="delete-bttn"
+                                      ng-click="deleteStudyCourseItem(studyCourseItem, $index)"></button>
+                           </span>
+                        </span>
+                     </div>
+                        <p class="study-course-item" ng-if="studyCourseItem.description">{{studyCourseItem.description}}</p>
+                        <p class="study-course-item" ng-if="!studyCourseItem.description">
+                           <i sw-localize="DevelopStudyCourse.noDescription.text"></i>
+                        </p>
+                  </div>
+
+                  <!--Section Item-->
+                  <div class="course-sub-item section" ng-if="studyCourseItem.type === 'section item'">
+                     <div class="course-book-info-box">
+                        <span class="book-info" ng-click="setSelection($index)">
+                           <span class="book-info-block">
+                              <span class="book-info-pic">
+                                 <p># <span ng-bind="studyCourseItem.index"></span></p>
+                                 <i>&nbsp;</i>
+                              </span>
+                              <span class="book-info-text">
+                                 <span ng-show="editable.item !== $index" ng-bind="studyCourseItem.title" class="section-title"></span>
+                                 <sw-input type="text"
+                                           ng-model="studyCourseItem.title"
+                                           ng-show="editable.item === $index"></sw-input>
+                                 <span class="section-description" ng-show="editable.item !== $index" ng-bind="studyCourseItem.description"></span>
+                                 <sw-textarea type="text"
+                                              ng-model="studyCourseItem.description"
+                                              ng-show="editable.item === $index"></sw-textarea>
+                                 <p class="study-stats" ng-show="editable.item !== $index">
+                                    <span>Time: <label ng-bind="studyCourseItem.readingTime | TimeDurationFilter"></label></span>
+                                    <span>Cumulative time: <label ng-bind="studyCourseItem.cumulativeTime | TimeDurationFilter"></label></span>
+                                    <span ng-if="::showDifficulty">Difficulty: <label ng-bind="studyCourseItem.difficulty"></label></span>
+                                 </p>
+                              </span>
+                           </span>
+                        </span>
+                     </div>
+
+                     <span class="course-controls">
+                        <span>
+                           <button class="move-up-bttn"
+                                   ng-click="moveItemUp(studyCourseItem, $index)"></button>
+                           <button class="move-down-bttn"
+                                   ng-click="moveItemDown(studyCourseItem, $index)"></button>
+                           <sw-manage-edit-field configfunction="editConfig" options="{editOptions : {index : $index}}"></sw-manage-edit-field>
+                           <button class="delete-bttn"
+                                   ng-click="deleteStudyCourseItem(studyCourseItem, $index)"></button>
+                        </span>
+                     </span>
+                  </div>
+
+                  <!--Vocabulary Assessment Item-->
+                  <div class="course-sub-item vassessment"
+                       ng-if="studyCourseItem.type === 'vocabulary assessment item'">
+
+                  <span class="book-info" ng-click="setSelection($index)">
+                     <span class="book-info-block">
+                        <span class="book-info-pic">
+                           <p># <span ng-bind="studyCourseItem.index"></span></p>
+                           <i class="vocabulary">V</i>
+                        </span>
+                        <span class="book-info-text">
+                           <p ng-bind="studyCourseItem.text"></p>
+                        </span>
+                     </span>
+                  </span>
+                  <span class="course-controls">
+                     <span>
+                        <button class="move-up-bttn"
+                                ng-click="moveItemUp(studyCourseItem, $index)"></button>
+                        <button class="move-down-bttn"
+                                ng-click="moveItemDown(studyCourseItem, $index)"></button>
+                        <button></button>
+                        <button class="delete-bttn"
+                                ng-click="deleteStudyCourseItem(studyCourseItem, $index)"></button>
+                     </span>
+                  </span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+   <sw-edit-course-book-item class="edit-course-book-item"
+                             reading-api="readingApi"
+                             edit-mode="editMode"
+                             ng-if="editMode.active"></sw-edit-course-book-item>
+</div>

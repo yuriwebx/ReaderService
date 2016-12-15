@@ -1,0 +1,22 @@
+<div class="quiz_wrap" {{dataAttr}}>
+   <div class="quiz {{progress.className}}">
+      <div class="quiz-status">✓</div>
+      <div class="quiz-sign">
+         <span>{{progress.title.charAt(0)}}</span>
+      </div>
+      <div class="quiz-text-block">
+         <div class="qtitle"><span class="test-title">{{name}}</span></div>
+         <div class="test-description dropped">
+            {{description}}
+         </div>
+         <div class="arrow dropped"></div>
+      </div>
+      <div class="quiz-progress">
+      	<div class="quiz-progress-wrapp">
+            <span>{{progress.title}}</span>
+            {{progress.progressStr}}
+         </div>
+      </div>
+      <div class="close-block {{(isRemoveIconShows ? '' : 'close-block-hide')}}"><i class="remove"></i></div>
+   </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="annotations-wrap">
+    <ul class="annotation-tab-filter" data-ng-hide="isEditor || !isStudyGuide">
+        <li data-ng-click="switchMaterialsSource('own')" data-ng-class="{active: showOwnMaterials}">My Annotations</li>
+        <li data-ng-click="switchMaterialsSource('preset')" data-ng-class="{active: !showOwnMaterials}">Book Note</li>
+    </ul>
+    <div class="annotations-search-filter">
+        <div class="selects-block">
+            <sw-input-select options="noteTypesOptions" ng-model="selectModels.noteType"></sw-input-select>
+            <sw-input-select options="uniqueCategoriesOptions" ng-model="selectModels.selected"></sw-input-select>
+        </div>
+        <div class="fields-block">
+            <input type="text"
+                placeholder="quick filter"
+                data-ng-model="quickFilter.$">
+            <i ng-class="{'i-ClearInputCross': quickFilter.$.length}"
+                ng-click="resetSearch()"></i>
+        </div>
+    </div>
+
+    <div class="annotation-list" data-ng-class="{'is-study-guide': isStudyGuide && !isEditor}">
+        <ul>
+            <li data-ng-repeat="(chapter, notes) in annotations">
+                <div class="chapter-block" data-ng-show="filteredNotes.length">
+                    <span>{{chapter}}</span>
+                </div>
+                <div class="annotation-block bookmark"
+                    data-ng-repeat="annotation in filteredNotes =
+                    ( notes | filter: categoryFilter
+                    | filter: quickFilter
+                    | filter: bySource
+                    | filter: noteTypeFilter ) track by $index">
+
+                    <div class="annotation-item-title">
+                        <span>
+                            <span data-ng-class="annotation.type">{{annotation.type[0]}}</span>
+                            <span data-ng-show="annotation.paraId">{{annotation.paraId}}</span>
+                        </span>
+                        <span>{{annotation.createdAt | TimeFilter}}</span>
+                        <span><span><i ng-style="{background: categories[annotation.category]}"></i>{{annotation.category}}</span></span>
+                    </div>
+                    <div class="annotation-text-block">
+                        <div class="annotation-text-block-wrapp" data-ng-click="goToAnnotation(notes.indexOf(annotation), chapter)">
+                            <div class="annotation-binded-paragraph" data-ng-bind-html="annotation.quote" sw-ellipsis></div>
+                            <div class="annotation-user-text"  data-ng-class="{dropped: annotation.id === expandedNoteId}">
+                                <sw-editable-description item="{description : annotation.note, index : $index}"></sw-editable-description>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

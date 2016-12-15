@@ -1,0 +1,24 @@
+<div class="dictionary-layout" sw-body-class="dictionary-full-height">
+   <div class="reflowable-column-layout search-injectable-template">
+
+      <div class="column column-1">
+          <sw-dictionary-term-search definition="definition"></sw-dictionary-term-search>
+      </div>
+
+      <sw-resizer sw-resizer-attr="{
+                  firstColumn: '.column-1',
+                  secondColumn: '.column-2',
+                  stableListener: onChangeSize,
+                  listener: onColumnSizeChanging,
+                  position: startResizePosition,
+                  minWidthColumn: 320}">
+      </sw-resizer>
+
+      <div class="column column-2">
+         <ul class="words-descriptions-list" sw-custom-scroll="{options: {height: '100%'}}">
+             <sw-get-dictionary-definition definition="definition"></sw-get-dictionary-definition>
+         </ul>
+      </div>
+   </div>
+
+</div>

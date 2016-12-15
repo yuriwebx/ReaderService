@@ -1,0 +1,5 @@
+<div class="study-project-bttns">
+   <button type="button" sw-localize="Button.back.label" ng-if="footer.buttonsConfig.prev" ng-click="footer.goToStepPrev()"></button>
+   <button type="button" sw-localize="Button.next.label" ng-class="{'disabled' : footer.isNextDisabled}" ng-if="footer.buttonsConfig.next" ng-click="footer.goToStepNext()"></button>
+   <button type="button" sw-localize="Button.save.label" ng-class="{'disabled' : footer.isCreateDisabled}" ng-if="footer.buttonsConfig.save" ng-click="footer.persist()"></button>
+</div>

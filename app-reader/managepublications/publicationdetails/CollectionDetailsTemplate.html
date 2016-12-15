@@ -1,0 +1,75 @@
+<div>
+    <div sw-render="true" sw-render-to="'.popup-injectable-template'" class="popup-title" >
+        <span>
+            <button ng-click="detailsApi.closePublicationDetails()"
+                    class="sw-input sw-input-wrapper sw-input-button-wrapper sw-input-button ng-scope"
+                    type="button"></button>
+        </span>
+        <span sw-localize="{{labelKey}}"></span>
+        <span></span>
+    </div>
+
+    <div class="column-layout">
+        <div class="col">
+
+            <div class="img-block collection-cover" ng-class="{'preloader': isAddingToMyBooks}">
+            </div>
+
+            <div class="btn-block btn-download-book-wrap" ng-click="openCollection(detailsApi.publication)">
+                <span class="m-button__dark"
+                      sw-localize="ManagePublications.openCollection.label"></span>
+            </div>
+
+        </div>
+
+        <div class="col">
+
+            <div class="book-name-block">
+                <p ng-bind="publication.name"></p>
+                <p><span ng-bind="publication.author"></span></p>
+            </div>
+
+            <ul class="book-info-tabs">
+                <li ng-click="showMainPublicationData()" ng-class="{'active' : isMainPublicationData}">
+                    <span sw-localize="ManagePublications.info.label"></span>
+                </li>
+                <li ng-click="showAdditionalPublicationData()" ng-class="{'active' : !isMainPublicationData}">
+                    <span sw-localize="ManagePublications.content.label"></span>
+                </li>
+            </ul>
+
+            <div class="book-stats-block" ng-if="isMainPublicationData">
+                <p><span class="publication-category" ng-bind="publication.category"></span></p>
+                <p>
+                    <span sw-localize="ManagePublications.time.label"></span>
+                <span ng-show="!detailsApi.isEditor && publication.readingDuration > 0">
+                   <span ng-bind="publication.readingDuration | TimeDurationFilter"></span> /
+                </span>
+                    <span ng-bind="publication.readingTime | TimeDurationFilter"></span><span ng-if="::showDifficulty">,
+                    <span  sw-localize="ManagePublications.difficulty.label"></span> <span ng-bind="publication.difficulty"></span></span>
+                </p>
+                <p><span sw-localize="ManagePublications.Collection.Documents.label"></span>: <span>{{relatedPublications.length}}</span></p>
+                <p>
+                    <span ng-bind="publication.description"></span>
+                </p>
+            </div>
+            <div ng-if="!isMainPublicationData">
+                <ul class="book-related-block">
+                    <li ng-repeat="relatedPublication in relatedPublications">
+                        <div class="book-related-item-block">
+                            <span>
+                              <img ng-src="{{getCoverSrc(relatedPublication)}}" ng-if="!isStudyCourse(relatedPublication)" />
+                            </span>
+                            <span>
+                                <p ng-bind="relatedPublication.name"></p>
+                                <p class="collection-author" ng-bind="relatedPublication.author"></p>
+                                <p ng-bind="relatedPublication.category"></p>
+                                <p>Required Time: <span ng-bind="relatedPublication.readingTime | TimeDurationFilter"></span><span ng-if="::showDifficulty">, Difficulty: <span ng-bind="relatedPublication.difficulty"></span></span></p>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

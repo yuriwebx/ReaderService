@@ -1,0 +1,241 @@
+@import '../base';
+@media-study-with: ~"all and (max-width: 1024px)";
+
+.durations.sw-input-select_s-popup {
+   width: 150px;
+}
+
+.study-project-parametres {
+   .box-sizing;
+   .flex-display;
+   .flex-direction(column);
+   padding: 10px 35px 10px 40px;
+   @media @media-study-with {
+      display: block;
+   }
+   &.one-side {
+      > div {
+         width: 100%;
+         min-width: 100%;
+         &:nth-of-type(2) {
+            display: none;
+         }
+      }
+   }
+   .study-project-switcher-block {
+      padding-bottom: 10px;
+      label {
+         .flex-display;
+         .box-sizing;
+         span {
+            font-size: 24px;
+            line-height: 50px;
+            margin-right: 10px;
+         }
+         button {
+            &.toggle-course-period-btn {
+               .transition(all .15s ease);
+               position: relative;
+               width: 50px;
+               height: 30px;
+               margin: auto 0;
+               cursor: pointer;
+               border: 1px solid @c-lilac;
+               border-radius: 15px;
+               background: @c-white;
+               &:after {
+                  .transition(all .15s ease);
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  display: block;
+                  padding: 14px;
+                  content: '';
+                  border-radius: 14px;
+                  background: @c-white;
+                  box-shadow: inset 0 0 1px @c-lilac, 0 0 1px @c-lilac, 0 2px 3px 0 @c-gray;
+               }
+               &.off {
+                  background: @c-lilac;
+                  &:after {
+                     left: 20px;
+                  }
+               }
+               &.disabled {
+                  opacity: .5;
+               }
+            }
+         }
+      }
+   }
+   .param-side {
+      .box-sizing;
+      .flex-display;
+      .flex-direction(column);
+      position: relative;
+      width: 100%;
+      min-width: 50%;
+      &.disabled {
+         &:after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: block;
+            content: '';
+            opacity: .8;
+            background-color: @c-white;
+         }
+      }
+      .sub-block {
+         .box-sizing;
+         min-height: 155px;
+         margin-bottom: 10px;
+         padding-bottom: 20px;
+         box-shadow: inset 0 -1px #d9d9d9;
+         .study-week-buttons-list {
+            .flex-display;
+            .flex-wrap(wrap);
+            .justify-content(center);
+            .study-week-day {
+               .flex-order(2);
+               button {
+                  font-size: 16px;
+                  font-weight: 300;
+                  line-height: 30px;
+                  min-width: 120px;
+                  height: 30px;
+                  margin: 10px 5px 0 0;
+                  padding: 0 10px;
+                  cursor: pointer;
+                  color: @c-lilac;
+                  border: solid 1px @c-lilac;
+                  border-radius: 2px;
+                  background: transparent;
+                  &.active {
+                     color: @c-white;
+                     border: 1px solid @c-lilac;
+                     background: @c-lilac;
+                  }
+               }
+            }
+         }
+         &:last-of-type {
+            min-height: 0;
+            margin: 0;
+            box-shadow: none;
+         }
+         h2 {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 50px;
+            text-align: left;
+         }
+         .select-conainer {
+            .box-sizing;
+            display: inline-block;
+            // min-height: 130px;
+            // padding-top: 40px;
+            text-align: left;
+            select {
+               font-size: 16px;
+               font-weight: 300;
+               line-height: 30px;
+               display: inline-block;
+               width: 130px;
+               height: 30px;
+               margin: auto 5px;
+               padding: 0 10px;
+               cursor: pointer;
+               color: @c-lilac;
+               border: none;
+               border-radius: 2px;
+               background: transparent;
+               box-shadow: inset 0 0 0 1px @c-lilac;
+               &:hover {
+                  opacity: .8;
+               }
+               option {
+                  font-size: 16px;
+               }
+            }
+            .sw-input-select {
+               font-size: 16px;
+               font-weight: 300;
+               .sw-popup-content & {
+                  &.sw-focus {
+                     box-shadow: none!important;
+                  }
+               }
+            }
+         }
+         .date-block {
+            .box-sizing;
+            .flex-display;
+            .flex-wrap(wrap);
+            .date-block-start,
+            .date-block-end {
+               .box-sizing;
+               .flex-display;
+               .justify-content(center);
+               height: 40px;
+               padding-right: 25px;
+               // box-shadow: inset 0 -1px #e6e6e6;
+               .date-label {
+                  font-size: 16px;
+                  font-weight: 300;
+                  line-height: 40px;
+                  display: block;
+                  padding: 0 10px 0 0;
+                  white-space: nowrap;
+               }
+               span {
+                  &:last-of-type {
+                     // height: 41px;
+                     margin: auto 0;
+                  }
+                  .sw-input-date-wrapper {
+                     .sw-input-date {
+                        .box-sizing;
+                        &.sw-dateInput {
+                           border: none;
+                           .sw-dateInput-input {
+                              font-size: 14px;
+                              font-weight: 300;
+                              height: 2em;
+                              color: @c-lilac;
+                              border-radius: 2px;
+                           }
+                           .sw-dateInput-button {
+                              width: 39px;
+                              padding: 3px 9px;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+         .courseEnd,
+         .course-time-required-top,
+         .course-time-required {
+            font-size: 16px;
+            line-height: 40px;
+            display: inline-block;
+            text-align: center;
+            vertical-align: top;
+            span {
+               &:first-of-type,
+               &:nth-of-type(2) {
+                  font-weight: 300;
+               }
+            }
+         }
+         .course-time-required-top {
+            line-height: 28px;
+            padding-left: 20px;
+         }
+      }
+   }
+}

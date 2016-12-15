@@ -1,0 +1,78 @@
+<div>
+    <div class="student-message-block" ng-if="config.isCurrentState(config.popupStates.createMessage)">
+        <div class="editor-block">
+            <div class="student-message-field">
+                <div sw-localize="ManageMessage.to.text"></div>
+                <sw-input type="select2"
+                        sw-select2-options="select2Options"
+                        ng-model="resipientsObj.recipients"></sw-input>
+
+                <div class="select-recipients" ng-click="config.changeCurrentState(config.popupStates.selectRecipients)"><i></i></div>
+            </div>
+            <div class="student-message-field">
+                <span sw-localize="ManageMessage.subject.text"></span>
+                <sw-input ng-model="messageObj.subject"></sw-input>
+            </div>
+            <div class="student-message-field">
+                <label>
+                    <div>
+                        <sw-autogrowtextarea type="textarea" ng-model="messageObj.text"></sw-autogrowtextarea>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="student-message-block" ng-if="config.isCurrentState(config.popupStates.viewMessage)">
+        <div class="reader-block" ng-show="config.message">
+            <div class="student-message-field">
+                <span class="from-field-label"
+                      sw-localize="ManageMessage.from.text"></span>
+                <span class="from-field"><b>{{fromUserProfile.firstName}} {{fromUserProfile.lastName}}</b></span>
+            </div>
+            <div class="student-message-field">
+                <span class="to-field-label"
+                      sw-localize="ManageMessage.to.text"></span>
+                <span class="to-field">{{toUserProfile.firstName}} {{toUserProfile.lastName}}</span>
+            </div>
+            <div class="student-message-field">
+                <span class="subject-field"><b>{{config.message.subject}}</b></span>
+            </div>
+            <div class="student-message-field">
+                <span class="date-field">{{config.message.registeredAt}}</span>
+            </div>
+            <div class="student-message-field">
+                <sw-input type="autogrowtextarea" ng-model="config.message.text" ng-disabled="true"></sw-input>
+            </div>
+        </div>
+    </div>
+
+    <div class="student-add-block" ng-if="config.isCurrentState(config.popupStates.selectRecipients)">
+        <div class="student-add-filter-block">
+            <input placeholder="Filter" type="text" ng-model="studentFilterObj.text">
+        </div>
+        <div class="student-add-all-block" ng-click="selectAll()">
+            <span class="pic-block"><i class="all-users"></i></span>
+            <span class="text-block">
+                <span sw-localize="ManageMessage.selectStudents.label"></span>
+            </span>
+            <span class="check-block"><sw-input type="checkbox" ng-model="isSelectAll"></sw-input></span>
+        </div>
+        <div class="student-add-list-block">
+            <div class="student-add-list-item" ng-repeat="possibleRecipient in possibleRecipients | filter:studentFilter" ng-click="selectPossibleRecipients(possibleRecipient)" ng-class="{'selected' : possibleRecipient.checked}">
+                <span class="pic-block">
+                    <i class="no-user-pic" ng-if="!possibleRecipient.isPhoto"></i>
+                    <img ng-src="{{possibleRecipient.photoLink}}" ng-if="possibleRecipient.isPhoto"/>
+                </span>
+                <span class="text-block">
+                    <span ng-bind="possibleRecipient.firstName"></span>
+                    <span ng-bind="possibleRecipient.lastName"></span>
+                </span>
+                <span class="check-block">
+                    <sw-input type="checkbox" ng-model="possibleRecipient.checked"></sw-input>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,172 @@
+<div class="search-layout-searcher">
+
+   <div class="content-list content-list-tree">
+      <div class="search-results-tooltip" ng-if="extendapi.isTooltipVisible && currentLanguage==='en'">
+         <p class="text-title" data-sw-localize="Search.Tooltip.paragraph1.title"></p>
+         <p data-sw-localize="Search.Tooltip.paragraph1.label"></p>
+         <p class="text-list">
+           <span data-sw-localize="Search.Tooltip.paragraph2.title"></span>
+           <span data-sw-localize="Search.Tooltip.paragraph2.label"></span>
+         </p>
+         <p class="text-list">
+           <span data-sw-localize="Search.Tooltip.paragraph3.title"></span>
+           <span data-sw-localize="Search.Tooltip.paragraph3.label"></span>
+         </p>
+         <p class="text-list">
+           <span data-sw-localize="Search.Tooltip.paragraph4.title"></span>
+           <span data-sw-localize="Search.Tooltip.paragraph4.label"></span>
+         </p>
+         <p class="text-list">
+           <span data-sw-localize="Search.Tooltip.paragraph5.title"></span>
+           <span data-sw-localize="Search.Tooltip.paragraph5.label"></span>
+         </p>
+      </div>
+
+      <!--TEMP while no localization-->
+      <div class="search-results-tooltip" ng-if="extendapi.isTooltipVisible && currentLanguage==='fa'">
+         <p>این یک جستجوی فازی نتایج مشابه به کلمات کلیدی شما فراهم خواهد کرد. در اینجا چند راهنمایی برای جستجوی قدرتمند عبارتند از:</p>
+         <p class="text-list">
+          <span>برای نتایج دقیق، استفاده از نقل قول مانند:</span>
+          <span>"بزرگترین اثبات"<br>"پنج الماس"</span>
+         </p>
+         <p class="text-list">
+          <span>به حذف نتایج، استفاده از یک خط تیره قبل یک کلمه مانند :</span>
+          <span>مشاوره صلح -فقر</span>
+         </p>
+         <p class="text-list">
+          <span>نتایج محدود به یک کتاب و یا نویسنده ، بخشی مشخص در پرانتز مانند:</span>
+          <span>اعتدال (ملوک)<br>بزرگترین اثبات (باب)<br>مروارید گرانبها (عبد)<br>مراقبه (عبد ،شوقی)</span>
+         </p>
+         <p class="text-list">
+          <span>جستجو به زبان عربی یا فارسی در زبان انگلیسی اما نوع مانند:</span>
+          <span class="ltr-in-rtl">qurban (munajat)</span>
+         </p>
+      </div>
+
+      <div class="search-results-tooltip" ng-if="extendapi.isTooltipVisible && currentLanguage==='ar'">
+         <p>هذا وسوف يتم بحث غامض النتائج بحيث تكون مشابهة ل كلمات التي تقدمها. وهنا بعض النصائح ل بحث قوي:</p>
+         <p class="text-list">
+          <span>للحصول على نتائج دقيقة ، استخدام علامات الاقتباس مثل:</span>
+          <span>"أكبر دليل"<br>"خمسة الماس"</span>
+         </p>
+         <p class="text-list">
+          <span>استبعاد النتائج، استخدم شرطة قبل كلمة مثل:</span>
+          <span>نصيحة السلام -الفقر</span>
+         </p>
+         
+         <p class="text-list">
+          <span>نتائج حد ل كتاب أو مؤلف ، يحدد الجزء بين قوسين مثل:</span>
+          <span>الاعتدال (الملوك)<br>أكبر دليل (باب)<br>لا تقدر بثمن اللؤلؤ (عبد)<br>التأمل (عبد،شوقي)</span>
+         </p>
+         
+         <p class="text-list">
+          <span>بحث باللغة العربية أو الفارسية ولكن اكتب في اللغة الإنجليزية مثل :</span>
+          <span class="ltr-in-rtl">qurban (munajat)</span>
+         </p>
+      </div>
+      <!---->
+
+      <div data-ng-show="isDirty" class="search-results-info">
+         <div id="search_results">
+           <span data-ng-show="showNotFoundResults()" class="no_results"
+                 data-sw-localize="Search.NoResultsFound.label"></span>
+           <span data-ng-show="resultsBooksCollection.length>0" class="results" dir="ltr">
+              <span class="value" data-ng-bind="totalSearchResults"></span>
+              <span data-sw-localize="Search.BooksMatchesWereFound.label"></span>
+              <span class="value" data-ng-bind="resultsBooksCollection.length"></span>
+              <span data-sw-localize="Search.BooksWereFound.label"></span>
+           </span>
+         </div>
+         <div class="book-name">
+            <span ng-if="!!currentBook">{{currentBook.title}},&nbsp;{{currentBook.author}}</span>
+         </div>
+      </div>
+
+      <div class="search-results-tree-wrapper" data-ng-class="{'one-column' : oneColumn()}"
+           sw-focus-manager="{keyNext: 'right', keyPrev: 'left'}">
+
+         <div class="search-results-tree scrollable" tabindex="5" sw-focus-manager>
+            <ul class="tree-container">
+               <li class="tree-node expanded" tabindex="30"
+                   ng-repeat="book in resultsBooksCollection"
+                   ng-class="{'current-item': selectedBookIndex === $index}"
+                   ng-click="loadResults(book, $index)"
+                   sw-focus-manager="{traverse: true, keyNext: 'down', keyPrev: 'up'}"
+                   sw-hot-key="{'down': 'loadNextResults($index)', 'up': 'loadPrevResults($index)'}">
+
+                  <p class="tree-node-container" ng-click="toggleResult(book)">
+                     <span class="tree-node-title">{{::book.title}}</span>
+                     <span class="">{{::book.author}}</span>
+                     <span class="">{{::book.totalResults}}</span>
+                  </p>
+                  <i></i>
+
+                  <ul data-ng-if="$index === selectedBookIndex && oneColumn()" class="tree-node-container">
+                     <li data-ng-repeat="searchResult in searchResults" class="tree-node tree-sub-node">
+                        <p data-ng-click="toggleParagraphVisibility($event, $index)" data-ng-class="{'expanded': selectedTitleIndex === $index}">
+                           <span class="tree-sub-node-container">
+                              <span data-ng-if="$index !== selectedTitleIndex"
+                                    paragraph="{{searchResult.paragraphs}}"
+                                    data-ng-bind-html="::searchResult.title">
+                              </span>
+
+                              <span data-ng-if="$index === selectedTitleIndex"
+                                    paragraph="{{searchResult.paragraphs}}"
+                                    data-ng-bind-html="::searchResult.paragraph">
+                              </span>
+                           </span>
+                        </p>
+                        <span data-ng-click="onNodeActivate(searchResult)" class="button-open-in-reader">
+                           <i class="icon i-openInReader"></i>
+                        </span>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+
+         <div data-ng-if="$index === selectedBookIndex && !oneColumn()" data-ng-repeat="book in resultsBooksCollection"
+              class="search-results-tree extended-results-tree scrollable" tabindex="6" sw-focus-manager="{cycle: false}">
+            <div class="tree-container">
+               <div class="tree-node">
+                  <ul class="tree-node-container">
+                     <li data-ng-repeat="searchResult in searchResults" tabindex="40"
+                         class="tree-sub-node tree-node"
+                         data-ng-class="{'expanded': selectedTitleIndex === $index}"
+                         sw-focus-manager="{traverse: true, keyNext: 'down', keyPrev: 'up', defaultPolicy: false}">
+
+                        <p data-ng-click="toggleParagraphVisibility($event, $index)" data-ng-class="{'expanded': selectedTitleIndex === $index}">
+                           <span class="tree-sub-node-container">
+                              <span data-ng-if="$index !== selectedTitleIndex"
+                                    paragraph="{{searchResult.paragraphs}}"
+                                    data-ng-bind-html="::searchResult.title">
+                              </span>
+
+                              <span data-ng-if="$index === selectedTitleIndex"
+                                    paragraph="{{searchResult.paragraphs}}"
+                                    data-ng-bind-html="::searchResult.paragraph">
+                              </span>
+                           </span>
+                        </p>
+
+                        <span class="spec-lincs">
+                          <a href="/oceanoflights{{::book.originalPath.pdf}}" ng-show="!!book.originalPath.pdf" target="_blank">
+                             <i class="icon i-openInReader"></i>
+                          </a>
+                          <a href="/oceanoflights{{::book.originalPath.doc}}" ng-show="!!book.originalPath.doc" target="_blank">
+                             <i class="icon i-openInReader"></i>
+                          </a>
+                          <a href="/oceanoflights{{::book.originalPath.htm}}#{{::searchResult.encodedInfo}}" ng-show="!!book.originalPath.htm">
+                             <i class="icon i-openInReader"></i>
+                          </a>
+                        </span>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+
+      </div>
+
+   </div>
+</div>

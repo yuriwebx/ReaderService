@@ -1,0 +1,78 @@
+<div class="participate-in-discussion" ng-class="{'reply-view': isReplyView, 'full-view': discussionData.messages.length}">
+   <div class="sw-discussion-comments" ng-if="::!isEditor">
+      <div class="sw-discussion-comments-wrapper" sw-custom-scroll="{options: {height: '100%'}}">
+         <ul class="discussion-comments-list">
+            <li ng-repeat="message in discussionData.messages | orderBy: 'createdAt' | filter: filterMessages"
+                ng-class="{'active': message.active, 'comments-visible': message.commentsVisible, 'teacher-mess': message.userRole === 'Teacher'}">
+               <div class="item-top">
+                  <div class="userpic-block">
+                     <span class="userpic-block-wrapper">
+                     <img src="" alt="" ng-src="{{::getPhotoLink(message.userProfile)}}" ng-if="::message.userProfile.photo"
+                          class="sw-discussion-user-photo"/>
+                     <span ng-if="::!message.userProfile.photo" class="sw-discussion-user-no-photo"></span>
+                     </span>
+                        </div>
+                        <div class="text-wrapper">
+                           <div class="text-block" ng-click="toggleTextVisibilityView(message)"
+                                sw-ellipsis="!message.isFullVisible" ng-class="{'full-height': message.isFullVisible}">
+                              <span class="sw-discussion-user-name">{{message.userProfile.firstName + ' ' + message.userProfile.lastName}}</span>
+                              <span class="sw-discussion-user-text" ng-bind="::message.text"></span>
+                              <span class="sw-discussion-user-time"></span>
+                           </div>
+                           <div class="reply-block">
+                              <span class="reply-button"
+                                    ng-click="reply(message.messageId)"
+                                    sw-localize="ParticipateInDiscussion.replyButton.label"></span>
+                              <span ng-bind="::formatDate(message.createdAt)"></span>
+                           </div>
+                        </div>
+                     </div>
+
+               <!-- Comments -->
+               <ul>
+                  <li ng-repeat="comment in filteredComments = (discussionData.messages | orderBy: orderComments(message) | filter: filterComments(message))"
+                      ng-class="{'teacher-mess': comment.userRole === 'Teacher'}">
+                     <div class="item-top">
+                        <div class="userpic-block">
+                           <span class="userpic-block-wrapper">
+                              <img src="" alt="" ng-src="{{::getPhotoLink(comment.userProfile)}}" ng-if="::comment.userProfile.photo"
+                                   class="sw-discussion-user-photo"/>
+                              <span ng-if="::!comment.userProfile.photo" class="sw-discussion-user-no-photo"></span>
+                           </span>
+                        </div>
+                        <div class="text-wrapper">
+                           <div class="text-block">
+                              <span class="sw-discussion-user-name">{{comment.userProfile.firstName + ' ' + comment.userProfile.lastName}}</span>
+                              <span class="sw-discussion-user-text" ng-bind="::comment.text"></span>
+                              <span class="sw-discussion-user-time"></span>
+                           </div>
+                           <div class="reply-block">
+                              <span ng-bind="::formatDate(comment.createdAt)"></span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="more-comments" ng-if="$last && !isReplyView && filteredComments.length > 1" ng-click="toggleComments(message)">
+                        <span ng-if="!message.commentsVisible"
+                              sw-localize="ParticipateInDiscussion.more.label"></span>
+                        <span ng-if="message.commentsVisible"
+                              sw-localize="ParticipateInDiscussion.less.label"></span>
+                        Comments <span ng-if="!message.commentsVisible">({{filteredComments.length - 1}})</span>
+                     </div>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+      <div class="sw-discussion-my-comment" ng-if="!data.frozen">
+         <span>
+            <img src="" alt="" ng-src="{{::userPhoto}}" ng-if="::isPhoto" class="sw-discussion-my-photo"/>
+            <span ng-if="::!isPhoto" class="sw-discussion-my-no-photo"></span>
+         </span>
+         <span><sw-input type="text" ng-model="userMessage.text" ng-focus="scrollIntoViewOnFocus()"
+                         sw-hot-key="{'enter': 'sendMessage()'}" placeholder="Write a comment"></sw-input></span>
+         <span><button ng-click="sendMessage()"
+                       ng-disabled="disableSendButton"
+                       sw-localize="ParticipateInDiscussion.postButton.label"></button></span>
+      </div>
+   </div>
+</div>

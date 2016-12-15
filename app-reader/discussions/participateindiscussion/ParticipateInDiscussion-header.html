@@ -1,0 +1,11 @@
+<div class="participate-in-discussion-template-header">
+   <span>
+   	<button ng-if="headerFn.isReplyView" class="button-back" ng-click="headerFn.back()" type="button" sw-localize="Popup.button.back.label"></button>
+   	<!--<button ng-if="!headerFn.isReplyView" class="ico-close" ng-click="headerFn.closePopup()" type="button">Close</button>-->
+   	<sw-button ng-if="!headerFn.isReplyView" sw-localize="ParticipateInDiscussion.header.button.save.label"
+   	                    ng-click="headerFn.persistFn()"></sw-button>
+   </span>
+   <span sw-localize="ParticipateInDiscussion.header.title"></span>
+   <span><sw-button ng-if="headerFn.isReplyView" sw-localize="ParticipateInDiscussion.header.button.save.label"
+                    ng-click="headerFn.persistFn()"></sw-button></span>
+</div>

@@ -1,0 +1,1 @@
+define(['./EditCourseBookItem', './EditCourseBookItemService'], function(){});

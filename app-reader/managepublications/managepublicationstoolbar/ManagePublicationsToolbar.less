@@ -1,0 +1,79 @@
+@import '../../base.less';
+
+.library-toolbar {
+   overflow: hidden;
+   .book-prefix {
+      .box-sizing;
+      font-size: 1.385em;
+      line-height: 44px;
+      float: left;
+      min-width: 44px;
+      cursor: pointer;
+      vertical-align: top;
+      color: @c-white;
+      @media @media-size-s-alt, @media-size-xs {
+         display: none;
+         min-width: 45px;
+         padding: 0;
+      }
+      span {
+         text-align: center;
+         &:nth-of-type(1) {
+            display: none;
+         }
+         &:nth-of-type(2) {
+            .flex-display;
+            min-width: 44px;
+            height: 44px;
+            i {
+               // .transform(scaleX(-1));
+               display: block;
+               width: 20px;
+               height: 20px;
+               margin: auto;
+               background-size: 20px;
+            }
+         }
+      }
+   }
+   .book-title-wrap {
+      line-height: 44px;
+      top: 0;
+      height: 44px;
+      text-align: center;
+      .book-title {
+         line-height: 44px;
+         padding: 0 30px;
+         color: @c-white;
+         &.noarrow {
+            &:after {
+               display: none;
+            }
+         }
+         @media @narrow {
+            .author-name {
+               display: none;
+            }
+         }
+         span {
+            &.hide-author {
+               display: none;
+            }
+         }
+      }
+   }
+   &.sw-appMenu {
+      .sw-appMenu_inner {
+         &.right-side {
+            .flex-display;
+            .justify-content(flex-end);
+            float: right;
+            min-width: 132px;
+            padding-right: 2px;
+            @media @media-size-s-alt, @media-size-xs {
+               min-width: 45px;
+            }
+         }
+      }
+   }
+}

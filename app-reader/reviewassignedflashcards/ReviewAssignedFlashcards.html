@@ -1,0 +1,67 @@
+<div class="flash-cards-layout">
+   <div class="flash-cards-container">
+      <ul>
+         <li class="flash-card-item" sw-sticky="{alwaysStick: true}">
+            <p ng-class="{active: orderParams.byTerm === order}">
+               <b ng-click="setOrderParam(orderParams.byTerm)">Card</b>
+               <span class="search_input_holder">
+                  <sw-input type="text" placeholder="Filter" ng-model="flashCardFilter.question"
+                            ng-model-options="{debounce: 300}" ng-change="applyFilter(flashCardFilter)"></sw-input>
+
+                  <i ng-class="{'i-ClearInputCross': flashCardFilter.question.length}" ng-click="resetSearch()"></i>
+               </span>
+            </p>
+
+            <p>Definition</p>
+
+            <p>Part of Speech</p>
+
+            <p ng-click="setOrderParam(orderParams.byCreationTime)"
+               ng-class="{active: orderParams.byCreationTime === order}"><b>Added</b></p>
+
+            <p ng-click="setOrderParam(orderParams.byRunTime)"
+               ng-class="{active: orderParams.byRunTime === order}"><b>Last Viewed</b></p>
+
+            <p ng-click="setOrderParam(orderParams.byNextRuntime)"
+               ng-class="{active: orderParams.byNextRuntime === order}"><b>Next time</b></p>
+
+            <p>
+               <sw-input-select options="correctAnswersCountOption" ng-model="flashCardFilter.correctAnswersCount"
+                                ng-change="applyFilter(flashCardFilter)"></sw-input-select>
+            </p>
+         </li>
+         <li class="flash-card-item"
+             ng-repeat="flashcard in flashCardsArr | orderBy:order"
+             ng-init="setOrderParam(orderParams.byNextRuntime)"
+             ng-class="{now: flashcard.nextRuntimeInfo.diff <= 0}">
+
+            <p><b ng-bind="::flashcard.question"></b></p>
+
+            <p><span ng-bind="::flashcard.answer"></span></p>
+
+            <p><span ng-bind="flashcard.partOfSpeech"></span></p>
+
+            <p ng-init="creationInfo = getCreationInfo(flashcard)">
+               <i ng-bind="::creationInfo.date"></i>
+               <i ng-bind="::creationInfo.time"></i>
+            </p>
+
+            <p ng-init="runtimeInfo = getRuntimeInfo(flashcard)">
+               <i ng-bind="::runtimeInfo.date"></i>
+               <i ng-bind="::runtimeInfo.time"></i>
+            </p>
+
+            <p ng-bind="::flashcard.nextRuntimeInfo.nextPlayString"></p>
+
+            <p class="circles progres_{{flashcard.correctAnswersCount}}">
+               <i class="circle_1"></i>
+               <i class="circle_2"></i>
+               <i class="circle_3"></i>
+               <i class="circle_4"></i>
+               <i class="circle_5"></i>
+               <i class="circle_6"></i>
+            </p>
+         </li>
+      </ul>
+   </div>
+</div>

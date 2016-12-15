@@ -1,0 +1,38 @@
+<div class="manage-class-discussion">
+   <div class="class-discussion-list-wrap">
+   <!-- sw-custom-scroll="{options: {height: '100%'}}" -->
+      <div ng-show="classOnly.length">
+         <p>Class Discussions</p>
+         <ul class="class-discussion-list">
+            <li ng-repeat="discussion in classOnly = (discussions | filter: filterClassOnly)">
+               <sw-discussion class="class-discussion" data="discussion" is-manage-class="true"
+                              remove="removeClassDiscussion(id)"></sw-discussion>
+            </li>
+         </ul>
+      </div>
+      <div ng-show="current.length">
+         <p>Current</p>
+         <ul class="class-discussion-list" ng-class="{'sw-discussion-disabled': visibleDiscussion.editDescription}">
+            <li ng-repeat="discussion in current = (discussions | filter: filterCurrent)" ng-click="goToDiscussion(discussion)">
+               <sw-discussion class="class-discussion" data="discussion" is-manage-class="true"
+                              remove="removeClassDiscussion(id)"></sw-discussion>
+            </li>
+         </ul>
+      </div>
+      <div ng-show="upcoming.length">
+         <p>Book Discussions</p>
+         <ul class="class-discussion-list" ng-class="{'sw-discussion-disabled': visibleDiscussion.editDescription}">
+            <li ng-repeat="discussion in upcoming = (discussions | filter: filterFuture)" ng-click="goToDiscussion(discussion)">
+               <sw-discussion class="class-discussion" data="discussion" is-manage-class="true" remove="removeClassDiscussion(id)"></sw-discussion>
+            </li>
+         </ul>
+      </div>
+      <div class="discussion-welcome-screen" ng-show="!isDiscussionsList">
+         <div class="discussion-welcome-screen-wrapper">
+            <div class="discussion-welcome-text-block" sw-localize="Discussion.welcome.text"></div>
+            <div class="discussion-welcome-text-arrow"></div>
+            <button sw-localize="Discussion.create.button" ng-click="createClassDiscussion()"></button>
+         </div>
+      </div>
+   </div>
+</div>

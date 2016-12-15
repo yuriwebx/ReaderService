@@ -1,0 +1,12 @@
+<div>
+   <div class="reader-layout reflowable-column-layout"
+        ng-class="{'reduced-view': swSubmachine.state('Extras') && isExtrasVisible}">
+
+      <sw-present-publication reading-api="readingApi"
+                              publication="publication"
+                              is-reading-mode="true"></sw-present-publication>
+   </div>
+   <sw-extras ng-if="swSubmachine.state('Extras') && isExtrasVisible"
+              publication="publication"
+              extras-api="extrasApi"></sw-extras>
+</div>

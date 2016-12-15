@@ -1,0 +1,242 @@
+@import '../base';
+
+@url: '../../../app/style/images/menu-icons';
+
+.context-popup {
+   background-color: #242424;
+   .night-theme-template & {
+      background-color: @c-orangelight5;
+      box-shadow: 0 0 5px @c-orangelight5;
+   }
+}
+
+.sw-popup-arrow-up,
+.sw-popup-arrow-down {
+   &.context-popup-arrow, {
+      &:after {
+         .night-theme-template & {
+            background-color: @c-orangelight5;
+            box-shadow: 0 0 5px @c-orangelight5;
+         }
+      }
+   }
+}
+
+.context-menu {
+   min-width: 167px;
+   min-height: 41px;
+   font-size: 10px;
+   line-height: 1;
+   z-index: 1020;
+   width: auto;
+   white-space: nowrap;
+   border-radius: 10px;
+   background-color: #242424;
+   background-position: left top;
+   margin-top: 0;
+   .night-theme-template & {
+      background-color: @c-orangelight5;
+   }
+
+   &:after {
+      .clear;
+   }
+   &:hover {
+      background-position: center top;
+   }
+   &:active {
+      background-position: center right;
+   }
+   .context-popup-editor & {
+      min-width: 250px;
+      min-height: 123px;
+      /*font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;*/
+      width: 250px;
+      white-space: normal;
+      background-color: @c-white;
+      box-shadow: 0 0 5px lighten(@c-black, 10%);
+      overflow: hidden;
+      margin-top: 0;
+   }
+   &.context-menu-aside {
+      min-height: 164px;
+   }
+   button {
+      font-size: 16px;
+      display: inline-block;
+      height: 41px;
+      margin: 0 auto;
+      // padding: 10px 20px;
+      cursor: pointer;
+      color: #fff;
+      border: 0;
+      border-left: 1px solid lighten(@c-black, 40%);
+      background: 0;
+      .night-theme-template & {
+         color: #646464;
+         border-left: 1px solid #646464;
+      }
+      &:first-of-type {
+         border-left: none;
+      }
+      .context-popup & {
+         &:hover {
+            opacity: .8;
+         }
+      }
+      .context-popup-editor & {
+         box-sizing: border-box;
+         width: 100%;
+         text-align: left;
+         color: @c-black;
+         border: 0;
+         border-bottom: 1px solid fade(@c-black, 10%);
+         &:last-of-type {
+            border: none;
+         }
+         &:hover {
+            background: fade(@c-black, 20%);
+         }
+      }
+      i {
+         display: block;
+         width: 65px;
+         height: 37px;
+         &.i-note {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/edit_wire_night.svg') center no-repeat;
+            background-size: 26px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/edit_wire_day.svg') center no-repeat;
+               background-size: 26px auto;
+            }
+         }
+         &.i-lookup {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/dictionary_night.svg') center no-repeat;
+            background-size: 26px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/dictionary_day.svg') center no-repeat;
+               background-size: 26px auto;
+            }
+         }
+         &.i-copy {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/copy_night.svg') center no-repeat;
+            background-size: 20px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/copy_day.svg') center no-repeat;
+               background-size: 20px auto;
+            }
+         }
+         &.i-share {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/share_night.svg') center no-repeat;
+            background-size: 21px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/share_day.svg') center no-repeat;
+               background-size: 21px auto;
+            }
+         }
+         &.i-mark {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/bookmarks_night.svg') center no-repeat;
+            background-size: 26px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/bookmarks_day.svg') center no-repeat;
+               background-size: 26px auto;
+            }
+         }
+         &.i-comment {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/book_night.svg') center no-repeat;
+            background-size: 26px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/book_day.svg') center no-repeat;
+               background-size: 26px auto;
+            }
+         }
+         &.i-essay {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/essay_night.svg') center no-repeat;
+            background-size: 26px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/essay_day.svg') center no-repeat;
+               background-size: 26px auto;
+            }
+         }
+         &.i-quiz {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/about_night.svg') center no-repeat;
+            background-size: 26px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/about_day.svg') center no-repeat;
+               background-size: 26px auto;
+            }
+         }
+         &.i-flashcard {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/flashcards_night.svg') center no-repeat;
+            background-size: 26px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/flashcards_day.svg') center no-repeat;
+               background-size: 26px auto;
+            }
+         }
+         &.i-discussion {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/discussion_night.svg') center no-repeat;
+            background-size: 30px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/discussion_day.svg') center no-repeat;
+               background-size: 30px auto;
+            }
+         }
+         &.i-reset-reading {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/book_night.svg') center no-repeat;
+            background-size: 26px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/book_day.svg') center no-repeat;
+               background-size: 26px auto;
+            }
+         }
+         &.i-report {
+            background: data-uri('image/png;base64', '../../../app/style/images/menu-icons/user_report_night.png') center no-repeat;
+            background-size: 26px auto;
+            .night-theme-template & {
+               background: data-uri('image/png;base64', '../../../app/style/images/menu-icons/user_report_day.png') center no-repeat;
+               background-size: 26px auto;
+            }
+         }
+         &.i-audio {
+            background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/play_wire_night.svg') center no-repeat;
+            background-size: 26px auto;
+            .night-theme-template & {
+               background: data-uri('image/svg+xml;base64','../../../app/style/images/menu-icons/play_wire_day.svg') center no-repeat;
+               background-size: 26px auto;
+            }
+         }
+      }
+      span {
+         padding: 0 20px;
+         display: block;
+      }
+   }
+}
+.sw-popup-arrow,
+.sw-popup-arrow-down,
+.sw-popup-arrow-up {
+   &.context-popup-arrow {
+      &:after {
+         background: lighten(@c-black, 16%);
+      }
+   }
+   &.context-popup-editor-arrow,
+   &.note-popup-arrow,
+   &.lookup-popup-arrow,
+   &.addcomment-popup-arrow,
+   &.mark-popup-arrow,
+   &.comment-popup-arrow {
+      &:after {
+         background: @c-white;
+      }
+   }
+}
+
+.context-note-popup {
+   width: 330px;
+   &.comment-popup {
+      width: 420px;
+   }
+}
+

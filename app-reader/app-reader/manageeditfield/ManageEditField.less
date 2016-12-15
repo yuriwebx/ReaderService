@@ -1,0 +1,41 @@
+@import '../../base';
+
+@url_general: '../../../app/style/images/menu-icons';
+
+.manage-edit-field{
+   position: relative;
+   z-index: 1;
+   padding: 10px 0;
+   text-align: right;
+   span {
+      font-size: 1.2em;
+      display: inline-block;
+      min-width: 55px;
+      height: 30px;
+      padding: 0 10px;
+      cursor: pointer;
+      text-align: justify;
+      color: @c-lilac;
+      line-height: 30px;
+      text-align: center;
+      &:hover {
+         opacity: .8;
+      }
+      &.done-button{
+         color: #56a90d;
+         border: 1px solid #56a90d;
+         background: #f0f4ec;
+         border-radius: 3px;
+         box-shadow: 0 0 3px #56a90d;
+      }
+      &.edit-button{
+         @name: 'edit.svg';
+         @bg-position: right center;
+         @bg-size: 24px auto;
+         .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+         width: 50px;
+         padding: 0 0 0 40px;
+         text-align: right;
+      }
+   }
+}

@@ -1,0 +1,214 @@
+@import '../base';
+
+.downloader {
+   .download-btn,
+   .ondevice-btn {
+      .flex-display;
+      .transition(opacity .15s ease);
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 32px;
+      height: 32px;
+      padding: 0 10px 0 0;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      &:hover {
+         opacity: .8;
+      }
+      &.sw-focus {
+         .sw-popup-content & {
+            box-shadow: none!important;
+         }
+      }
+      span {
+         display: block;
+         white-space: nowrap;
+      }
+   }
+   .download-btn {
+      color: @c-lilac;
+      i {
+         display: block;
+         margin-right: 5px;
+         &.i-Download {
+            width: 32px;
+            height: 32px;
+            background: data-uri('image/svg+xml;base64', '../../app/style/images/menu-icons/download.svg') no-repeat center;
+            background-size: auto 32px;
+         }
+      }
+   }
+   .ondevice-btn {
+      color: #00a888;
+      i {
+         display: block;
+         margin-right: 5px;
+         &.i-Reader {
+            width: 32px;
+            height: 32px;
+            background: data-uri('image/png;base64', '../../app/style/images/menu-icons/i_reader.png') no-repeat center;
+            background-size: auto 32px;
+         }
+         &.i-Audio {
+            width: 32px;
+            height: 32px;
+            background: data-uri('image/png;base64', '../../app/style/images/menu-icons/i_audio.png') no-repeat center;
+            background-size: auto 32px;
+         }
+         & + i {
+            margin-left: -5px;
+         }
+      }
+      &.outdated {
+         color: #ee2e2e;
+         i {
+            &.i-Reader {
+               background: data-uri('image/png;base64', '../../app/style/images/menu-icons/i_reader_outdated.png') no-repeat center;
+               background-size: auto 32px;
+            }
+            &.i-Audio {
+               background: data-uri('image/png;base64', '../../app/style/images/menu-icons/i_audio_outdated.png') no-repeat center;
+               background-size: auto 32px;
+            }
+         }
+      }
+   }
+}
+
+.downloader-context-menu-popup {
+   width: 250px;
+   ul {
+      & + ul {
+         border-top: 10px solid #f2f2f2;
+      }
+      li {
+         .flex-display;
+         box-sizing: border-box;
+         border-bottom: 1px solid #e6e6e6;
+         position: relative;
+         &:last-of-type {
+            border: none;
+            &:before {
+               display: none;
+            }
+         }
+         &:before {
+            width: 44px;
+            height: 1px;
+            background: #fff;
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+         }
+         &.ondevice {
+            color: #00a888;
+            i {
+               &.i-reader {
+                  background: data-uri('image/svg+xml;base64', '../../app/style/images/menu-icons/reader_success.svg') no-repeat center;
+                  background-size: 20px auto;
+               }
+               &.i-audio {
+                  background: data-uri('image/svg+xml;base64', '../../app/style/images/menu-icons/music_success.svg') no-repeat center;
+                  background-size: 20px auto;
+               }
+            }
+            &.outdated {
+               color: #ee2e2e;
+               i {
+                  &.i-reader {
+                     background: data-uri('image/svg+xml;base64', '../../app/style/images/menu-icons/reader_outdated.svg') no-repeat center;
+                     background-size: 20px auto;
+                  }
+                  &.i-audio {
+                     background: data-uri('image/svg+xml;base64', '../../app/style/images/menu-icons/music_outdated.svg') no-repeat center;
+                     background-size: 20px auto;
+                  }
+               }
+            }
+         }
+         .item-label {
+            .flex-display;
+            .flex-grow(1);
+            overflow: hidden;
+         }
+         .item-icon {
+            .flex-display;
+            min-width: 44px;
+         }
+         i {
+            display: block;
+            width: 44px;
+            min-width: 44px;
+            height: 44px;
+            &.i-reader {
+               background: data-uri('image/svg+xml;base64', '../../app/style/images/menu-icons/reader.svg') no-repeat center;
+               background-size: 20px auto;
+            }
+            &.i-audio {
+               background: data-uri('image/svg+xml;base64', '../../app/style/images/menu-icons/music.svg') no-repeat center;
+               background-size: 20px auto;
+            }
+            &.i-spinner {
+               -webkit-animation: 1s linear 0s infinite normal spin;
+                  -moz-animation: 1s linear 0s infinite normal spin;
+                    -o-animation: 1s linear 0s infinite normal spin;
+                       animation: 1s linear 0s infinite normal spin;
+               background: data-uri('image/svg+xml;base64', '../../app/style/images/menu-icons/spinner.svg') no-repeat center;
+               background-size: 20px auto;
+            }
+         }
+         button {
+            .transition(opacity .15s ease);
+            width: 44px;
+            min-width: 44px;
+            height: 44px;
+            border: none;
+            cursor: pointer;
+            &[disabled] {
+               opacity: .3;
+               cursor: default;
+            }
+            &:hover {
+               opacity: .8;
+               &[disabled] {
+                  opacity: .3;
+                  cursor: default;
+               }
+            }
+            &.i-junk {
+               background: data-uri('image/svg+xml;base64', '../../app/style/images/menu-icons/delete_brand.svg') no-repeat center;
+               background-size: 20px auto;
+            }
+            &.i-download {
+               background: data-uri('image/svg+xml;base64', '../../app/style/images/menu-icons/download.svg') no-repeat center;
+               background-size: 20px auto;
+            }
+         }
+         span {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 44px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+         }
+         @-webkit-keyframes spin {
+            from {
+               .transform(rotate(0deg));
+            }
+            to {
+               .transform(rotate(360deg));
+            }
+         }
+      }
+   }
+}
+.downloader-context-menu-popup-arrow {
+   &.sw-popup-arrow {
+      &:after {
+         background: #fff;
+      }
+   }
+}

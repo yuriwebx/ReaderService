@@ -1,0 +1,7 @@
+<a data-ng-click="toggleAssessmentsMenu($event)"
+	class="icon-wrap assessments sw-popup-offset"
+	data-ng-class="{'hidden' : !notificationsCount}"
+	sw-tooltip="ApplicationMenuItem.Activities.tooltip">
+   <i class="icon i-Assessments" data-ng-class="{'notifications-active' : !!notificationsCount}"></i>
+   <span class="button-counter" ng-if="!!notificationsCount">{{notificationsCount}}</span>
+</a>

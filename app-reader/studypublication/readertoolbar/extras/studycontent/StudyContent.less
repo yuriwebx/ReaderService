@@ -1,0 +1,209 @@
+@import '../base.less';
+
+@url_general: '../../../../../app/style/images/menu-icons';
+
+.study-content-list {
+   li {
+      .night-theme-template &:nth-child(odd) {
+         background: #262626;
+      }
+      .night-theme-template &:nth-child(even) {
+         background: #242424;
+      }
+   }
+   .study-content-item {
+      .flex-display();
+      .box-sizing;
+      position: relative;
+      padding: 9px 12px;
+      border-bottom: 1px solid #e6e6e6;
+      .night-theme-template & {
+         border-bottom: 1px solid @c-black;
+      }
+      &.hoveff {
+         cursor: pointer;
+      }
+      .pic-block {
+         width: 75px;
+         min-width: 75px;
+         img {
+            width: 65px;
+            height: auto;
+         }
+         i {
+            line-height: 84px;
+            display: block;
+            width: 65px;
+            height: 87px;
+            text-align: center;
+            &.section-cover {
+               @bg-size: 100% auto;
+               @name: 'book_cover2.png';
+               .datauri(@url_general, @name, @bg-size);
+            }
+            &.assessment-cover {
+               @bg-size: 100% auto;
+               @name: 'book_cover.png';
+               .datauri(@url_general, @name, @bg-size);
+               font-size: 50px;
+               font-style: normal;
+            }
+         }
+      }
+      .text-block {
+         .flex-grow(1);
+         .box-sizing;
+         font-weight: 300;
+         position: relative;
+         overflow: hidden;
+         .night-theme-template &.text-block-book-info p {
+            color: #b3b3b3;
+         }
+         p {
+            font-weight: 300;
+            line-height: 1.5em;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            &:nth-of-type(1) {
+               font-size: 17px;
+               font-weight: 400;
+            }
+            &:nth-of-type(2) {
+               font-size: 15px;
+            }
+            &:nth-of-type(3) {
+               font-size: 14px;
+            }
+            &:nth-of-type(4) {
+               font-size: 14px;
+               .value,
+               .category-name {
+                  font-weight: 400;
+               }
+               .category-name {
+                  &:after {
+                     content: ',';
+                  }
+               }
+            }        
+         }
+      }
+      .progress-block {
+         position: relative;
+         width: 65px;
+         min-width: 65px;
+         text-align: right;
+         i {
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin: 30px 0 auto auto;
+         }
+         .progress-layout {
+            .flex-display();
+            .box-sizing;
+            position: absolute;
+            right: 0;
+            bottom: 2px;
+            .progress-bar {
+               i {
+                  display: inline-block;
+                  width: 5px;
+                  height: 5px;
+                  border-radius: 50%;
+                  background: @c-grayLight8;
+               }
+               &.progress-1 {
+                  i {
+                     &:nth-of-type(1) {
+                        background: #56a90d;
+                     }
+                  }
+               }
+               &.progress-2 {
+                  i {
+                     &:nth-of-type(1),
+                     &:nth-of-type(2) {
+                        background: #56a90d;
+                     }
+                  }
+               }
+               &.progress-3 {
+                  i {
+                     &:nth-of-type(1),
+                     &:nth-of-type(2),
+                     &:nth-of-type(3) {
+                        background: #56a90d;
+                     }
+                  }
+               }
+               &.progress-4 {
+                  i {
+                     &:nth-of-type(1),
+                     &:nth-of-type(2),
+                     &:nth-of-type(3),
+                     &:nth-of-type(4) {
+                        background: #56a90d;
+                     }
+                  }
+               }
+               &.progress-5 {
+                  i {
+                     &:nth-of-type(1),
+                     &:nth-of-type(2),
+                     &:nth-of-type(3),
+                     &:nth-of-type(4),
+                     &:nth-of-type(5) {
+                        background: #56a90d;
+                     }
+                  }
+               }
+               &.progress-6 {
+                  i {
+                     background: #56a90d;
+                  }
+               }
+            }
+            .progress-done {
+               .icon(@url_general, 'tick_lgreen.png');
+               display: inline-block;
+               width: 15px;
+               height: 11px;
+               background-size: 150%;
+            }
+         }
+      }
+      &:hover {
+         background: lighten(#fff9d9, 25%);
+         .night-theme-template & {
+            background: #4d4d4d;
+         }
+         .night-theme-template & .text-block.text-block-book-info p {
+            color: #b3b3b3;
+         }
+      }
+      &.active {
+         background: #fff9d9;
+         .night-theme-template & {
+            background: #4d4d4d;
+         }
+         .night-theme-template & .text-block.text-block-book-info p {
+            color: #b3b3b3;
+         }
+         .progress-block {
+            .check {
+               .icon(@url_general, 'tick_red.png');
+               position: absolute;
+               top: 50%;
+               right: 0;
+               display: block;
+               width: 15px;
+               height: 11px;
+               margin-top: -6px;
+               background-size: 150%;
+            }
+         }
+      }
+   }
+}

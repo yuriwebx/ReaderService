@@ -1,0 +1,153 @@
+<div class="sw-menuPopup" ng-switch="popupState" sw-custom-scroll="{options: {height: '100%'}}">
+   <div>
+      <div class="sw-popup-content" ng-switch-default tabindex="0">
+         <div class="sw-appMenuContent">
+            <div class="sw-menuSection">
+               <ul class="menuSection_content">
+                  <li class="menuItemWrap m-menuItem__FontFamily">
+                     <ul>
+                        <li data-ng-repeat="font in fonts" data-ng-click="setFont(font)">
+                           <input class="i-Radio" type="radio" name="radios" value="all"
+                                  data-ng-checked="font === getCurrentFont()">
+                           <label data-ng-style="{{::font.styles.declarations}}" ng-bind="::font.label"></label>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="menuItemWrap m-menuItem__FontSize">
+                     <button ng-click="decreaseFontSize()"
+                           data-ng-disabled="isMin"
+                           class="sw-popup-button sw-input sw-input-button-wrapper sw-input-button ng-scope"
+                           type="button">
+                        <i class="icon">aA</i>
+                     </button>
+                     <button data-ng-click="increaseFontSize()"
+                           data-ng-disabled="isMax"
+                           class="sw-popup-button sw-input sw-input-button-wrapper sw-input-button ng-scope"
+                           type="button">
+                        <i class="icon">aA</i>
+                     </button>
+                  </li>
+                  <li class="menuItemWrap m-menuItem__ReadingMode">
+                     <div class="columns-layout three-columns">
+                        <div data-ng-repeat="theme in themes" class="column">
+                           <button data-ng-click="setReaderTheme(theme)" data-ng-style="{{theme.styles.declarations}}"
+                                 class="theme-option sw-popup-button sw-input sw-input-button-wrapper sw-input-button theme-button {{theme.name}}-theme"
+                                 type="button">
+                              <i class="icon">{{theme.title}}</i>
+                           </button>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="menuItemWrap m-menuItem__ColumnsMode m-expanded-margin-notes">
+                     <label>Expanded Margin Notes</label>
+                     <button class="switch-content-view" data-ng-class="{'fixed-view': marginNotesMode}" data-ng-click="toggleMarginNotes()"></button>
+                  </li>
+                  <li class="menuItemWrap m-menuItem__ColumnsMode" ng-if="::!isEditor">
+                     <label>Reading Position Indicator</label>
+                     <span class="switcher-box"><sw-input type="switcher"  ng-model="option.showReadingPosition" ng-change="toggleReadingPosition()"></sw-input></span>
+                  </li>
+                  <li class="menuItemWrap m-menuItem__ColumnsMode optionsItem" ng-click="setState('readingOptions')">
+                     <label>Reading Options</label>
+                  </li>
+                  <li class="menuItemWrap m-menuItem__ColumnsMode optionsItem" ng-click="setState('audioOptions')" ng-if="::!isEditor">
+                     <label>Audio Options</label>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+
+      <div class="read-mode-reading-option sw-popup-content" ng-switch-when="readingOptions">
+         <div ng-click="setState('')" class="head"><i class="back"></i><span>Reading Options</span></div>
+         <ul class="menuSection_content">
+            <li class="menuItemWrap m-menuItem__ColumnsMode">
+               <label>View Scroll Border</label>
+               <span class="switcher-box"><sw-input type="switcher" ng-model="option.viewScrollBorder" ng-change="setScrollOption('viewScrollBorder')"></sw-input></span>
+            </li>
+            <li class="menuItemWrap m-menuItem__ColumnsMode">
+               <label>Snap to Scroll Border</label>
+               <span class="switcher-box"><sw-input type="switcher" ng-model="option.snapToScrollBorder" ng-change="setScrollOption('snapToScrollBorder')"></sw-input></span>
+            </li>
+         </ul>
+         <ul class="menuSection_content section">
+            <li class="menuItemWrap m-menuItem__ColumnsMode">
+               <label>Inertial Scrolling</label>
+               <span class="switcher-box"><sw-input type="switcher" ng-model="option.inertialScrolling" ng-change="setScrollOption('inertialScrolling')"></sw-input></span>
+            </li>
+            <li class="menuItemWrap m-menuItem__ColumnsMode no-border" ng-if="option.inertialScrolling">
+               <div class="ColumnsMode-wrapper">
+                  <div class="scaleScroll">
+                     <span>Slow</span>
+                     <span>Normal</span>
+                     <span>Quick</span>
+                  </div>
+                  <input type="range" min="0" step="10" max="100" ng-model="option.inertialScrollingSpeed" ng-change="setScrollOption('inertialScrollingSpeed')">
+               </div>
+            </li>
+            <li class="menuItemWrap m-menuItem__ColumnsMode">
+               <label>Text Scrolling</label>
+               <span class="switcher-box"><sw-input type="switcher" ng-model="option.textScrolling" ng-change="setScrollOption('textScrolling')"></sw-input></span>
+            </li>
+            <li class="menuItemWrap m-menuItem__ColumnsMode">
+               <label>Side Scrolling</label>
+               <span class="switcher-box"><sw-input type="switcher" ng-model="option.sideScrolling" ng-change="setScrollOption('sideScrolling')"></sw-input></span>
+            </li>
+            <li class="menuItemWrap m-menuItem__ColumnsMode">
+               <label>Side Tapping</label>
+               <span class="switcher-box"><sw-input type="switcher" ng-model="option.sideTapping" ng-change="setScrollOption('sideTapping')"></sw-input></span>
+            </li>
+            <li class="menuItemWrap m-menuItem__ColumnsMode no-border" ng-if="option.sideTapping">
+               <div class="ColumnsMode-wrapper">
+                  <label>Page Length Shift</label>
+                  <sw-input-select ng-model="option.pageLengthShift" class="tabsOptions twoTabs" options="tabsPageLengthShiftOptions" ng-change="setScrollOption('pageLengthShift')"></sw-input-select>
+               </div>
+            <li class="menuItemWrap m-menuItem__ColumnsMode no-border" ng-if="option.sideTapping">
+               <div class="ColumnsMode-wrapper" ng-if="option.sideTapping" class="tapModeBox">
+                  <label>Tap Mode</label>
+                  <sw-input-select ng-model="option.tapMode" class="tabsOptions twoTabs" options="tabsTapOnOptions" ng-change="setScrollOption('tapMode')"></sw-input-select>
+               </div>
+            </li>
+         </ul>
+      </div>
+      <div class="read-mode-reading-option sw-popup-content" ng-switch-when="audioOptions">
+         <div ng-click="setState('')" class="head"><i class="back"></i><span>Audio Options</span></div>
+         <ul class="menuSection_content">
+            <li class="menuItemWrap m-menuItem__ColumnsMode">
+               <label>Audio Autoscrolling</label>
+               <span class="switcher-box"><sw-input type="switcher" ng-model="option.audioAutoScrolling" ng-change="setScrollOption('audioAutoScrolling')"></sw-input></span>
+            </li>
+            <li class="menuItemWrap m-menuItem__ColumnsMode" ng-if="option.audioAutoScrolling">
+               <div class="ColumnsMode-wrapper">
+                  <label>Reading Position</label>
+                  <sw-input-select ng-model="option.readingPosition" class="tabsOptions twoTabs" options="tabsReadingPosOptions" ng-change="setScrollOption('readingPosition')"></sw-input-select>
+               </div>
+            </li>
+         </ul>
+         <ul class="menuSection_content section">
+            <li class="menuItemWrap m-menuItem__ColumnsMode">
+               <div class="ColumnsMode-wrapper">
+                  <label>Reproduction Type</label>
+                  <sw-input-select ng-model="option.reproductionType" class="tabsOptions twoTabs" options="tabsReproductionType" ng-change="setScrollOption('reproductionType')"></sw-input-select>
+                  <!--<div ng-if="option.reproductionType === 'Audio'" class="tapModeBox ttsForText">-->
+                     <!--<label class="bidTitle">Use TTS for text without audio</label>-->
+                     <!--<span class="switcher-box"><sw-input type="switcher" ng-model="option.useTtsWithoutAudio" ng-change="setScrollOption('useTtsWithoutAudio')"></sw-input></span>-->
+                  <!--</div>-->
+               </div>
+            </li>
+         </ul>
+         <ul class="menuSection_content section" ng-if="option.allowPlaybackRateAdjustment || option.reproductionType === 'TTS'">
+            <li class="menuItemWrap m-menuItem__ColumnsMode">
+               <div class="ColumnsMode-wrapper">
+                  <label>Audio Speed: words per minute</label>
+                  <div class="scaleAudioSpeed">
+                     <span>100</span>
+                     <span>400</span>
+                  </div>
+                  <input type="range" min="100" max="400" step="10" ng-model="option.audioSpeed" ng-change="setScrollOption('audioSpeed')">
+                  <p ng-bind="option.audioSpeed" class="audioSpeedValue"></p>
+               </div>
+            </li>
+         </ul>
+      </div>
+   </div>
+</div>

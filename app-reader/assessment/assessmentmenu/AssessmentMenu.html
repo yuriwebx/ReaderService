@@ -1,0 +1,16 @@
+<div class="sw-menuPopup assessments-popup">
+	<div ng-repeat="assesments in assesments">
+	   <div class="assessment-category" data-ng-click="startAssessment(assesments.name)">
+	      <span ng-bind="::assesments.name"></span>
+	      <span ng-bind="assesments.value"></span>
+	   </div>
+   </div>
+   <div class="discussion-list" ng-if="data.discussions.length">
+      <ul>
+         <li ng-repeat="discussion in data.discussions" ng-click="goToDiscussion(discussion)">
+            <sw-discussion data="discussion" is-manage-class="false"></sw-discussion>
+            <span ng-bind="discussion.numberOfUnreadMessages"></span>
+         </li>
+      </ul>
+   </div>
+</div>

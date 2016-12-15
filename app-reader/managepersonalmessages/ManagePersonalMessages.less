@@ -1,0 +1,167 @@
+@import '../base.less';
+
+@url_general: '../../app/style/images/menu-icons';
+@url: '../../images';
+
+.personal-messages-list {
+   .flex-display;
+   .box-sizing;
+   .flex-direction(column);
+   .flex-grow(1);
+   .night-theme-template & {
+      color: @c-white;
+   }
+   .personal-messages-item {
+      .flex-display;
+      .box-sizing;
+      font-weight: 700;
+      overflow: hidden;
+      padding: 10px 10px 10px 20px;
+      border-bottom: 1px solid @c-white;
+      background-color: #f7f7f7;
+      &:last-of-type {
+         border: none;
+         border-bottom-right-radius: 6px;
+         border-bottom-left-radius: 6px;
+      }
+      &:first-of-type {
+         border-top-left-radius: 6px;
+         border-top-right-radius: 6px;
+      }
+      &.unreviewed {
+         border-bottom-color: #f7f7f7;
+         background-color: @c-white;
+         > span {
+            &:first-of-type {
+               .book-cover {
+                  &:before {
+                     background-color: @c-white;
+                  }
+               }
+            }
+         }
+      }
+      > span {
+         &:first-of-type {
+            .flex-display();
+            min-width: 36px;
+            i,
+            .user-pic,
+            .syllabus-cover {
+               display: block;
+               overflow: hidden;
+               width: 36px;
+               height: 36px;
+               margin: auto 0;
+               text-indent: -900px;
+            }
+            .user-pic {
+               @bg-size: 26px auto;
+               @name: 'userpic.svg';
+               @bg-position: center 3px;
+               .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+               border-radius: 50%;
+               background-color: #f5f5f5;
+            }
+            .syllabus-cover {
+               @bg-size: 34px auto;
+               @bg-position: center 3px;
+               @name: 'studycourse_cover73x97.png';
+               .datauri('../../app/style/images/menu-icons', @name, @bg-size);
+               width: 36px;
+               height: 48px;
+            }
+            .book-cover {
+               @bg-size: 36px auto;
+               @name: 'reader_mode.svg';
+               @bg-position: center;
+               .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+               position: relative;
+               display: block;
+               overflow: hidden;
+               width: 36px;
+               height: 48px;
+               margin: auto 0;
+               &:before {
+                  @bg-size: 36px auto;
+                  @name: 'reader_mode.svg';
+                  @bg-position: center;
+                  .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  display: block;
+                  width: 100%;
+                  height: 100%;
+                  content: '';
+                  background-color: #f7f7f7;
+                  background-repeat: no-repeat;
+
+               }
+            }
+         }
+         &:last-of-type {
+            .flex-grow(1);
+            .flex-display();
+            .flex-direction(column);
+            overflow: hidden;
+            padding: 0 0 0 10px;
+            cursor: pointer;
+            &:hover {
+               opacity: .8;
+            }
+            h4 {
+               font-size: 15px;
+               font-weight: 300;
+               overflow: hidden;
+               height: 38px;
+               margin-bottom: .2em;
+               color: fade(@c-black, 90%);
+               span {
+                  font-weight: 400;
+                  &:nth-of-type(2) {
+                     &:before {
+                        content: '\0022';
+                     }
+                     &:after {
+                        content: '\0022';
+                     }
+                  }
+               }
+            }
+            p {
+               .flex-order(2);
+               font-size: 15px;
+               font-weight: 300;
+               overflow: hidden;
+               width: 100%;
+               white-space: nowrap;
+               text-overflow: ellipsis;
+               color: fade(@c-black, 50%);
+               & + h4 {
+                  .flex-order(1);
+                  overflow: hidden;
+                  width: 100%;
+                  height: auto;
+                  margin-bottom: 0;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  & + span {
+                     .flex-order(3);
+                  }
+               }
+            }
+            > span {
+               font-size: 14px;
+               font-weight: 300;
+               color: fade(@c-black, 50%);
+            }
+         }
+      }
+      .no-messages {
+         font-size: 16px;
+         font-weight: 400;
+         padding: 10px 10px 10px 0;
+      }
+   }
+}

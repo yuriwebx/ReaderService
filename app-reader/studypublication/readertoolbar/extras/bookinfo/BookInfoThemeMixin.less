@@ -1,0 +1,49 @@
+.bookInfo (@color-1, @color-2, @images-url, @name-svg-1, @bg-position-1, @bg-size-1) {
+   .study-guide-block {
+      color: @color-2;
+      &:first-child {
+         &:after {
+            border-top-color: @color-1;
+         }
+         .study-guide-title {
+
+            span {
+               color: @color-2;
+               // &:last-child {
+               //    .datauri(@images-url, @name-svg-1, @bg-size-1, @bg-position-1);
+               // }
+            }
+         }
+         .study-guide-body {
+
+            .study-guide-info {
+               color: @color-2;
+
+               .txt-info {
+
+                  .night-theme-template & {
+                     color: @color-2;
+                  }
+               }
+            }
+         }
+      }
+
+      
+   }
+
+   .book-info-block {
+      background: fade(@color-2, 20%);
+
+      .book-info-body {
+
+         .book-description-block {
+
+            span {
+               color: @color-2;
+            }
+         }
+      }
+   }
+}
+

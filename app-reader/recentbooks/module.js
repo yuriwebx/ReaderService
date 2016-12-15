@@ -1,0 +1,1 @@
+define(['./RecentBooks', './RecentBooksService'], function(){});

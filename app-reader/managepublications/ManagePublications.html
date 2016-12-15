@@ -1,0 +1,115 @@
+<div class="manage-publications-layout">
+   <div sw-sticky="{alwaysStick: true}" class="manage-publications-layout-toolbar"
+        ng-class="{'short':currentModeData.classes || currentModeData.collection}">
+
+      <div ng-hide="currentModeData.collection">
+
+         <div class="manage-publications-mode">
+            <ul>
+               <li ng-repeat="mode in modesList" ng-click="changeMode($index)"
+                   ng-class="{'active' : mode === currentModeData}" ng-if="setMenuItem(mode)">
+                  <a ng-bind="::mode.title"></a>
+               </li>
+            </ul>
+         </div>
+
+         <div class="manage-publications-filter" ng-hide="currentModeData.classes">
+
+            <sw-categories ng-if="!isMyMaterials()"></sw-categories>
+            <sw-language-field class="lang-short"></sw-language-field>
+
+            <div class="col filter-field">
+               <div class="col-inner-wrap">
+                  <div class="search_input_holder">
+                     <sw-input type="text" placeholder="Filter" ng-model="filterText"
+                               ng-model-options="{debounce: 300}" ng-change="applyFilter()"></sw-input>
+
+                     <i ng-class="{'i-ClearInputCross': filterText.length}" ng-click="resetSearch()"></i>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+
+      <div class="collection-bar" ng-if="currentModeData.collection">
+         <span><a ng-click="changeMode(0)"></a></span>
+         <span>
+            <span ng-bind="::currentModeData.collectionName"></span>,
+            <span ng-bind="::currentModeData.collectionAuthor"></span>
+         </span>
+         <span></span>
+      </div>
+
+   </div>
+
+   <sw-recent-books-toolbar ng-if="!currentModeData.collection && !isOffline"></sw-recent-books-toolbar>
+
+   <div class="content-list-layout reflowable-column-layout" ng-class="{'short':currentModeData.classes}">
+
+      <!--If visible Publications Count needed-->
+      <div class="book-list-tree column" ng-if="!publications.length && !currentModeData.classes">
+         <ul>
+            <li ng-repeat="publication in ::fakePublications track by $index"
+                class="publication-item fake-item">
+            </li>
+         </ul>
+      </div>
+
+      <div class="book-list-tree column" ng-if="!currentModeData.classes">
+         <div class="book-list-tree-placeholder"></div>
+         <div class="bookstack-bg"></div>
+         <ul ng-if="publications.length">
+            <li ng-repeat="publication in publications | limitTo:visiblePublicationsCount"  ng-class="{'have-audio':publication.audio}" class="publication-item">
+               <div sw-compile="publicationViewTemplate"></div>
+            </li>
+         </ul>
+      </div>
+
+      <div class="book-list-tree column study-courses-box" ng-if="currentModeData.classes">
+         <div ng-if="invitedClasses.length">
+            <p class="book-list-tree-category" sw-localize="ManagePublications.bookList.studyClass.invitations.label" sw-data="{invitedClasseslength:invitedClasses.length}"></p>
+            <ul>
+               <li ng-repeat="publication in invitedClasses">
+                  <div sw-compile="studyViewTemplate" ng-class="{'comletedCourse':publication.isCompleted}"></div>
+               </li>
+            </ul>
+         </div>
+
+         <div class="study-courses-box-list" ng-if="currentClasses.length">
+            <p class="book-list-tree-category">
+               <span sw-localize="ManagePublications.currentStudyCourses.text"></span> <span>({{currentClasses.length}})</span>
+               <span ng-click="createStudyProject()"
+                     class="create-course-button"
+                     sw-localize="ManagePublications.newStudyCourse.text"></span>
+            </p>
+            <ul>
+               <li ng-repeat="publication in currentClasses | orderBy: '-lastReadingTime'">
+                  <div sw-compile="studyViewTemplate"></div>
+               </li>
+            </ul>
+         </div>
+
+         <div ng-if="completedClasses.length">
+            <p class="book-list-tree-category"
+               sw-localize="ManagePublications.previousStudyCourses.text"
+               sw-data="{completedClassesLength:completedClasses.length}"></p>
+            <ul>
+               <li ng-repeat="publication in completedClasses">
+                  <div sw-compile="studyViewTemplate"></div>
+               </li>
+            </ul>
+         </div>
+
+         <div class="no-any-study-exists" ng-if="!isStudyExists">
+            <div class="no-any-study-exists-wrap">
+               <span class="create-course-text" sw-localize="ManagePublications.noAnyStudyExists.label"></span>
+               <span class="create-course-arrow"></span>
+               <span ng-click="createStudyProject()"
+                     class="create-course-button"
+                     sw-localize="ManagePublications.createStudyCourse.text"></span>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

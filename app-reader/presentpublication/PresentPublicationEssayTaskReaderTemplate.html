@@ -1,0 +1,29 @@
+<div class="essaytask-reader-wrap {{( wordsLimit > wordsNumber ? editClass : activeClass )}}" {{dataAttr}}>
+   <div class="essaytask-reader {{progress.className}}">
+      <table class="essaytask-reader-header">
+         <tr>
+            <td class="pic-block"><i></i></td>
+            <td class="title-block">Write an Essay</td>
+         </tr>
+      </table>
+      <div class="essaytask-reader-content">
+         <div class="essaytask-title">{{topic}}</div>
+         <div class="essaytask-description">{{comment}}</div>
+         <div class="essaytask-words">Words to write: 
+            <span class="essaytask-words-val">
+               <span class="written">{{wordsNumber}}</span>/<span>{{wordsLimit}}</span>
+            </span>
+         </div>
+         <div class="essaytask-reader-input-wrap">
+            <textarea class="essaytask-reader-input" autocomplete="off" autocorrect="off"
+                      autocapitalize="off" spellcheck="false">{{text}}</textarea>
+         </div>
+      </div>
+      <div class="essaytask-button">
+         <button type="button" class="submit">
+            <span class="submit-label">Submit Essay</span>
+            <span class="write-label">Rewrite Essay</span>
+         </button>
+      </div>
+   </div>
+</div>

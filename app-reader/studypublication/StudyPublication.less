@@ -1,0 +1,67 @@
+@import '../base.less';
+
+@url: 'images';
+@url_general: '../../../style/images/menu-icons';
+
+.reader-template {
+.flex-grow(1);
+   .reader-layout {
+      &.reduced-view {
+         padding: 0 0 0 420px;
+         @media @media-size-xl {
+            padding: 0 0 0 520px;
+         }
+         @media @normal, @narrow {
+            float: none;
+            width: 100%;
+            padding: 0;
+         }
+      }
+      .epub-viewer-inner {
+         position: relative;
+         height: 100%;
+         -webkit-user-select: none;
+         &.reduced-view {
+            width: 70%;
+            @media @normal, @narrow {
+               width: 100%;
+            }
+         }
+      }
+   }
+}
+
+.sepia-theme-template {
+   background: @c-orangelight5;
+}
+
+.night-theme-template {
+   background: @c-black;
+}
+
+.next-publication-button {
+   .box-sizing;
+   font-family: @sansFontFamily;
+   font-size: 16px;
+   font-weight: 300;
+   line-height: 40px;
+   display: block;
+   width: 185px;
+   height: 40px;
+   margin: 0 auto 20px;
+   padding: 0 20px;
+   cursor: pointer;
+   text-align: center;
+   color: @c-lilac;
+   border: 1px solid @c-lilac;
+   border-radius: 3px;
+   &:hover {
+      .transition(all .3s ease);
+      opacity: .8;
+   }
+}
+
+.prev-publication-button {
+   .next-publication-button;
+   margin-top: 20px;
+}

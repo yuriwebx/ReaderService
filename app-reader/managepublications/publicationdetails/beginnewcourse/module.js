@@ -1,0 +1,6 @@
+define([
+
+   './BeginNewCourse',
+   './BeginNewCourseService'
+
+], function(){});

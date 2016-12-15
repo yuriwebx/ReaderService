@@ -1,0 +1,1 @@
+define(['./ReaderToolbar', './extras/module', './readmodesettingsmenu/module', './ReaderToolbarService'], function(){});

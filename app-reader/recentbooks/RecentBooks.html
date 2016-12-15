@@ -1,0 +1,33 @@
+<div class="resent-book-list">
+   <div class="resent-book-list-item" ng-repeat="bookItem in booklist">
+      <div class="resentBookList">
+         <a data-ng-click="bookItemSelected(bookItem)" class="linkWrap sw-popup-close">
+         <span class="img-box">
+            <img ng-if="!isStudyCourse(bookItem)" ng-src="{{::bookItem.thumbnailUrl}}" ng-class="::{'no-book-cover': !bookItem.cover}" width="25" height="40" class="menuItem_icon"/>
+            <i class="study-course-cover" ng-if="isStudyCourse(bookItem)"></i>
+            <i class="study-class-cover" ng-if="isStudyClass(bookItem)"></i>
+            <i class="shadow-gen"></i>
+         </span>
+
+            <span class="sw-value" ng-if="isAuthorInTitle(bookItem)" dir="auto">{{isEditor && isPublications ? (bookItem.studyGuide || bookItem.name) : bookItem.name}}</span>
+            <span class="sw-value" ng-if="!isAuthorInTitle(bookItem)" ng-class="{'title-in-two-line' : !isAuthorInTitle(bookItem)}" dir="auto" sw-ellipsis>{{isEditor && isPublications ? (bookItem.studyGuide || bookItem.name) : bookItem.name}}</span>
+            <span class="authorValue" ng-if="isStudyClass(bookItem)" dir="auto">{{bookItem.currentStudyItem.name + ', ' + bookItem.currentStudyItem.author}}</span>
+            <span class="authorValue" ng-if="isAuthorInTitle(bookItem)" dir="auto">{{bookItem.author}}</span>
+            <span class="lside-stats" >
+               <span>Time: <strong>{{bookItem.readingTime | TimeDurationFilter}}</strong></span><span ng-if="isPublication(bookItem)"><span ng-if="::showDifficulty">, difficulty: <strong>{{bookItem.difficulty}}</strong></span></span>
+            </span>
+            <span class="studyGuide-info">
+               <span ng-show="!isEditor && bookItem.studyGuide">{{bookItem.studyGuide}}</span>
+               <span ng-if="isStudyClass(bookItem)">{{bookItem.classType}}<span ng-if="bookItem.participant > 0">, participants: {{bookItem.participant}}</span></span>
+            </span>
+            <span class="rside-stats">
+               <span class="timeValue">{{getLastReadTime(bookItem.lastReadingTime)}}</span>
+               <span class="progressValue" ng-if="!isEditor">
+                  <sw-study-progress progress="bookItem.progress" numbercircls="5"></sw-study-progress>
+               </span>
+            </span>
+         </a>
+      </div>
+   </div>
+</div>
+

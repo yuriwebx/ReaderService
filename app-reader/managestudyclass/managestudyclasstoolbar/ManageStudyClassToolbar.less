@@ -1,0 +1,41 @@
+@import '../base.less';
+@import 'ManageStudyClassToolbarThemeMixin.less';
+
+@url: '../images';
+@url_general: '../../../app/style/images/menu-icons';
+
+.sepia-theme-template {
+   .sw-appToolbar {
+      .sw-appMenu {
+         .sw-appMenu_inner {
+            &.reader-toolbar-menu {
+               @color-1: @c-white;
+               @name-svg-1: 'reading_settings_night.svg';
+               @name-svg-2: 'search_night.svg';
+               @bg-size-1: 20px auto;
+               @bg-size-2: 26px auto;
+               @bg-position-1: center;
+               .readerToolbar(@color-1, @name-svg-1, @name-svg-2, @bg-size-1, @bg-size-2, @bg-position-1);
+            }
+         }
+      }
+   }
+}
+
+.night-theme-template {
+   .sw-appToolbar {
+      .sw-appMenu {
+         .sw-appMenu_inner {
+            &.reader-toolbar-menu {
+               @color-1: @c-white;
+               @name-svg-1: 'reading_settings_night.svg';
+               @name-svg-2: 'search_night.svg';
+               @bg-size-1: 20px auto;
+               @bg-size-2: 26px auto;
+               @bg-position-1: center;
+               .readerToolbar(@color-1, @name-svg-1, @name-svg-2, @bg-size-1, @bg-size-2, @bg-position-1);
+            }
+         }
+      }
+   }
+}

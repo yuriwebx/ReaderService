@@ -1,0 +1,342 @@
+@import '../base';
+
+@url_general: '../../app/style/images/menu-icons';
+@url: './images';
+
+.sw-popup {
+   &.recentbooksPopup {
+      .box-sizing;
+      position: fixed;
+      z-index: 5901;
+      width: 500px;
+      padding: 0;
+      text-align: left;
+      border-radius: 16px;
+      .menuPop_arrow {
+         left: 50%;
+         margin-left: -16px;
+      }
+      .sw-popup-wrap {
+         .box-sizing;
+         .ng-scope {
+            &:last-child {
+               a {
+                  border-bottom: none;
+               }
+            }
+         }
+         .menuPop-arrow {
+            position: absolute;
+            top: -7px;
+            left: 235px;
+            width: 35px;
+            height: 14px;
+            &:after {
+               .transform(rotate(45deg));
+               position: absolute;
+               width: 20px;
+               height: 20px;
+               content: '';
+               background: @c-white;
+               box-shadow: -4px -4px 8px -4px @c-gray;
+            }
+         }
+         .resentPopup-tabs {
+            line-height: 40px;
+            height: 40px;
+            min-height: 40px;
+            &:after {
+               display: block;
+               clear: both;
+               content: '';
+            }
+            .resentPopup-tab {
+               font-size: 16px;
+               float: left;
+               width: 49.9%;
+               cursor: pointer;
+               text-align: center;
+               color: @c-lilac;
+               box-shadow: inset 0 -1px @c-orange;
+               &.active {
+                  color: @c-orange;
+                  box-shadow: inset 0 -3px @c-orange;
+               }
+               &.editor {
+                  width: 100%;
+               }
+            }
+         }
+         .sw-popup-contentWrap {
+            border-radius: 15px;
+         }
+         .resent-book-list {
+            padding: 0 8px;
+            .resent-book-list-item {
+               font-size: 1.143em;
+               font-weight: normal;
+               &:last-of-type {
+                  .linkWrap {
+                     border: none;
+                  }
+               }
+               .img-box {
+                  position: absolute;
+                  top: 0;
+                  left: -7px;
+                  display: block;
+                  width: 60px;
+                  height: 80px;
+                  margin-top: 0;
+                  .shadow-gen {
+                     position: absolute;
+                     z-index: 1;
+                     top: 50%;
+                     left: 50%;
+                     width: 40px;
+                     height: 55px;
+                     margin-top: -27px;
+                     margin-left: -21px;
+                     box-shadow: 0 0 15px 0 #000;
+                  }
+               }
+               .linkWrap {
+                  .clear;
+                  .box-sizing;
+                  font-size: .942em;
+                  position: relative;
+                  display: block;
+                  min-height: 73px;
+                  margin: 0;
+                  padding: 7px 115px 5px 53px;
+                  cursor: pointer;
+                  border-bottom: 1px solid @c-graylight11;
+                  .study-class-cover,
+                  .study-course-cover {
+                     @bg-size: 100% auto;
+                     @name: 'studyclass_cover42x55.png';
+                     .datauri(@url_general, @name, @bg-size);
+                     position: absolute;
+                     z-index: 5;
+                     top: 7px;
+                     left: 5px;
+                     display: block;
+                     width: 49px;
+                     height: 66px;
+                     // background-color: @c-blue3;
+                  }
+                  .study-class-cover {
+                     @bg-size: 100% auto;
+                     @name: 'studyclass_cover42x55.png';
+                     .datauri(@url_general, @name, @bg-size);
+                  }
+                  .studyGuide-info {
+                     font-size: .924em;
+                     font-weight: 300;
+                     position: absolute;
+                     top: 3.25em;
+                     right: 65px;
+                     left: 53px;
+                     overflow: hidden;
+                     white-space: nowrap;
+                     text-overflow: ellipsis;
+                  }
+               }
+               .menuItem_icon {
+                  position: absolute;
+                  z-index: 5;
+                  top: 7px;
+                  left: 5px;
+                  display: block;
+                  width: 49px;
+                  height: 4.7em;
+                  margin-top: 0;
+                  &:before {
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     display: block;
+                     width: 100%;
+                     height: 100%;
+                     content: '';
+                     background-image: data-uri('image/png;base64', '../../app/style/images/menu-icons/emptybookcoverr.png');
+                     background-size: 100%;
+                  }
+               }
+               .sw-value {
+                  display: block;
+                  overflow: hidden;
+                  width: 100%;
+                  padding-bottom: 3px;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  &.title-in-two-line {
+                     height: 30.8px;
+                     margin-bottom: 16.8px;
+                     white-space: normal;
+                  }
+               }
+               .authorValue,
+               .class-info {
+                  font-size: .924em;
+                  font-weight: 300;
+                  display: block;
+                  overflow: hidden;
+                  width: 100%;
+                  padding-bottom: 16.8px;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+               }
+               .authorValue {
+                  font-weight: 400;
+               }
+               .class-info {
+                  padding-bottom: 0;
+               }
+               .lside-stats {
+                  font-size: .924em;
+                  font-weight: 300;
+                  overflow: hidden;
+                  width: 100%;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  strong {
+                     font-weight: 400;
+                  }
+               }
+               .rside-stats {
+                  font-size: .857em;
+                  font-weight: 300;
+                  position: absolute;
+                  top: 50%;
+                  right: 5px;
+                  margin-top: -1em;
+                  text-align: right;
+                  color: @c-dusty-gray;
+                  span {
+                     display: block;
+                     padding-bottom: 5px;
+                  }
+                  .progressValue {
+                     position: absolute;
+                     right: -20px;
+                     bottom: -40px;
+                     .estimate-time {
+                        font-size: 1.077em;
+                        font-weight: 300;
+                        opacity: .6;
+                     }
+                     .progress-bar {
+                        padding-bottom: 3px;
+                        i {
+                           display: inline-block;
+                           width: 5px;
+                           height: 5px;
+                           border-radius: 50%;
+                           background: @c-grayLight8;
+                        }
+                        &.progress-1 {
+                           i {
+                              &:nth-of-type(1) {
+                                 background: @c-greenlight3;
+                              }
+                           }
+                        }
+                        &.progress-2 {
+                           i {
+                              &:nth-of-type(1),
+                              &:nth-of-type(2) {
+                                 background: @c-greenlight3;
+                              }
+                           }
+                        }
+                        &.progress-3 {
+                           i {
+                              &:nth-of-type(1),
+                              &:nth-of-type(2),
+                              &:nth-of-type(3) {
+                                 background: @c-greenlight3;
+                              }
+                           }
+                        }
+                        &.progress-4 {
+                           i {
+                              &:nth-of-type(1),
+                              &:nth-of-type(2),
+                              &:nth-of-type(3),
+                              &:nth-of-type(4) {
+                                 background: @c-greenlight3;
+                              }
+                           }
+                        }
+                        &.progress-5 {
+                           i {
+                              &:nth-of-type(1),
+                              &:nth-of-type(2),
+                              &:nth-of-type(3),
+                              &:nth-of-type(4),
+                              &:nth-of-type(5) {
+                                 background: @c-greenlight3;
+                              }
+                           }
+                        }
+                        &.progress-6 {
+                           i {
+                              background: @c-greenlight3;
+                           }
+                        }
+                     }
+                     .book-done {
+                        .icon(@url_general, 'tick_lgreen.png');
+                        width: 15px;
+                        height: 16px;
+                        background-size: 150%;
+                     }
+                  }
+               }
+            }
+         }
+         // .sw-popup-footer {
+         //    height: 16px;
+         // }
+      }
+   }
+}
+.sw-popup-arrow {
+   &.recentbooksPopup-arrow {
+      z-index: 6700;
+      &:after {
+         background: @c-white;
+      }
+   }
+}
+
+.sepia-theme-template {
+   .sw-menuPopup {
+      &.resentPopup {
+         .resentBookList {
+            .linkWrap {
+               border-bottom: 1px solid @c-orangelight6;
+            }
+            .sw-value {
+               color: @c-orangedeep2;
+            }
+         }
+      }
+   }
+}
+
+.night-theme-template {
+   .sw-menuPopup {
+      &.resentPopup {
+         .resentBookList {
+            .linkWrap {
+               border-bottom: 1px solid @c-grayDark5;
+            }
+            .sw-value {
+               color: @c-white;
+            }
+         }
+      }
+   }
+}

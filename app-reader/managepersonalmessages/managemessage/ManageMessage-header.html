@@ -1,0 +1,35 @@
+
+<div class="popup-title" ng-if="config.isCurrentState(config.popupStates.createMessage, config.popupStates.viewMessage)">
+	<span>
+		<button 
+			ng-click="config.hideFn()"
+			class="sw-input sw-input-wrapper sw-input-button-wrapper sw-input-button ng-scope button-closen"
+			type="button"
+            sw-localize="ManageMessage.close.label"></button>
+	</span>
+    <span ng-if="config.isCurrentState(config.popupStates.createMessage)"
+          sw-localize="ManageMessage.sendMessage.label"></span>
+    <span ng-if="config.isCurrentState(config.popupStates.viewMessage)"
+          sw-localize="ManageMessage.viewMessage.label"></span>
+	<span>
+		<button
+				ng-if="config.isCurrentState(config.popupStates.createMessage)"
+                ng-click="config.sendFn()"
+                class="sw-input sw-input-wrapper sw-input-button-wrapper sw-input-button ng-scope"
+                type="button"
+                ng-disabled="config.isNotEmptyMessage()"
+                sw-localize="ManageMessage.send.label"></button>
+	</span>
+</div>
+<div class="popup-title" ng-if="config.isCurrentState(config.popupStates.selectRecipients)">
+    <span ng-if="config.isCurrentState(config.popupStates.selectRecipients)">
+        <button
+            class="sw-input sw-input-button-wrapper sw-input-button button-back"
+            ng-click="config.changeCurrentState(config.popupStates.createMessage)">
+            <i></i>
+            <span sw-localize="ManageMessage.back.label"></span>
+        </button>
+    </span>
+    <span sw-localize="ManageMessage.addStudents.label"></span>
+    <span></span>
+</div>

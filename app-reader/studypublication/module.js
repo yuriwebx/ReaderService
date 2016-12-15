@@ -1,0 +1,1 @@
+define(['./StudyPublication', './StudyPublicationService', './readertoolbar/module', './ReaderService'], function(){});

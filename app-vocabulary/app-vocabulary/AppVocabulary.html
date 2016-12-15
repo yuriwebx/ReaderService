@@ -1,0 +1,54 @@
+<div>
+    <div class="not-signed-in" ng-show="swSubmachine.state('Vocabulary')">
+            <div class="portal-top-menu-wrapper">
+                <sw-button ng-click="goPortal()" sw-localize="Vocabulary.ApplicationToolbar.portal.label"></sw-button>
+            </div>
+        </div>
+    <div sw-render="swSubmachine.state('Vocabulary')">
+        <div id="theme" class="default_theme">
+            <div class="theme_wrapper">
+                <div class="header">
+                    <div class="header-inner">
+                        <div class="logo"></div>
+                        <div class="slogan" sw-localize="App.Slogan.text"></div>
+                    </div>
+                </div>
+                <div class="themeText" sw-localize="App.Theme.text"></div>
+                <div class="startBlock">
+                    <div class="startBlock-item">
+                        <a class="startBlock-button" ng-click="directVocabulary()">
+                            <span class="startBlock-label1" sw-localize="Vocabulary.startWith.label"></span>
+                            <span class="startBlock-label2" sw-localize="Vocabulary.vocabularyAssessmentDirectAlgorithm.label"></span>
+                        </a>
+                        <div class="startBlock-text" sw-localize="Vocabulary.vocabularyAssessmentDirectAlgorithmDescription.label"></div>
+                    </div>
+                    <div class="startBlock-item">
+                        <a class="startBlock-button" ng-click="binaryVocabulary()">
+                            <span class="startBlock-label1" sw-localize="Vocabulary.startWith.label"></span>
+                            <span class="startBlock-label2" sw-localize="Vocabulary.vocabularyAssessmentBinaryAlgorithm.label"></span>
+                        </a>
+                        <div class="startBlock-text" sw-localize="Vocabulary.vocabularyAssessmentBinaryAlgorithmDescription.label"></div>
+                    </div>
+                    <div class="startBlock-item">
+                        <a class="startBlock-button" ng-click="upperBoundVocabulary()">
+                            <span class="startBlock-label1" sw-localize="Vocabulary.startWith.label"></span>
+                            <span class="startBlock-label2" sw-localize="Vocabulary.vocabularyAssessmenUpperAlgorithm.label"></span>
+                        </a>
+                        <div class="startBlock-text" sw-localize="Vocabulary.vocabularyAssessmentUpperAlgorithmDescription.label"></div>
+                    </div>
+                </div>
+                <div class="brand_footer">
+                    <div class="container">
+                        <ul class="soc_block">
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                        </ul>
+                        <div class="copyright"><span sw-localize="Vocabulary.version.label"></span>{{configInfo.buildVersion}}</div>
+                        <div class="copyright"><span sw-localize="Vocabulary.copyright.text"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

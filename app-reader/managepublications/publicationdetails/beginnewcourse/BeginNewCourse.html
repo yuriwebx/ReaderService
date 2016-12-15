@@ -1,0 +1,78 @@
+<div class="begin-new-course-content">
+
+   <!--Header-->
+   <div class="begin-new-course-header" sw-render="true" sw-render-to="'.popup-injectable-template'">
+      <span><sw-button class="button-import-back no-cross" ng-click="back()" sw-localize="Popup.button.back.label"></sw-button></span>
+      <span sw-localize="BeginNewCourse.header.title"></span>
+      <span></span>
+   </div>
+
+   <!--Content-->
+   <div class="section">
+      <p class="descriptionText">
+         <span sw-localize="BeginNewCourse.content.createCourse.description.text"></span>
+         <span class="course-link-help" sw-localize="BeginNewCourse.content.createCourse.description.text2"></span>
+      </p>
+      <p class="course-create-block">
+         <span>
+            <span class="course-title-text" sw-localize="BeginNewCourse.content.createCourse.start.text"></span>
+         </span>
+         <span>
+            <button type="button" sw-localize="BeginNewCourse.content.button.create.label"
+                    ng-click="createNewCourse()"></button>
+         </span>
+      </p>
+   </div>
+
+   <div class="section" ng-if="isUpcomingCourses">
+      <div class="section-left-padd top-padd">
+         <span class="course-title-text begin" sw-localize="BeginNewCourse.content.createCourse.suggestion.text"></span>
+      </div>
+
+      <div class="section-left-padd top-padd">
+         <sw-input type="text" ng-model="filter.text" ng-model-options="{debounce: 300}" ng-change="onFiltering()" placeholder="{{publicationData.name}}"></sw-input>
+         <i ng-class="{'i-ClearInputCross': filter.text.length}" ng-click="resetFilter()"></i>
+      </div>
+
+      <ul>
+         <li ng-repeat="upcomingCourse in upcomingCourses">
+
+            <div class="course-title-box">
+               <span>
+                  <span class="course-name" ng-bind="upcomingCourse.class.name"></span>
+                  <span class="course-teacher" ng-bind="upcomingCourse.class.teacher"></span>
+                  <span class="course-date">
+                     <span ng-if="upcomingCourse.class.joinEndDate" ng-bind="upcomingCourse.class.scheduledAt"></span>
+                  </span>
+                  <span class="course-description-btn" sw-localize="BeginNewCourse.content.joinCourse.button.description.label"
+                        ng-click="toggleCourseDetails($index)"></span>
+               </span>
+               <span class="course-join-btn">
+                  <button type="button" class="btn-join" sw-localize="BeginNewCourse.content.joinCourse.button.joinCourse.label"
+                          ng-if="renderButton.joinCourse(upcomingCourse)" ng-click="joinCourse($index)"></button>
+
+                  <button type="button" class="btn-joined" sw-localize="BeginNewCourse.content.joinCourse.button.joined.label"
+                          ng-if="renderButton.joined(upcomingCourse)"></button>
+
+                  <button type="button" class="btn-send-request" sw-localize="BeginNewCourse.content.joinCourse.button.sendRequest.label"
+                          ng-if="renderButton.sendRequest(upcomingCourse)" ng-click="sendRequest($index)"></button>
+
+                  <button type="button" class="btn-requested" sw-localize="BeginNewCourse.content.joinCourse.button.requested.label"
+                          ng-if="renderButton.requested(upcomingCourse)"></button>
+               </span>
+            </div>
+            <p ng-if="$index === currentIdx">
+               <span class="course-name-more-description" ng-bind="upcomingCourse.class.name"></span>
+               <span class="course-description" ng-bind="upcomingCourse.class.description"></span>
+            </p>
+         </li>
+      </ul>
+   </div>
+
+
+   <div ng-if="!isUpcomingCourses" class="no-courses-mass">
+      <span sw-localize="BeginNewCourse.content.createCourse.noCourses.text"></span>
+   </div>
+
+
+</div>

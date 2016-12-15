@@ -1,0 +1,125 @@
+@import '../base';
+
+.study-project-info {
+   .flex-display;
+   padding: 10px 40px;
+   overflow: hidden;
+   @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+      display: block;
+   }
+   > div {
+      .box-sizing;
+      width: 50%;
+      min-width: 50%;
+      @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+        width: 100%;
+      }
+      &:first-of-type {
+         padding-right: 20px;
+         @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+            padding-right: 0;
+         }
+      }
+      &:last-of-type {
+         padding-left: 20px;
+         @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+            padding-left: 0;
+         }
+         h2 {
+            padding-bottom: 30px;
+         }
+      }
+      .study-project-types-box{
+         margin-bottom: 24px;
+         .box-sizing;
+         font-size: 16px;
+         font-weight: 300;
+         display: block;
+         height: 60px;
+         padding: 8px 0;
+         cursor: pointer;
+         text-align: center;
+         color: @c-lilac;
+         border: 1px solid @c-lilac;
+         border-radius: 2px;
+         &:hover {
+            opacity: .8;
+         }
+         &:last-child {
+            margin-bottom: 0;
+         }
+         &.active {
+            color: @c-white;
+            border: 1px solid @c-lilac;
+            background: @c-lilac;
+         }
+         &:last-child{
+            margin-bottom: 0;
+         }
+         span{
+            line-height: 20px;
+            &:first-child{
+               font-weight: 400;
+            }
+            &:last-child{
+               font-size: 15px;
+               font-weight: 300;
+            }
+         }
+      }
+      h2 {
+         font-size: 24px;
+         font-weight: 400;
+         line-height: 50px;
+         text-align: center;
+      }
+      > div {
+         span {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 30px;
+            display: block;
+         }
+         input {
+            .box-sizing;
+            font-size: 16px;
+            font-weight: 300;
+            display: block;
+            width: 100%;
+            height: 60px;
+            margin-bottom: 5px;
+            padding: 10px;
+            border: solid 1px #ccc;
+            border-radius: 2px;
+            .sw-popup-content & {
+               &.sw-focus{
+                  box-shadow: 0 1px 7px @c-lilac!important;
+               }
+            }
+         }
+         textarea {
+            .box-sizing;
+            font-size: 16px;
+            font-weight: 300;
+            display: block;
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            resize: none;
+            border: solid 1px #ccc;
+            border-radius: 2px;
+            @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+               height: 122px;
+            }
+            .sw-popup-content & {
+               &.sw-focus{
+                  border: solid 1px @c-lilac!important;
+                  box-shadow: 0 1px 7px @c-lilac!important;
+               }
+            }
+         }
+      }
+      .study-project-type {
+      }
+   }
+}

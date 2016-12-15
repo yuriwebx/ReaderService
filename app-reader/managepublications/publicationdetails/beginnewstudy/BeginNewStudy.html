@@ -1,0 +1,57 @@
+<div>
+    <div class="begin-new-study-header" sw-render="true" sw-render-to="'.popup-injectable-template'">
+        <span>
+          <sw-button class="button-import-back no-cross"
+                     click="back()"
+                     sw-localize="BeginNewStudy.buttonBack.label">Back</sw-button>
+        </span>
+        <span sw-localize="{{labelKey}}" ng-show="api.selectOption"></span>
+        <span>
+          <span class="search_input_holder" ng-hide="api.selectOption">
+              <sw-input type="text" data-ng-model="filter.text" placeholder="Filter" ng-change="searchClasses()"></sw-input>
+              <i data-ng-class="{'i-ClearInputCross': filter.text.length}"
+                 data-ng-click="resetSearch()"></i>
+          </span>
+        </span>
+    </div>
+    <div sw-render="api.selectOption"><span sw-body-class="select-option"></span></div>
+    <div class="begin-new-study">
+        <div class="begin-new-study-content">
+          <div class="begin-new-study-select-block" ng-show="api.selectOption">
+             <span sw-localize="BeginNewStudy.content.text"></span>
+             <div class="select-option-button"
+                  ng-click="goToSelectClass()"
+                  sw-localize="BeginNewStudy.joinButton.label"></div>
+             <span sw-localize="BeginNewStudy.content.text2"></span>
+             <div class="select-option-button"
+                  ng-click="createStudyClass()"
+                  sw-localize="BeginNewStudy.createStudyClassButton.label"></div>
+          </div>
+           <div class="list-of-classes" ng-show="!api.selectOption">
+               <div class="class-item" ng-repeat="class in classes">
+                   <div class="class-description">
+                       <span class="class-icon"><i></i></span>
+                       <span class="class-text">
+                         <span class="class-title">{{class.class.name}}</span>
+                         <span class="teacher">
+                          Teacher: <span ng-repeat="teacher in class.teachers">{{teacher.firstName}} {{teacher.lastName}} </span>
+                         </span>
+                       </span>
+                   </div>
+                   <div class="class-details">
+                       <span class="students">Students: <span>{{class.membership.length}}</span></span>
+                       <span class="start-date">Start Date: <span>{{class.class.registeredAt | MillisToDateFilter}}</span></span>
+                       <span class="expected-duration">Time: <span>{{class.class.expectedDuration | TimeDurationFilter}}</span></span>
+                   </div>
+                   <div class="join-button">
+                       <div ng-click="joinClass(class.class.classId)"
+                            sw-localize="BeginNewStudy.joinButton2.label"></div>
+                   </div>
+               </div>
+               <div class="no-list" ng-show="!classes.length">
+                   {{noClassesFoundMessage}}.
+               </div>
+           </div>
+        </div>
+    </div>
+</div>

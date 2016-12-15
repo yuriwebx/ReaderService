@@ -1,0 +1,24 @@
+<div ng-show="resolved" class="personal-messages-list">
+   <div class="personal-messages-item"
+        ng-if="messages.length"
+        ng-click="viewMessage(message)"
+        ng-repeat="message in messages | orderBy:'-registeredAt'"
+        ng-class="{'unreviewed': !message.reviewed}">
+        <span>
+           <ng-switch on="::message.coverType">
+              <i class="user-pic" ng-switch-when="UserDefaultPhoto"></i>
+              <img class="user-pic" ng-switch-when="UserPhoto" ng-src="{{message.userPhotoLink}}"/>
+              <img class="book-cover" ng-switch-when="PublicationCover" ng-src="{{message.coverUrl}}"/>
+              <span class="syllabus-cover" ng-switch-when="SyllabusCover"></span>
+           </ng-switch>
+        </span>
+       <span>
+          <p ng-if="message.type==='PersonalMessage'" ng-bind="::message.subject"></p>
+          <h4 ng-bind-html="::message.label" sw-ellipsis></h4>
+          <span ng-bind="::message.registeredAtInMin"></span>
+        </span>
+   </div>
+   <div class="personal-messages-item" ng-if="!messages.length">
+    <div class="no-messages" sw-localize="ManagePersonalMessages.noMessages.text"></div>
+   </div>
+</div>

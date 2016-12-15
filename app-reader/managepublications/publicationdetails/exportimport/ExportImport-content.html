@@ -1,0 +1,17 @@
+<div class="export-import-block">
+	<div class="sub-header">
+		<span ng-click="selectAll()"
+			  sw-localize="ExportImport.selectAll.label"></span>
+		<span ng-show="invalidData"
+			  sw-localize="ExportImport.formatInvalid.label"
+			  sw-data="{exportImportformat:format}"></span>
+		<span sw-localize="ExportImport.pasteFormat.label"
+			  sw-data="{exportImportformat:format}"></span>
+		<span ng-click="">+</span>
+	</div>
+   <textarea cols="10" rows="10" data-ng-model="data" id="export-import-area"></textarea>
+   <sw-button
+      data-ng-click="import(data)"
+      data-ng-disabled="!data.length || !isAuthor"
+      sw-localize="ExportImport.import2.label"></sw-button>
+</div>

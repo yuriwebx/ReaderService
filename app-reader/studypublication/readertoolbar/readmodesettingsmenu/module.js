@@ -1,0 +1,1 @@
+define(['./ReadModeSettingsMenu', './fonts/module', './ReadModeSettingsService'], function(){});

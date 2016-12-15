@@ -1,0 +1,43 @@
+<div>
+    <div ng-show="definition.isLookup">
+        <ul data-ng-repeat="dict in definition.definitions">
+            <li data-ng-repeat="params in dict.definition">
+                <div>
+                    <div class="dictionary-phrase">
+                        <p>{{definition.leftPart}}<b>{{definition.searchTerm}}</b>{{definition.rightPart}}</p>
+                        <span ng-if="!isEditor">
+                            <sw-manage-flashcard params="params" term="definition.term"></sw-manage-flashcard>
+                        </span>
+                    </div>
+                    <div class="dictionary-title">{{dict.dictName}}</div>
+                </div>
+                <div class="dictionary-content">
+                    <div>
+                        <p>{{params.grammar.partOfspeech}}</p>
+                    </div>
+                    <div sw-compile="dictContent"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div ng-show="definition.isDictionary">
+        <li data-ng-repeat="dict in definition.definitions">
+            <div data-ng-repeat="params in dict.definition track by $index">
+                <div class="word-description-block-title">
+                    <div class="title-word-item"><p>{{definition.term}}</p></div>
+                    <div class="title-word-dictionary"><p>{{dict.dictName}}</p></div>
+                    <span ng-if="!isEditor">
+                        <sw-manage-flashcard params="params" term="definition.term"></sw-manage-flashcard>
+                    </span>
+                </div>
+                <div class="description-block">
+                    <p>{{params.grammar.pronunciation + ' ' + params.grammar.partOfspeech}}</p>
+                </div>
+                <div sw-compile="dictContent"></div>
+            </div>
+        </li>
+    </div>
+</div>
+
+

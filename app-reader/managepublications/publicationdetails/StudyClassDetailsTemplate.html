@@ -1,0 +1,185 @@
+<div>
+   <div sw-render="true" sw-render-to="'.popup-injectable-template'" class="popup-title">
+      <span>
+         <button ng-click="detailsApi.closePublicationDetails()"
+                 class="sw-input sw-input-wrapper sw-input-button-wrapper sw-input-button ng-scope"
+                 type="button"></button>
+      </span>
+      <span sw-localize="{{labelKey}}"></span>
+      <span></span>
+   </div>
+
+   <div class="column-layout">
+      <div class="col">
+         <div class="img-block" ng-class="{'preloader': isAddingToMyBooks}">
+            <span width="125" height="170" class="study-class-cover"></span>
+            <i class="shadow-gen"></i>
+
+            <div class="preloader-animation">
+               <div id="floating-bars">
+                  <div class="block" id="rotate-01"></div>
+                  <div class="block" id="rotate-02"></div>
+                  <div class="block" id="rotate-03"></div>
+                  <div class="block" id="rotate-04"></div>
+                  <div class="block" id="rotate-05"></div>
+                  <div class="block" id="rotate-06"></div>
+                  <div class="block" id="rotate-07"></div>
+                  <div class="block" id="rotate-08"></div>
+               </div>
+            </div>
+         </div>
+
+         <div class="btn-block btn-download-book-wrap" ng-if="isCourseActive">
+            <span class="m-button__dark"
+                  ng-click="resumeCourse()"
+                  sw-localize="StudyClassDetailsTemplate.resumeStudy.label"></span>
+         </div>
+
+         <div class="btn-block btn-download-book-wrap" ng-if="isCourseActive">
+            <span class="m-button__dark"
+                  ng-click="cancelCourse()"
+                  sw-localize="StudyClassDetailsTemplate.cancelCourse.label"></span>
+         </div>
+
+      </div>
+
+      <div class="col">
+
+         <div class="invitation-block" ng-show="isInvite">
+            <p sw-localize="StudyClassDetailsTemplate.invitedBy.text"
+               sw-data="{
+                  firstName:publication.teachers[0].firstName,
+                  lastName:publication.teachers[0].lastName
+               }"></p>
+
+            <p ng-if="detailsApi.publication.expectedDailyWork"
+               sw-localize="StudyClassDetailsTemplate.canJoin.text"
+               sw-data="{studyJoinEndDate:joinEndDate}"></p>
+
+            <div class="ib-buttons">
+               <div class="select-option-button" ng-click="declineInvitation(publication)">
+                  <span ng-if="!isJoinDateExpired" sw-localize="StudyClassDetailsTemplate.noButton.label"></span>
+                  <span ng-if="isJoinDateExpired" sw-localize="StudyClassDetailsTemplate.okButton.label"></span>
+               </div>
+               <div class="select-option-button" ng-click="acceptInvitation(publication)"
+                    ng-if="!isJoinDateExpired">
+                  <span sw-localize="StudyClassDetailsTemplate.aIButton.label"></span>
+               </div>
+            </div>
+            <p ng-if="isJoinDateExpired" sw-localize="StudyClassDetailsTemplate.expared.text"></p>
+         </div>
+
+         <div class="invitation-block" ng-if="isCancelled">
+            <p sw-localize="StudyClassDetailsTemplate.invitedByAuthor.text"
+               sw-data="{author:publication.author}"></p>
+            <p sw-localize="StudyClassDetailsTemplate.canceled.text"></p>
+
+            <div class="ib-buttons">
+               <div class="select-option-button" ng-click="beginNewCourse()">
+                  <span sw-localize="StudyClassDetailsTemplate.beginNewStudy.text"></span>
+               </div>
+               <div class="select-option-button" ng-click="detailsApi.closePublicationDetails()">
+                  <span sw-localize="StudyClassDetailsTemplate.okButton.text"></span>
+               </div>
+            </div>
+         </div>
+
+         <div class="invitation-block" ng-if="isBlocked">
+            <p>
+               You were invited to Study Course by <span ng-bind="::publication.author"></span>.
+               This invitation is not actual any more
+            </p>
+
+            <div class="ib-buttons">
+               <div class="select-option-button" ng-click="beginNewCourse()">
+                  <span sw-localize="StudyClassDetailsTemplate.beginNewStudy.text"></span>
+               </div>
+               <div class="select-option-button" ng-click="detailsApi.closePublicationDetails()">
+                  <span sw-localize="StudyClassDetailsTemplate.okButton.text"></span>
+               </div>
+            </div>
+         </div>
+
+         <div class="book-name-block">
+            <p ng-bind="::publication.name"></p>
+
+            <p ng-if="::!isIndependentStudy()">
+               Teacher:
+               <span ng-bind="::publication.teachers[0].firstName"></span>
+               <span ng-bind="::publication.teachers[0].lastName"></span>
+            </p>
+         </div>
+
+         <ul class="book-info-tabs">
+            <li ng-click="showMainPublicationData()" ng-class="{'active' : isMainPublicationData}"><span>Info</span>
+            </li>
+            <li ng-click="showAdditionalPublicationData()" ng-class="{'active' : !isMainPublicationData}">
+               <span sw-localize="StudyClassDetailsTemplate.content.label"></span>
+            </li>
+         </ul>
+
+         <div class="book-stats-block" ng-if="isMainPublicationData">
+            <p>Syllabus: <span ng-bind="::publication.course.name"></span> by <span
+                    ng-bind="::publication.course.author"></span></p>
+
+            <p ng-if="::!isIndependentStudy()"><span sw-localize="StudyClassDetailsTemplate.participants.text"></span> <span ng-bind="::publication.students"></span>
+            </p>
+
+            <p ng-if="publication.joinEndDate">
+               <span sw-localize="StudyClassDetailsTemplate.startDate.label"></span> <span>{{::publication.registeredAt | MillisToDateFilter}}</span>, <span sw-localize="StudyClassDetailsTemplate.estimatedCompletion.label"></span> <span>{{publication.endCourse | MillisToDateFilter}}</span>
+            </p>
+
+            <p>
+               <span sw-localize="StudyClassDetailsTemplate.time.label"></span> 
+               <span>{{::publication.course.readingTime | TimeDurationFilter}}</span><span ng-if="::showDifficulty">,</span>
+               <span ng-if="::showDifficulty" sw-localize="StudyClassDetailsTemplate.difficulty.label"></span> 
+               <span ng-if="::showDifficulty" ng-bind="::publication.course.difficulty"></span>
+               <span ng-if="!detailsApi.isEditor">
+                  <sw-study-progress progress="publication.readingProgress" numbercircls="5"></sw-study-progress>
+               </span>
+            </p>
+            <p>
+               <!-- <span>Description:</span> -->
+               <span ng-bind="::publication.description"></span>
+            </p>
+         </div>
+         <div ng-if="!isMainPublicationData">
+            <ul class="book-related-block">
+               <li ng-repeat="relatedPublication in relatedPublications">
+                  <div class="book-related-item-block" ng-if="::(isPublication(relatedPublication) || isStudyGuide(relatedPublication))">
+                           <span>
+                              <img  ng-if="::isPublication(relatedPublication)" ng-src="{{getCoverSrc(relatedPublication)}}"/>
+                              <span ng-if="::isStudyGuide(relatedPublication)" class="study-guide-cover"></span>
+                              <span ng-if="::isStudyCourse(relatedPublication)" class="study-course-cover"></span>
+                           </span>
+                           <span>
+                              <p ng-bind="::relatedPublication.name"></p>
+                              <p ng-bind="::relatedPublication.author"></p>
+                              <p ng-bind="::relatedPublication.category"></p>
+                              <p>
+                                 <span sw-localize="StudyClassDetailsTemplate.time.label"></span> <span
+                                      ng-bind="relatedPublication.readingTime | TimeDurationFilter"></span><span ng-if="::showDifficulty"
+                                      sw-localize="StudyClassDetailsTemplate.difficulty2.label"></span>
+                                 <span ng-if="::showDifficulty" ng-bind="::relatedPublication.difficulty"></span>
+                              </p>
+                              <p class="studyGuide-info" ng-if="relatedPublication.studyGuideName"><span
+                                      ng-bind="::relatedPublication.studyGuideName"></span>, <span
+                                      ng-bind="::relatedPublication.studyGuideAutor"></span></p>
+                           </span>
+
+                     <div class="book-related-item-block colored" ng-if="isSection(relatedPublication)">
+                        <span><i class="section-cover"></i></span>
+                        <span><p>{{::relatedPublication.title}}</p></span>
+                     </div>
+                     <div class="book-related-item-block" ng-if="isVocabularyAssessment(relatedPublication)"
+                          ng-click="startVocabularyAssessment()">
+                        <span><i class="assessment-cover"
+                                 sw-localize="StudyClassDetailsTemplate.v.label"></i></span>
+                        <span><p>{{::relatedPublication.text}}</p></span>
+                     </div>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>

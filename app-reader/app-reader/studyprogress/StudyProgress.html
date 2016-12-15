@@ -1,0 +1,7 @@
+<div class="book-progress">
+   <span class="progress-bar" ng-if="::!isFullProgress()">
+      <i data-ng-repeat="className in ::numberOfElements track by $index" data-ng-class="::className"></i>
+   </span>
+   <span ng-if="::isFullProgress()" class="book-done"></span>
+   </span>
+<div>

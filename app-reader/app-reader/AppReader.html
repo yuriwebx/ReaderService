@@ -1,0 +1,64 @@
+<div class="layout-full-height">
+
+   <sw-application-toolbar ng-show="!swSubmachine.state('Login') && !swSubmachine.state('$start')"
+                           ng-class="{'in-library': swSubmachine.state('ManagePublications')}"
+                           is-toolbar-inverted="isToolbarInverted">
+
+   </sw-application-toolbar>
+
+   <div sw-render="checkRanderState()" sw-render-to="'.toolbar-injectable-template'">
+      <div class="reader-top-menu-wrapper">
+         <sw-button ng-click="signIn()" sw-localize="Reader.ApplicationToolbar.createAccount.label"></sw-button>
+      </div>
+   </div>
+   <div sw-render="swSubmachine.state('Dictionary')" sw-render-to="'.toolbar-injectable-template'">
+      <sw-manage-publications-toolbar unbold-text="unboldText()"></sw-manage-publications-toolbar>
+   </div>
+   <div sw-render="swSubmachine.state('Explore')" sw-render-to="'.toolbar-injectable-template'">
+      <sw-manage-publications-toolbar unbold-text="unboldText()"></sw-manage-publications-toolbar>
+   </div>
+   <div sw-render="swSubmachine.state('Reading')" sw-render-to="'.toolbar-injectable-template'">
+      <sw-reader-toolbar app-toolbar-params="appToolbarParams" unbold-text="unboldText()">
+      </sw-reader-toolbar>
+   </div>
+   <div sw-render="swSubmachine.state('ReviewAssignedFlashcards')" sw-render-to="'.toolbar-injectable-template'">
+      <sw-manage-publications-toolbar unbold-text="unboldText()"></sw-manage-publications-toolbar>
+   </div>
+   <div sw-render="swSubmachine.state('DevelopStudyCourse')" sw-render-to="'.toolbar-injectable-template'">
+      <sw-reader-toolbar app-toolbar-params="appToolbarParams" unbold-text="unboldText()">
+      </sw-reader-toolbar>
+   </div>
+   <div sw-render="swSubmachine.state('ManageStudyClass')" sw-render-to="'.toolbar-injectable-template'">
+       <sw-manage-study-class-toolbar app-toolbar-params="appToolbarParams" unbold-text="unboldText()">
+       </sw-manage-study-class-toolbar>
+   </div>
+
+   <!--New Library-->
+   <div sw-render="swSubmachine.state('ManagePublications')" sw-render-to="'.toolbar-injectable-template'">
+      <sw-manage-publications-toolbar unbold-text="unboldText()"></sw-manage-publications-toolbar>
+   </div>
+
+   <div class="content" data-ng-class="{'editor-content': isEditor==='true', 'logged-in':loggedIn(), 'logged-out':loggedOut()}"><!--HotFix-->
+      <sw-app-login data-ng-if="swSubmachine.state('Login')"></sw-app-login>
+      <sw-register-user-profile config="config" register-api="registerApi" data-ng-if="swSubmachine.state('RegisterUserProfile')"></sw-register-user-profile>
+      <sw-reset-password config="config" data-ng-if="swSubmachine.state('ResetPassword')"></sw-reset-password>
+      <sw-study-publication data-ng-if="swSubmachine.state('Reading')" is-editor="{{isEditor}}"
+                            reading-api="readingApi" class="reader-template">
+      </sw-study-publication>
+      <sw-explore-publications data-ng-if="swSubmachine.state('Explore')" is-editor="{{isEditor}}"
+                               reading-api="readingApi">
+      </sw-explore-publications>
+      <sw-explore-dictionaries data-ng-if="swSubmachine.state('Dictionary')"></sw-explore-dictionaries>
+      <sw-review-assigned-flashcards  data-ng-if="swSubmachine.state('ReviewAssignedFlashcards')"></sw-review-assigned-flashcards>
+      <sw-develop-study-course study-course-data="studyCourseData"
+                               reading-api="readingApi"
+                               data-ng-if="swSubmachine.state('DevelopStudyCourse')">
+      </sw-develop-study-course>
+      <sw-manage-study-class course-api="courseApi" data-ng-if="swSubmachine.state('ManageStudyClass')"></sw-manage-study-class>
+
+      <!--New Library-->
+      <sw-manage-publications ng-if="swSubmachine.state('ManagePublications')"
+                              study-course-data="studyCourseData"
+                              class="library-template"></sw-manage-publications>
+   </div>
+</div>

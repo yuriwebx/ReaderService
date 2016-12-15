@@ -1,0 +1,235 @@
+@import '../base.less';
+
+@url: 'images';
+
+.app-portal {
+   .sw-focus {
+      outline: none !important;
+      /*box-shadow: 0 0 7px fade(@c-lilac, 75%);*/
+   }
+}
+.default_theme {
+   position: relative;
+   background: @c-orangelight1;
+   &:before {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100px;
+      content: '';
+      background: @c-darklilac;
+   }
+   .theme_wrapper {
+      .icon(@url, 'top_bg.png');
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      min-width: 550px;
+      min-height: 378px;
+      background-position: center top;
+      .header {
+         .box-sizing;
+         width: 1024px;
+         height: 100px;
+         margin: 0 auto;
+         padding: 0 20px;
+         .header-inner {
+            display: table-cell;
+            height: 80px;
+            vertical-align: bottom;
+            .logo {
+               .icon(@url, 'main_logo_default.png');
+               display: inline-block;
+               width: 154px;
+               height: 54px;
+               margin-right: 30px;
+               vertical-align: bottom;
+               background-position: center;
+               -webkit-background-size: 100%;
+                       background-size: 100%;
+            }
+            .slogan {
+               font-size: 1.538em;
+               font-weight: 200;
+               display: inline-block;
+               text-transform: uppercase;
+               color: @c-white;
+            }
+         }
+      }
+      .themeText {
+         .box-sizing;
+         font-size: 20px;
+         width: 1024px;
+         margin: 40px auto 5px;
+         padding: 0 20px;
+         color: @c-black;
+      }
+      .startBlock {
+         .clear;
+         width: 1024px;
+         margin: 0 auto;
+         .startBlock-item {
+            .box-sizing;
+            float: left;
+            width: 33.333%;
+            padding: 20px;
+            .startBlock-button {
+               .portal-gradient (@c-grad1st, @c-grad1sp);
+               position: relative;
+               display: block;
+               margin-bottom: 25px;
+               padding: 30px 20px;
+               text-decoration: none;
+               color: @c-vocabularycloud;
+               border-radius: 10px;
+               &:before {
+                  .icon(@url, 'arrow.png');
+                  position: absolute;
+                  z-index: 1;
+                  top: 50%;
+                  right: 20px;
+                  display: block;
+                  width: 21px;
+                  height: 22px;
+                  margin-top: -11px;
+                  content: '';
+               }
+               &:after {
+                  .portal-gradient (@c-white, @c-grad2sp);
+                  position: absolute;
+                  top: 2px;
+                  right: 2px;
+                  bottom: 2px;
+                  left: 2px;
+                  display: block;
+                  content: '';
+                  border-radius: 10px;
+                  box-shadow: inset 0 0 0 2px @c-white;
+               }
+               &:hover {
+                  .portal-gradient (@c-grad3st, @c-grad3sp);
+                  content: '';
+                  text-decoration: none;
+                  &:after {
+                     .portal-gradient (@c-grad4st, @c-grad4sp);
+                  }
+               }
+               .startBlock-label1,
+               .startBlock-label2 {
+                  position: relative;
+                  z-index: 1;
+                  display: block;
+               }
+               .startBlock-label1 {
+                  font-size: 16px;
+               }
+               .startBlock-label2 {
+                  font-size: 18px;
+               }
+            }
+            .startBlock-text {
+               font-size: 14px;
+            }
+         }
+      }
+   }
+}
+.not-signed-in,
+.signed-in {
+   position: relative;
+   z-index: 1;
+   display: block;
+   min-width: 550px;
+   height: 60px;
+   background: @c-darklilac2;
+   .portal-top-menu-wrapper {
+      display: table;
+      padding: 12px 0 0;
+      .sw-input-button {
+         font-size: 1.231em;
+         height: 38px;
+         margin: 0 10px;
+         padding: 9px 15px 10px;
+         color: @c-white;
+         border: 2px solid lighten(@c-lilac, 10%);
+         background: transparent;/*
+            &:first-child{
+                margin-right: 19px;
+            }*/
+         &:hover {
+            .transition(all .3s ease);
+            border: 2px solid @c-white;
+         }
+      }
+   }
+}
+.portal-top-menu-wrapper {
+   display: table;
+   padding: 12px 0 0;
+   .sw-input-button {
+      font-size: 1.231em;
+      height: 38px;
+      margin: 0 10px;
+      padding: 9px 15px 10px;
+      color: @c-white;
+      border: 2px solid lighten(@c-lilac, 10%);
+      background: transparent;/*
+        &:first-child{
+            margin-right: 19px;
+        }*/
+      &:hover {
+         .transition(all .3s ease);
+         border: 2px solid @c-white;
+      }
+   }
+}
+.brand_footer {
+   font-size: 1.077em;
+   width: 100%;
+   min-width: 550px;
+   height: 226px;
+   margin: 29px 0 0;
+   border-top: 1px solid @c-orangelight2;
+   background: @c-orangelight3;
+   .container {
+      padding: 60px 0 0;
+      text-align: center;
+      .soc_block {
+         padding: 0 0 50px;
+         text-align: center;
+         li {
+            display: inline-block;
+            a {
+               display: block;
+               width: 41px;
+               height: 40px;
+               margin: 0 10px;
+               &:hover {
+                  .transition(all .3s ease);
+                  opacity: .8;
+               }
+            }
+            &:nth-child(1) a {
+               .icon(@url, 'ico_soc_fb.png');
+               display: block;
+               background-position: center;
+            }
+            &:nth-child(2) a {
+               .icon(@url, 'ico_soc_tw.png');
+               display: block;
+               background-position: center;
+            }
+            &:nth-child(3) a {
+               .icon(@url, 'ico_soc_gp.png');
+               display: block;
+               background-position: center;
+            }
+         }
+      }
+      .copyright {
+         opacity: .75;
+      }
+   }
+}

@@ -1,0 +1,1 @@
+define(['./ManageEssayTask', './ManageEssayTaskService'], function(){});

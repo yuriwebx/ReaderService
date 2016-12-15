@@ -1,0 +1,22 @@
+<div>
+    <div>
+        <div class="search-criteria-block">
+            <sw-search-field-new search-fn="searchDictionaryTerms()" search-criteria="dictionaryTermSearchCriteria"></sw-search-field-new>
+        </div>
+        <span class="no-result" data-ng-if="notFindResults()" sw-localize="Dictionary.noResultsFound.label"></span>
+    </div>
+    <div class="words-list-wrapper" sw-custom-scroll="{options: {height: '100%'}}">
+        <ul class="words-list">
+            <li class="word-item" data-ng-repeat="term in terms">
+                <a href="" data-ng-click="getDictionaryDefinition(term)">{{term}}</a>
+                <span data-ng-show="$index === selectedTerm"
+                      sw-localize="DictionaryTermSearch.wordsListCount.text"
+                      sw-data="{wordsListCount:count}"></span>
+                <i data-ng-class="{checked: $index === selectedTerm}"></i>
+            </li>
+            <li class="word-item" data-ng-if="moreThanTen(terms)">
+                <span data-ng-click="more()"><span sw-localize="Button.more.label"></span></span>
+            </li>
+        </ul>
+    </div>
+</div>

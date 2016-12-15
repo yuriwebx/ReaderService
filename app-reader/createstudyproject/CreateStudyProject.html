@@ -1,0 +1,24 @@
+<div ng-form="form" class="create-study-project-content">
+
+   <div class="create-study-project-steps">
+      <div class="study-project-step">
+         <ul class="steps">
+            <li ng-repeat="step in steps track by $index">
+               <div class="step-title" ng-bind="step.title" ng-class="getStepClass($index)" ng-click="goToStep(step)"></div>
+               <div class="step" ng-class="getStepClass($index)" ng-click="goToStep(step)">
+               </div>
+            </li>
+         </ul>
+      </div>
+   </div>
+
+   <div class="section" ng-if="swSubmachine.state('Step1')">
+      <sw-info study-project="studyProject" wizard-api="wizardApi"></sw-info>
+   </div>
+   <div class="section step2" ng-if="swSubmachine.state('Step2')">
+      <sw-publication study-project="studyProject" wizard-api="wizardApi"></sw-publication>
+   </div>
+   <div class="section" ng-if="swSubmachine.state('Step3')">
+      <sw-parametres study-project="studyProject" wizard-api="wizardApi"></sw-parametres>
+   </div>
+</div>

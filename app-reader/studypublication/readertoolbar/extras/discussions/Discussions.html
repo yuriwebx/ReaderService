@@ -1,0 +1,13 @@
+<div class="discussions-wrap">
+   <div class="discussions-title">INTRODUCTION AND PLAN OF THE WORK</div>
+   <div ng-repeat="(chapter, _discussions) in discussions">
+      <div class="chapter-block">
+         <span ng-bind="chapter"></span>
+      </div>
+      <ul>
+         <li ng-repeat="discussion in _discussions | orderBy: discussionsOrder" ng-click="goToDiscussion(discussion.locator)">
+            <sw-discussion data="discussion" is-manage-class="false"></sw-discussion>
+         </li>
+      </ul>
+   </div>
+</div>

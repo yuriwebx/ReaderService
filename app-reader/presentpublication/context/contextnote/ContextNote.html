@@ -1,0 +1,118 @@
+<div ng-form="form">
+   <div ng-show="popupState === 'mark'" class="mark-block sw-popup-wrap">
+      <div class="block-header sw-popup-header">
+         <span>
+            <a class="no-arrow" href="" ng-hide="showColorPicker || showEdit" ng-click="addNewMark()">New</a>
+            <a href="" class="delete" ng-click="deleteItem()" ng-show="isNoteEdit()">Delete</a>
+         </span>
+         <span>
+            <span ng-show="!showColorPicker">
+               Type
+               <span ng-show="noteExtendData.length > 1">
+                  {{(indexInCollection + 1) + '/' + noteExtendData.length}}
+               </span>
+            </span>
+            <a class="back-to-prev" ng-show="showColorPicker" href="" ng-click="backToPrevState()"></a>
+            <span ng-show="showColorPicker && !isEditMode">Add mark</span>
+            <span ng-show="showColorPicker && isEditMode">Edit mark</span>
+            <a class="add-color-btn" ng-show="showColorPicker" href="" ng-click="addColor(markCategories)">Done</a>
+         </span>
+         <span>
+
+            <a class="no-arrow" href="" ng-show="!showColorPicker && !isNoteEdit()" ng-click="toggleEdit()">
+               <span ng-show="!showEdit">Edit</span>
+               <span ng-show="showEdit" ng-click="closeMark()">Done</span>
+            </a>
+         </span>
+      </div>
+      <div class="block-content sw-popup-contentWrap" sw-custom-scroll="{options: {height: '100%'}}">
+         <ul ng-show="!showColorPicker" class="sw-popup-content">
+            <li ng-repeat="mark in markCategories"
+                ng-style="{color: changeColor(mark)}"
+                ng-click="setMark(mark, $index)"
+                ng-class="{active: selectedMark === $index, user_category: !mark.preset, show_edit: showEdit, first_user_category: mark.firstUserCategory}">
+
+               <i ng-if="mark.underline" class="underline" ng-class="[mark.underline, {'night': isNightTheme()}]"></i>
+               <i ng-if="!mark.underline" class="i-color" ng-style="{'background-color': changeColor(mark)}"></i>
+
+               {{mark.name}}
+               <i class="i-edit" ng-click="editCategory(mark, $event)"></i>
+               <i class="i-trash" ng-click="removeUserCategory(mark, $event)"></i>
+            </li>
+         </ul>
+         <div class="color-picker" ng-if="showColorPicker">
+            <div class="color-picker-header">
+               <sw-input type="text" placeholder="{{categoryPlaceholder}}"
+                         sw-required="required"
+                         name="markName"
+                         maxlength="18"
+                         ng-model="$parent.newMarkName"
+                         sw-validate="validateMarkName($parent.newMarkName)"></sw-input>
+               <span class="error-message color-picker-error-message" sw-error-for-name="'markName'"></span>
+            </div>
+
+            <div class="color-picker-content">
+               <span ng-repeat="color in customColors track by $index"
+                     ng-style="{background: color[getThemeIndex()]}"
+                     ng-class="{active: selectedMapIndex === $index}"
+                     ng-click="selectMapIndex($index)"></span>
+            </div>
+
+            <div class="color-picker-footer">
+               <span>Underline</span>
+               <span>
+                  <button class="switch-box" ng-class="{'active' : noteExtendData[indexInCollection].isUnderlineOn}" ng-click="underlineSwitcher()"></button>
+               </span>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div ng-show="popupState === 'note' || popupState === 'comment'" class="note-block">
+      <div class="block-header">
+         <span>
+            <a href="" ng-click="deleteItem()" ng-show="::(isNoteEdit() && !isNoteReadOnly())" class="no-arrow">Delete</a>
+         </span>
+         <span>
+            {{(popupState === 'note' ? 'Note' : 'Paragraph Note')}}
+            <span ng-show="noteExtendData.length > 1">
+               {{(indexInCollection + 1) + '/' + noteExtendData.length}}
+            </span>
+         </span>
+         <span>
+            <span class="is-note-read-only" ng-show="::isNoteReadOnly()" ng-style="{color: changeColor(markCategories[selectedMark])}">{{markCategories[selectedMark].name}}</span>
+            <a href="" ng-click="showMark()" ng-show="::!isNoteReadOnly()">
+               <i class="" ng-style="{'background-color': markCategories[selectedMark].color}"></i>
+               <span ng-style="{color: changeColor(markCategories[selectedMark])}">{{markCategories[selectedMark].name}}</span>
+            </a>
+         </span>
+      </div>
+      <div class="block-content" ng-swipe-left="setPrevNextIndex(1)" ng-swipe-right="setPrevNextIndex(-1)">
+         <sw-textarea
+               ng-class="{'textarea-white': isTextareaTextWhite}"
+               ng-attr-placeholder="Add {{(popupState === 'note' ? 'note' : 'Paragraph Note')}}..."
+               ng-model="noteExtendData[indexInCollection].note"
+               ng-disabled="::isNoteReadOnly()"
+               ng-style="getTextareaBorderColor(markCategories[selectedMark])"></sw-textarea>
+      </div>
+      <div class="block-footer" ng-show="popupState === 'comment'">
+         <a href="" class="above-link"
+            ng-click="setMarkPosition('A')"
+            ng-class="{active: noteExtendData[indexInCollection].position === 'A'}">Above</a>
+         <a href="" class="below-link"
+            ng-click="setMarkPosition('B')"
+            ng-class="{active: noteExtendData[indexInCollection].position === 'B'}">Below</a>
+      </div>
+   </div>
+
+   <div class="note-block" ng-show="noteExtendData.length > 1 && !showColorPicker && !showEdit">
+      <div class="block-footer">
+         <a href="" class="above-link"
+            ng-class="{disable: indexInCollection === 0}"
+            ng-click="setPrevNextIndex(-1)">Prev</a>
+         <a href="" class="below-link"
+            ng-class="{disable: indexInCollection === noteExtendData.length}"
+            ng-click="setPrevNextIndex(1)">Next</a>
+      </div>
+   </div>
+</div>

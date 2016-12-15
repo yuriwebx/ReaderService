@@ -1,0 +1,31 @@
+<div class="sw-appMenu">
+   <div class="sw-appMenu_inner reader-toolbar-menu left-side">
+
+      <a data-ng-click="setButtonDeepLink(button)" data-ng-repeat="button in buttons" data-ng-if="buttonsRequired(button)" class="icon-wrap txt-icon-wrap" sw-tooltip="ApplicationMenuItem.{{button}}.hint">
+         <span class="i-{{button}}ReadMode">{{getLocalizeName(button)}}</span>
+         <span><i class="i-{{button}} {{isNight}}"></i></span>
+      </a>
+   </div>
+
+   <h1 class="book-title-wrap" sw-on-element-resize="onResizeElement(size, oldSize)">
+      <span id="last-recent-book-study-class" class="book-title" data-ng-click="openLastBooksList($event)">
+         <span class="book-title-cont" data-ng-bind="getRecentItemTitle()"></span><span data-ng-bind="getRecentItemAuthor()"></span>
+      </span>
+   </h1>
+
+   <div class="sw-appMenu_inner reader-toolbar-menu right-side">
+      <sw-personal-messages-toolbar-button></sw-personal-messages-toolbar-button>
+      <sw-assessment-toolbar-button></sw-assessment-toolbar-button>
+
+      <!--<a data-ng-click="toggleMenu()" class="read-mode-settings-menu icon-wrap">
+         <i class="icon i-SettingsReadMode"></i>
+      </a>-->
+
+      <a data-ng-click="toggleReadModeSearch($event)" class="icon-wrap">
+         <i class="icon i-SearchReadMode" data-ng-class=""></i>
+      </a>
+
+      <div class="sw-application-menu-popup-container"></div>
+
+   </div>
+</div>

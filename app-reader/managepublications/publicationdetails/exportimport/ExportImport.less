@@ -1,0 +1,180 @@
+@import '../../base.less';
+
+@url: '../../../../app/style/images/menu-icons';
+
+.export-import-header {
+   .flex-display();
+   .justify-content(space-between);
+   border-bottom: 1px solid fade(@c-black, 6%);
+   span {
+      font-size: 1.2em;
+      font-weight: 300;
+      line-height: 43px;
+      display: block;
+      &.header-dummy {
+         min-width: 100px;
+      }
+      &:hover {
+         .drop-list {
+            & + ul {
+               display: block;
+            }
+         }
+      }
+      ul {
+         .box-sizing;
+         font-size: 1em;
+         position: absolute;
+         top: 43px;
+         right: 0;
+         display: none;
+         min-width: 250px;
+         padding: 0 20px;
+         background: @c-white;
+         &:before {
+            position: absolute;
+            top: -35px;
+            right: 100px;
+            content: '';
+            border: 24px solid @c-white;
+            border-color: transparent transparent @c-white transparent;
+         }
+         li {
+            cursor: pointer;
+            border-bottom: 1px solid fade(@c-black, 6%);
+            a {
+               font-size: 1em;
+               text-decoration: none;
+               &:hover {
+                  text-decoration: none;
+               }
+            }
+            &:last-of-type {
+               line-height: 2.4em;
+               border: none;
+            }
+         }
+      }
+   }
+   button {
+      font-size: 1.231em;
+      line-height: 43px;
+      display: inline-block;
+      height: 43px;
+      padding: 0 1.2em 0 .6em;
+      cursor: pointer;
+      color: @c-lilac;
+      border: none;
+      background: transparent;
+      &:hover {
+         opacity: .8;
+      }
+      &.button-import-back {
+         position: relative;
+         margin-left: 13px;
+      }
+      &:first-of-type {
+         font-weight: 300;
+      }
+   }
+   a {
+      font-size: 1.231em;
+      line-height: 43px;
+      display: inline-block;
+      height: 43px;
+      padding: 0 1.2em;
+      cursor: pointer;
+      color: @c-lilac;
+      border: none;
+      background: transparent;
+      &:hover {
+         opacity: .8;
+      }
+      &.button-import-back {
+         position: relative;
+         margin-left: 13px;
+         text-transform: uppercase;
+         /*margin-right: 145px;*/
+         &:after {
+            @bg-position: 85% center;
+            @bg-size: 12px;
+            .transform(rotate(180deg));
+            .datauri_svg(@url, 'arrow_lilac.svg', @bg-size, @bg-position);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 43px;
+            height: 43px;
+            content: '';
+         }
+         &.right {
+            font-size: 1em;
+            position: relative;
+            margin-right: 0;
+            margin-left: 0;
+            &:after {
+               display: none;
+               content: '';
+            }
+         }
+      }
+      &:first-of-type {
+         font-weight: 300;
+      }
+   }
+}
+.export-import-block {
+   .box-sizing;
+   width: 900px;
+   padding: 0 20px 10px;
+   text-align: center;
+   .sub-header {
+      .flex-display();
+      .justify-content(space-between);
+      span {
+         font-size: 1.2em;
+         font-weight: 300;
+         line-height: 48px;
+         display: block;
+         /*padding: 0 20px;*/
+         &:nth-of-type(2) {
+            color: @c-red;
+         }
+         &:nth-of-type(1) {
+            min-width: 140px;
+            cursor: pointer;
+            text-align: left;
+            color: @c-lilac;
+            cursor: pointer;
+            &:hover {
+               .transition(all .3s ease);
+               opacity: .8;
+            }
+         }
+         &:last-of-type {
+            .transform(rotate(45deg));
+            font-size: 1.8em;
+            display: none;
+            float: right;
+            cursor: pointer;
+            color: @c-lilac;
+         }
+      }
+   }
+   textarea {
+      .box-sizing;
+      width: 100%;
+      min-height: 570px;
+      margin: 0 0 7px;
+      padding: 10px;
+      border: 1px solid @c-lilac;
+   }
+}
+
+.export-import.sw-popup {
+   width: 900px;
+}
+
+.component-mode:first-letter {
+   text-transform: uppercase;
+}

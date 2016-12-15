@@ -1,0 +1,5 @@
+define([
+
+   './BeginNewStudy'
+
+], function(){});

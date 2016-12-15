@@ -1,0 +1,10 @@
+<div class="searchField col">
+   <div class="col-inner-wrap">
+      <div class="search_input_holder">
+         <i class="search_icon"></i>
+         <sw-input type="text" data-ng-model="searchCriteria.value" ng-change="startNewSearch()" placeholder="Search by keyword"></sw-input>
+         <i data-ng-class="{'search-brand-icon': !searchCriteria.value}"></i>
+         <i class="" data-ng-class="{'i-ClearInputCross': searchCriteria.value}" data-ng-click="resetSearch()"></i>
+      </div>
+   </div>
+</div>

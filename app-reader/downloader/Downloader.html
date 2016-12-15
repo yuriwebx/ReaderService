@@ -1,0 +1,26 @@
+<div class="downloader">
+   <button
+      class="download-btn"
+      type="button"
+      ng-click="showContext($event)"
+      ng-if="!item.isDownloaded">
+   	   <i class="i-Download"></i>
+   	   <span sw-localize="Downloader.Download.caption"></span>
+   </button>
+   <button
+      class="ondevice-btn"
+      type="button"
+      ng-class="{outdated: item.content.outdated}"
+      ng-click="showContext($event)"
+      ng-if="item.isDownloaded">
+         <i class="i-Audio" ng-if="item.isAudioDownloaded"></i>
+   	   <i class="i-Reader"></i>
+   	   <span sw-localize="Downloader.Ondevice.caption"></span>
+      <!-- <span sw-localize="Downloader.Ondevice.caption"></span> -->
+   </button>
+<!--    <button class="ondevice-btn" type="button" ng-click="showContext($event)">
+   	<i class="i-Audio"></i>
+   	<i class="i-Reader"></i>
+   	<span sw-localize="Downloader.Ondevice.caption"></span>
+   </button> -->
+</div>

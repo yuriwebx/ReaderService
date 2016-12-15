@@ -1,0 +1,38 @@
+<div class="manage-test-template-header">
+   <div data-ng-show="!popupsettings.isTestImport">
+      <form>
+         <sw-button ng-click="headerfn.closePopup()" class="button-close">Close</sw-button>
+
+         <span>{{popupsettings.name}} Creation</span>
+            <span>
+               <sw-button ng-click="headerfn.exportTest()"
+                          ng-disabled="headerfn.isDisabledExport()"
+                          sw-focus-manager="{cycle: false, traverse: true, keyNext: 'down', keyPrev: 'up'}">Export</sw-button>
+
+               <sw-button ng-click="headerfn.persistTest()"
+                          ng-disabled="popupsettings.disabled"
+                          sw-focus-last
+                          sw-focus-manager="{cycle: false, traverse: true, keyNext: 'down', keyPrev: 'up'}">Save</sw-button>
+         </span>
+      </form>
+   </div>
+   <div data-ng-show="popupsettings.isTestImport">
+      <form>
+        <sw-button class="button-import-back no-cross" ng-click="headerfn.onImportBackClick()">Back</sw-button>
+         <span>{{popupsettings.isTestExport ? "Export Test" : "Import Test"}}</span>
+         <sw-input type="text" placeholder="Test Name"
+                   ng-model="popupsettings.testSearchCriteria"
+                   ng-model-options="{debounce: 400}"
+                   ng-hide="popupsettings.isOtherSourceImport"
+                   ng-change="headerfn.searchTests()"></sw-input>
+            <span ng-hide="popupsettings.isOtherSourceImport">
+              <a class="button-import-back right drop-list no-cross">Other source</a>
+              <ul class="sw-popup">
+                 <li><a href="" ng-click="headerfn.startJSONImport()" class="no-cross">JSON</a></li>
+                 <li><a href="" ng-click="headerfn.startQuizletImport()" class="no-cross">Quizlet</a></li>
+              </ul>
+            </span>
+         <span class="header-dummy" ng-show="popupsettings.isOtherSourceImport"></span>
+      </form>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<div>
+    <sw-application-toolbar></sw-application-toolbar>
+    <div sw-render="true" sw-render-to="'.toolbar-injectable-template'">
+        <div class="not-signed-in" ng-show="!isUserLoggedIn() && swSubmachine.state('Portal')">
+            <div class="portal-top-menu-wrapper">
+                <!-- <sw-button ng-click="signIn()" sw-localize="Portal.SignIn.button.label"></sw-button> -->
+                <sw-button ng-click="signIn($event)" class="sw-popup-offset" sw-localize="Portal.ApplicationToolbar.signIn.label"><sw-button>
+            </div>
+        </div>
+
+        <div class="signed-in" ng-show="isUserLoggedIn()">
+            <div class="portal-top-menu-wrapper">
+                <sw-button ng-click="swInit()" ng-hide="hidePortalButton && !swSubmachine.state('RegisterUserProfile')" sw-localize="Portal.ApplicationToolbar.portal.label"></sw-button>
+            </div>
+        </div>
+    </div>
+    <div sw-render="getRenderedState()" sw-render-to="'.toolbar-injectable-template'">
+        <div>
+            <div class="portal-top-menu-wrapper">
+                <sw-button ng-click="swInit()" sw-localize="Portal.ApplicationToolbar.portal.label"></sw-button>
+            </div>
+        </div>
+    </div>
+    <div sw-render="swSubmachine.state('Portal')">
+        <!-- COPYPASTED from reader\portal\artifacts\index.html -->
+        <div id="theme" class="default_theme">
+            <div class="theme_wrapper">
+                <div class="promo_banner">
+                    <div class="container">
+                        <div class="header">
+                            <div class="logo"></div>
+                            <div class="slogan"><span sw-localize="App.Slogan.text"></span></div>
+                        </div>
+                        <div class="pic_block">
+                            <div class="vocabularyCloud">
+                                <a class="vocabularyCloud-inner" ng-click="goVocabularyAssessment()" sw-localize="Portal.ApplicationToolbar.vocabularyassessment.label"></a>
+                            </div>
+                        </div>
+                        <div class="text_block">
+                            <div id="themeText">
+                                <p><span sw-localize="App.Theme.text"></span></p>
+                                <p><a class="vocabularyCloud-inner" ng-click="goVocabularyAssessment()" sw-localize="Portal.ApplicationToolbar.vocabularyassessment.label"></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="links_block">
+                    <ul class="container">
+                        <li  data-ng-repeat="item in applicationLinks">
+                            <a id="{{item[0]}}" href="{{item[1]}}" class="link_item">
+                            <i class="icon {{item[0]}}"></i>
+                            <span class="label" sw-localize="Portal.{{item[0]}}.label"></span>
+                        </a></li>
+
+                        <!--a id="osx" href="" class="link_item">
+                           <i class="icon mac"></i>
+                           <span class="label">For OS X</span>
+                        </a>
+                        <a id="win" href="" class="link_item">
+                           <i class="icon win"></i>
+                           <span class="label">For Windows</span>
+                        </a-->
+                    </ul>
+                </div>
+                <div class="brand_footer">
+                    <div class="container">
+                        <ul class="soc_block">
+                            <li><a></a></li>
+                            <li><a></a></li>
+                            <li><a></a></li>
+                        </ul>
+                        <div class="copyright"><span sw-localize="Portal.version.label"></span>{{configInfo.buildVersion}}</div>
+                        <div class="copyright"><span sw-localize="Portal.copyright.text"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .default_theme -->
+
+        <!-- COPYPASTED from reader\portal\artifacts\index.html -->
+    </div>
+
+    <div sw-render="swSubmachine.state('DownloadBooks')">
+        <sw-download-books></sw-download-books>
+    </div>
+
+    <div sw-render="swSubmachine.state('Admin')">
+        <sw-app-admin></sw-app-admin>
+    </div>
+
+    <div sw-render="swSubmachine.state('RegisterUserProfile')">
+        <sw-register-user-profile config="config" register-api="registerApi"></sw-register-user-profile>
+    </div>
+    <div sw-render="swSubmachine.state('ResetPassword')">
+        <sw-reset-password config="config"></sw-reset-password>
+    </div>
+</div>

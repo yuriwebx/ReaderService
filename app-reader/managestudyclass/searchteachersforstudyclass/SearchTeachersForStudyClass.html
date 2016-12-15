@@ -1,0 +1,15 @@
+<div class="invite-teachers-to-study-class">
+   <div class="filter-block" sw-sticky="{alwaysStick: true, widthControl: false}">
+      <sw-input type="text" ng-model="filterText" ng-change="performSearch()"></sw-input>
+      <i class="" ng-class="{'i-ClearInputCross': filterText.length}" ng-click="resetSearch()"></i>
+   </div>
+   <ul class="editors-list">
+      <li ng-repeat="teacher in teachers">
+         <i ng-if="!teacher.isPhoto">Photo</i>
+         <img ng-src="{{teacher.photoLink}}" ng-if="teacher.isPhoto"/>
+         <span ng-bind-template="{{::teacher.firstName}} {{::teacher.lastName}}"></span>
+         <span class="user-invited" ng-if="teacher.alreadyInvited"><i></i> Invited</span>
+         <span class="user-invite" ng-if="!teacher.alreadyInvited" ng-click="applyTeacher(teacher, $index)"> Add</span>
+      </li>
+   </ul>
+</div>

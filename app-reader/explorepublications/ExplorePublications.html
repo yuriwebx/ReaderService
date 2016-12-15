@@ -1,0 +1,31 @@
+<div class="explore-layout"
+   sw-body-class="explore-full-height"
+   ng-class="{'lang-field-visible': showLanguages()}">
+
+   <sw-collections data-ng-if="swSubmachine.state('BeforeSearch')" class="collections-injectable-template"></sw-collections>
+   <sw-input-select class="recent-search-request" ng-model="tabModel.selectedTab" ng-if="!tabsIsEmpty()" options="tabOptions"></sw-input-select>
+   <div class="reflowable-column-layout search-injectable-template">
+      <div class="column column-1">
+         <sw-search-publications one-column="true" extendapi="extendapi"></sw-search-publications>
+         <sw-keyboard></sw-keyboard>
+      </div>
+      <sw-resizer sw-resizer-attr="{
+                  firstColumn: '.column-1',
+                  secondColumn: '.column-2',
+                  stableListener: onChangeSize,
+                  listener: onColumnSizeChanging,
+                  position: startResizePosition,
+                  minWidthColumn: 320}">
+      </sw-resizer>
+      <div class="column column-2" >
+         <div sw-custom-scroll="{options: {height: '100%', innerScroll: false}}">
+            <sw-present-publication reading-api="readingApi" is-reading-mode="false">
+            </sw-present-publication>
+         </div>
+            <div ng-show="showOpenButton()" class="open-publication-button">
+               <button ng-click="openPublicationInReader()"><i class="i-Resume"></i></button>
+            </div>
+      </div>
+   </div>
+
+</div>

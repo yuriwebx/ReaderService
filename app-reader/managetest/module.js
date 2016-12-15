@@ -1,0 +1,1 @@
+define(['./ManageTest', './ManageTestService'], function(){});

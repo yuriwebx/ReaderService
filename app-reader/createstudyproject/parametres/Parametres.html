@@ -1,0 +1,61 @@
+<div class="study-project-parametres"><!--<div class="study-project-parametres" ng-class="{'one-side' : isSelfStudy}">-->
+   <div class="study-project-switcher-block">
+      <label>
+         <span sw-localize="CreateStudyProject.coursePeriod.label"></span>
+         <button class="toggle-course-period-btn" ng-click="toggleCoursePeriodBlock()"
+                 ng-class="{'off': wizardApi.isCoursePeriodBlockDisabled}"></button>
+      </label>
+   </div>
+   <div class="param-side" ng-class="{'disabled': wizardApi.isCoursePeriodBlockDisabled}">
+      <div class="sub-block">
+         <div class="date-block">
+            <div class="date-block-start">
+               <span class="date-label" sw-localize="CreateStudyProject.wizard.step3.courseStarts"></span>
+               <span>
+                  <sw-input name="startDate" class="start-date" type="date"
+                            ng-model="studyProject.classScheduledAt"
+                            sw-validate="wizardApi.validateStartDate(studyProject.classScheduledAt)"
+                            ng-change="changeCourseDates()"></sw-input>
+               </span>
+            </div>
+            <div class="date-block-end" ng-if="!isSelfStudy">
+               <span class="date-label" sw-localize="CreateStudyProject.wizard.step3.lastDayToEnroll"></span>
+               <span>
+                  <sw-input name="endDate" class="end-date" type="date"
+                            ng-change="wizardApi.debValid()"
+                            ng-model="studyProject.joinEndDate"
+                            sw-validate="wizardApi.validateEndJoinDate(studyProject.joinEndDate)"></sw-input>
+                </span>
+            </div>
+            <div class="course-time-required">
+               <span sw-localize="CreateStudyProject.courseEnd.label"></span>:
+               <span ng-bind="studyProject.endCourse"></span>
+            </div>
+         </div>
+      </div>
+
+      <div class="sub-block">
+         <h2 sw-localize="CreateStudyProject.readingDays.label"></h2>
+
+         <div class="study-week-buttons-list">
+            <div ng-repeat="day in daysOfWeek" class="study-week-day">
+               <sw-button type="button" ng-class="{'active': activeButtons[$index]}"
+                          ng-click="setStudyWeekDays(day, $index)" ng-bind="::day"></sw-button>
+            </div>
+         </div>
+      </div>
+
+      <div class="sub-block" ng-if="studyProject.expectedDailyWork">
+         <h2 sw-localize="CreateStudyProject.hourPerDay.label"></h2>
+
+         <div class="select-conainer">
+            <sw-input-select options="durationsOptions"
+                             ng-model="studyProject.expectedDailyWork"
+                             ng-change="changeCourseDates()"></sw-input-select>
+         </div>
+         <div class="course-time-required-top">
+            <span ng-bind="courseTimeRequired"></span>
+         </div>
+      </div>
+   </div>
+</div>

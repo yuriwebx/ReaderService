@@ -1,0 +1,76 @@
+<div class="study-project-publication">
+   <h2 sw-localize="CreateStudyProject.wizard.step2.selectCourseContent"></h2>
+   <div class="study-project-publication-content">
+      <div class="publication-list">
+         <div class="publication-filter">
+            <input placeholder="Filter" type="text" ng-if="!isCollectionExpanded"
+                ng-model="publicationsFilter.text" ng-change="onFiltering()"
+                ng-model-options="{debounce: 200}" sw-catch-key>
+            <div class="publication-filter-title" ng-if="isCollectionExpanded">
+               <span class="back-button" ng-click="collapseCollection()"><i></i> <span sw-localize="CreateStudyProject.buttonBack.label"></span></span>
+               <span class="book-label">{{::collectionName}}</span>
+               <span class="dummy-span"></span>
+            </div>
+         </div>
+         <div sw-custom-scroll="{options: {height: '100%'}}" class="infinity-book-list">
+            <ul>
+               <li ng-repeat="publication in publications" ng-class="{'active':  $index === activePublication}">
+                  <div class="publication-item" ng-click="addToSelected($index)">
+                     <ng-switch on="publication.type">
+                        <i ng-switch-when="StudyCourse" class="study-course-cover"></i>
+                        <i ng-switch-when="Collection" class="collection-cover"></i>
+                        <img ng-switch-default ng-src="{{::getCover(publication)}}"
+                           ng-class="{'no-book-cover': !publication.cover}"
+                           width="48" height="63">
+                     </ng-switch>
+                     <div class="pub-name" ng-if="isAuthorInTitle(publication)" ng-bind="publication.name"></div>
+                     <div class="pub-name" ng-if="!isAuthorInTitle(publication)" ng-class="{'title-in-two-line' : !isAuthorInTitle(publication)}" ng-bind="publication.name" sw-ellipsis></div>
+                     <div class="pub-author" ng-if="isAuthorInTitle(publication)"><span ng-bind="publication.author"></span></div>
+                     <div class="pub-stats">
+                        <span ng-if="publication.type === 'StudyGuide'" sw-localize="CreateStudyProject.bookNotes.text"></span>
+                        <span ng-if="publication.type !== 'StudyGuide'" ng-bind="publication.category"></span>
+                        <span sw-localize="CreateStudyProject.time.text"></span><span ng-bind="publication.readingTime | TimeDurationFilter"></span>
+                     <span ng-if="::showDifficulty"><span sw-localize="CreateStudyProject.difficulty.text"></span><span ng-bind="publication.difficulty"></span></span>
+                     </div>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <div class="study-project" ng-show="studyProject.publication" sw-custom-scroll="{options: {height: '100%'}}">
+         <div class="study-project-item" name="selectedPublication" ng-model="studyProject.publication"
+            sw-validate="wizardApi.validateRequired(studyProject.publication)">
+            <div class="study-project-item-top">
+               <div class="pic-block">
+                  <img ng-src="{{getCover(studyProject.publication)}}"
+                     ng-class="{'no-book-cover': !studyProject.publication.cover}"
+                     width="96" height="126"
+                     ng-if="!isStudyCourse(studyProject.publication)">
+                  <i class="study-course-cover" ng-if="isStudyCourse(studyProject.publication)"></i>
+               </div>
+               <div class="stat-block">
+                  <div class="publication-title" ng-if="isAuthorInTitle(studyProject.publication)" ng-bind="studyProject.publication.name"></div>
+                  <div class="publication-title" ng-if="!isAuthorInTitle(studyProject.publication)" ng-class="{'title-in-two-line' : !isAuthorInTitle(publication)}" ng-bind="studyProject.publication.name" sw-ellipsis></div>
+                  <div class="author-name" ng-if="isAuthorInTitle(studyProject.publication)"><span ng-bind="studyProject.publication.author"></span></div>
+                  <div class="publication-type" 
+                       ng-if="studyProject.publication.type === 'StudyGuide'"
+                       sw-localize="CreateStudyProject.bookNotes.text"></div>
+                  <div class="publication-type" ng-if="studyProject.publication.type !== 'StudyGuide'" ng-bind="studyProject.publication.category"></div>
+                  <div class="publication-stats">
+                     <span sw-localize="CreateStudyProject.time.text"></span>
+                     <span ng-bind="studyProject.publication.readingTime | TimeDurationFilter"></span>
+                  </div>
+                  <div class="publication-stats"
+                       ng-if="::showDifficulty">
+                     <span sw-localize="CreateStudyProject.difficulty.text"></span>
+                     <span ng-bind="studyProject.publication.difficulty"></span>
+                  </div>
+               </div>
+            </div>
+            <div class="description" ng-bind="studyProject.publication.description"></div>
+            <div ng-if="studyProject.publication" class="course-total-time"><span ng-bind="getTotalEstimatedTime()"></span></div>
+            <sw-manage-book-info ng-if="isRelatedPublications()" publication="detailedPublicationInfo" view-config="relatedViewConfig"></sw-manage-book-info>
+         </div>
+      </div>
+   </div>
+</div>

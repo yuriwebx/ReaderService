@@ -1,0 +1,25 @@
+<div class="sw-appMenu library-toolbar">
+   <div class="book-prefix"
+      data-ng-click="openLastOfRecentBooks()"
+      data-ng-if="isResumeVisible()"
+      ng-hide="isOffline"
+      sw-tooltip="{{getLocalizeName()}}">
+      <span>{{getLocalizeName()}}</span>
+      <span><i class="i-{{resumeClass}} {{isNight}}"></i></span>
+   </div>
+   <h1 class="book-title-wrap" sw-on-element-resize="onResizeElement(size, oldSize)" ng-class="{'disabled-state': isOffline}">
+      <span id="last-recent-book-manage-publication" data-ng-click="openLastBooksList($event)" data-ng-if="isResumeVisible()" class="book-title  sw-popup-offset" dir="auto">
+         <span class="book-title-cont" data-ng-bind="getTitleRecentItem()"></span><span data-ng-bind="getAuthorRecentItem()"></span>
+      </span>
+      <span class="book-title noarrow" data-ng-if="!isResumeVisible()">
+         <span class="book-title-cont" sw-localize="LibraryToolbar.defaultTitle.label"></span>
+      </span>
+   </h1>
+   <div class="sw-appMenu_inner right-side" ng-hide="isOffline">
+      <sw-personal-messages-toolbar-button></sw-personal-messages-toolbar-button>
+      <sw-assessment-toolbar-button ng-if="!isEditor"></sw-assessment-toolbar-button>
+      <a data-ng-click="toggleReadModeSearch($event)" class="icon-wrap" data-ng-if="!isExplore()">
+         <i class="icon i-SearchReadMode" data-ng-class=""></i>
+      </a>
+   </div>
+</div>

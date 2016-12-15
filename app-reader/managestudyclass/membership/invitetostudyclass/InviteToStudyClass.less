@@ -1,0 +1,156 @@
+@import '../base.less';
+
+@url_general: '../../../../app/style/images/menu-icons';
+@url: '../../images';
+
+.invitePopup {
+   overflow: hidden;
+   width: 720px;
+   .sw-popup-contentWrap {
+      // .flex-display;
+      > div {
+         width: 100%;
+      }
+      .sw-popup-content {
+         .flex-display;
+         .flex-direction(column);
+         width: 100%;
+         > div {
+            .flex-display;
+            width: 100%;
+         }
+         .social-sharing {
+            .flex-direction(column);
+            min-height: 200px;
+         }
+      }
+   }
+}
+
+.student-invite-block {
+   .flex-display();
+   .box-sizing;
+   .flex-direction(column);
+   // height: 100%;
+   width: 100%;
+   .search_input_holder {
+      .box-sizing;
+      position: relative;
+      min-height: 46px;
+      padding: 10px 20px;
+      background: #f2f2f2;
+      input {
+         line-height: 26px;
+         height: 26px;
+         padding-right: 30px;
+      }
+      i {
+         position: absolute;
+         top: 13px;
+         right: 25px;
+         width: 20px;
+         height: 20px;
+         cursor: pointer;
+      }
+   }
+   .invite-message {
+      font-size: 16px;
+      min-height: 18px;
+      padding: 20px 18px;
+      background-color: @c-white;
+   }
+   .students-list {
+      .box-sizing;
+      .flex-grow(1);
+      overflow: auto;
+      .students-list-wrapper {
+         overflow: auto;
+         height: 100%;
+         .students-list-item {
+            .flex-display();
+            padding: 20px;
+            border-bottom: 1px solid #e6e6e6;
+            div {
+               font-weight: 300;
+               &:nth-of-type(1) {
+                  min-width: 32px;
+                  i,
+                  img {
+                     @bg-size: 90% auto;
+                     @name: 'userpic.svg';
+                     .datauri_svg(@url_general, @name, @bg-size);
+                     display: block;
+                     overflow: hidden;
+                     width: 32px;
+                     height: 32px;
+                     text-indent: -900px;
+                     border-radius: 50%;
+                  }
+               }
+               &:nth-of-type(2) {
+                  .flex-grow(1);
+                  .box-sizing;
+                  font-size: 18px;
+                  line-height: 32px;
+                  padding: 0 10px;
+               }
+               &:nth-of-type(3) {
+                  .flex-display();
+                  font-size: 18px;
+                  width: 100px;
+                  min-width: 100px;
+                  min-height: 32px;
+                  span {
+                     .box-sizing;
+                     font-size: 18px;
+                     line-height: 30px;
+                     display: inline-block;
+                     width: 100px;
+                     height: 30px;
+                     margin: auto;
+                     cursor: pointer;
+                     &.notinvited {
+                        text-align: center;
+                        vertical-align: top;
+                        color: @c-lilac;
+                        border-radius: 3px;
+                        background: @c-white;
+                        box-shadow: inset 0 0 0 1px @c-lilac;
+                        &:hover {
+                           opacity: .8;
+                        }
+                     }
+                     &.invited {
+                        @name: 'ico_check.png';
+                        .box-sizing;
+                        .datauri(@url, @name);
+                        cursor: pointer;
+                        text-align: right;
+                        vertical-align: top;
+                        color: @c-lilac;
+                        border-radius: 3px;
+                        background-color: @c-white;
+                        background-position: 15px center;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+   .button-more {
+      padding: 10px 0;
+      text-align: center;
+      button {
+         font-size: 18px;
+         height: 30px;
+         color: @c-lilac;
+         border: 1px solid @c-lilac;
+         background: @c-white;
+         &:hover {
+            .transition(all .3s ease);
+            opacity: .8;
+         }
+      }
+   }
+}

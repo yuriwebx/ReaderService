@@ -1,0 +1,203 @@
+// @import '../base.less';
+
+// @url: 'images';
+// @url_general: '../../app/style/images/menu-icons';
+
+// .search-layout-searcher {
+//    height: 100%;
+//    .content-list {
+//       position: relative;
+//       height: 100%;
+//       .search-results-tree-wrapper {
+//          .search-results-tree {
+//             &:first-child {
+//                border-right: 1px solid #ccc;
+//                .tree-container {
+//                   padding: 0;
+//                }
+//             }
+//             .tree-container {
+//                overflow-x: hidden;
+//                overflow-y: auto;
+//                height: 100%;
+//                border-right: none;
+//                border-bottom: none;
+//                border-left: none;
+//                .tree-node {
+//                   position: relative;
+//                   -webkit-box-sizing: border-box;
+//                      -moz-box-sizing: border-box;
+//                           box-sizing: border-box;
+//                   // height: 56px;
+//                   // min-height: 56px;
+//                   padding: 8px 0;
+//                   cursor: pointer;
+//                   color: #333;
+//                   border-bottom: 2px solid #fff;
+//                   background: #eee;
+//                   &:last-of-type {
+//                      border-bottom: none;
+//                   }
+//                   > p {
+//                      > span {
+//                         display: block;
+//                         overflow: hidden;
+//                         height: 2.4em;
+//                         > span {
+//                            &:before {
+//                               font-weight: 300;
+//                               padding-right: .5em;
+//                               content: attr(paragraph);
+//                               opacity: .5;
+//                               html[dir='rtl'] &,
+//                               .dir-rtl & {
+//                                  padding-right: 0;
+//                                  padding-left: .5em;
+//                               }
+//                               html[dir='rtl'] .dir-ltr & {
+//                                  padding-right: .5em;
+//                                  padding-left: 0;
+//                               }
+//                            }
+//                         }
+//                      }
+//                   }
+//                   &.expanded {
+//                      height: auto;
+//                      > p {
+//                         > span {
+//                            font-size: 14px;
+//                            height: auto;
+//                            color: #333;
+//                            &:nth-of-type(1) {
+//                               font-size: 16px;
+//                               white-space: nowrap;
+//                               text-overflow: ellipsis;
+//                            }
+//                            &:nth-of-type(3) {
+//                               right: 19px;
+//                               left: auto;
+//                               width: auto;
+//                               text-align: right;
+//                               html[dir='rtl'] & {
+//                                  right: auto;
+//                                  left: 19px;
+//                               }
+//                               .dir-rtl& {
+//                                  right: 19px;
+//                                  left: auto;
+//                               }
+//                               &:before {
+//                                  content: '(';
+//                               }
+//                               &:after {
+//                                  content: ')';
+//                               }
+//                            }
+//                         }
+//                      }
+//                      &.current-item {
+//                         > p {
+//                            > span {
+//                               color: #000;
+//                            }
+//                         }
+//                      }
+//                   }
+//                   &.tree-sub-node {
+//                      border-bottom: 1px solid #ccc;
+//                      background: #fff;
+//                      &:first-of-type {
+//                         position: relative;
+//                         border-top: 1px solid #ccc;
+//                      }
+//                      &:last-of-type {
+//                         border-bottom: none;
+//                      }
+//                   }
+//                   &-container {
+//                      .clear;
+//                      margin-top: 20px;
+//                      padding: 0 20px;
+//                      &:first-child {
+//                         margin-top: 0;
+//                         padding: 3px 75px 0 20px;
+//                         html[dir='rtl'] & {
+//                            padding: 3px 20px 0 75px;
+//                         }
+//                         .dir-rtl& {
+//                            padding: 3px 75px 0 20px;
+//                         }
+//                         .tree-node {
+//                            &-image {
+//                               position: absolute;
+//                               top: 7px;
+//                               left: 8px;
+//                            }
+//                            &-expander {
+//                               position: absolute;
+//                               top: 15px;
+//                               right: 0;
+//                               width: 24px;
+//                               height: 24px;
+//                               content: '>';
+//                               cursor: pointer;
+//                               border: 1px solid red;
+//                            }
+//                         }
+//                      }
+//                   }
+//                }
+//             }
+//             &.extended-results-tree {
+//                .tree-container {
+//                   > .tree-node {
+//                      padding: 0;
+//                      border-bottom: 0;
+//                   }
+//                   .tree-node {
+//                      &:first-child {
+//                         border-top: none;
+//                      }
+//                      .tree-node-container {
+//                         &:first-child {
+//                            margin-top: 0;
+//                            padding: 0;
+//                         }
+//                         .i-openInReader {
+//                            .night-theme-template & {
+//                               @name: 'OpenInDaReader_night.svg';
+//                               .datauri_svg(@url_general, @name);
+//                               width: 45px;
+//                               height: 24px;
+//                            }
+//                            .sepia-theme-template & {
+//                               @name: 'OpenInDaReader_sepia.svg';
+//                               .datauri_svg(@url_general, @name);
+//                               width: 45px;
+//                               height: 24px;
+//                            }
+//                         }
+//                      }
+//                   }
+//                }
+//             }
+//          }
+//          &.one-column {
+//             .search-results-tree {
+//                width: 100%;
+//                border-right: none;
+//                .tree-container {
+//                   .tree-node {
+//                      &.expanded {
+//                         padding: 20px 0 0;
+//                         /*border-bottom: none;*/
+//                         background-color: transparent;
+//                      }
+//                   }
+//                }
+//             }
+//          }
+//       }
+//    }
+// }

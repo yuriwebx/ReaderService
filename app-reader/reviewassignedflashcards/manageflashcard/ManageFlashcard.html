@@ -1,0 +1,6 @@
+<div class="flash-card-btn" ng-show="params"
+	ng-click="saveFlashCard(term, params)"
+	ng-class="{'flash-card-exists': isInFlashcards(params), 'error' : errorSaving}">
+		<span ng-if="!isInFlashcards(params)" sw-localize="Flashcard.Add.label"></span>
+		<span ng-if="isInFlashcards(params)" sw-localize="Flashcard.In.label"></span>
+</div>

@@ -1,0 +1,248 @@
+@import '../base.less';
+@import 'ReaderToolbarThemeMixin.less';
+
+@url: '../images';
+@url_general: '../../../app/style/images/menu-icons';
+
+.sw-appToolbar {
+   .sw-appMenu {
+      .sw-appMenu_inner {
+         &.reader-toolbar-menu {
+            .clear;
+            &.left-side {
+               .flex-display();
+               @media @media-size-s-alt, @media-size-xs {
+                  display: none;
+               }
+            }
+            &.right-side {
+               .flex-display;
+               .justify-content(flex-end);
+            }
+         }
+         .icon-wrap {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 44px;
+            min-height: 1px;
+            cursor: pointer;
+
+            -webkit-tap-highlight-color: fade(@c-black, 0%);
+            @media @narrow {
+               width: 40px;
+            }
+            &.toggled {
+               @media @media-size-s-alt, @media-size-xs {
+                  display: none;
+               }
+            }
+            &.extras-bttn {
+               width: 44px;
+               .icon {
+                  width: 44px;
+               }
+               @media @media-size-s-alt, @media-size-xs {
+                  display: none;
+               }
+               // &:before {
+               //    position: absolute;
+               //    top: 5px;
+               //    bottom: 5px;
+               //    left: -10px;
+               //    width: 1px;
+               //    content: '';
+               //    background: fade(@c-white, 50%);
+               // }
+            }
+            &.txt-icon-wrap {
+               .box-sizing;
+               font-size: 1.385em;
+               line-height: 44px;
+               width: auto;
+               padding: 0 12px;
+               span {
+                  &:nth-of-type(1) {
+                     display: none;
+                  }
+                  &:nth-of-type(2) {
+                     .flex-display;
+                     height: 44px;
+                     i {
+                        display: block;
+                        margin: auto;
+                     }
+                  }
+               }
+            }
+            &.hidden {
+               display: none;
+            }
+            .button-counter {
+               font-size: 10px;
+               line-height: 15px;
+               position: absolute;
+               top: 5px;
+               right: 10px;
+               width: 16px;
+               height: 16px;
+               text-align: center;
+               color: @c-white;
+               border: 1px solid @c-white;
+               border-radius: 3px;
+               background: @c-orange;
+               box-shadow: 0 1px fade(@c-black, 30%);
+            }
+         }
+      }
+   }
+   .book-title-wrap {
+      .box-sizing;
+      .flex-grow(100);
+      .transition(all 2s ease);
+      font-size: 1.385em;
+      font-weight: normal;
+      line-height: 2.5em;
+      overflow: hidden;
+      height: 44px;
+      text-align: center;
+
+      -webkit-tap-highlight-color: fade(@c-black, 0%);
+      .app-reader:not(.web) & {
+         z-index: 1;
+         top: 20px;
+      }
+      span {
+         display: inline-block;
+         span {
+            pointer-events: none;
+         }
+      }
+      .book-title {
+         .box-sizing;
+         font-weight: 300;
+         line-height: 44px;
+         position: relative;
+         display: inline-block;
+         overflow: hidden;
+         max-width: 100%;
+         padding: 0 30px;
+         cursor: pointer;
+         text-align: center;
+         color: @c-white;
+         &:after {
+            font-family: 'FontAwesome';
+            font-size: .7em;
+            position: absolute;
+            top: 0;
+            right: 9px;
+            display: block;
+            width: 12px;
+            height: 41px;
+            content: '\f078';
+            cursor: pointer;
+         }
+         @media @narrow {
+            .author-name {
+               display: none;
+            }
+         }
+         .book-title-cont {
+            display: inline-block;
+            overflow: hidden;
+            max-width: 100%;
+            vertical-align: top;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+         }
+         .study-class-book-title-ico1 {
+            .icon_svg(@url_general, "studyproject.svg");
+            &.night {
+               .icon_svg(@url_general, "studyproject_night_active.svg");
+               background-size: 20px;
+            }
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            background-size: 20px;
+         }
+         .study-class-book-title-ico2 {
+            .icon_svg(@url_general, "book_inverted.svg");
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            background-size: 18px;
+         }
+      }
+   }
+}
+
+.sepia-theme-template {
+   .sw-appToolbar {
+      .sw-appMenu {
+         .sw-appMenu_inner {
+            &.reader-toolbar-menu {
+               @color-1: @c-white;
+               @name-svg-1: 'reading_settings_night.svg';
+               @name-svg-2: 'search_night.svg';
+               @bg-size-1: 20px auto;
+               @bg-size-2: 26px auto;
+               @bg-position-1: center;
+               .readerToolbar(@color-1, @name-svg-1, @name-svg-2, @bg-size-1, @bg-size-2, @bg-position-1);
+            }
+         }
+      }
+      &.toolbar-invisible {
+         .sw-appMenu {
+            .sw-appMenu_inner {
+               &.reader-toolbar-menu {
+                  @color-1: @c-white;
+                  @name-svg-1: 'reading_settings_night.svg';
+                  @name-svg-2: 'search_sepia_inverted.svg';
+                  @bg-size-1: 20px auto;
+                  @bg-size-2: 26px auto;
+                  @bg-position-1: center;
+                  .readerToolbar(@color-1, @name-svg-1, @name-svg-2, @bg-size-1, @bg-size-2, @bg-position-1);
+               }
+            }
+         }
+      }
+   }
+}
+
+.night-theme-template {
+   .sw-appToolbar {
+      .sw-appMenu {
+         .sw-appMenu_inner {
+            &.reader-toolbar-menu {
+               @color-1: @c-white;
+               @name-svg-1: 'reading_settings_night.svg';
+               @name-svg-2: 'search_night.svg';
+               @bg-size-1: 20px auto;
+               @bg-size-2: 26px auto;
+               @bg-position-1: center;
+               .readerToolbar(@color-1, @name-svg-1, @name-svg-2, @bg-size-1, @bg-size-2, @bg-position-1);
+            }
+         }
+      }
+      &.toolbar-invisible {
+         .sw-appMenu {
+            .sw-appMenu_inner {
+               &.reader-toolbar-menu {
+                  @color-1: @c-white;
+                  @name-svg-1: 'reading_settings_night.svg';
+                  @name-svg-2: 'search_night_inverted.svg';
+                  @bg-size-1: 20px auto;
+                  @bg-size-2: 26px auto;
+                  @bg-position-1: center;
+                  .readerToolbar(@color-1, @name-svg-1, @name-svg-2, @bg-size-1, @bg-size-2, @bg-position-1);
+               }
+            }
+         }
+      }
+   }
+}
+
+@import 'ReaderToolbar.dif.less';

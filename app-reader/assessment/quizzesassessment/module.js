@@ -1,0 +1,1 @@
+define(['./QuizzesAssessmentService'], function(){});

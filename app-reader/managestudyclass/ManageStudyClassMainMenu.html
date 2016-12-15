@@ -1,0 +1,7 @@
+<div>
+   <ul class="classroom-list">
+      <li ng-click="goToItem(key)" ng-repeat="(key, val) in menuItems" ng-class="{'active': key === activeMenuItem}">
+        <i class="i-{{val}}"></i><span sw-localize="{{val}}"></span>
+      </li>
+   </ul>
+</div>

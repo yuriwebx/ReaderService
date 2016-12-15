@@ -1,0 +1,113 @@
+<div class="book-info-wrap" ng-form="form">
+
+   <div class="study-guide-block" ng-if="publicationInfo.book">
+      <div class="study-guide-title" ng-if="isAuthorInTitle(publicationInfo.book)" dir="auto"><span class="txt-info" ng-bind="::publicationInfo.book.name"></span></div>
+      <div class="study-guide-title" ng-if="!isAuthorInTitle(publicationInfo.book)" ng-class="{'title-in-two-line' : !isAuthorInTitle(publicationInfo.book)}" dir="auto"><span class="txt-info" ng-bind="::publicationInfo.book.name"></span></div>
+      <div class="sw-appMenuContent study-guide-body">
+         <div class="book-cover" ng-if="bookThumbnailUrl">
+            <img alt="" data-ng-src="{{bookThumbnailUrl}}"/>
+            <i class="shadow-gen"></i>
+         </div>
+         <div class= "study-guide-info">
+            <div class="book-name-block">
+               <p dir="auto"><span class="txt-info" ng-if="isAuthorInTitle(publicationInfo.book)" ng-bind="::publicationInfo.book.author"></span></p>
+            </div>
+            <p class="book-category" ng-bind="::publicationInfo.book.category"></p>
+            <p>Readers Online: <span ng-bind="readersOnlineCount"></span></p>
+            <p class="book-stats">
+               <span>Time:</span> <span data-ng-show="!isEditor()">{{publicationInfo.book.readingDuration | TimeDurationFilter}}/</span><span class="bolded" ng-bind="publicationInfo.book.readingTime | TimeDurationFilter"></span><span ng-if="::showDifficulty">,
+               <span>difficulty:</span> <span class="bolded" ng-bind="publicationInfo.book.difficulty"></span></span>
+            </p>
+            <sw-downloader download-info="publicationInfo.book" ng-if="::(!isEditor() && isDownloadAvailable())"></sw-downloader>
+            <sw-study-progress progress="publicationInfo.book.readingProgress" data-ng-if="!isEditor()" numbercircls="5"></sw-study-progress>
+            <p ng-if="isStudyGuide(publicationInfo)">Based on
+               <span ng-bind="::publicationInfo.studyGuide.name"></span>
+            </p>
+         </div>
+         <sw-editable-description edit-data="{name : '',description : ''}" item="{description : publicationInfo.book.description, index : 0}"></sw-editable-description>
+      </div>
+   </div>
+
+   <div class="study-guide-block" data-ng-show="isStudyGuide(publicationInfo) && isEditor()">
+      <div class="study-guide-block-title-wraper">
+         <div>
+            <sw-manage-edit-field configfunction="editConfig"></sw-manage-edit-field>
+         </div>
+         <div class="study-guide-title">
+            <span class="error-message" sw-error-for-name="'name'"></span>
+            <div ng-if="showEditFields()">
+               <sw-autogrowtextarea name="name" sw-validate="validateTitle()"
+                                    data-ng-model="editData.name" ng-style='{{textarea}}'>
+               </sw-autogrowtextarea>
+            </div>
+            <span class="txt-info" data-ng-if="!showEditFields()" dir="auto" ng-bind="publicationInfo.studyGuide.name"></span>
+         </div>
+      </div>
+      <div class="sw-appMenuContent study-guide-body">
+         <div class="book-cover">
+            <span class="study-guide-cover"></span>
+         </div>
+         <div class="study-guide-info">
+            <div class="book-name-block">
+               <p>Author(s): <span data-ng-if="!showEditFields()" ng-repeat="editor in extrasApi.editors" class="txt-info" dir="auto">
+               <span ng-bind-template="{{::editor.user.firstName}} {{::editor.user.lastName}}"></span></span></p>
+               <div class="authors-list" data-ng-if="showEditFields()">
+                  <ul>
+                     <li ng-repeat="editor in extrasApi.editors">
+                        <span ng-bind-template="{{::editor.user.firstName}} {{::editor.user.lastName}}"></span>
+                        <span ng-if="isRemoveEditorAllowed(editor)" ng-click="deactivateEditor(editor)">X</span>
+                     </li>
+                  </ul>
+                  <i ng-if="editMode" ng-click="searchEditors($event)">Add Author</i>
+               </div>
+            </div>
+            <p class="book-category">&nbsp;</p>
+            <p class="book-stats">
+               <span>Time: </span>
+               <span class="bolded" ng-bind="publicationInfo.studyGuide.readingTime | TimeDurationFilter"></span>
+            </p>
+            <p class="book-ext-stats">
+               <span>Exercises: <span class="bolded" ng-bind="publicationInfo.studyGuide.exercises"></span></span>
+               <span>Notes: <span class="bolded" ng-bind="publicationInfo.studyGuide.notes"></span></span>
+               <span>Paragraph summary: <span data-ng-class="{'paragraph-summary-on': publicationInfo.studyGuide.paragraphSummary}"></span></span>
+            </p>
+            <p class="book-editors-online" ng-show="editorsOnline.length">Editors online:
+               <span ng-repeat="editor in editorsOnline"><span ng-bind-template="{{editor.firstName}}&nbsp;{{editor.lastName}}"></span></span>
+            </p>
+            <sw-study-progress progress="publicationInfo.studyGuide.readingProgress" data-ng-if="!isEditor()" numbercircls="5"></sw-study-progress>
+         </div>
+         <sw-editable-description edit-data="editData" item="{description : publicationInfo.studyGuide.description, index : 1}" show-property="property" is-edit-mode="editMode"></sw-editable-description>
+
+      </div>
+   </div>
+
+   <div class="switch-book-notes-block" ng-if="publicationInfo.relatedStudyGuides.length && !isEditor() && !extrasApi.isFromClassEntered">
+      <div class="switch-book-notes-block-title" ng-click="toggleRelated()" ng-class="{'dropped': !relatedVisible}">
+         <p>Book Notes</p>
+         <i></i>
+      </div>
+      <div class="switch-book-notes-block-list" ng-show="relatedVisible">
+         <sw-manage-book-info publication="publicationInfo" view-config="bookInfoViewConfig"></sw-manage-book-info>
+      </div>
+   </div>
+
+   <div class="table-of-contents-block" ng-if="!isTableOfContentsEmpty(publication.tableOfContents)">
+      <div class="info-title" data-ng-click="showContent()" data-ng-class="{'dropped': isOpenedContent()}" sw-localize="BookInfo.content.label"></div>
+      <div class="toc-body" data-ng-show="isOpenedContent()">
+            <ol>
+               <li data-ng-repeat="item in publication.tableOfContents"
+                  data-ng-click="onTocItemClicked(item)"
+                  data-ng-class="{active: checkForCurrentChapter(item, $index)}">
+                  <span dir="auto" ng-bind="::item.text"></span>
+               </li>
+            </ol>
+      </div>
+   </div>
+
+</div>
+
+
+
+
+
+

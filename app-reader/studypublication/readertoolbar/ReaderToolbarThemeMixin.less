@@ -1,0 +1,17 @@
+.readerToolbar(@color-1, @name-svg-1, @name-svg-2, @bg-size-1, @bg-size-2, @bg-position-1) {
+   .i-SettingsReadMode {
+      .datauri_svg(@url, @name-svg-1, @bg-size-1, @bg-position-1);
+   }
+
+   .i-SearchReadMode {
+      .datauri_svg(@url_general, @name-svg-2, @bg-size-2, @bg-position-1);
+   }
+
+   .i-LibraryReadMode {
+      color: @color-1;
+   }
+
+   .i-CollectionsReadMode {
+      color: @color-1;
+   }
+}

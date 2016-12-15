@@ -1,0 +1,31 @@
+<div class="manage-study-class-layout" sw-body-class="manage-study-class-full-height">
+   <div class="manage-study-class-layout-toolbar" sw-sticky>
+      <div class="manage-study-class-filter">
+         <div class="bttns-block">
+            <div class="manage-study-class-social-menu-wide" sw-compile="settingsMenuTemplate"></div>
+            <div class="manage-study-class-social-menu-narrow"
+            ng-show="showSettingsMenu()"
+            ng-click="toggleSettingsMenu($event)">Settings</div>
+         </div>
+      </div>
+      <div class="manage-study-class-main-menu-wide" sw-compile="mainMenuTemplate"></div>
+      <div class="manage-study-class-main-menu-narrow" ng-click="toggleMainMenu($event)"
+           ><i class="i-{{activeMenuItem}}"></i><span ng-bind="getLabel(menuItems[activeMenuItem])"></span></div>
+   </div>
+   <div class="manage-study-class-layout-content" data-ng-if="swSubmachine.state('Classroom')">
+      <sw-classroom study-class-info="studyClassInfo"
+                    is-teacher="isTeacher" test="test" students-api="studentsApi"></sw-classroom>
+   </div>
+   <div class="manage-study-class-layout-content" data-ng-if="swSubmachine.state('StudentsProgress')"
+        sw-custom-scroll="{options: {height: '100%'}}">
+      <sw-students-progress class-id="courseApi.classId" is-teacher="isTeacher"></sw-students-progress>
+   </div>
+   <div class="manage-study-class-layout-content" data-ng-if="swSubmachine.state('Membership')">
+      <sw-membership sw-custom-scroll="{options: {height: '100%'}}" students-api="studentsApi"
+                     class-id="courseApi.classId" study-class-info="studyClassInfo"></sw-membership>
+   </div>
+   <div class="manage-study-class-layout-content" data-ng-if="swSubmachine.state('ManageClassDiscussion')">
+      <sw-manage-class-discussion study-class="studyClassInfo" is-teacher="isTeacher" discussions="discussionsApi.discussions"
+                                  ng-class="{'disabled': !studyClassInfo.class.allowDiscussions}" course-api="courseApi"></sw-manage-class-discussion>
+   </div>
+</div>

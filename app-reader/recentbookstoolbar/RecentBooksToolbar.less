@@ -1,0 +1,71 @@
+@import '../base';
+
+@url_general: '../../app/style/images/menu-icons';
+
+
+.recent-books-toolbar {
+   height: 230px;
+   position: fixed;
+   top: 88px;
+   clear: both;
+   width: 100%;
+   z-index: 1;
+   .app-reader:not(.web) &,
+   .app-editor:not(.web) &{
+      top: 108px;
+   }
+   .sw-carousel-wrapper {
+      position: static;
+      .sw-carousel-control-next, .sw-carousel-control-prev {
+         background: none;
+         &:hover{
+            background: rgba(81, 99, 155, 0.8);
+         }
+      }
+      .sw-carousel-items .recent-book-item {
+         box-shadow: none;
+      }
+   }
+   .recent-book-item {
+      background-color: #FFFFFF;
+      padding: 1em 1.5em;
+      float: left;
+      cursor: pointer;
+      box-shadow: none;
+      &:hover {
+         background: #d2dae6;
+      }
+      &:active {
+         background: #fff;
+      }
+      .study-course-cover {
+         @bg-size: 100% auto;
+         @name: 'studycourse_cover152x200.png';
+         .datauri(@url_general, @name, @bg-size);
+         display: block;
+         width: 135px;
+         height: 184px;
+      }
+   }
+   .sw-application-scroll-top-off & {
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease-out, z-index 1s;
+   }
+   .sw-application-scroll-top-on & {
+      transition: opacity 0.4s ease-out 0.3s, z-index 0.3s, height ease-out 0.1s;
+      opacity: 1;
+      z-index: 1;
+   }
+}
+
+.sw-application-scroll-top-off .hide-element {
+   height: 0;
+}
+
+.hide-element {
+   transition: height ease-out 0.1s;
+   height: 230px;
+}
+
+@import 'RecentBooksToolbar.dif.less';

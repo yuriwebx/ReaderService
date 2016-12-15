@@ -1,0 +1,50 @@
+<div class="membership-block">
+
+   <h4 ng-if="!swUtil.isEmpty(studentsApi.userRequests)"
+       ng-click="toggleBlockVisibility()">User Requests</h4>
+
+   <div class="user-requests" ng-if="isUserRequestsVisible">
+      <div class="user-requests-item" ng-repeat="request in studentsApi.userRequests | orderBy : '-registeredAt'">
+         <div class="student-pic"><i></i></div>
+         <div>
+            <span ng-bind="request.firstName"></span>
+            <span ng-bind="request.lastName"></span>
+         </div>
+         <div>
+            <span class="online" ng-show="request.isOnline">Online</span>
+            <span class="offline" ng-show="!request.isOnline" ng-bind="request.lastOnline"></span>
+         </div>
+         <div><span ng-if="!isCurrentUser(request)" ng-click="sendMessage(request)">Send Message</span></div>
+         <div><span ng-click="acceptRequest(request)">Accept</span></div>
+         <div><span ng-click="declineRequest(request)">Decline</span></div>
+      </div>
+   </div>
+
+   <h4 ng-show="!swUtil.isEmpty(studentsApi.classMembers)">Course Members</h4>
+
+   <div class="class-students">
+      <div class="class-students-item" ng-repeat="student in studentsApi.classMembers | orderBy:'isTeacher':true">
+         <div class="student-pic">
+            <i ng-if="!student.photo"></i>
+            <img ng-src="{{student.photoLink}}" ng-if="student.photo"/>
+         </div>
+         <div>
+            <div class="name-stats">
+               <div>
+                  <span>
+                     <span ng-bind="student.firstName"></span>
+                     <span ng-bind="student.lastName"></span>
+                  </span>
+                  <span ng-show="student.isTeacher">Teacher</span>
+               </div>
+               <div>
+                  <span class="online" ng-if="student.isOnline">Online</span>
+                  <span class="offline" ng-if="!student.isOnline" ng-bind="student.lastOnline"></span>
+               </div>
+            </div>
+         </div>
+         <div><span ng-if="!isCurrentUser(student)" ng-click="sendMessage(student)">Send Message</span></div>
+         <div><span ng-if="isRemoveAllowed(student)" ng-click="removeUser(student)">Remove user</span></div>
+      </div>
+   </div>
+</div>

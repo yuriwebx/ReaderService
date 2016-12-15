@@ -1,0 +1,380 @@
+@import '../base.less';
+
+@url: 'images';
+
+@url_general: '../../app/style/images/menu-icons';
+.current-item {
+   color: red;
+}
+
+.dictionary-layout {
+   position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   height: 100%;
+   .reflowable-column-layout {
+      /*border-top: 1px solid @c-orangedark1;*/
+      .flex-display();
+      position: relative;
+      height: 100%;
+      .column-1,
+      .column-2 {
+         .box-sizing;
+         .flex-display();
+         position: relative;
+         overflow: hidden;
+         min-width: 320px;
+         height: 100%;
+      }
+      .column-2 {
+         .flex-grow(@grow: 1);
+         width: 10%;
+      }
+      .column {
+         &:first-child {
+            .box-sizing;
+            position: relative;
+            overflow: visible;
+            height: 100%;
+            padding-top: 44px;
+            box-shadow: 2px 0 @c-lilac;
+            .app-reader:not(.web) & {
+               padding-top: 64px;
+            }
+            > div {
+               width: 100%;
+            }
+         }
+         &:last-child {
+            right: 0;
+            overflow: hidden;
+            background: transparent;
+         }
+         .search-criteria-block {
+            .box-sizing;
+            height: 52px;
+            box-shadow: inset 0 -1px fade(@c-black, 20%);
+            &:after {
+               background: transparent;
+            }
+            input {
+               height: 52px;
+               padding-left: 60px;
+               border: none!important;
+               background: transparent;
+            }
+            .search_input_holder {
+               .search_icon {
+                  z-index: 2;
+                  top: 15px;
+                  left: 18px !important;
+                  width: 24px;
+                  height: 24px;
+                  background-image: data-uri('image/svg+xml;base64', '../../app/style/images/menu-icons/search_inverted.svg');
+                  background-repeat: no-repeat;
+                  background-position: 0;
+                  background-size: 100%;
+               }
+               .i-ClearInputCross {
+                  top: 50%;
+                  right: 15px;
+                  margin-top: -6px;
+                  &:after {
+                     display: none;
+                  }
+               }
+            }
+         }
+         .no-result {
+            font-size: 1.2em;
+            display: block;
+            padding: 10px;
+         }
+         div.words-list-wrapper {
+            position: absolute;
+            top: 96px;
+            bottom: 0;
+            overflow: auto;
+            width: 100%;
+            ul.words-list {
+               overflow: auto;
+               width: 100%;
+               height: 100%;
+               .app-reader:not(.web) & {
+                  top: 116px;
+               }
+               /*margin-top: 44px;*/
+               @media @narrow, @normal {
+                  /*margin-top: 64px;*/
+               }
+               li {
+                  position: relative;
+                  display: table;
+                  width: 100%;
+                  min-height: 44px;
+                  cursor: pointer;
+                  background: @c-orangelight7;
+                  box-shadow: inset 0 -1px @c-orangelight6;
+                  &:hover {
+                     text-decoration: none;
+                     background: @c-yellowlight1;
+                  }
+                  &:after {
+                     position: absolute;
+                     z-index: 1;
+                     bottom: 0;
+                     left: 0;
+                     width: 20px;
+                     height: 1px;
+                     content: '';
+                     background: @c-orangelight7;
+                  }
+                  &.letter-item {
+                     font-size: 1.231em;
+                     font-weight: 700;
+                     line-height: 2.308em;
+                     height: 30px;
+                     min-height: 30px;
+                     padding: 0 20px;
+                  }
+                  a,
+                  span,
+                  i {
+                     display: table-cell;
+                     vertical-align: middle;
+                  }
+                  a {
+                     font-size: 1.231em;
+                     padding: 20px;
+                     text-decoration: none;
+                     color: @c-black;
+                  }
+                  i {
+                     width: 40px;
+                     height: 44px;
+                     &.checked {
+                        @name: 'ico_check.png';
+                        .datauri(@url, @name);
+                     }
+                  }
+                  span {
+                     font-size: 1.077em;
+                     min-width: 40px;
+                     padding: 0 10px;
+                     text-align: right;
+                     color: fade(@c-black, 50%);
+                  }
+               }
+            }
+         }
+         ul.words-descriptions-list {
+            position: absolute;
+            top: 44px;
+            bottom: 0;
+            width: 100%;
+            .app-reader:not(.web) & {
+               top: 64px;
+            }
+            li {
+               box-shadow: inset 0 1px @c-orangelight6;
+               .word-description-block-title {
+                  .flex-display();
+                  .justify-content(space-between);
+                  .align-items(center);
+                  width: 100%;
+                  .title-word-item,
+                  .title-word-dictionary {
+                     height: 60px;
+                     min-height: 60px;
+                     padding: 0 20px;
+                     vertical-align: middle;
+                     p {
+                        .flex-display();
+                        .align-items(center);
+                        height: 100%;
+                        padding: 0;
+                     }
+                  }
+                  .title-word-item {
+                     font-size: 1.538em;
+                  }
+                  .title-word-dictionary {
+                     font-size: 1.231em;
+                     text-align: right;
+                     opacity: .6;
+                  }
+                  .flash-card-btn {
+                     .box-sizing;
+                     font-size: 1.231em;
+                     position: relative;
+                     width: 155px;
+                     min-width: 155px;
+                     padding: 5px 20px;
+                     padding-left: 35px;
+                     cursor: pointer;
+                     text-align: center;
+                     color: @c-lilac;
+                     background: transparent;
+                     &.flash-card-exists {
+                        position: relative;
+                        cursor: default;
+                        color: @c-orange;
+                        background: transparent;
+                        &:after {
+                           @bg-size: 65%;
+                           @name: 'tick_red.png';
+                           .datauri(@url_general, @name, @bg-size);
+                           position: absolute;
+                           top: 0;
+                           left: 0;
+                           display: block;
+                           width: 43px;
+                           height: 28px;
+                           content: '';
+                        }
+                     }
+                  }
+               }
+               .description-block {
+                  font-family: Georgia, sans-serif;
+                  font-size: 1.077em;
+                  line-height: 1.615em;
+                  margin: 0 0 0 20px;
+                  padding: 20px 20px 20px 0;
+                  box-shadow: inset 0 1px @c-orangelight6;
+                  .dictionary-category {
+                     font-family: Verdana, sans-serif;
+                     font-size: 1.231em;
+                     position: relative;
+                     display: block;
+                     padding-right: 30px;
+                     cursor: pointer;
+                     -webkit-user-select: none;
+                        -moz-user-select: none;
+                         -ms-user-select: none;
+                             user-select: none;
+                     color: @c-orangedeep3;
+
+                          -o-user-select: none;
+                     &.no-drop {
+                        &:after {
+                           display: none;
+                        }
+                     }
+                     &:after {
+                        @bg-size: 100% auto;
+                        @name: 'arrow_orange.svg';
+                        .datauri_svg(@url_general, @name, @bg-size);
+                        .transform(rotate(-90deg));
+                        position: absolute;
+                        top: 7px;
+                        right: 0;
+                        width: 17px;
+                        height: 17px;
+                        content: '';
+                     }
+                  }
+                  .current-item {
+                     .dictionary-category {
+                        color: @c-lilac;
+                        &:after {
+                           @bg-size: 100% auto;
+                           @name: 'arrow_lilac.svg';
+                           .datauri_svg(@url_general, @name, @bg-size);
+                           .transform(rotate(90deg));
+                           position: absolute;
+                           content: '';
+                        }
+                     }
+                  }
+               }
+               p {
+                  padding: .4em 0;
+               }
+               .dictionary-note-block {
+                  padding-left: 2em;
+                  color: @c-dusty-gray;
+               }
+               .dictionary-quote {
+                  padding: .4em 0 .4em 2em;
+               }
+               ol {
+                  li {
+                     box-shadow: none;
+                  }
+                  &.definitions_examples_list {
+                     counter-reset: list-parrent;
+                     & > li {
+                        & > ol {
+                           & > li {
+                              &:first-child {
+                                 &:before {
+                                    content: counter(list-parrent, decimal) '. ';
+                                    counter-increment: list-parrent;
+                                 }
+                              }
+                              ol {
+                                 &.dictionary-list-fst-level {
+                                    padding: .4em 0 .4em 0;
+                                    color: @c-gray;
+                                    & > li {
+                                       &:first-child {
+                                          &:before {
+                                             content: '- ';
+                                          }
+                                       }
+                                       ol {
+                                          &.dictionary-list-snd-level {
+                                             counter-reset: list-child;
+                                             /*color: @c-gray;*/
+                                             li {
+                                                padding-left: 2em;
+                                                &:before {
+                                                   content: ' (' counter(list-child, lower-alpha) ') ';
+                                                   counter-increment: list-child;
+                                                   color: @c-orangedeep3;
+                                                }
+                                             }
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+// Only Web Styles
+.web {
+   ul.words-list {
+      @media @narrow, @normal {
+         /*margin-top: 44px;*/
+      }
+   }
+}
+/*
+.flash-card-btn {
+   background: fade(@c-red, 50%);
+   text-align: center;
+   cursor: pointer;
+   position: relative;
+   padding: 5px 20px;
+   color: @c-white;
+   min-width: 120px;
+   width: 120px;
+   .box-sizing;
+
+   &.flash-card-exists {
+      background: @c-green1;
+   }
+}
+*/

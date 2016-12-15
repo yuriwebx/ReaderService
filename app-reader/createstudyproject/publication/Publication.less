@@ -1,0 +1,297 @@
+@import '../base';
+
+@url_general: '../../../app/style/images/menu-icons';
+@media-study-with: ~"all and (max-width: 1024px)";
+
+.study-project-publication {
+   .box-sizing;
+   .flex-display;
+   .flex-direction(column);
+   width: 100%;
+   height: 100%;
+   padding-bottom: 10px;
+   h2 {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 50px;
+      padding-top: 10px;
+      text-align: center;
+   }
+   .study-project-publication-content {
+      .flex-display;
+      .box-sizing;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 10px 30px;
+      @media @narrow {
+         padding: 10px;
+      }
+      > div {
+         .box-sizing;
+         .flex-display;
+         .flex-direction(column);
+         width: 48%;
+         min-width: 48%;
+         &.publication-list {
+            padding-right: 5px;
+            cursor: pointer;
+            .publication-filter {
+               input {
+                  .box-sizing;
+                  font-size: 14px;
+                  font-weight: 300;
+                  width: 100%;
+                  height: 30px;
+                  padding: 0 10px;
+                  border: 1px solid #ccc;
+                  border-radius: 2px;
+                  .sw-popup-content & {
+                     &.sw-focus {
+                        border: 1px solid @c-lilac!important;
+                        box-shadow: 0 1px 7px @c-lilac!important;
+                     }
+                  }
+               }
+               .publication-filter-title {
+                  .flex-display;
+                  .justify-content(space-between);
+                  .box-sizing;
+                  font-size: 16px;
+                  line-height: 28px;
+                  border-bottom: 1px solid #e6e6e6;
+                  > span {
+                     &.back-button {
+                        min-width: 70px;
+                        cursor: pointer;
+                        text-align: left;
+                        color: @c-lilac;
+                        i {
+                           @bg-size: 12px auto;
+                           @name: 'arrow_lilac.svg';
+                           .datauri(@url_general, @name, @bg-size);
+                           .transform(rotate(180deg));
+                           display: inline-block;
+                           width: 14px;
+                           height: 29px;
+                           vertical-align: middle;
+                           background-position: right center;
+                        }
+                     }
+                     &.book-label {
+                        .flex-grow(1);
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                     }
+                     &.dummy-span {
+                        min-width: 70px;
+                     }
+                  }
+               }
+            }
+            ul {
+               .flex-grow(1);
+               overflow: auto;
+               li {
+                  &.active {
+                     background: @c-yellowlight2;
+                  }
+                  .publication-item {
+                     line-height: 16px;
+                     position: relative;
+                     min-height: 60px;
+                     margin-left: 55px;
+                     border-bottom: 1px solid #e6e6e6;
+                     // &.active{
+                     //    background: @c-yellowlight2;
+                     // }
+                     img {
+                        position: absolute;
+                        top: 3px;
+                        left: -55px;
+                        width: 40px;
+                        height: 54.19px;
+                        &:before {
+                           content: "";
+                           display: block;
+                           position: absolute;
+                           top: 0;
+                           left: 0;
+                           height: 100%;
+                           width: 100%;
+                           background-image: data-uri('image/png;base64', '../../../app/style/images/menu-icons/emptybookcoverr.png');
+                           background-size: 100%;
+                        }
+                     }
+                     i {
+                        &.collection-cover,
+                        &.study-course-cover {
+                           @bg-size: 100% auto;
+                           @name: 'studycourse_cover73x97.png';
+                           .datauri(@url_general, @name, @bg-size);
+                           position: absolute;
+                           top: 3px;
+                           left: -55px;
+                           display: block;
+                           width: 40px;
+                           height: 54px;
+                        }
+                        &.collection-cover {
+                           @bg-size: 100% auto;
+                           @name: 'collection_cover73x97.png';
+                           .datauri(@url_general, @name, @bg-size);
+                        }
+                     }
+                     .pub-name {
+                        font-size: 16px;
+                        line-height: normal;
+                        overflow: hidden;
+                        padding-top: 5px;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        &.title-in-two-line {
+                           height: 36px;
+                           white-space: normal;
+                        }
+                     }
+                     .pub-author {
+                        min-height: 16px;
+                        font-size: 14px;
+                        font-weight: 300;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                     }
+                     .pub-stats {
+                        font-size: 14px;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        > span {
+                           > span {
+                              font-weight: 300;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+         &.study-project {
+            padding-left: 20px;
+            @media @narrow{
+               padding-left: 5px;
+            }
+            .study-project-item {
+               .study-project-item-top {
+                  .box-sizing;
+                  .flex-display;
+                  padding-bottom: 10px;
+                  @media @media-study-with{
+                     display: block;
+                  }
+                  .pic-block {
+                     min-width: 115px;
+                     @media @narrow{
+                        min-width: 85px;
+                     }
+                     img {
+                        width: 100px;
+                        position: relative;
+                        @media @narrow{
+                           width: 80px;
+                        }
+                        &:before {
+                           position: absolute;
+                           top: 0;
+                           left: 0;
+                           display: block;
+                           width: 100%;
+                           height: 100%;
+                           content: '';
+                           background: data-uri('image/png;base64', '../../../app/style/images/menu-icons/emptybookcoverr.png') no-repeat;
+                           background-size: 100%;
+                        }
+                     }
+                     i {
+                        &.study-course-cover {
+                           @bg-size: 100% auto;
+                           @name: 'studycourse_cover152x200.png';
+                           .datauri(@url_general, @name, @bg-size, @bg-position: top);
+                           display: block;
+                           width: 100px;
+                           height: 135px;
+                        }
+                     }
+                  }
+                  .stat-block {
+                     .flex-grow(1);
+                     overflow: hidden;
+                     > div {
+                        line-height: 27px;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        &.publication-title {
+                           font-size: 18px;
+                        }
+                        &.author-name {
+                           font-size: 16px;
+                           font-weight: 300;
+                           span {
+                              font-weight: 400;
+                           }
+                        }
+                        &.publication-type {
+                           font-size: 16px;
+                        }
+                        &.publication-stats {
+                           font-size: 16px;
+                           span {
+                              &:first-of-type {
+                                 font-weight: 300;
+                              }
+                              &:last-of-type {
+                                 padding: 2px 5px;
+                                 color: @c-white;
+                                 border-radius: 2px;
+                                 background: #00a888;
+                                 @media @narrow{
+                                    padding: 1px 4px;
+                                    font-size: 14px;
+
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+               .description {
+                  font-size: 16px;
+                  font-weight: 300;
+                  line-height: 22px;
+                  padding-right: 10px;
+               }
+            }
+         }
+      }
+      .sw-custom-scroll {
+         .box-sizing;
+         position: absolute;
+         top: 45px;
+         bottom: 0;
+         overflow: auto;
+         width: 100%;
+         padding-right: 5px;
+         padding-bottom: 20px;
+      }
+   }
+   .course-total-time {
+      font-size: 16px;
+      padding: 15px 0;
+      background: @c-white;
+   }
+}

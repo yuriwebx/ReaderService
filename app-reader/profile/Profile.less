@@ -1,0 +1,52 @@
+@import '../base.less';
+
+@url: 'images';
+
+.user-profile {
+	padding: 20px;
+	.clear;
+
+	.user-pic-block {
+		float: left;
+		margin: 0 20px 0 0;
+
+		.pic {
+			width: 180px;
+			height: 220px;
+			border-radius: 9px;
+			@name: 'user_cap.png';
+			.datauri(@url, @name);
+         margin: 0 0 20px;
+		}
+	}
+
+	.user-info {
+		float: left;
+
+		.lbl {
+			font-size: 1.4em;
+			color: @c-black;
+         margin: 0 10px 0 0;
+		}
+
+		.field {
+         margin: 0 0 16px;
+		}
+	}
+
+	.button {
+		padding: 11px 23px;
+		border-radius: 5px;
+		background: @c-lilac;
+		font-size: 1.2em;
+		color: @c-white;
+		text-align: center;
+		cursor: pointer;
+	}
+
+   .confirmation-message {
+      font-size: 1em;
+      color: @c-lilac;
+      text-align: center;
+   }
+}

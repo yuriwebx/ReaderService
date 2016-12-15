@@ -1,0 +1,169 @@
+@import '../base';
+
+@url: 'images';
+
+@url_general: '../../../app/style/images/menu-icons';
+
+.lookup-popup {
+   width: 480px;
+}
+
+.dictionary-popup {
+   width: 480px;
+   padding: 20px 0;
+   li {
+      .dictionary-title {
+         font-size: 1.077em;
+         line-height: 43px;
+         height: 43px;
+         padding: 0 20px;
+         opacity: .6;
+      }
+      .dictionary-phrase {
+         .flex-display();
+         .box-sizing;
+         .justify-content(space-between);
+         font-size: 22px;
+         line-height: 43px;
+         overflow: hidden;
+         height: 43px;
+         padding: 0 20px;
+         text-align: left;
+         text-overflow: ellipsis;
+         opacity: .8;
+         color: @c-black;
+         border-top: 1px solid @c-gray-orange;
+         border-bottom: 1px solid @c-gray-orange;
+         &.no-found {
+            margin-top: 20px;
+         }
+         b {
+            text-transform: capitalize;
+            &:first-letter {
+               font-size: 28px;
+               color: red;
+            }
+         }
+         p {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+         }
+         .flash-card-btn {
+            font-size: 16px;
+            position: relative;
+            float: right;
+            min-width: 135px;
+            padding: 0;
+            cursor: pointer;
+            text-align: right;
+            white-space: nowrap;
+            color: @c-lilac;
+            &.flash-card-exists {
+               cursor: default;
+               color: @c-orange;
+               &:after {
+                  @bg-size: 65%;
+                  @name: 'tick_red.png';
+                  .datauri(@url_general, @name, @bg-size);
+                  position: absolute;
+                  top: 7px;
+                  left: 0;
+                  display: block;
+                  width: 43px;
+                  height: 28px;
+                  content: '';
+               }
+            }
+            &:hover {
+               .transition(all .3s ease);
+               opacity: .8;
+            }
+         }
+      }
+      .dictionary-content {
+         font-family: Georgia, sans-serif;
+         font-size: 16px;
+         line-height: 24px;
+         padding: 0 20px;
+         color: @c-black;
+         p {
+            padding: .4em 0;
+         }
+         .dictionary-category {
+            font-family: Verdana, sans-serif;
+            font-size: 1.231em;
+            position: relative;
+            display: block;
+            padding-right: 30px;
+            cursor: pointer;
+            -webkit-user-select: none;
+               -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+            color: @c-orangedeep3;
+            border-top: 1px solid @c-gray-orange;
+
+                 -o-user-select: none;
+            &:after {
+               font-family: 'FontAwesome';
+               position: absolute;
+               top: 7px;
+               right: 0;
+               width: 17px;
+               height: 17px;
+               content: '\f077';
+               color: @c-orangedeep3;
+            }
+            &.no-drop {
+               border: none;
+               &:after {
+                  display: none;
+               }
+            }
+         }
+         .current-item {
+            .dictionary-category {
+               color: @c-lilac;
+               &:after {
+                  content: '\f078';
+                  color: @c-lilac;
+               }
+            }
+         }
+         .dictionary-note-block {
+            padding-left: 2em;
+            color: @c-dusty-gray;
+         }
+         .dictionary-category {
+            font-family: Verdana, sans-serif;
+            font-size: 16px;
+            color: @c-orangedeep3;
+         }
+         .dictionary-quote {
+            padding-left: 2em;
+         }
+         .dictionary-list-fst-level {
+            padding: .4em 0 .4em 2em;
+         }
+         .dictionary-list-snd-level {
+            &::first-letter {
+               padding: .4em 0 .4em 2em;
+               color: @c-orangedeep3;
+            }
+         }
+      }
+      &:first-of-type {
+         .dictionary-phrase {
+            border-top: none;
+         }
+      }
+   }
+   .dictionary-popup-wrapper {
+      font-size: 14px;
+      padding: 0 20px;
+      .dictionary-phrase {
+         padding-bottom: 1em;
+      }
+   }
+}

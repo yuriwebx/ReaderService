@@ -1,0 +1,82 @@
+<div class="book-list-tree-item">
+
+   <div ng-if="::!currentModeData.personalPublications">
+      <div class="corner-marker mybooks" ng-if="publication.personal">My Books</div>
+   </div>
+
+   <div class="course-info-box">
+      <div class="clickable-block" ng-click="::openPublication(publication)">
+         <ng-switch on="::publication.type">
+            <div>
+
+               <span class="img-box">
+                  <span width="73" height="97" class="studyclass-cover"
+                       ng-switch-when="StudyClass" ></span>
+
+                  <span width="73" height="97" class="studycourse-cover"
+                       ng-switch-when="StudyCourse" ></span>
+
+                  <span width="73" height="97" class="booknotes-cover"
+                       ng-switch-when="StudyGuide" ></span>
+                  <i class="shadow-gen"></i>
+               </span>
+
+               <span class="collection-cover"
+                     ng-switch-when="collection"></span>
+
+               <span width="73" height="97" ng-src="{{::publication._thumbnail}}" ng-class="::{'no-book-cover': !publication.cover}"
+                    ng-switch-default></span>
+
+                  <p ng-bind="::publication.name" dir="auto" sw-ellipsis></p>
+                  <p ng-if="!publication.isSelfStudy" class="teachers-list">
+                     Teacher<span ng-if="publication.teachers.length > 1">s</span>:
+                     <span ng-repeat="teacher in publication.teachers" ng-bind-template="{{teacher.firstName}} {{teacher.lastName}}" class="list-item" dir="auto"></span>
+                  </p>
+                  <p ng-if="publication.isSelfStudy">Independent Study</p>
+                  <p ng-hide="publication.isSelfStudy">Participants: <span ng-switch-when="StudyClass" ng-bind="::publication.students"></span></p>
+                  <p ng-bind="::publication.description" sw-ellipsis></p>
+                  <p ng-switch-default>
+                     <span>Items: <span class="strong">12</span> books</span>,
+                     <span>Time: <span class="strong" ng-bind="::publication.readingTime | TimeDurationFilter"></span> hours</span>
+                  </p>
+
+                  <span ng-switch-when="collection">
+                     <a></a>
+                     <a>Publications: <span>{{::publication.matches}}</span></a>
+                  </span>
+
+                  <span ng-switch-default>
+                     <a ng-bind="::publication.category | capitalize"></a>
+                     <a>
+                        Time: <span ng-bind="::publication.readingTime | TimeDurationFilter"></span>,
+                        difficulty: <span>{{::publication.difficulty}}</span>
+                     </a>
+                  </span>
+
+                  <p ng-if="!publication.isInvited" ng-class="{'isCompleted':publication.isCompleted}">
+                     <span ng-bind="::publication.readingProgress"></span><span>% complete, about</span>
+                     <span ng-if="!publication.isCompleted"><span>{{timeTransform(publication.remainingTime)}}</span> hours remaining</span>
+                  </p>
+            </div>
+         </ng-switch>
+      </div>
+      <div class="study-buttons-box">
+         <button class="inverted-button" ng-if="publication.isInvited" ng-click="acceptInvitation(publication)">Accept Invitation</button>
+         <button ng-if="publication.isInvited" ng-click="declineInvitation(publication)">No, Thanks</button>
+         <button ng-if="!publication.isCompleted && !publication.isInvited"
+                 ng-click="openPublication(publication)">
+            <span ng-if="publication.readingProgress > 0"><i class="resume-studying"></i>Resume</span>
+            <span ng-if="publication.readingProgress === 0"><i class="resume-studying"></i>Begin Study</span>
+         </button>
+         <button ng-if="!publication.isCompleted && !publication.isInvited"
+                 ng-click="cancelStudyClass(publication)">{{publication.buttonLabel}}</button>
+         <button ng-click="::openPublicationDetails(publication, $event)">Info</button>
+      </div>
+      <div ng-if="::(!isEditor && publication.readingProgress && !publication.isInvited)">
+         <sw-study-progress progress="::publication.readingProgress" numbercircls="5"></sw-study-progress>
+      </div>
+      <div class="book-details-switcher">
+         <i class="icon i-openInReader"></i>
+      </div>
+   </div>
+</div>

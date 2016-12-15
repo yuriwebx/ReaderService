@@ -1,0 +1,51 @@
+<div>
+   <div class="student-invite-block">
+      <div class="student-invite-block-top">
+         <div class="invite-message" sw-localize="ManageStudyClass.InvitePopup.label"></div>
+         <div class="search_input_holder">
+            <sw-input type="text" sw-focus-first data-ng-model="filterCriteria.text" placeholder="First name, Last name..." ng-model-options="{debounce: 300}" ng-change="searchStudents()"></sw-input>
+            <i data-ng-class="{'i-ClearInputCross': filterCriteria.text.length}"
+               data-ng-click="resetSearch()"></i>
+         </div>
+      </div>
+
+
+      <div class="students-list" ng-show="fakestudents.length">
+         <div class="students-list-wrapper">
+            <div class="students-list-item" ng-repeat="student in fakestudents track by $index">
+               <div>
+                  <i ng-if="!student.photo">Photo</i>
+                  <img ng-src="{{student.photoLink}}" ng-if="student.photo"/>
+               </div>
+               <div>
+                  <span>{{student.firstName}}</span>
+                  <span>{{student.lastName}}</span>
+               </div>
+               <div>
+                  <span class="notinvited" ng-hide="student.alreadyInClass" ng-click="invite(student)">Invite</span>
+                  <span class="invited" ng-show="student.alreadyInClass">Invited</span>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="students-list">
+         <div class="students-list-wrapper">
+            <div class="students-list-item" ng-repeat="student in students">
+               <div>
+                  <i ng-if="!student.photo">Photo</i>
+                  <img ng-src="{{student.photoLink}}" ng-if="student.photo"/>
+               </div>
+               <div>
+                  <span>{{student.firstName}}</span>
+                  <span>{{student.lastName}}</span>
+               </div>
+               <div>
+                  <span class="notinvited" ng-hide="student.alreadyInClass" ng-click="invite(student)">Invite</span>
+                  <span class="invited" ng-show="student.alreadyInClass">Invited</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

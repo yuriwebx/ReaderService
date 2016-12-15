@@ -1,0 +1,66 @@
+@import '../base';
+
+.report-about-mistake {
+   width: 400px;
+   &.defaultPopup {
+      .popup-title {
+         > span {
+            &:nth-of-type(2) {
+               .i-Exclamation {
+                  width: 17px;
+                  height: 17px;
+                  margin-right: 6px;
+                  vertical-align: text-bottom;
+               }
+            }
+         }
+      }
+      .sw-popup-footer {
+         .flex-display;
+         padding: 0 0 20px;
+         &:not(:empty) {
+            border: none;
+         }
+         button {
+            min-width: 0;
+            margin: auto;
+            padding: 0 20px;
+            &:disabled {
+               cursor: default;
+               color: @c-gray2;
+               border-color: @c-gray2;
+               &:hover {
+                  opacity: 1;
+               }
+            }
+         }
+      }
+   }
+   .sw-popup-content {
+      .box-sizing;
+      min-width: 400px;
+      padding: 20px;
+      .sw-focus {
+         box-shadow: none!important;
+         .sw-input-autogrowtextarea {
+            border: 1px solid @c-lilac;
+            box-shadow: 0 1px 7px @c-lilac!important;
+         }
+      }
+      .sw-input-textarea,
+      .sw-input-autogrowtextarea {
+         line-height: 1.5em;
+         border-radius: 2px;
+         border: 1px solid @c-gray2;
+      }
+      .autogrow-textarea-mirror {
+         min-height: 4.5em;
+      }
+   }
+}
+
+.report-about-mistake-arrow {
+   &:after {
+      background-color: @c-white;
+   }
+}

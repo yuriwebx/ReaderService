@@ -1,0 +1,36 @@
+@import '../../base';
+
+@url_general: '../../../app/style/images/menu-icons';
+
+.book-progress {
+   position: absolute;
+   right: 15px;
+   bottom: 11px;
+   width : 50px;
+   text-align: right;
+   .estimate-time {
+      font-size: 1.077em;
+      font-weight: 300;
+      opacity: .6;
+   }
+   .progress-bar {
+      padding-bottom: 3px;
+      i {
+         display: inline-block;
+         width: 5px;
+         height: 5px;
+         border-radius: 50%;
+         margin-right: 5px;
+         background: @c-grayLight8;
+      }
+      .active{
+         background: @c-greenlight3 !important;
+      }
+   }
+}
+.book-done {
+   .icon(@url_general, 'tick_lgreen.png');
+   width: 15px;
+   height: 16px;
+   background-size: 150%;
+}

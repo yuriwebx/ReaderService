@@ -1,0 +1,91 @@
+<div class="edit-course-book-item">
+   <div class="column-1">
+      <div class="step-block">
+         <button class="back-btn" ng-click="navigateBack()">
+          <i></i>
+          <span sw-localize="EditCourseBookItem.buttonBack.label"></span>
+         </button>
+         <sw-manage-edit-field configfunction="editConfig"></sw-manage-edit-field>
+      </div>
+      <div class="course-item-block" sw-custom-scroll="{options: {height: '100%'}}">
+         <div>
+            <div class="book-item-block">
+               <div class="book-item-block-upper">
+                  <div class="book-item-block-title">
+                    <sw-autogrowtextarea type="text"
+                                  ng-model="editMode.publication.name"
+                                  ng-disabled="editMode.disabled"></sw-autogrowtextarea>
+                  </div>
+                  <div class="book-item-block-info">
+                    <div class="book-item-pic-block">
+                       <img ng-src="{{getCover(editMode.publication)}}" />
+                       <i class="shadow-gen"></i>
+                    </div>
+                    <div class="book-item-text-block">
+                       <div>
+                          <p  ng-if="isAuthorInTitle(editMode.publication)"
+                              ng-bind="editMode.publication.name">
+                          </p>
+                          <p  ng-if="!isAuthorInTitle(editMode.publication)"
+                              ng-class="{'title-in-two-line' : !isAuthorInTitle(editMode.publication)}"
+                              ng-bind="editMode.publication.name"
+                              sw-ellipsis>
+                          </p>
+                          <p  ng-if="isAuthorInTitle(editMode.publication)">
+                            <span ng-bind="editMode.publication.author"></span>
+                          </p>
+                          <p  ng-bind="editMode.publication.category"></p>
+                          <p><span sw-localize="EditCourseBookItem.time.text"></span> <span>{{editMode.publication.readingTime | TimeDurationFilter}}</span></p>
+                          <p ng-if="::showDifficulty">
+                            <span sw-localize="EditCourseBookItem.difficulty.text"></span> <span>{{editMode.publication.difficulty}}</span>
+                          </p>
+                       </div>
+                    </div>
+                  </div>
+               </div>
+               <sw-editable-description edit-data="editData" item="{description : editMode.publication.description, index : 0}" is-edit-mode="!editMode.disabled"></sw-editable-description>
+            </div>
+            <div class="study-guide-block" ng-if="relatedPublications.relatedStudyGuides.length">
+               <h3 ng-click="showStudyGuideList()"
+                   ng-class="{'dropped' : showList}"
+                   sw-localize="EditCourseBookItem.bookNotes.text"
+                   sw-data="{relatedStudyGuidesLength:relatedPublications.relatedStudyGuides.length}"></h3>
+               <sw-manage-study-guide-info ng-if="showList" publication="relatedPublications"></sw-manage-study-guide-info>
+            </div>
+            <div class="contents-block">
+              <h3 ng-click="showContents()"
+                  ng-class="{'dropped' : showContentList}"
+                  sw-localize="EditCourseBookItem.titleContents.text"></h3>
+              <div class="quick-link-block" ng-if="editMode.publication.paragraphId">
+                <div class="quick-link-left">
+                  <a href="#"
+                     ng-click="clearSelection()"
+                     sw-localize="EditCourseBookItem.quickLink.text"></a>
+                </div>
+                <div class="quick-link-right">Go to Position:
+                   <span ng-click="backTo()" sw-localize="EditCourseBookItem.start.text"></span>
+                   <span ng-click="forwardTo()" sw-localize="EditCourseBookItem.end.text"></span></span>
+                </div>
+              </div>
+            </div>
+            <div class="toc-block" ng-show="showContentList">
+              <ol>
+                <li ng-repeat="item in tocHtml"
+                    ng-click="goToLocator(item, $index)"
+                    ng-class="{'active' : toc.active===$index}">
+                  <span ng-bind="item.text"></span>
+                </li>
+              </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="column-2" sw-custom-scroll="{options: {height: '100%'}}">
+      <div>
+         <div class="step-block">
+            Selected Area: <i sw-localize="EditCourseBookItem.readingTime.text"></i> <strong ng-bind="editMode.publication.readingTime | TimeDurationFilter"></strong><span ng-if="::showDifficulty">, <i sw-localize="EditCourseBookItem.difficulty.text"></i> <strong ng-bind="editMode.publication.difficulty"></strong></span>
+         </div>
+         <sw-present-publication reading-api="readingApi"></sw-present-publication>
+      </div>
+   </div>
+</div>

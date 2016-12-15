@@ -1,0 +1,9 @@
+<div class="dictionary-popup">
+   <div class="dictionary-popup-wrapper" ng-show="!definition.definitions.length">
+      <div class="dictionary-phrase no-found" ng-show="!!usedForSearch"><b>{{usedForSearch}}</b></div>
+      <div class="dictionary-content">{{nothingFound}}</div>
+   </div>
+   <ul>
+      <sw-get-dictionary-definition definition="definition"></sw-get-dictionary-definition>
+   </ul>
+</div>

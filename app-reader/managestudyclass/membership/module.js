@@ -1,0 +1,1 @@
+define(['./Membership', './invitetostudyclass/module'], function(){});

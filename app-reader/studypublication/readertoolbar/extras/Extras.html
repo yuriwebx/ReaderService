@@ -1,0 +1,41 @@
+<div class="sw-menuPopup extras-popup reduced-view" sw-focus-manager="{traverseEmpty: true}">
+
+   <!--<div class="extras-tabs">-->
+      <!--<a class="menu-item" ng-repeat="item in menuItems" ng-if="item.isVisible"-->
+         <!--ng-click="swSubmachine.start(item.name)" ng-class="{active: swSubmachine.state(item.name)}">-->
+         <!--<i class="icon i-{{item.name}}"></i> {{item.title}}-->
+      <!--</a>-->
+   <!--</div>-->
+
+   <sw-input-select class="extras-tabs" options="extrasTabsOptions" ng-model="inputSelect.tabsState" ng-change="switchTab()"></sw-input-select>
+
+   <div class="extras-content" sw-custom-scroll="{options: {height: '100%'}}">
+
+      <div sw-render="swSubmachine.state('StudyContent')" class="extras-content-inner">
+         <sw-study-content class="book-info" extras-api="extrasApi" goto-locator="gotoLocator(locator)"
+                           switch-collection-item="switchCollectionItem()">
+            Course
+         </sw-study-content>
+      </div>
+
+      <div sw-render="swSubmachine.state('BookInfo')" class="extras-content-inner">
+         <sw-book-info class="book-info" publication="publication" extras-api="extrasApi" goto-locator="gotoLocator(locator)">
+            Book Info
+         </sw-book-info>
+      </div>
+
+      <div sw-render="swSubmachine.state('Annotations')" class="extras-content-inner">
+         <sw-annotations class="annotations" goto-locator="gotoLocator(locator)"> Annotations</sw-annotations>
+      </div>
+
+      <div sw-render="swSubmachine.state('Exercises')" class="extras-content-inner">
+         <sw-exercises class="exercises" extras-api="extrasApi" goto-locator="gotoLocator(locator)">Exercises</sw-exercises>
+      </div>
+
+      <div sw-render="swSubmachine.state('Discussions')" class="extras-content-inner">
+         <sw-discussions class="discussions" extras-api="extrasApi" goto-locator="gotoLocator(locator)">Discussions</sw-discussions>
+      </div>
+
+   </div>
+
+</div>

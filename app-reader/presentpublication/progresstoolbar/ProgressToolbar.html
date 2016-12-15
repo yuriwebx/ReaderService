@@ -1,0 +1,27 @@
+<div
+	class="sw-progress-toolbar"
+	sw-sticky="{widthControl: false, alwaysStick: true, isBottom: true}"
+	ng-mouseenter="showToolbar()"
+	ng-class="{'compact-view': isToolbarHide}"
+	draggable="false">
+   <div ng-show="!isToolbarHide">
+      <div class="sw-progress-toolbar-button audio" sw-tooltip-options="audioButtonTooltip"><i></i></div>
+      <div class="sw-progress-toolbar-button prev"><i></i></div>
+      <div class="sw-progress-toolbar-container"></div>
+      <div class="sw-progress-toolbar-button next"><i></i></div>
+   </div>
+   <div class="sw-progress-toolbar-placeholder" ng-show="isToolbarHide" ng-click="toggleToolbar($event)">
+      <div class="sw-progress-toolbar-placeholder-percent">
+         <span ng-if="toolbarPlaceholderPercent">{{toolbarPlaceholderPercent}}%</span>
+         <span class="sw-progress-toolbar-placeholder-remaining-time" ng-if="readingRemainingTime">
+            <span> - </span>
+            <span ng-bind="readingRemainingTime | TimeDurationFilter"></span>
+            <span> remaining </span>
+         </span>
+      </div>
+      <div class="sw-progress-toolbar-placeholder-text" >
+         <span ng-bind="toolbarPlaceholder"></span>
+      </div>
+      <div class="sw-progress-toolbar-placeholder-current" ng-bind="toolbarPlaceholderCurrent"></div>
+   </div>
+</div>

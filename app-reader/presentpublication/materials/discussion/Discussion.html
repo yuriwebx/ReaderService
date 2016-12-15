@@ -1,0 +1,38 @@
+<div class="sw-discussion {{::(isEditor ? 'sw-discussion-editor' : '')}}" ng-click="showDiscussionTaskEditPopup()" ng-form="form">
+   <div class="pic-block"><i></i></div>
+   <div class="sw-discussion-conv" ng-if="::data._id">
+      <div class="sw-discussion-text">
+         <div class="sw-discussion-para">
+            <span ng-if="::!data.bookId">CD</span>
+            <span ng-if="::data.bookId">&sect; <span ng-bind="::getParagraphNum(data.locator)"></span></span>
+         </div>
+         <div class="sw-discussion-info">
+            <div class="sw-discussion-pic-block">
+               <i></i>
+               <span class="unread-count" ng-if="getUnreadMessages()" ng-bind="unreadCount"></span>
+            </div>
+            <div class="sw-discussion-textwrapper">
+               <div class="sw-discussion-task">
+                  <h2 class="sw-discussion-topic" ng-if="!data.editTopic">
+                     <span class="sw-discussion-data-topic" ng-bind="data.topic" sw-ellipsis></span>
+                     <button ng-click="toggleEditTopic()" ng-if="isAuthor()">Edit</button>
+                  </h2>
+               </div>
+               <div class="editor-tools" ng-if="::!isEditor">
+                  <div class="author-block">
+                     <span ng-show="::data.author"><span ng-bind="::data.author"></span> <span ng-if="::data.userRole !== 'Student'">(<span ng-bind="::data.userRole"></span>)</span></span>
+                  </div>
+                  <div class="answers-block">
+                     <var class="answers-length"><span>Comments</span>: {{data.messages.length || 0}}</var>
+                     <var class="publication-title">{{publicationTitle}}</var>
+                     <span class="answers-stat">
+                        {{data.lastActivity | date: DATE_FORMAT}}
+                     </span>
+                  </div>
+               </div>
+               <div class="narrow-edit-button-block"><button ng-click="toggleEditTopic()" ng-if="isAuthor()"><i class="edit-icon"></i>Edit</button></div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

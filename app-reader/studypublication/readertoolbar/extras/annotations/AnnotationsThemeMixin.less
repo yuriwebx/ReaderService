@@ -1,0 +1,72 @@
+.annotations(@color-1, @color-2, @img-svg-1, @img-svg-2) {
+
+   .annotations-wrap {
+
+      .annotation-tab-filter {
+         color: @color-1;
+         box-shadow: 0 0 0 1px @color-1;
+
+         li {
+            &.active {
+               color: @color-2;
+               background: @color-1;
+            }
+         }
+      }
+
+      .annotations-search-filter {
+
+         input {
+            @bg-position: 8px 9px;
+            @bg-size: 12px;
+            .datauri_svg(@url, @img-svg-1, @bg-size, @bg-position);
+            background-color: fade(@color-1, 20%);
+         }
+
+         select {
+            box-shadow: 0 0 0 1px @color-1;
+         }
+      }
+
+      .annotation-list {
+         color: @color-1;
+
+         ul {
+
+            li {
+
+               .annotation-text-block {
+
+                  .annotation-text-block-wrapp {
+
+                     .annotation-user-text {
+
+                        .annotation-drop-block {
+
+                           span {
+                              @bg-position: left center;
+                              @bg-size: 12px;
+                              .datauri_svg(@url, @img-svg-2, @bg-size, @bg-position);
+                              .transform(rotate(90deg));
+                           }
+                        }
+                        &.dropped {
+
+                           .annotation-drop-block {
+
+                              span {
+                                 .transform(rotate(270deg));
+                                 @bg-position: left center;
+                                 @bg-size: 12px;
+                                 .datauri_svg(@url, @img-svg-2, @bg-size, @bg-position);
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

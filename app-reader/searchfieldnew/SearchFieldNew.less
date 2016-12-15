@@ -1,0 +1,73 @@
+@import '../base.less';
+
+@url_general: 'images';
+@url: '../../app/style/images/menu-icons';
+
+.searchField {
+   .search_input_holder {
+      position: relative;
+      border-radius: 3px;
+
+      .i-ClearInputCross {
+         position: absolute;
+         top: 6px;
+         right: 10px;
+         width: 20px;
+         height: 20px;
+         cursor: pointer;
+      }
+      input {
+         font-size: 1.8em;
+         width: 100%;
+         min-width: 435px;
+         height: 32px;
+         padding-left: 40px;
+         padding-right: 35px;
+         color: @c-grayDark4;
+         border: none;
+         background: @c-lightYellow;
+         &::-webkit-input-placeholder {
+            text-align: center!important;
+            color: @c-grayLight7!important;
+         }
+         &::-moz-placeholder {
+            text-align: center!important;
+            color: @c-grayLight7!important;
+         }
+         &::-moz-p {
+            text-align: center!important;
+            color: @c-grayLight7!important;
+         }
+
+         &:-ms-input-placeholder {
+            text-align: center!important;
+            color: @c-grayLight7!important;
+         }
+      }
+   }
+
+   .filter_icon {
+      @name: 'filter_inverted.svg';
+      @bg-size: 18px auto;
+      .datauri_svg(@url, @name, @bg-size);
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      display: block;
+   }
+   .search_icon{
+      @name: 'search_inverted.svg';
+      @bg-size: 18px auto;
+      .datauri_svg(@url, @name, @bg-size);
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      display: block;
+   }
+}

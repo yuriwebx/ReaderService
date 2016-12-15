@@ -1,0 +1,25 @@
+<div class="user-profile">
+
+	<div class="user-pic-block">
+		<div class="pic"></div>
+	</div>
+
+	<div class="user-info">
+		<div class="field">
+			<span data-sw-localize="Profile.firstname.label" class="lbl"></span>
+			<sw-input type="text" data-ng-model="profile.firstName"></sw-input>
+		</div>
+		<div class="field">
+			<span data-sw-localize="Profile.lastname.label" class="lbl"></span>
+			<sw-input type="text" data-ng-model="profile.lastName"></sw-input>
+		</div>
+		<div class="field">
+			<a class="button layout-button" data-ng-click="save()">Save</a>
+		</div>
+      <div class="field" id="profileMessage">
+         <p class="confirmation-message">Your profile was saved successfully</p>
+      </div>
+	</div>
+
+</div>
+

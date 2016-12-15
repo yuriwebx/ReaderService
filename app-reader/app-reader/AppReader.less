@@ -1,0 +1,84 @@
+@import '../base.less';
+
+.reader-top-menu-wrapper {
+   display: table;
+   padding: 3px 0 0;
+   .sw-input-button {
+      font-size: 1.231em;
+      height: 38px;
+      margin: 0 10px;
+      padding: 9px 15px 10px;
+      color: @c-white;
+      border: 2px solid lighten(@c-lilac, 10%);
+      background: transparent;
+      &:hover {
+         .transition(all .3s ease);
+         border: 2px solid @c-white;
+      }
+   }
+}
+
+.dictionary-full-height,
+.explore-full-height,
+.develop-study-course-full-height,
+.manage-study-class-full-height {
+   height: 100%;
+   > .sw-appFrame {
+      height: 100%;
+      > .layout-full-height {
+         height: 100%;
+      }
+   }
+}
+
+
+.app-reader {
+   > .sw-appFrame {
+      > .layout-full-height {
+         .flex-display;
+         .flex-direction(column);
+         .content,
+         .editor-content {
+            .flex-display;
+            .flex-grow(1);
+         }
+      }
+   }
+   > .sw-baron-wrapper {
+      > .sw-baron-scroller {
+         > div {
+            &:first-of-type {
+               .flex-display;
+               .box-sizing;
+               width: 100%;
+               min-height: 100%;
+            }
+         }
+      }
+   }
+   .sw-appFrame {
+      .flex-display;
+      .box-sizing;
+      width: 100%;
+      min-height: 100%;
+      .layout-full-height {
+         .flex-display;
+         .flex-direction(column);
+         .box-sizing;
+         width: 100%;
+         .content {
+            .flex-display;
+            .flex-grow(1);
+            .box-sizing;
+            .app-login {
+               .flex-display;
+               .flex-direction(column);
+               .justify-content(space-between);
+               .app-login-wrapper {
+                  // height: 100%;
+               }
+            }
+         }
+      }
+   }
+}
