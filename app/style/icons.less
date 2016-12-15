@@ -1,0 +1,142 @@
+// Icons
+@media @narrow {
+    @url:"images/narrow";
+    .i-follow {
+        .icon(@url, "follow.png", no-repeat, 0 0);
+        width: 9px;
+        height: 14px;
+        .hover {
+            .icon(@url, "follow_hover.png");
+        }
+    }
+    .i-arrDown {
+        .icon(@url, "arrDown.png");
+        width: 14px;
+        height: 10px;
+    }
+    .i-error {
+        .icon(@url, "error.png");
+        width: 24px;
+        height: 24px;
+    }
+    .i-warning {
+        .icon(@url, "warning.png");
+        width: 24px;
+        height: 24px;
+    }
+    .i-prev {
+        .icon(@url, "prev.png");
+        width: 24px;
+        height: 24px;
+    }
+    .i-next {
+        .icon(@url, "next.png");
+        width: 24px;
+        height: 24px;
+    }
+    .i-viewDoc {
+        .icon(@url, "viewDoc.png");
+        width: 22px;
+        height: 19px;
+    }
+}
+
+@media @normal, @wide {
+    @url:"images/wide";
+    .i-follow {
+        .icon(@url, "follow.png", no-repeat, 0 0);
+        width: 10px;
+        height: 16px;
+        .hover {
+            .icon(@url, "follow_hover.png");
+        }
+    }
+    .i-arrDown {
+        .icon(@url, "arrDown.png");
+        width: 14px;
+        height: 10px;
+    }
+    .i-error {
+        .icon(@url, "error.png");
+        width: 34px;
+        height: 34px;
+    }
+    .i-warning {
+        .icon(@url, "warning.png");
+        width: 34px;
+        height: 34px;
+    }
+    .i-prev {
+        .icon(@url, "prev.png");
+        width: 28px;
+        height: 24px;
+    }
+    .i-next {
+        .icon(@url, "next.png");
+        width: 28px;
+        height: 24px;
+    }
+    .i-viewDoc {
+        .icon(@url, "viewDoc.png");
+        width: 48px;
+        height: 48px;
+        background-position: 12px 9px;
+    }
+   .i-Volume {
+      .icon_svg(@url, "volume.svg", no-repeat, center center);
+   }
+}
+
+.i-personInfo {
+	@url:"images";
+	.icon(@url, "personInfo.png");
+	width: 24px;
+	height: 24px;
+}
+
+.i-Resume {
+    @url:"images/menu-icons";
+    .icon_svg(@url, "OpenInDaReader.svg");
+    width: 24px;
+    height: 24px;
+    &.night {
+        .icon_svg(@url, "OpenInDaReader_night.svg");
+    }
+}
+.i-Library {
+    @url:"images/menu-icons";
+    .icon_svg(@url, "library.svg");
+    width: 24px;
+    height: 24px;
+    &.night {
+        .icon_svg(@url, "library_night.svg");
+    }
+}
+.i-ResumeStudy {
+    @url:"images/menu-icons";
+    .icon_svg(@url, "resume_studying.svg");
+    width: 24px;
+    height: 24px;
+    &.night {
+        .icon_svg(@url, "resume_studying_night.svg");
+    }
+}
+.i-StudyProject {
+    @url:"images/menu-icons";
+    .icon_svg(@url, "studyproject.svg");
+    width: 24px;
+    height: 24px;
+    &.night {
+        .icon_svg(@url, "studyproject_night_active.svg");
+    }
+}
+.i-Exclamation {
+    @url:"images/menu-icons";
+    .icon_svg(@url, "exclamation.svg");
+    width: 24px;
+    height: 24px;
+    background-size: 100%;
+    &.night {
+        .icon_svg(@url, "exclamation_nigh.svg");
+    }
+}

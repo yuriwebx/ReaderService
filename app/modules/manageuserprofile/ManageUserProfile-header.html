@@ -1,0 +1,29 @@
+<div class="popup-title" sw-hot-key="{enter: 'config.save()'}">
+	<span ng-if="!config.isSelectImgView()">
+		<button
+         ng-click="config.cancel()"
+			class="sw-input sw-input-wrapper sw-input-button-wrapper sw-input-button ng-scope button-close"
+			type="button" sw-localize="ManageUserProfile.button.Cancel.label"></button>
+	</span>
+   <span class="back-btn" ng-if="config.isSelectImgView()">
+      <button
+         ng-click="config.back()"
+         type="button" sw-localize="Popup.button.back.label"></button>
+   </span>
+	<span>
+		<span ng-show="mode!=='Personal'" sw-localize="Profile.userprofile.label"></span>
+		<span ng-show="mode==='Personal'"sw-localize="Profile.myprofile.label"></span>
+	</span>
+	<span ng-if="!config.isSelectImgView()">
+		<button
+			ng-click="config.save()"
+			class="sw-input sw-input-wrapper sw-input-button-wrapper sw-input-button ng-scope"
+			type="button" sw-localize="ManageUserProfile.button.Save.label"></button>
+	</span>
+   <span ng-if="config.isSelectImgView()">
+      <button
+         ng-click="config.useSelection()"
+         class="sw-input sw-input-wrapper sw-input-button-wrapper sw-input-button ng-scope"
+         type="button" sw-localize="ManageUserProfile.button.UseSelection.label"></button>
+   </span>
+</div>

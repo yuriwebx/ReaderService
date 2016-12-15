@@ -1,0 +1,23 @@
+<div class="searchField col">
+   <div class="col-inner-wrap">
+      <div class="search_input_holder" ng-class="{'tooltip-contains':extendapi.isTooltip}">
+         <div ng-class="{'progress-bg-active':!extendapi.isSearchCompleted}" class="progress-bar-slider-wrapper"><div class="progress-bar-slider"></div></div>
+         <i class="search_icon"></i>
+         <sw-input dir="{{direction}}" type="text"
+                   onFocus="this.select()"
+                   ng-model="searchText"
+                   ng-change="debounceSearch()"
+                   placeholder="{{placeholder}}"
+                   sw-hot-key="{'down': 'switchResult(\'n\')', 'up': 'switchResult(\'p\')'}"
+                   sw-focus-manager="{traverse: true}"
+                   sw-virtual-keyboard-linker="::{keyboardActive : true}"
+                   required
+               ></sw-input>
+         <div class="placeholder">{{placeholder}}</div>
+         <i class="" data-ng-class="{'i-ClearInputCross': searchText.length}" data-ng-click="resetSearch()"></i>
+         <i data-ng-class="{'search-brand-icon': !searchText.length}"></i>
+         <button class="keyboard_btn" ng-click="keyboardToggle()" ng-show="keyboardShowIcon"></button>
+         <i class="tooltip_icon" ng-click="extendapi.setTooltipVisibility()"></i>
+      </div>
+   </div>
+</div>

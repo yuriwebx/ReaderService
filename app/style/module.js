@@ -1,0 +1,6 @@
+define([
+
+   'less!./common'
+
+], function(){});
+

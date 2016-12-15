@@ -1,0 +1,13 @@
+<div class="assessment-header">
+   <div class="assessment-bttn-close"><a href="" ng-click="playerScope.close()" sw-localize="AssessmentPlayer.close.label"></a></div>
+   <div class="assessment-title"><span>{{info.title}}</span></div>
+   <div class="assessment-level" ng-if="info.showQuestions">
+      {{playerScope.activeItemIndex + 1}}/{{info.numberQuestion}}
+   </div>
+   <div class="assessment-level" ng-if="info.showVocabularyCount">
+      <div
+         class="current-count"
+         sw-localize="AssessmentPlayer.currentCount.label"
+         sw-data="{vocabularyTermsCount:info.vocabularyTermsCount}"></div>
+   </div>
+</div>

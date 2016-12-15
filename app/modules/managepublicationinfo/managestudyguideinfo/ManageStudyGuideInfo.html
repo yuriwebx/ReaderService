@@ -1,0 +1,20 @@
+<div class="manage-study-guide-info">
+   <ul>
+      <li ng-repeat="studyGuide in publication.relatedStudyGuides">
+         <span></span>
+         <span>
+
+            <span ng-bind="::studyGuide.name"></span>
+            <span ng-bind="::studyGuide.author"></span>
+            <span>
+               <span ng-bind="::studyGuide.category"></span>, <span sw-localize="ManageStudyGuideInfo.time.label"></span><span ng-bind="::studyGuide.readingTime"></span>
+               <span class="green-mark" ng-if="checked.index===$index" sw-localize="ManageStudyGuideInfo.default.label"></span>
+            </span>
+         </span>
+         <span>
+            <button class="switch-rights" ng-click="setDefault(studyGuide.id, $index)" ng-disabled="isDisabled($index)"
+                    ng-class="{'active': checked.index===$index}"></button>
+         </span>
+      </li>
+   </ul>
+</div>

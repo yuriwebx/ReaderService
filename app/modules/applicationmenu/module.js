@@ -1,0 +1,1 @@
+define(['./ApplicationMenu', './ApplicationMenuService'], function(){});

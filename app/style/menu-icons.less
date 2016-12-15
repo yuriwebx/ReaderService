@@ -1,0 +1,643 @@
+// Menu Icons
+
+@url:'images/menu-icons';
+@name: 'menu_icons.png';
+
+@about: 'about.svg';
+@about_sepia: 'about_sepia.svg';
+@about_night: 'about_night.svg';
+
+@about_app: 'aboutapp.svg';
+@about_app_sepia: 'aboutapp_sepia.svg';
+@about_app_night: 'aboutapp_night.svg';
+
+@book_info: 'book_info.svg';
+@book_info_active: 'book_info_active.svg';
+@book_info_sepia: 'book_info_sepia.svg';
+@book_info_sepia_active: 'book_info_sepia_active.svg';
+@book_info_night: 'book_info_night.svg';
+
+@course: 'studyproject.svg';
+@course_active: 'studyproject_active.svg';
+@course_sepia: 'studyproject.svg';
+@course_sepia_active: 'studyproject_active.svg';
+@course_night: 'studyproject_night.svg';
+
+@explore: 'search.svg';
+@explore_sepia: 'search_sepia.svg';
+@explore_night: 'search_night.svg';
+
+@library: 'library.svg';
+@library_sepia: 'library_sepia.svg';
+@library_night: 'library_night.svg';
+
+@dictionary: 'dictionary.svg';
+@dictionary_sepia: 'dictionary_sepia.svg';
+@dictionary_night: 'dictionary_night.svg';
+
+@assessments: 'assessments.svg';
+@assessments_sepia: 'assessments_sepia.svg';
+@assessments_night: 'assessments_night.svg';
+
+@flashcards: 'flashcards.svg';
+@flashcards_sepia: 'flashcards_sepia.svg';
+@flashcards_night: 'flashcards_night.svg';
+
+@logout: 'logout.svg';
+@logout_sepia: 'logout_sepia.svg';
+@logout_night: 'logout_night.svg';
+
+@collections: 'collections.svg';
+@collections_sepia: 'collections_sepia.svg';
+@collections_night: 'collections_night.svg';
+
+@open_in_reader: 'OpenInDaReader.svg';
+
+@profile: 'profile.svg';
+@profile_sepia: 'profile_sepia.svg';
+@profile_night: 'profile_night.svg';
+
+@reading: 'reader.svg';
+@reading_sepia: 'reader_sepia.svg';
+@reading_night: 'reader_night.svg';
+
+@settings_icons_name: 'settings_icons.png';
+
+@font_settings: 'reading_settings.svg';
+@font_settings_sepia: 'reading_settings_sepia.svg';
+@font_settings_night: 'reading_settings_night.svg';
+
+@reader_mode: 'reader_mode.svg';
+@reader_mode_active: 'reader_mode_active.svg';
+@reader_mode_sepia: 'reader_mode_sepia.svg';
+@reader_mode_sepia_active: 'reader_mode_sepia_active.svg';
+@reader_mode_night: 'reader_mode_night.svg';
+
+@extras: 'extras.svg';
+@extras_active: 'extras_active.svg';
+@extras_sepia: 'extras_sepia.svg';
+@extras_sepia_active: 'extras_sepia_active.svg';
+@extras_night: 'extras_night.svg';
+
+@extras_toc: 'contents.svg';
+@extras_toc_active: 'contents_active.svg';
+@extras_toc_sepia: 'contents_sepia.svg';
+@extras_toc_sepia_active: 'contents_sepia_active.svg';
+@extras_toc_night: 'contents_night.svg';
+
+@extras_bookmarks: 'bookmarks.svg';
+@extras_bookmarks_active: 'bookmarks_active.svg';
+@extras_bookmarks_sepia: 'bookmarks_sepia.svg';
+@extras_bookmarks_sepia_active: 'bookmarks_sepia_active.svg';
+@extras_bookmarks_night: 'bookmarks_night.svg';
+
+@extras_annotations: 'annotation.svg';
+@extras_annotations_active: 'annotation_active.svg';
+@extras_annotations_sepia: 'annotation_sepia.svg';
+@extras_annotations_sepia_active: 'annotation_sepia_active.svg';
+@extras_annotations_night: 'annotation_night.svg';
+
+@extras_exercises: 'assessments.svg';
+@extras_exercises_active: 'assessments_active.svg';
+@extras_exercises_sepia: 'assessments_sepia.svg';
+@extras_exercises_sepia_active: 'assessments_sepia_active.svg';
+@extras_exercises_night: 'assessments_night.svg';
+
+@extras_discussion: 'discussion.svg';
+@extras_discussion_active: 'discussion_active.svg';
+@extras_discussion_sepia: 'discussion_sepia.svg';
+@extras_discussion_sepia_active: 'discussion_sepia_active.svg';
+@extras_discussion_night: 'adiscussion_night.svg';
+
+@extras_delete: 'delete.svg';
+@extras_delete_active: 'delete_active.svg';
+@extras_delete_night: 'delete_night.svg';
+
+@repeat: no-repeat;
+
+.i-Library {
+   @position: ~"center";
+   .icon_svg(@url, @library, @repeat, @position);
+   &.night {
+      @position: ~"center";
+      .icon_svg(@url, @library_night, @repeat, @position);
+   }
+}
+.i-Collections {
+   @position: ~"-165px -5px";
+   .icon(@url, @name, @repeat, @position);
+}
+.i-Explore {
+   @position: ~"center center";
+   .icon_svg(@url, @explore, @repeat, @position);
+   background-size: 26px auto;
+}
+.i-Dictionary {
+   @position: ~"center center";
+   .icon_svg(@url, @dictionary, @repeat, @position);
+   background-size: 26px auto;
+}
+.i-Flashcards {
+   @position: ~"center center";
+   .icon_svg(@url, @flashcards, @repeat, @position);
+   background-size: 26px auto;
+}
+.i-About {
+   @position: ~"center center";
+   .icon_svg(@url, @about, @repeat, @position);
+   background-size: 26px auto;
+}
+.i-Login {
+   @position: ~"-125px -4px";
+   .icon(@url, @name, @repeat, @position);
+}
+.i-Profile {
+   @position: ~"center center";
+   .icon_svg(@url, @profile, @repeat, @position);
+   background-size: 26px auto;
+}
+.i-Logout {
+   @position: ~"center center";
+   .icon_svg(@url, @logout, @repeat, @position);
+   background-size: 26px auto;
+}
+.i-About-app {
+   @position: ~"center center";
+   .icon_svg(@url, @about_app, @repeat, @position);
+   background-size: 26px auto;
+}
+
+.i-Search {
+   .sw-search & {
+      @position: ~"-76px 5px";
+      .icon(@url, @name, @repeat, @position);
+   }
+}
+
+.i-Reading {
+   @position: ~"center 13px";
+   .icon_svg(@url, @reading, @repeat, @position);
+   background-size: 26px auto;
+}
+
+.i-OneColumn {
+   @position: ~"-55px -56px";
+   .icon(@url, @settings_icons_name, @repeat, @position);
+}
+
+.i-TwoColumns {
+   @position: ~"-4px -56px";
+   .icon(@url, @settings_icons_name, @repeat, @position);
+}
+
+.i-ClearInputCross {
+   @position: ~"center center";
+   @cross_icon: 'clear.svg';
+   .icon_svg(@url, @cross_icon, @repeat, @position);
+   background-size: 20px auto;
+}
+.i-ClearInputCross-white {
+   @position: ~"center center";
+   @cross_icon: 'clear_night.svg';
+   .icon_svg(@url, @cross_icon, @repeat, @position);
+   background-size: 20px auto;
+}
+
+.i-Radio {
+   @position: ~"-112px -15px";
+   .icon(@url, @settings_icons_name, @repeat, @position);
+   opacity: 0;
+   &:hover {
+      opacity: .7;
+   }
+   &:checked {
+      opacity: 1;
+   }
+}
+
+.i-Reader {
+   @position: ~"center center";
+   .icon_svg(@url, @reading, @repeat, @position);
+   background-size: 26px auto;
+}
+
+.i-openInReader {
+   .icon_svg(@url, @open_in_reader, no-repeat, right center);
+   width: 45px;
+   height: 24px;
+   background-size: 24px 24px;
+}
+
+//.i-ReaderMode {
+//   @position: ~"center 13px";
+//   .icon_svg(@url, @reader_mode, @repeat, @position);
+//   background-size: 26px auto;
+//
+//   &.active {
+//      @position: ~"center 13px";
+//      .icon_svg(@url, @reader_mode_active, @repeat, @position);
+//      background-size: 26px auto;
+//   }
+//}
+
+//.i-Extras {
+//   @position: ~"center 12px";
+//   .icon_svg(@url, @extras, @repeat, @position);
+//   background-size: 26px auto;
+//
+//   &.active {
+//      @position: ~"center 12px";
+//      .icon_svg(@url, @extras_active, @repeat, @position);
+//      background-size: 26px auto;
+//   }
+//}
+
+.i-BookInfo {
+   @position: ~"center center";
+   .icon_svg(@url, @book_info, @repeat, @position);
+   background-size: 26px auto;
+   .active & {
+      @position: ~"center center";
+      .icon_svg(@url, @book_info_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+}
+.i-StudyContent {
+   @position: ~"center center";
+   .icon_svg(@url, @course, @repeat, @position);
+   background-size: 26px auto;
+   .active & {
+      @position: ~"center center";
+      .icon_svg(@url, @course_active, @repeat, @position);
+      background-size: 26px auto;
+      .night-theme-template &{
+         .icon_svg(@url, @course_night, @repeat, @position);
+      }
+   }
+   .night-theme-template &{
+      .icon_svg(@url, @course_night, @repeat, @position);
+   }
+   &.night {
+      @position: ~"center center";
+      .icon_svg(@url, @course_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+}
+.i-ExtrasTableOfContents {
+   @position: ~"center center";
+   .icon_svg(@url, @extras_toc_night, @repeat, @position);
+   background-size: 26px auto;
+   .active & {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_toc_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+}
+
+.i-Bookmarks {
+   @position: ~"center center";
+   .icon_svg(@url, @extras_bookmarks, @repeat, @position);
+   background-size: 26px auto;
+   .active & {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_bookmarks_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+}
+
+.i-Annotations {
+   @position: ~"center center";
+   .icon_svg(@url, @extras_annotations, @repeat, @position);
+   background-size: 26px auto;
+   .active & {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_annotations_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+}
+
+.i-Exercises {
+   @position: ~"center center";
+   .icon_svg(@url, @extras_exercises, @repeat, @position);
+   background-size: 26px auto;
+   .active & {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_exercises_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+}
+.i-Discussions {
+   @position: ~"center center";
+   .icon_svg(@url, @extras_discussion, @repeat, @position);
+   background-size: 26px auto;
+   .active & {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_discussion_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+}
+
+.sw-appToolbar {
+   .i-Collections {
+      @position: ~"-156px 4px";
+      .icon(@url, @name, @repeat, @position);
+   }
+   // .i-Library {
+   //    @position: ~"-276px 4px";
+   //    .icon(@url, @name, @repeat, @position);
+   // }
+   .i-Explore {
+      @position: ~"-77px 4px";
+      .icon(@url, @name, @repeat, @position);
+   }
+   .i-Profile {
+      @position: ~"-116px 4px";
+      .icon(@url, @name, @repeat, @position);
+   }
+}
+
+.i-ThumbnailsView {
+   @list_view_mode: 'list_view_mode.png';
+   @position: ~"center center";
+   .icon(@url, @list_view_mode, @repeat, @position);
+}
+
+.i-ListView {
+   @table_view_mode: 'table_view_mode.png';
+   @position: ~"center center";
+   .icon(@url, @table_view_mode, @repeat, @position);
+}
+
+.sepia-theme-template {
+   .i-About {
+      @position: ~"center center";
+      .icon_svg(@url, @about_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-ExtrasTableOfContents {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_toc_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .active .i-ExtrasTableOfContents {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_toc_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-BookInfo {
+      @position: ~"center center";
+      .icon_svg(@url, @book_info_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-About-app {
+      @position: ~"center center";
+      .icon_svg(@url, @about_app_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .active .i-BookInfo {
+      @position: ~"center center";
+      .icon_svg(@url, @book_info_sepia_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Bookmarks {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_bookmarks_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .active .i-Bookmarks {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_bookmarks_sepia_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Annotations {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_annotations_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .active .i-Annotations {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_annotations_sepia_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Exercises {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_exercises_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .active .i-Exercises {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_exercises_sepia_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Discussions {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_discussion_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .active .i-Discussions {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_discussion_sepia_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Library {
+      @position: ~"center";
+      .icon_svg(@url, @library, @repeat, @position);
+      &.night {
+         @position: ~"center";
+         .icon_svg(@url, @library_night, @repeat, @position);
+      }
+   }
+   .i-Collections {
+      @position: ~"center 2px";
+      .icon_svg(@url, @collections_sepia, @repeat, @position);
+   }
+   //   .i-Extras {
+   //      @position: ~"center 12px";
+   //      .icon_svg(@url, @extras_sepia, @repeat, @position);
+   //      background-size: 26px auto;
+   //
+   //      &.active {
+   //         @position: ~"center 12px";
+   //         .icon_svg(@url, @extras_sepia_active, @repeat, @position);
+   //         background-size: 26px auto;
+   //      }
+   //   }
+   .i-Explore {
+      @position: ~"center center";
+      .icon_svg(@url, @explore_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Dictionary {
+      @position: ~"center center";
+      .icon_svg(@url, @dictionary_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Flashcards {
+      @position: ~"center center";
+      .icon_svg(@url, @flashcards_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Logout {
+      @position: ~"center center";
+      .icon_svg(@url, @logout_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Profile {
+      @position: ~"center center";
+      .icon_svg(@url, @profile_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Reading {
+      @position: ~"center 13px";
+      .icon_svg(@url, @reading_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+   //   .i-ReaderMode {
+   //      @position: ~"center 13px";
+   //      .icon_svg(@url, @reader_mode_sepia, @repeat, @position);
+   //      background-size: 26px auto;
+   //
+   //      &.active {
+   //         @position: ~"center 13px";
+   //         .icon_svg(@url, @reader_mode_sepia_active, @repeat, @position);
+   //         background-size: 26px auto;
+   //      }
+   //   }
+   .i-Reader {
+      @position: ~"center center";
+      .icon_svg(@url, @reading_sepia, @repeat, @position);
+      background-size: 26px auto;
+   }
+}
+
+.night-theme-template {
+   .i-About {
+      @position: ~"center center";
+      .icon_svg(@url, @about_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-ExtrasTableOfContents {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_toc_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .active .i-ExtrasTableOfContents {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_toc_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-BookInfo {
+      @position: ~"center center";
+      .icon_svg(@url, @book_info_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-About-app {
+      @position: ~"center center";
+      .icon_svg(@url, @about_app_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .active .i-BookInfo {
+      @position: ~"center center";
+      .icon_svg(@url, @book_info_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Bookmarks {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_bookmarks_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .active .i-Bookmarks {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_bookmarks_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Annotations {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_annotations_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .active .i-Annotations {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_annotations_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Exercises {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_exercises_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .active .i-Exercises {
+      @position: ~"center center";
+      .icon_svg(@url, @extras_exercises_active, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Library {
+      @position: ~"center";
+      .icon_svg(@url, @library, @repeat, @position);
+      &.night {
+         @position: ~"center";
+         .icon_svg(@url, @library_night, @repeat, @position);
+      }
+   }
+   .i-Collections {
+      @position: ~"center 2px";
+      .icon_svg(@url, @collections_night, @repeat, @position);
+   }
+   //   .i-Extras {
+   //      @position: ~"center 12px";
+   //      .icon_svg(@url, @extras_night, @repeat, @position);
+   //      background-size: 26px auto;
+   //
+   //      &.active {
+   //         @position: ~"center 12px";
+   //         .icon_svg(@url, @extras_active, @repeat, @position);
+   //         background-size: 26px auto;
+   //      }
+   //   }
+   .i-Explore {
+      @position: ~"center center";
+      .icon_svg(@url, @explore_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Dictionary {
+      @position: ~"center center";
+      .icon_svg(@url, @dictionary_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Flashcards {
+      @position: ~"center center";
+      .icon_svg(@url, @flashcards_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Logout {
+      @position: ~"center center";
+      .icon_svg(@url, @logout_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Reading {
+      @position: ~"center 13px";
+      .icon_svg(@url, @reading_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   .i-Profile {
+      @position: ~"center center";
+      .icon_svg(@url, @profile_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+   //   .i-ReaderMode {
+   //      @position: ~"center 13px";
+   //      .icon_svg(@url, @reader_mode_night, @repeat, @position);
+   //      background-size: 26px auto;
+   //
+   //      &.active {
+   //         @position: ~"center 13px";
+   //         .icon_svg(@url, @reader_mode_active, @repeat, @position);
+   //         background-size: 26px auto;
+   //      }
+   //   }
+   .i-Reader {
+      @position: ~"center center";
+      .icon_svg(@url, @reading_night, @repeat, @position);
+      background-size: 26px auto;
+   }
+}

@@ -1,0 +1,7 @@
+<div class="sw-carousel-wrapper">
+  <span class="sw-carousel-control sw-carousel-control-prev" ng-click="prev()" ng-if="hasPrev()"></span>
+  <div class="sw-carousel" sw-swipe="onSwipe(direction)">
+    <div class="sw-carousel-items" ng-transclude></div>
+  </div>
+  <span class="sw-carousel-control sw-carousel-control-next" ng-click="next()" ng-if="hasNext()"></span>
+</div>

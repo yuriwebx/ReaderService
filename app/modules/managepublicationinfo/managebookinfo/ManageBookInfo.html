@@ -1,0 +1,20 @@
+<div class="manage-book-info">
+   <ul>
+      <li ng-repeat="studyGuide in publication.relatedStudyGuides">
+         <span></span>
+         <span>
+
+            <span ng-bind="::studyGuide.name"></span>
+            <span ng-bind="::studyGuide.author"></span>
+            <span>
+               <span ng-bind="::studyGuide.baseCategory"></span>, <span sw-localize="ManageBookInfo.time.label"></span><span ng-bind="::studyGuide.readingTime | TimeDurationFilter"></span>
+               <span class="green-mark" ng-if="isDefault(studyGuide)" sw-localize="ManageBookInfo.default.label"></span>
+            </span>
+         </span>
+         <span>
+            <button class="switch-rights" ng-click="select(studyGuide.id, $index)" ng-disabled="isDisabled()"
+                    ng-class="{'active': checked.index===$index}"></button>
+         </span>
+      </li>
+   </ul>
+</div>

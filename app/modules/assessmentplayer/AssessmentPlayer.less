@@ -1,0 +1,282 @@
+@import '../base.less';
+
+@url: 'images';
+@url_general: '../../../app/style/images/menu-icons';
+.sw-popup {
+   &.assessment-player-popup {
+      width: 840px;
+      padding: 20px;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+
+           -o-user-select: none;
+      .assessment-header {
+         .flex-display();
+         .justify-content(space-between);
+         font-size: 1.2em;
+         margin: -10px -20px 10px;
+         padding: 0 20px 10px;
+         white-space: nowrap;
+         color: @c-gray;
+         border-bottom: 1px solid fade(@c-black, 15%);
+         .assessment-bttn-close {
+            width: 150px;
+            color: @c-lilac;
+            a {
+               @bg-size: 13px auto;
+               @name: 'close.svg';
+               .datauri_svg(@url_general, @name, @bg-size);
+               font-weight: 300;
+               position: relative;
+               display: block;
+               overflow: hidden;
+               width: 13px;
+               min-width: 50px;
+               text-indent: -900px;
+               background-position: left;
+               &:hover {
+                  opacity: .8;
+               }
+            }
+            &:hover {
+               opacity: .8;
+            }
+         }
+         .assessment-title {
+            overflow: hidden;
+            span {
+               display: block;
+               overflow: hidden;
+               width: 100%;
+               text-overflow: ellipsis;
+            }
+         }
+         .assessment-level {
+            font-size: .9em;
+            overflow: hidden;
+            width: 150px;
+            text-align: right;
+            white-space: nowrap;
+            color: @c-orange;
+            .current-count {
+               overflow: hidden;
+               width: 100%;
+               padding: 2px 0 0 0;
+               text-overflow: ellipsis;
+            }
+         }
+      }
+      .assessment-word-block {
+         .flex-display(flex);
+         .justify-content(space-between);
+         line-height: 110px;
+         .assessment-item-type {
+            font-size: 1.2em;
+            min-width: 110px;
+            text-align: left;
+            color: fade(@c-gray, 50%);
+         }
+         .assessment-item-term {
+            font-size: 2em;
+            font-weight: bold;
+            line-height: normal;
+            margin-top: 37px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: @c-orange;
+            span {
+               cursor: pointer;
+               vertical-align: top;
+               &.play-btn {
+                  @name: 'play.svg';
+                  .datauri_svg(@url_general, @name);
+                  display: block;
+                  overflow: hidden;
+                  width: 25px;
+                  height: 30px;
+                  margin: 0 auto;
+                  text-indent: -900px;
+               }
+               &.playing {
+                  &:first-of-type {
+                     @name: 'pause.svg';
+                     .datauri_svg(@url_general, @name);
+                  }
+               }
+            }
+            audio {
+               display: none;
+               float: left;
+               width: 0;
+               height: 0;
+            }
+         }
+         .assessment-item-picture {
+            .flex-display(flex);
+            width: 110px;
+            min-width: 110px;
+            height: 110px;
+            min-height: 110px;
+            img {
+               display: block;
+               max-width: 100%;
+               max-height: 100%;
+               margin: auto 0 auto auto;
+            }
+         }
+      }
+      .assessment-item {
+         ul {
+            li {
+               .gradient(g-lighter-gray-light-gray4);
+               margin-bottom: 10px;
+               padding: 20px;
+               cursor: pointer;
+               border: 1px solid @c-grayLight;
+               border-radius: 6px;
+               &.assessment-item-answer {
+                  font-size: 1.2em;
+                  color: @c-black;
+                  border: 1px solid fade(@c-black, 15%);
+                  &.correct {
+                     @name: 'ico_correct.png';
+                     .datauri(@url, @name);
+                     color: @c-green2;
+                     background-color: @c-greenlight1;
+                  }
+                  &.incorrect {
+                     @name: 'ico_incorrect.png';
+                     .datauri(@url, @name);
+                     background-color: @c-redlight2;
+                  }
+               }
+               &:hover {
+                  opacity: .8;
+                  background: fade(@c-lightLilac, 30%);
+               }
+               &:last-of-type {
+                  margin-bottom: 0;
+               }
+            }
+         }
+      }
+      .test-finished {
+         position: relative;
+         min-height: 353px;
+         padding-bottom: 20px;
+         text-align: center;
+         color: @c-orange;
+         .test-finished-wrapp {
+            font-size: 36px;
+            padding-top: 50px;
+            .test-finished-text {
+               /*font-size: 2.6em;*/
+               margin-bottom: 20px;
+            }
+            .success {
+               color: @c-green2;
+            }
+            .formRow {
+               .flex-display();
+               text-align: left;
+               .formRow_label,
+               .formRow_content {
+                  .box-sizing;
+                  font-size: 1.231em;
+                  font-weight: 300;
+                  line-height: 38px;
+                  display: inline-block;
+                  float: none;
+                  min-width: 80px;
+                  padding: 11px 0;
+                  color: @c-gray5;
+               }
+               .formRow_label {
+                  width: 120px;
+                  min-width: 120px;
+                  margin: 0;
+               }
+               .formRow_content {
+                  .flex-grow(@grow: 1);
+               }
+               .sw-input-text {
+                  .box-sizing;
+                  font-size: 1em;
+                  font-weight: 300;
+                  display: inline-block;
+                  width: 100%;
+                  height: 38px;
+                  margin: 0;
+                  padding: 0 10px;
+                  color: @c-black;
+                  box-shadow: none;
+                  &:focus {
+                     box-shadow: 0 0 7px fade(@c-lilac, 75%);
+                  }
+               }
+            }
+            .sendMail-btn {
+               margin-top: 20px;
+            }
+            .test-finished-wrapp-title {
+               color: @c-lilac;
+            }
+            .test-finished-wrapp-string1 {
+               font-size: .7em;
+               color: @c-gray7;
+            }
+            .test-finished-wrapp-string2 {
+               color: @c-lilac;
+            }
+            .test-finished-wrapp-string3 {
+               font-size: 17px;
+               font-weight: 300;
+               padding-top: 20px;
+            }
+            .test-finished-wrapp-advice1 {
+               font-size: 1.6em;
+               color: @c-green1;
+            }
+            .test-finished-wrapp-advice2 {
+               font-size: 1.6em;
+               color: @c-red;
+            }
+            .test-finished-form {
+               font-size: 14px;
+               button {
+                  font-size: 17px;
+                  &:hover {
+                     .transition(all .25s ease);
+                     opacity: .8;
+                  }
+               }
+            }
+            .test-finished-wrapp-advice-block {
+               opacity: .8;
+            }
+         }
+         .assessment-header {
+            font-size: .471em;
+            margin: -10px -20px 10px;
+            padding: 0 20px 10px;
+            text-align: center;
+            color: @c-gray;
+            border-bottom: 1px solid fade(@c-black, 15%);
+         }
+      }
+      .test-finished-bttn {
+         font-size: 1.1em;
+         width: 100%;
+         padding-top: 1em;
+         text-align: center;
+      }
+      .sw-popup-contentWrap {
+         margin-right: -20px;
+         .sw-popup-content {
+            padding-right: 20px;
+         }
+      }
+   }
+}

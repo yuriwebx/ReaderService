@@ -1,0 +1,18 @@
+<div class="sw-searchBlock" sw-hot-key="{enter: 'search()', f1: 'help()'}">
+   <div class="searchBlock">
+      <div class="sw-search">
+         <div class="searchBlock_wrap">
+            <sw-input ng-change="swOnChange()" ng-model="swSearchCriteria.value" maxlength="{{maxlength}}" type="text" sw-text-transform="uppercase"></sw-input>
+            <a ng-click="swSearchCriteria.value=''; swFocus('.sw-input-text')" class="sw-del" ng-show="swSearchCriteria.value.length">
+               <i class="i-del"></i>
+            </a>
+            <a ng-click="help($event)" class="sw-help sw-popup-offset" sw-localize-attr="{a: 'SearchCriteriaEditor.button.info.label'}">
+               <i class="i-info"></i>
+            </a>
+         </div>
+      </div>
+      <div class="btnBlock">
+         <sw-button tabindex="-1" ng-click="search()" class="sw-find m-button__standard" sw-localize="SearchCriteriaEditor.button.search.label"></sw-button>
+      </div>
+   </div>
+</div>

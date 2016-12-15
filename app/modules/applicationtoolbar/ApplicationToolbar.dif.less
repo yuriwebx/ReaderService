@@ -1,0 +1,36 @@
+@import '../base.less';
+
+@url: 'images';
+@url_general: '../../../app/style/images/menu-icons';
+
+.sw-appToolbar-wrapper {
+   .sw-appToolbar {
+      &.logged-in {
+         @name: 'toolbar-pattern.png';
+         @bg-size: auto;
+         @bg-position: left top;
+         @bg-repeat: repeat-x;
+         .datauri(@url_general, @name, @bg-size, @bg-position, @bg-repeat);
+      }
+      &.toolbar-invisible {
+         background: transparent;
+      }
+      &.toolbar-visible{
+         &.logged-in {
+            box-shadow: 1px 1px 4px fade(#646496, 50%);
+            &:after {
+               position: absolute;
+               right: 0;
+               bottom: -1px;
+               left: 0;
+               height: 1px;
+               content: '';
+               background: @c-darklilac2;
+            }
+            .app-portal & {
+               background: @c-darklilac2;
+            }
+         }
+      }
+   }
+}

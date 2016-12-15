@@ -1,0 +1,4 @@
+define([
+   './AssessmentPlayer',
+   './AssessmentPlayerService'
+], function(){});

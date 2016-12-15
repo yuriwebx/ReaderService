@@ -1,0 +1,17 @@
+<div id="read-mode-search-popup"
+     class="readModeSearchPopup"
+     ng-class="{
+      'active': isActive(),
+      'inactive': !isActive(),
+      'noResults': isNoResults(),
+      'tooltipOn': extendapi.isTooltipVisible,
+      'lang-field-visible': showLanguages(),
+      'isDirty': extendapi.isDirty
+     }">
+   <div class="readModeSearchPopup-content">
+      <div class="injectable-template">
+         <sw-search-publications one-column="false" extendapi="extendapi"></sw-search-publications>
+      </div>
+   </div>
+   <sw-keyboard></sw-keyboard>
+</div>

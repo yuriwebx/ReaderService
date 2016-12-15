@@ -1,0 +1,10 @@
+<div class="keyboard" ng-show="keyboardShow" dir="ltr">
+   <span class="draggableBlock" ng-mousedown="startMove($event)" ng-mouseup="finishMove()"></span>
+   <i class="closeBtn"  ng-click="keyboardClose()"></i>
+   <div ng-repeat="row in keyboardLayouts[language] track by $index">
+      <button ng-repeat="key in row track by $index"
+              ng-bind="getKeyView(key)" ng-attr-style="{{stylesForKey(key)}}"
+              ng-mousedown="keyPress(key, $event)"
+              ng-class="{'active': key.isActive}"></button>
+   </div>
+</div>

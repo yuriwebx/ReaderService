@@ -1,0 +1,5 @@
+define([
+   './ManageUserProfile',
+   './ManageUserProfileService',
+], function(){});
+

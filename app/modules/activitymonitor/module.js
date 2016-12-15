@@ -1,0 +1,4 @@
+define([
+   './ActivityMonitorRunner',
+   './ActivityMonitorService'
+], function(){});

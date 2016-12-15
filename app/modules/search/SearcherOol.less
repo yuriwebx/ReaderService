@@ -1,0 +1,693 @@
+@import '../base.less';
+
+@url: 'images';
+@url_general: '../../style/images/menu-icons';
+
+.search-layout.search-layout-ool {
+   font-weight: 400;
+   height: 100%;
+   & * {
+      margin: 0;
+      padding: 0;
+   }
+   .content-list {
+      position: relative;
+      height: 100%;
+      .search-results-tooltip {
+         position: relative;
+         padding: 10px 20px 5px 20px;
+         background: #fffbe6;
+         box-shadow: inset 0 1px #c4c2b2;
+         .close-tooltip-popup{
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: block;
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+            background: data-uri('image/svg+xml;base64', '../../style/images/menu-icons/close.svg') no-repeat;
+            background-size: 100%;
+            .dir-rtl & {
+               right: auto;
+               left: 15px;
+            }
+         }
+         &:before {
+            position: absolute;
+            top: 0;
+            right: 132px;
+            content: '';
+            border-width: 10px;
+            border-style: solid;
+            border-color: #c4c2b2 transparent transparent transparent;
+            html[dir='rtl'] & {
+               right: auto;
+               left: 132px;
+            }
+         }
+         &:after {
+            position: absolute;
+            top: 0;
+            right: 133px;
+            content: '';
+            border-width: 9px;
+            border-style: solid;
+            border-color: #fff transparent transparent transparent;
+            html[dir='rtl'] & {
+               right: auto;
+               left: 133px;
+            }
+         }
+         html[dir='rtl'] &,
+         .dir-rtl & {
+            direction: rtl;
+            .ltr-in-rtl {
+               text-align: right;
+
+               direction: ltr;
+            }
+         }
+         html[dir='rtl'] .dir-ltr & {
+            direction: ltr;
+         }
+         p {
+            margin-bottom: 10px;
+            text-indent: 0;
+            &.text-title {
+               font-size: 24px;
+            }
+            &.text-list {
+               span {
+                  &:last-of-type {
+                     display: block;
+                     padding: 5px 0 0 40px;
+                     html[dir='rtl'] &,
+                     .dir-rtl & {
+                        padding: 5px 40px 0 0;
+                     }
+                     html[dir='rtl'] .dir-ltr & {
+                        padding: 5px 0 0 40px;
+                     }
+                  }
+               }
+            }
+            html[dir='rtl'] &,
+            .dir-rtl & {
+               direction: rtl;
+            }
+            html[dir='rtl'] .dir-ltr & {
+               direction: ltr;
+            }
+            span {
+               &:last-of-type {
+                  font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+                  font-weight: 700;
+               }
+            }
+         }
+      }
+      .search-results-info {
+         .box-sizing;
+         .flex-display;
+         font-size: 12px;
+         font-weight: 300;
+         line-height: 22px;
+         position: absolute;
+         z-index: 100;
+         top: 0;
+         width: 100%;
+         height: 22px;
+         min-height: 22px;
+         color: #333;
+         border-bottom: 2px solid #fff;
+         background: #eee;
+         box-shadow: inset 0 1px #ccc, inset 0 3px #fff, 0 1px #ccc;
+
+         direction: ltr;
+         .dir-rtl & {
+            direction: rtl;
+         }
+         html[dir='rtl'] & {
+            direction: rtl;
+         }
+         html[dir='rtl'] .dir-ltr & {
+            direction: ltr;
+         }
+         > div {
+            .box-sizing;
+            padding: 0 21px;
+            &:first-of-type {
+               width: 35%;
+               box-shadow: inset 0 1px #ccc, -1px 2px #fff, 1px 3px 0 -1px #ccc, 2px 1px #fff, inset -1px 0 #ccc, inset -3px 0 #fff;
+               html[dir='rtl'] &,
+               .dir-rtl & {
+                  box-shadow: inset 0 1px #ccc, 1px 2px #fff, -1px 3px 0 -1px #ccc, -2px 1px #fff, inset 1px 0 #ccc, inset 3px 0 #fff;
+               }
+               html[dir='rtl'] .dir-ltr & {
+                  box-shadow: inset 0 1px #ccc, -1px 2px #fff, 1px 3px 0 -1px #ccc, 2px 1px #fff, inset -1px 0 #ccc, inset -3px 0 #fff;
+               }
+            }
+            &:last-of-type {
+               width: 65%;
+            }
+            > span {
+               display: block;
+               overflow: hidden;
+               width: 100%;
+               white-space: nowrap;
+               text-overflow: ellipsis;
+            }
+         }
+      }
+      .search-results-tree-wrapper {
+         .box-sizing;
+         .flex-display;
+         .flex-grow(1);
+         position: relative;
+         overflow: hidden;
+         html[dir='rtl'] .dir-ltr & {
+            direction: ltr;
+         }
+         .dir-rtl & {
+            direction: rtl;
+         }
+         .search-results-tree {
+            .box-sizing;
+            float: left;
+            width: 50%;
+            height: 100%;
+            html[dir='rtl'] &,
+            .dir-rtl & {
+               float: right;
+            }
+            html[dir='rtl'] .dir-ltr & {
+               float: left;
+            }
+            &:first-child {
+               position: absolute;
+               top: 0;
+               bottom: 0;
+               left: 0;
+               overflow: auto;
+               width: 35%;
+               max-width: 35%;
+               border-right: 1px solid #ccc;
+               .dir-rtl {
+                  right: 0;
+                  left: auto;
+               }
+               html[dir='rtl'] &,
+               .dir-rtl & {
+                  right: 0;
+                  left: auto;
+                  border-right: 0;
+                  border-left: 1px solid #ccc;
+               }
+               html[dir='rtl'] .dir-ltr & {
+                  right: auto;
+                  left: 0;
+                  border-right: 1px solid #ccc;
+                  border-left: 0;
+               }
+               .tree-container {
+                  padding: 0;
+               }
+            }
+            &:last-child {
+               position: absolute;
+               top: 0;
+               right: 0;
+               bottom: 0;
+               overflow: auto;
+               width: 65%;
+               html[dir='rtl'] &,
+               .dir-rtl & {
+                  right: auto;
+                  left: 0;
+               }
+               html[dir='rtl'] .dir-ltr & {
+                  right: 0;
+                  left: auto;
+               }
+               .tree-container {
+                  padding: 0;
+               }
+            }
+            .tree-container {
+               font-family: Arial, sans-serif;
+               height: 100%;
+               padding: 0 20px;
+               border-right: none;
+               border-bottom: none;
+               border-left: none;
+               .tree-node {
+                  .box-sizing;
+                  position: relative;
+                  min-height: 3.6em;
+                  padding: 0 0 8px;
+                  cursor: pointer;
+                  border-bottom: 1px solid @c-gray2;
+                  &:last-of-type {
+                     border-bottom: none;
+                  }
+                  > p {
+                     > span {
+                        line-height: 1.2em;
+                        .search-req {
+                           font-weight: 400;
+                           background-color: #ffec80;
+                        }
+                     }
+                  }
+                  &.expanded {
+                     height: auto;
+                     > p {
+                        > span {
+                           display: block;
+                           height: auto;
+                        }
+                     }
+                  }
+                  &.current-item {
+                     color: #000;
+                     background-color: #ccc;
+                     i {
+                        display: none;
+                     }
+                  }
+                  &.tree-sub-node {
+                     position: relative;
+                     height: auto;
+                     min-height: 0;
+                     margin: 0;
+                     padding: 10px 20px;
+                     cursor: pointer;
+                     &.fake-tree-node {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        left: 0;
+                        pointer-events: none;
+                        opacity: 0;
+                     }
+                     &.expanded {
+                        padding-right: 20px;
+                        padding-bottom: 10px;
+                        background: fade(@c-gray2, 20%);
+                        .button-open-in-reader {
+                           display: block;
+                        }
+                        .spec-lincs {
+                           display: block;
+                        }
+                        p {
+                           span {
+                              &.tree-sub-node-container {
+                                 font-size: 14px;
+                                 max-height: none;
+                                 html[dir='rtl'] &,
+                                 .dir-rtl & {
+                                    font-size: 20px;
+                                 }
+                                 html[dir='rtl'] .dir-ltr & {
+                                    font-size: 14px;
+                                 }
+                              }
+                              span {
+                                 &:nth-of-type(1) {
+                                    font-size: 14px;
+                                    overflow: hidden;
+                                    max-height: none;
+                                    html[dir='rtl'] &,
+                                    .dir-rtl & {
+                                       font-size: 20px;
+                                    }
+                                    html[dir='rtl'] .dir-ltr & {
+                                       font-size: 14px;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                     &:first-of-type {
+                        position: relative;
+                        border-top: 1px solid @c-gray2;
+                     }
+                     &:last-of-type {
+                        border-bottom: none;
+                     }
+                     p {
+                        span {
+                           font-size: 14px;
+                           line-height: 22px;
+                           display: inline;
+                           overflow: hidden;
+                           vertical-align: top;
+                           span {
+                              &:nth-of-type(1) {
+                                 font-size: 14px;
+                                 display: inline-block;
+                                 white-space: normal;
+                                 text-overflow: initial;
+                                 html[dir='rtl'] &,
+                                 .dir-rtl & {
+                                    font-size: 20px;
+                                    line-height: normal;
+                                 }
+                                 html[dir='rtl'] .dir-ltr & {
+                                    font-size: 14px;
+                                    line-height: 22px;
+                                 }
+                              }
+                           }
+                        }
+                     }
+                     .spec-lincs {
+                        display: none;
+                        text-align: right;
+                        html[dir='rtl'] & {
+                           text-align: left;
+
+                           direction: inherit;
+                        }
+                        html[dir='rtl'] .dir-ltr & {
+                           text-align: right;
+                        }
+                        .dir-rtl & {
+                           text-align: left;
+
+                           direction: inherit;
+                        }
+                        a {
+                           font-size: 14px;
+                           line-height: 24px;
+                           display: inline-block;
+                           margin-left: 20px;
+                           text-decoration: none;
+                           color: #00f;
+                           html[dir='rtl'] & {
+                              margin-right: 20px;
+                              margin-left: 0;
+                           }
+                           html[dir='rtl'] .dir-ltr & {
+                              margin-right: 0;
+                              margin-left: 20px;
+                           }
+                           .dir-rtl & {
+                              margin-right: 20px;
+                              margin-left: 0;
+                           }
+                           &:nth-of-type(1) {
+                              i {
+                                 background: data-uri('images/pdficon.gif') center / 20px no-repeat;
+                                 &:hover {
+                                    background: data-uri('images/pdficon.gif') center / 20px no-repeat;
+                                 }
+                              }
+                           }
+                           &:nth-of-type(2) {
+                              i {
+                                 background: data-uri('images/wordicon.gif') center / 20px no-repeat;
+                                 &:hover {
+                                    background: data-uri('images/wordicon.gif') center / 20px no-repeat;
+                                 }
+                              }
+                           }
+                           &:nth-of-type(3) {
+                              i {
+                                 background: data-uri('images/htmlicon.gif') center / 20px no-repeat;
+                                 &:hover {
+                                    background: data-uri('images/htmlicon.gif') center / 20px no-repeat;
+                                 }
+                              }
+                           }
+                           i {
+                              width: 24px;
+                              vertical-align: top;
+                           }
+                        }
+                     }
+                     .button-open-in-reader {
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        display: none;
+                        width: 35px;
+                        height: 35px;
+                        i {
+                           @name: 'reader.svg';
+                           @bg-size: 21px auto;
+                           .datauri_svg(@url_general, @name, @bg-size);
+                           position: absolute;
+                           top: -7px;
+                           right: 3px;
+                           width: 38px;
+                           height: 45px;
+                        }
+                     }
+                     &.fake-tree-node {
+                        div.dotdotdot {
+                           display: inline;
+                        }
+                     }
+                  }
+                  &-container {
+                     .clear;
+                     margin-top: 20px;
+                     padding: 0 20px;
+                     &:first-child {
+                        overflow: hidden;
+                        margin-top: 0;
+                        padding: 8px 20px 0 20px;
+                        text-overflow: ellipsis;
+                        html[dir='rtl'] &,
+                        .dir-rtl & {
+                           font-size: 24px;
+                           padding: 8px 20px 0 65px;
+                        }
+                        html[dir='rtl'] .dir-ltr & {
+                           font-size: 14px;
+                           padding: 8px 65px 0 20px;
+                        }
+                        .tree-node {
+                           &-image {
+                              position: absolute;
+                              top: 7px;
+                              left: 8px;
+                           }
+                           &-expander {
+                              position: absolute;
+                              top: 15px;
+                              right: 0;
+                              width: 24px;
+                              height: 24px;
+                              content: '>';
+                              cursor: pointer;
+                              border: 1px solid red;
+                           }
+                        }
+                     }
+                     > span {
+                        color: @c-black;
+                        &:nth-of-type(1) {
+                           html[dir='rtl'] &,
+                           .dir-rtl & {
+                              font-size: 20px;
+                              line-height: normal;
+                           }
+                           html[dir='rtl'] .dir-ltr & {
+                              font-size: 14px;
+                              line-height: 1.2em;
+                           }
+                        }
+                        &:nth-of-type(2) {
+                           .box-sizing;
+                           font-size: 1.077em;
+                           overflow: hidden;
+                           width: 100%;
+                           margin-bottom: 4px;
+                           padding-right: 0;
+                           white-space: nowrap;
+                           text-overflow: ellipsis;
+                           color: #999;
+                           html[dir='rtl'] &,
+                           .dir-rtl & {
+                              font-size: 20px;
+                              line-height: normal;
+                           }
+                           html[dir='rtl'] .dir-ltr & {
+                              font-size: 14px;
+                              line-height: 1.2em;
+                           }
+                        }
+                        &:nth-of-type(3) {
+                           .box-sizing;
+                           font-size: .923em;
+                           overflow: hidden;
+                           width: 100%;
+                           padding-right: 0;
+                           white-space: nowrap;
+                           text-overflow: ellipsis;
+                        }
+                        &:last-of-type {
+                           position: absolute;
+                           top: 20px;
+                           right: 15px;
+                           width: auto;
+                           color: fade(@c-black, 60%);
+                           html[dir='rtl'] &,
+                           .dir-rtl & {
+                              right: auto;
+                              left: 15px;
+                           }
+                           html[dir='rtl'] .dir-ltr & {
+                              right: 15px;
+                              left: auto;
+                           }
+                        }
+                     }
+                     li {
+                        p {
+                           span {
+                              line-height: 1.2em;
+                              height: auto;
+                              min-height: 0;
+                              max-height: 4.8em;
+                              html[dir='rtl'] &,
+                              .dir-rtl & {
+                                 max-height: 7.3em;
+                              }
+                              html[dir='rtl'] .dir-ltr & {
+                                 max-height: 4.8em;
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+            &.extended-results-tree {
+               .tree-container {
+                  position: relative;
+                  padding: 0;
+                  > .tree-node {
+                     padding: 0;
+                     border-bottom: 0;
+                  }
+                  .tree-node {
+                     &:first-child {
+                        border-top: none;
+                     }
+                     .tree-node-container {
+                        &:first-child {
+                           margin-top: 0;
+                           padding: 0;
+                        }
+                        .i-openInReader {
+                           .night-theme-template & {
+                              @name: 'OpenInDaReader_night.svg';
+                              .datauri_svg(@url_general, @name);
+                              width: 45px;
+                              height: 24px;
+                           }
+                           .sepia-theme-template & {
+                              @name: 'OpenInDaReader_sepia.svg';
+                              .datauri_svg(@url_general, @name);
+                              width: 45px;
+                              height: 24px;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+         &.one-column {
+            .search-results-tree {
+               width: 100%;
+               border-right: none;
+               .tree-container {
+                  .tree-node {
+                     &.expanded {
+                        padding: 20px 0 0;
+                        background-color: transparent;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+   a {
+      background: transparent;
+      &:hover {
+         background: transparent;
+      }
+   }
+}
+
+.readModeSearchPopup,
+.languages {
+   & * {
+      font-family: Tahoma, Arial, Helvetica, sans-serif!important;
+      .lang-rtl {
+         font-family: 'Amiri', Simplified Arabic, 'Times New Roman', Times, Nesf2, Nesf, Tahoma, 'Microsoft Sans Serif', sans-serif!important;
+         font-size: 20px;
+      }
+   }
+   html[dir='rtl'] &,
+   &.dir-rtl {
+      & * {
+         font-family: 'Amiri', Simplified Arabic, 'Times New Roman', Times, Nesf2, Nesf, Tahoma, 'Microsoft Sans Serif', sans-serif!important;
+      }
+   }
+   &.dir-ltr {
+      html[dir='rtl'] & {
+         & * {
+            font-family: Tahoma, Arial, Helvetica, sans-serif!important;
+            .lang-rtl {
+               font-family: 'Amiri', Simplified Arabic, 'Times New Roman', Times, Nesf2, Nesf, Tahoma, 'Microsoft Sans Serif', sans-serif!important;
+               font-size: 20px;
+            }
+         }
+      }
+   }
+}
+
+.sw-popup.readModeSearchPopup {
+   .injectable-template {
+      .search-criteria-block {
+         .col {
+            .search_input_holder {
+               .search_icon {
+                  @name: 'search_inverted.svg';
+                  @bg-position: 0 3px;
+                  @bg-size: 30px auto;
+                  .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                  width: 44px;
+                  height: 44px;
+               }
+            }
+         }
+      }
+   }
+}
+
+strong.irlsHighlightTerm {
+   border-radius: 6px;
+   background-color: #faf4d9;
+}
+#menu5 {
+   top: 211px !important;
+}
+
+iframe {
+   display: none;
+}
+#WzTtDiV {
+   display: none;
+}
+
+@import 'Search.dif.less';

@@ -1,0 +1,218 @@
+// Fonts Scheme
+@sansFontFamily: "Helvetica Neue", "Roboto", "SegoeUI", Helvetica, Arial, sans-serif;
+
+// Font template
+.font (@name, @viewMode) {
+}
+.font (@name, default) {
+    .font (@name, normal);
+}
+
+// Normal font
+.font (normal, narrow) {
+    font-weight: normal;
+    font-family: @sansFontFamily;
+    font-size: 13px;
+}
+.font (normal, normal) {
+    font-weight: normal;
+    font-family: @sansFontFamily;
+    font-size: 13px;
+}
+.font (normal, wide) {
+    font-weight: normal;
+    font-family: @sansFontFamily;
+    font-size: 13px;
+}
+
+@import 'scheme.dif.font.less';
+
+// Emphasize font
+.font (emphasize, narrow) {
+    font-size: 1em;
+    //font-weight: bold;
+}
+.font (emphasize, normal) {
+    font-size: 1em;
+    //font-weight: bold;
+}
+.font (emphasize, wide) {
+    font-size: 1.077em;
+    //font-weight: normal;
+}
+
+// Error font
+.font (error, narrow) {
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (error, normal) {
+    //font-size: 0.813em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (error, wide) {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+// Message font
+.font (message, narrow) {
+    //font-size: 1.125em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (message, normal) {
+    //font-size: 1.429em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (message, wide) {
+    //font-size: 1.231em;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+// Action font
+.font (action, narrow) {
+    //font-size: 1.125em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (action, normal) {
+    //font-size: 1.429em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (action, wide) {
+    //font-size: 1.231em;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+// Menu content font
+.font (menuContent, narrow) {
+    //font-size: 1.083em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (menuContent, normal) {
+    //font-size: 1.214em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (menuContent, wide) {
+    //font-size: 1.308em;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+// Application toolbar font
+.font (appToolbar, narrow) {
+    //font-size: 1.125em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (appToolbar, normal) {
+    font-size: 1em;
+    font-weight: bold;
+}
+.font (appToolbar, wide) {
+    //font-size: 1.077em;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+// Exeption font
+.font (exeption, narrow) {
+    //font-size: 0.833em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (exeption, normal) {
+    //font-size: 0.786em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (exeption, wide) {
+    //font-size: 0.923em;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+// Agreement font
+.font (agreement, narrow) {
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (agreement, normal) {
+    //font-size: 0.857em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (agreement, wide) {
+    //font-size: 0.923em;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+// Agreement header font
+.font (agreementHeader, narrow) {
+    font-size: 1em;
+    font-weight: bold;
+}
+.font (agreementHeader, normal) {
+    //font-size: 0.929em;
+    font-size: 1em;
+    font-weight: bold;
+}
+.font (agreementHeader, wide) {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+// Login inputs label font
+.font (loginInputsLabel, narrow) {
+    //font-size: 1.083em;
+    font-size: 1.083em;
+    font-weight: bold;
+}
+.font (loginInputsLabel, normal) {
+    //font-size: 1.179em;
+    font-size: 1em;
+    font-weight: bold;
+}
+.font (loginInputsLabel, wide) {
+    //font-size: 1.269em;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+// Login error font
+.font (loginError, narrow) {
+    font-size: 1em;
+    font-weight: bold;
+}
+.font (loginError, normal) {
+    font-size: 1em;
+    font-weight: bold;
+}
+.font (loginError, wide) {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+// Comment font
+.font (comment, narrow) {
+	font-size: 1em;
+    font-weight: normal;
+}
+.font (comment, normal) {
+    //font-size: 0.929em;
+    font-size: 1em;
+    font-weight: normal;
+}
+.font (comment, wide) {
+    font-size: 1em;
+    font-weight: normal;
+}

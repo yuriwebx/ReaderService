@@ -1,0 +1,161 @@
+// @import '../base.less';
+
+// @url: 'images';
+// @url_general: '../../style/images/menu-icons';
+
+// .search-layout {
+//    height: 100%;
+//    .content-list {
+//       position: relative;
+//       height: 100%;
+//       .search-results-tree-wrapper {
+//          .box-sizing;
+//          height: 100%;
+//          padding-top: 22px;
+//          .search-results-tree {
+//             .box-sizing;
+//             float: left;
+//             width: 50%;
+//             height: 100%;
+//             &:first-child {
+//                border-right: 1px solid #c4c2b2;
+//                .tree-container {
+//                   padding: 0;
+//                   padding-top: 1px;
+//                }
+//             }
+//             .tree-container {
+//                overflow-x: hidden;
+//                overflow-y: auto;
+//                height: 100%;
+//                border-right: none;
+//                border-bottom: none;
+//                border-left: none;
+//                .tree-node {
+//                   position: relative;
+//                   -webkit-box-sizing: border-box;
+//                   -moz-box-sizing: border-box;
+//                   box-sizing: border-box;
+//                   height: 56px;
+//                   min-height: 56px;
+//                   padding: 8px 0;
+//                   cursor: pointer;
+//                   color: #454545;
+//                   border-bottom: 1px solid #c4c2b2;
+//                   &:last-of-type{
+//                      border-bottom: none;
+//                   }
+//                   > p {
+//                      > span {
+//                         display: block;
+//                         overflow: hidden;
+//                         height: 2.4em;
+//                         > span {
+//                            &.without-paragraph {
+//                               &:before {
+//                                  display: none;
+//                               }
+//                            }
+//                            &:before {
+//                               font-weight: 300;
+//                               padding-right: .5em;
+//                               content: attr(paragraph);
+//                               opacity: .5;
+//                               html[dir='rtl'] &,
+//                               .dir-rtl & {
+//                                  padding-right: 0;
+//                                  padding-left: .5em;
+//                               }
+//                               html[dir='rtl'] .dir-ltr & {
+//                                  padding-right: .5em;
+//                               }
+//                            }
+//                         }
+//                      }
+//                   }
+//                   &.expanded {
+//                      height: auto;
+//                      > p {
+//                         > span {
+//                            height: auto;
+//                         }
+//                      }
+//                   }
+//                   &.current-item {
+//                      background-color: #ffec80;
+//                      i {
+//                         @name: 'tick_orange.png';
+//                         @bg-size: 24px auto;
+//                         @bg-repeat: no-repeat;
+//                         @bg-position: center;
+//                         .datauri(@url_general, @name, @bg-size, @bg-position, @bg-repeat);
+//                         position: absolute;
+//                         top: 5px;
+//                         right: 20px;
+//                         display: none;
+//                         width: 25px;
+//                         height: 45px;
+//                      }
+//                   }
+//                   &.tree-sub-node {
+//                      &:first-of-type {
+//                         position: relative;
+//                         border-top: 1px solid #c4c2b2;
+//                      }
+//                      &:last-of-type {
+//                         border-bottom: none;
+//                      }
+//                   }
+//                }
+//             }
+//             &.extended-results-tree {
+//                .tree-container {
+//                   > .tree-node {
+//                      padding: 0;
+//                      border-bottom: 0;
+//                   }
+//                   .tree-node {
+//                      &:first-child {
+//                         border-top: none;
+//                      }
+//                      .tree-node-container {
+//                         &:first-child {
+//                            margin-top: 0;
+//                            padding: 0;
+//                         }
+//                         .i-openInReader {
+//                            .night-theme-template & {
+//                               @name: 'OpenInDaReader_night.svg';
+//                               .datauri_svg(@url_general, @name);
+//                               width: 45px;
+//                               height: 24px;
+//                            }
+//                            .sepia-theme-template & {
+//                               @name: 'OpenInDaReader_sepia.svg';
+//                               .datauri_svg(@url_general, @name);
+//                               width: 45px;
+//                               height: 24px;
+//                            }
+//                         }
+//                      }
+//                   }
+//                }
+//             }
+//          }
+//          &.one-column {
+//             .search-results-tree {
+//                width: 100%;
+//                border-right: none;
+//                .tree-container {
+//                   .tree-node {
+//                      &.expanded {
+//                         padding: 20px 0 0;
+//                         background-color: transparent;
+//                      }
+//                   }
+//                }
+//             }
+//          }
+//       }
+//    }
+// }

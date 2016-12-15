@@ -1,0 +1,108 @@
+<div class="assessment-word-block" ng-if="!playerScope.testFinished">
+  <p class="assessment-item-type"></p>
+  <p class="assessment-item-term">
+    <audio id="audio"></audio>
+    <span>{{playerScope.assessmentItem.question}}</span>
+    <span 
+      class="play-btn"
+      ng-click="playerScope.playAudio()"
+      ng-if="playerScope.assessmentItem.audio"
+      sw-localize="AssessmentPlayer.playAudio.label"></span>
+  </p>
+  <p class="assessment-item-picture">
+     <img ng-src="{{playerScope.src}}" ng-if="playerScope.isImage"/>
+  </p>
+</div>
+<div class="assessment-item" ng-if="!playerScope.testFinished">
+   <ul>
+      <li class="assessment-item-answer" ng-repeat="answer in playerScope.assessmentItem.answers"
+          ng-click="playerScope.selectAnswer(answer, $index)"
+          ng-class="{'correct' : $index === playerScope.selected.correct, 'incorrect' : $index === playerScope.selected.incorrect}">
+         {{answer.text}}
+      </li>
+   </ul>
+</div>
+<div class="test-finished" ng-if="playerScope.testFinished">
+   <div class="test-finished-wrapp">
+
+      <div ng-if="playerScope.showVocabularyResults">
+        <div class="test-finished-text">
+         <span class="test-finished-wrapp-title" sw-localize="AssessmentPlayer.results.label"></span><br>
+         
+         <span
+          class="test-finished-wrapp-string2"
+          sw-localize="AssessmentPlayer.resultVocabularyAssessment.label"
+          sw-data="{resultVocabularyAssessment:playerScope.resultVocabularyAssessment}"></span>
+         <div ng-if="!playerScope.stateWitoutUser">
+          <span
+            class="test-finished-wrapp-string1"
+            sw-localize="AssessmentPlayer.vocabularyTermsCount.label"
+            sw-data="{vocabularyTermsCount:playerScope.vocabularyTermsCount}"></span>
+         </div>
+         <div class="test-finished-wrapp-string3" ng-if="playerScope.stateWitoutUser">
+           <span class="test-finished-wrapp-string2" sw-localize="AssessmentPlayer.textShare.label"></span>
+         </div>
+         <div class="test-finished-wrapp-advice-block" ng-if="!playerScope.stateWitoutUser">
+          <span
+            class="test-finished-wrapp-advice1"
+            ng-if="playerScope.isNewResultBetter"
+            sw-localize="AssessmentPlayer.keepItUp.label"></span>
+          <span
+            class="test-finished-wrapp-advice2"
+            ng-if="!playerScope.isNewResultBetter"
+            sw-localize="AssessmentPlayer.youCanBetter.label"></span>
+         </div>
+
+         </div>
+         <div ng-show="playerScope.showEmailResponse">
+          <span class="test-finished-wrapp-advice2" sw-localize="Player.emailResponse.label"></span>
+         </div>
+         <div ng-show="playerScope.showErrorResponse">
+            <span class="test-finished-wrapp-advice2" sw-localize="Player.errorRespons.label"></span>
+         </div>
+         <div class="test-finished-form" ng-form="form" ng-show="playerScope.showResultsField">
+            <div>
+               <span class="test-finished-wrapp-advice1" ng-if="playerScope.errorMessage" sw-localize="Player.nameError.label"></span>
+            </div>
+            <div class="formRow">
+               <div class="formRow_label" sw-localize="Player.name.label"></div>
+               <div class="formRow_content">
+                  <sw-input type="text" name="name" ng-model="playerScope.profile.name"></sw-input>
+               </div>
+            </div>
+            <div class="formRow">
+               <div class="formRow_label" sw-localize="Player.comment.label"></div>
+               <div class="formRow_content">
+                  <sw-input type="text" name="comment" ng-model="playerScope.profile.comment"></sw-input>
+               </div>
+            </div>
+            <sw-button class="sendMail-btn" ng-click="sendEmail()" sw-localize="Popup.button.sendEmail.label"></sw-button>
+         </div>
+      </div>
+
+      <div ng-if="playerScope.showFlashCardsResults" sw-localize="AssessmentPlayer.exerciseDone.label"></div>
+
+      <div ng-if="playerScope.showQuizResults" data-ng-class="{'success': playerScope.isSuccess}">
+        <span sw-localize="AssessmentPlayer.exerciseDone.label"></span><br>
+        <br>
+        <span 
+         class="test-finished-wrapp-string2"
+         sw-localize="AssessmentPlayer.correctAnswer.label"
+         sw-data="{
+            correctAnswer:playerScope.correctAnswer,
+            allQwestions:playerScope.allQwestions
+         }"></span>
+      </div> 
+   </div>
+</div>
+
+<div data-ng-if="playerScope.infoForTestShow">
+   <p><span sw-localize="AssessmentPlayer.currentGroup.label"></span>{{playerScope.infoForTest.currentGroup}}</p>
+
+   <p><span sw-localize="AssessmentPlayer.currentQuestion.label"></span>{{playerScope.infoForTest.currentQuestion}}</p>
+
+   <p><span sw-localize="AssessmentPlayer.totalWords.label"></span>{{playerScope.infoForTest.TotalWords}}</p>
+
+   <p><span sw-localize="AssessmentPlayer.currentAnswer.label"></span>{{playerScope.infoForTest.correctAnswer}}</p>
+
+</div>

@@ -1,0 +1,233 @@
+@import '../base.less';
+
+@url_general: 'images';
+@url: '../../style/images/menu-icons';
+
+.searchField {
+   .search_input_holder {
+      position: relative;
+      border-radius: 3px;
+      .progress-bar-slider-wrapper {
+         position: absolute;
+         top: 0;
+         right: 0;
+         bottom: 0;
+         left: 0;
+         overflow: hidden;
+         &.progress-bg-active {
+            .progress-bar-slider {
+               position: absolute;
+               left: 0;
+               overflow: hidden;
+               width: 50%;
+               height: 100%;
+               -webkit-animation: slidermove 2s infinite; /* Chrome, Safari, Opera */
+                       animation: slidermove 2s infinite;
+               background: #fff; /* Old browsers */
+               background:    -moz-linear-gradient(left,  #fff 0%, #ddd 25%, #d6d3d1 50%, #ddd 75%, #fff 100%); /* FF3.6+ */
+               background: -webkit-gradient(linear, left top, right top, color-stop(0%,#fff), color-stop(25%,#ddd), color-stop(50%,#d6d3d1), color-stop(75%,#ddd), color-stop(100%,#fff)); /* Chrome,Safari4+ */
+               background: -webkit-linear-gradient(left,  #fff 0%,#ddd 25%,#d6d3d1 50%,#ddd 75%,#fff 100%); /* Chrome10+,Safari5.1+ */
+               background:      -o-linear-gradient(left,  #fff 0%,#ddd 25%,#d6d3d1 50%,#ddd 75%,#fff 100%); /* Opera 11.10+ */
+               background:     -ms-linear-gradient(left,  #fff 0%,#ddd 25%,#d6d3d1 50%,#ddd 75%,#fff 100%); /* IE10+ */
+               background:         linear-gradient(to right,  #fff 0%,#ddd 25%,#d6d3d1 50%,#ddd 75%,#fff 100%); /* W3C */
+            }
+            @-webkit-keyframes slidermove {
+               from {
+                  left: -50%;
+               }
+               to {
+                  left: 100%;
+               }
+            }
+            @keyframes slidermove {
+               from {
+                  left: -50%;
+               }
+               to {
+                  left: 100%;
+               }
+            }
+         }
+      }
+      .search_icon {
+         background-position: 0 0;
+         background-size: 36px auto;
+      }
+      .i-ClearInputCross {
+         @bg-size: 13px auto;
+         @name: 'close.svg';
+         .datauri_svg(@url, @name, @bg-size);
+         position: absolute;
+         z-index: 2;
+         top: 10px;
+         right: 11px;
+         width: 13px;
+         height: 13px;
+         cursor: pointer;
+         background-position: center right;
+         &:after {
+            position: absolute;
+            top: 0;
+            right: -15px;
+            bottom: 0;
+            width: 1px;
+            content: '';
+            background: #e6e6e6;
+            html[dir='rtl'] & {
+               right: auto;
+               left: -1px;
+            }
+         }
+      }
+      input {
+         font-size: 24px;
+         position: relative;
+         z-index: 1;
+         width: 100%;
+         min-width: 1px;
+         height: 32px;
+         padding-right: 45px;
+         padding-left: 40px;
+         color: @c-grayDark4;
+         border: none;
+         box-shadow: none;
+         &:focus {
+            box-shadow: none!important;
+         }
+         &::-webkit-input-placeholder {
+            text-align: center!important;
+            color: @c-grayLight7!important;
+         }
+         &::-moz-placeholder {
+            text-align: center!important;
+            color: @c-grayLight7!important;
+         }
+         &::-moz-p {
+            text-align: center!important;
+            color: @c-grayLight7!important;
+         }
+         &:-ms-input-placeholder {
+            text-align: center!important;
+            color: @c-grayLight7!important;
+         }
+         @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            // IE10+ specific styles go here   
+            &:invalid:focus + .placeholder {
+               display: block;
+            }
+         }
+      }
+      .placeholder {
+         font-size: 25px;
+         line-height: 59px;
+         position: absolute;
+         top: 0;
+         right: 255px;
+         left: 60px;
+         display: none;
+         height: 59px;
+         text-align: center;
+         color: @c-grayLight7;
+         .dir-rtl & {
+            right: 182px;
+         }
+         html[dir='rtl'] & {
+            right: 70px;
+            left: 210px;
+         }
+         html[dir='rtl'] .dir-ltr & {
+            right: 70px;
+            left: 210px;
+         }
+      }
+      &.tooltip-contains {
+         .tooltip_icon {
+            @name: 'info_gray.svg';
+            @bg-position: center;
+            @bg-size: 25px auto;
+            .datauri_svg(@url, @name, @bg-size, @bg-position);
+            position: absolute;
+            z-index: 2;
+            top: 15px;
+            right: 10px;
+            overflow: hidden;
+            width: 31px;
+            height: 30px;
+            cursor: pointer;
+            text-indent: -900px;
+            html[dir='rtl'] & {
+               right: auto;
+               left: 15px;
+            }
+            .lang-field-visible & {
+               display: none;
+            }
+            .noResults.inactive:not(.lang-field-visible) & {
+               border-radius: 0 6px 6px 0;
+               html[dir='rtl'] & {
+                  border-radius: 6px 0 0 6px;
+               }
+            }
+            .noResults.inactive.isDirty:not(.lang-field-visible) &,
+            .noResults.inactive.tooltipOn:not(.lang-field-visible) &,
+            .active:not(.lang-field-visible) & {
+               border-radius: 0 6px 0 0;
+               html[dir='rtl'] & {
+                  border-radius: 6px 0 0 0;
+               }
+            }
+         }
+         .search_icon {
+            left: 8px !important;
+            html[dir='rtl'] & {
+               right: 8px !important;
+               left: auto !important;
+            }
+         }
+         input {
+            padding-left: 170px;
+            color: #333;
+            &:focus {
+               outline: none;
+            }
+            html[dir='rtl'] &,
+            .dir-rtl & {
+               padding-right: 170px;
+               padding-left: 0 ;
+
+               direction: rtl;
+            }
+            html[dir='rtl'] .dir-ltr & {
+               padding-right: 0;
+               padding-left: 170px;
+
+               direction: ltr;
+            }
+         }
+      }
+   }
+   .filter_icon {
+      @name: 'filter_inverted.svg';
+      @bg-size: 18px auto;
+      .datauri_svg(@url, @name, @bg-size);
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      display: block;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+   }
+   .search_icon {
+      @name: 'logo.svg';
+      @bg-size: 36px auto;
+      .datauri_svg(@url, @name, @bg-size);
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      display: block;
+      width: 44px;
+      height: 44px;
+      cursor: default;
+   }
+}

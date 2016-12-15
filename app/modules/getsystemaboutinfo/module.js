@@ -1,0 +1,6 @@
+define([
+
+   './GetSystemAboutInfo',
+   './GetSystemAboutInfoService'
+
+], function(){});

@@ -1,0 +1,110 @@
+@import 'flex-mixin.less';
+
+// Global Mixins
+.clear () {
+   &:after {
+      display: block;
+      content: '';
+      clear: both;
+   }
+}
+
+.box-sizing (@type: border-box) {
+   -webkit-box-sizing: @type;
+   -moz-box-sizing: @type;
+   box-sizing: @type;
+}
+
+.user-select (@type: none) {
+   -webkit-touch-callout: @type;
+   -webkit-user-select: @type;
+   -khtml-user-select: @type;
+   -moz-user-select: @type;
+   -ms-user-select: @type;
+   user-select: @type;
+}
+
+.br () {
+   &:after {
+      content: "\a";
+      white-space: pre;
+   }
+}
+
+.comma () {
+   &:after {
+      content: ",";
+   }
+}
+
+.align (@width, @height, @offsetX:0, @offsetY:0) {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: @width;
+   height: @height;
+   margin-top: (-@height/2)+@offsetX;
+   margin-left: (-@width/2)+@offsetY;
+}
+
+.icon(@url, @name, @position: center, @simpleBg:e(" "), @display: inline-block, @repeat: no-repeat) {
+   background: data-uri("image/png;base64", "@{url}/@{name}") @simpleBg @repeat @position;
+   display: @display;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+}
+
+.icon_svg(@url, @name, @position: center, @simpleBg:e(" "), @display: inline-block, @repeat: no-repeat) {
+   background: data-uri("image/svg+xml;base64", "@{url}/@{name}") @simpleBg @repeat @position;
+   display: @display;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+}
+
+.transform(@string) {
+   -webkit-transform: @string;
+   -moz-transform: @string;
+   -ms-transform: @string;
+   transform: @string;
+}
+
+.transition (@transition) {
+   -webkit-transition: @transition;
+   -moz-transition: @transition;
+   -ms-transition: @transition;
+   transition: @transition;
+}
+
+.animation(@name: none, @duration: 0, @delay: 0, @ease: ease, @iteration-count: 1, @direction: normal) {
+   -webkit-animation: @name @duration @delay @ease;
+   -moz-animation: @name @duration @delay @ease;
+   -ms-animation: @name @duration @delay @ease;
+   animation: @name @duration @delay @ease;
+
+   -webkit-animation-iteration-count: @iteration-count;
+   -moz-animation-iteration-count: @iteration-count;
+   -ms-animation-iteration-count: @iteration-count;
+   animation-iteration-count: @iteration-count;
+
+   -webkit-animation-direction: @direction;
+   -moz-animation-direction: @direction;
+   -ms-animation-direction: @direction;
+   animation-direction: @direction;
+}
+
+/*  Data URI Mixin  */
+.datauri(@url, @name, @bg-size: auto, @bg-position: center, @bg-repeat: no-repeat) {
+   background-image: data-uri("image/png;base64", "@{url}/@{name}");
+   background-repeat: @bg-repeat;
+   background-position: @bg-position;
+   background-size: @bg-size;
+}
+
+.datauri_svg(@url, @name, @bg-size: auto, @bg-position: center, @bg-repeat: no-repeat) {
+   background-image: data-uri("image/svg+xml;base64", "@{url}/@{name}");
+   background-repeat: @bg-repeat;
+   background-position: @bg-position;
+   background-size: @bg-size;
+}

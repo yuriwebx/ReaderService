@@ -1,0 +1,36 @@
+<div class="app-login" ng-show="visible" ng-form="form">
+   <div class="app-login-background"></div>
+   <div class="app-login-wrapper" sw-hot-key="{enter: 'login()'}">
+      <div class="app-login-logo">
+         <i></i>
+         <span sw-localize="App.Login.header.text"></span>
+      </div>
+
+      <div class="app-login-fields">
+         <input class="sw-input-email" name="passwordLogin" placeholder="Email" type="email" ng-model="loginInfo.userName"
+                   autocapitalize="off" autocorrect="off" spellcheck="false"  sw-validate="validateLogin()"/>
+         <sw-input name="passwordLogin" placeholder="Password" type="password" ng-model="loginInfo.password"
+                   ng-change="filterPassword()" sw-validate="validateLogin()"></sw-input>
+         <span class="error-message formRow_validationError" sw-error-for-name="'passwordLogin'"></span>
+
+      </div>
+      <div class="app-login-bttn">
+         <sw-button ng-click="login()" sw-localize="App.Login.button.login.label"></sw-button>
+         <input style="width: 1px; height: 1px; border: none" />
+      </div>
+      <div class="alternate-login">
+          <span sw-localize="App.Login.orText.label"></span>
+          <a href="javascript://" id="facebook" ng-click="loginOauth('facebook')"><span sw-localize="App.Login.facebook.label"></span></a>
+          <a href="javascript://" id="twitter" ng-click="loginOauth('twitter')"><span sw-localize="App.Login.twitter.label"></span></a>
+          <a href="javascript://" id="google" ng-click="loginOauth('google')"><span sw-localize="App.Login.googlePlus.label"></span></a>
+      </div>
+      <div class="acc-links">
+         <span ng-click="registerUser()" sw-localize="Login.createaccount.label"></span>
+         <span ng-click="resetPassword()" sw-localize="Login.forgotpassword.label"></span>
+      </div>
+   </div>
+   <div class="app-login-version">
+      <span sw-localize="App.Login.button.version.label"></span>
+      <span>{{configInfo.buildVersion}}</span>
+   </div>
+</div>

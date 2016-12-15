@@ -1,0 +1,12 @@
+<div sw-focus-manager>
+    <div class="search-criteria-block">
+        <div class="input-block"><sw-search-field debounce="debounce" one-column="oneColumn" extendapi="extendapi"></sw-search-field></div>
+        <div class="select-block" data-ng-if="showLanguages()"><sw-language-field extendapi="extendapi" tooltipped="true" popupCustomClass="spec-focus"></sw-language-field></div>
+    </div>
+    <div class="search-results-block">
+        <sw-search one-column="oneColumn" extendapi="extendapi"></sw-search>
+    </div>
+    <div class="progress-bar" ng-if="!extendapi.isSearchCompleted">
+       <div class="progress-bar-slider"></div>
+    </div>
+</div>

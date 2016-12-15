@@ -1,0 +1,158 @@
+@import '../base.less';
+
+@url_general: '../../../app/style/images/menu-icons';
+@url_portal: '../../../app-portal/app-portal/images';
+@url: 'images';
+
+.app-register {
+   position: relative;
+   width: 100%;
+   min-height: 400px;
+   .content + & {
+      min-width: 670px;
+   }
+   .app-register-title {
+      .box-sizing;
+      font-size: 1.538em;
+      font-weight: 300;
+      display: block;
+      margin: 0 auto;
+      padding: 35px 0 15px;
+      text-align: center;
+      text-transform: uppercase;
+      color: @c-lilac;
+      background-position: center top;
+   }
+   .app-register-wrapper {
+      .app-register-form-block {
+         .box-sizing;
+         position: relative;
+         margin: 0 auto;
+         padding: 0 20px;
+         label,
+         i {
+            display: block;
+            > span {
+               .box-sizing;
+               font-size: 18px;
+               font-weight: 300;
+               display: block;
+               max-width: 320px;
+               margin: 0 auto;
+               padding: 10px 0;
+               &.reg-thank-message {
+                  max-width: 450px;
+                  // text-align: center;
+               }
+               > span {
+                  font-size: 14px;
+                  line-height: normal;
+                  display: block;
+                  width: 100%;
+                  margin: 0;
+                  padding: 5px 0 10px;
+                  text-align: left;
+               }
+            }
+            p {
+               .box-sizing;
+               font-size: 1.077em;
+               padding-top: 5px;
+               padding-bottom: 5px;
+            }
+            input {
+               .box-sizing;
+               font-size: 16px;
+               font-weight: 300;
+               display: block;
+               width: 100%;
+               height: 38px;
+               margin: 0;
+               padding: 0 10px;
+               color: @c-black;
+               box-shadow: none;
+               &::-webkit-input-placeholder {
+                  color: @c-dusty-gray;
+               }
+               &::-moz-placeholder {
+                  color: @c-dusty-gray;
+               }
+               &:-moz-placeholder {
+                  color: @c-dusty-gray;
+               }
+               &:-ms-input-placeholder {
+                  color: @c-dusty-gray;
+               }
+               &:focus {
+                  box-shadow: 0 0 15px fade(@c-lilac, 50%);
+               }
+
+               &.sw-input-text,
+               &.sw-input-email,
+               &.sw-input-password {
+                  &.sw-validation-required {
+                     body & {
+                        border-color: @c-gray2;
+                     }
+                     &:focus {
+                        body & {
+                           border-color: @c-lilac;
+                        }
+                     }
+                  }
+               }
+            }
+            button {
+               font-size: 16px;
+               display: block;
+               width: 100%;
+               cursor: pointer;
+               &:hover {
+                  opacity: .8;
+               }
+            }
+         }
+         .pass-error {
+            position: absolute;
+            top: 220px;
+            right: 0;
+            width: 250px;
+            margin: 0;
+         }
+         .confirm-pass-error {
+            position: absolute;
+            top: 280px;
+            right: 0;
+            width: 250px;
+            margin: 0;
+         }
+      }
+      .sw-input-button {
+         &.spec {
+            margin-top: 10px;
+         }
+      }
+   }
+   .app-register-sep {
+      line-height: 290px;
+      position: relative;
+      height: 290px;
+      &:after,
+      &:before {
+         position: absolute;
+         top: 0;
+         left: 5px;
+         width: 1px;
+         height: 40%;
+         content: '';
+         background: @c-graylightyellow;
+      }
+      &:before {
+         top: auto;
+         bottom: 0;
+      }
+      @media @narrow, @normal {
+         display: none;
+      }
+   }
+}

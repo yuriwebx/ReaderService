@@ -1,0 +1,38 @@
+.sw-popup-arrow {
+   &.login-popup-dialog-arrow,
+   &.message-popup-dialog-arrow,
+   &.assessment-menu-popup-dialog-arrow,
+   &.extras-popup-dialog-arrow,
+   &.read-mode-settings-popup-arrow,
+   &.push-dialog-arrow {
+      content: '';
+      width: 35px;
+      height: 14px;
+      overflow: hidden;
+      z-index: 10000;
+      .app-portal &{
+         left: 24px;
+         top: 48px;
+      }
+      &:after {
+         .transform(rotate(45deg));
+         position: absolute;
+         width: 20px;
+         height: 20px;
+         content: '';
+         background: @c-white;
+         box-shadow: -4px -4px 13px -4px @c-gray;
+         .sepia-theme-template & {
+            background: @c-orangelight1;
+         }
+         .night-theme-template & {
+            background: @c-gray;
+         }
+      }
+   }
+   &.push-dialog-arrow {
+      &:after {
+         top: 7px;
+      }
+   }
+}

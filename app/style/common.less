@@ -1,0 +1,142 @@
+/////////////////////////////////////////////
+// This file is included ones (see module.js)
+/////////////////////////////////////////////
+@import 'normalize.less';
+@import 'base.less';
+@import 'icons.less';
+@import 'block.less';
+@import 'forms.less';
+@import 'menu-icons.less';
+@import 'scroll.less';
+@import 'default-popup.less';
+@import 'tooltip.less';
+
+@media @narrow {
+   .auxiliary {
+      display: none !important;
+   }
+}
+
+.emphasize {
+   font-weight: bold;
+}
+html {
+   height: 100%;
+   margin: 0;
+}
+
+body {
+   .box-sizing;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   margin: 0;
+   padding: 0;
+   color: @c-gray;
+   background: @c-white;
+   @media @narrow {
+      @viewMode: narrow;
+      .font (normal, @viewMode);
+
+          -ms-text-size-adjust: none;
+         -moz-text-size-adjust: none;
+      -webkit-text-size-adjust: none;
+              text-size-adjust: none;
+   }
+   @media @normal {
+      @viewMode: normal;
+      .font (normal, @viewMode);
+   }
+   @media @wide {
+      @viewMode: wide;
+      .font (normal, @viewMode);
+   }
+   &.app-portal {
+      position: relative;
+      overflow: auto;
+   }
+}
+
+body,
+body * {
+   max-height: 10000000px; //fix for Chrome Mobile font-size https://bugs.webkit.org/show_bug.cgi?id=FontBoosting
+
+   -webkit-tap-highlight-color: fade(@c-black, 0%);
+}
+
+.manage-publications-layout {
+   // .flex-display;
+   // .box-sizing;
+   // .flex-direction(column);
+   height: 100%;
+}
+
+.reflowable-column-layout {
+   .clear;
+   height: 100%;
+   .column {
+      position: relative;
+      float: left;
+      height: 100%;
+
+      -webkit-overflow-scrolling: touch;
+      &:first-of-type {
+         z-index: 1;
+         width: 50%;
+         /*box-shadow: 0 3px 7px fade(@c-black, 30%);*/
+      }
+      &:last-of-type {
+         z-index: 0;
+         width: 100%;
+         /*background: fade(@c-black, 10%);*/
+         &.half-column {
+            width: 50%;
+         }
+      }
+   }
+}
+
+.columns-layout {
+   .clear;
+   .column {
+      float: left;
+      width: 50%;
+      text-align: center;
+   }
+   &.three-columns {
+      .column {
+         width: 33%;
+      }
+   }
+   &.four-columns {
+      .column {
+         width: 25%;
+      }
+   }
+}
+
+.sw-popup-content {
+   .sw-focus {
+      box-shadow: 0 1px 7px @c-lilac, 0 0 0 1px @c-lilac inset !important;
+   }
+}
+.sw-popup-header {
+   button {
+      &.button-close {
+         &.sw-focus,
+         &.test-focus {
+            background: data-uri('image/svg+xml;base64', 'images/menu-icons/close.svg') no-repeat center, data-uri('image/svg+xml;base64', 'images/menu-icons/close_shadow.svg') no-repeat center 16px !important;
+            background-size: 18px auto !important;
+         }
+      }
+      &.sw-focus,
+      &.test-focus {
+         text-shadow: 0 1px 5px fade(@c-lilac, 90%);
+      }
+   }
+}
+
+.disabled-state {
+   cursor: default;
+   pointer-events: none;
+}

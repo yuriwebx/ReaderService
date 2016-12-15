@@ -1,0 +1,4 @@
+define([
+   './Search',
+   './SearchStemsWrapperService'
+], function(){});

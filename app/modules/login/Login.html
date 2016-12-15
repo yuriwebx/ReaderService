@@ -1,0 +1,31 @@
+<div class="app-menu login-popup" sw-hot-key="{enter: 'logIn()'}" sw-custom-scroll="{options: {height: '100%'}}">
+    <div class="sw-popup-content">
+        <i class="menuPop_arrow"></i>
+
+        <div class="fields-block">
+            <sw-input placeholder="Login" type="text" ng-model="loginInfo.userName" tabindex="0"
+                      autocapitalize="off" autocorrect="off" spellcheck="false"></sw-input>
+            <sw-input placeholder="Password" type="password" ng-model="loginInfo.password" tabindex="1"
+                      ng-change="filterPassword()"></sw-input>
+        </div>
+        <div class="login-error">{{errorMessage}}</div>
+        <div class="sw-menuSection sw-popup_btnBlock">
+            <div class="sw-popup_btnBlockInner" tabindex="2">
+                <buttons-placeholder/>
+                <input style="width: 1px; height: 1px; border: none"/>
+            </div>
+        </div>
+        <div class="alternate-login">
+            <span sw-localize="Login.orText.label"></span>
+            <a id="facebook" ng-href="{{facebook_oauth}}"></a>
+            <a id="twitter" ng-href="{{twitter_oauth}}"></a>
+            <a id="google" ng-href="{{google_oauth}}"></a>
+        </div>
+        <div class="acc-links">
+            <span ng-click="resetPassword()" sw-localize="Login.forgotpassword.label"></span>
+        </div>
+        <div class="acc-links">
+            <span ng-click="registerUser()" sw-localize="Login.createaccount.label"></span>
+        </div>
+    </div>
+</div>

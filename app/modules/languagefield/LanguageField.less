@@ -1,0 +1,159 @@
+@import '../base.less';
+
+@url: '../../../app/style/images/menu-icons';
+
+.select-language {
+   .box-sizing;
+   position: relative;
+   padding: 0 10px;
+   background: transparent;
+   select {
+      width: 100%;
+      height: 32px;
+      border: none;
+
+      -webkit-appearance: none;
+   }
+   .col-inner-wrap {
+      select {
+         font-size: 1.385em;
+         width: 142px;
+         height: 28px;
+         text-overflow: ellipsis;
+         color: @c-lilac;
+         background: transparent;
+         option {
+            padding: 2px 8px;
+         }
+      }
+      .sw-input-select {
+         font-size: 1.385em;
+         text-transform: capitalize;
+      }
+   }
+}
+
+.info-tooltip {
+   display: block;
+   cursor: pointer;
+   .i-info {
+      position: absolute;
+      z-index: 2;
+      top: 11px;
+      left: 14px;
+      overflow: hidden;
+      width: 31px;
+      height: 30px;
+      cursor: pointer;
+      text-indent: -900px;
+      background: data-uri('image/svg+xml;base64', '../../../app/style/images/menu-icons/info_gray.svg') no-repeat;
+      html[dir='rtl'] & {
+         position: absolute;
+         right: 13px;
+      }
+   }
+   span {
+      padding: 0 0 0 27px;
+   }
+}
+
+.languages .sw-input-select_s-popup-list
+.sw-input-select_popup-item-disabled {
+   opacity: 1!important; //TODO: when disabledClass is configurable, drop this
+}
+
+
+.languages.sw-input-select_s-popup {
+   width: 150px;
+}
+
+.sw-input-select {
+   font-size: 14px;
+   position: relative;
+   display: inline-block;
+   cursor: default;
+   color: @c-lilac;
+   &:after {
+      font-family: 'FontAwesome';
+      font-size: .7em;
+      line-height: normal;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 13px;
+      height: 13px;
+      margin-top: -6px;
+      content: '\f078';
+      pointer-events: none;
+   }
+   .sw-input-select_s {
+      .sw-input-select_s-item-selected {
+         line-height: 28px;
+         display: block;
+         overflow: hidden;
+         width: auto;
+         height: auto;
+         padding-right: 18px;
+         white-space: nowrap;
+         text-overflow: ellipsis;
+      }
+   }
+}
+
+.sw-input-select_t-popup,
+.sw-input-select_s-popup {
+   .sw-popup-wrap {
+      .sw-popup-contentWrap {
+         .sw-popup-content {
+            ul {
+               li {
+                  position: relative;
+                  .sw-touch-input-no &,
+                  .sw-touch-input-yes & {
+                     font-size: 16px!important;
+                     line-height: 44px!important;
+                     overflow: hidden!important;
+                     padding: 0 54px 0 20px!important;
+                     cursor: pointer!important;
+                     white-space: nowrap!important;
+                     text-transform: capitalize;
+                     text-overflow: ellipsis!important;
+                     border: none!important;
+                     box-shadow: inset 20px 0 @c-white, inset 0 1px #e6e6e6!important;
+                  }
+                  &.sw-input-select_s-item-active {
+                     &:after {
+                        @bg-size: 20px auto;
+                        @name: 'tick.png';
+                        .datauri(@url, @name, @bg-size);
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 54px;
+                        height: 44px;
+                        content: '';
+                        pointer-events: none;
+                     }
+                  }
+                  &:hover {
+                     background-color: fade(@c-lilac, 15%)!important;
+                     box-shadow: none!important;
+                  }
+                  &:first-of-type {
+                     border-radius: 3px 3px 0 0;
+                     &:hover {
+                        background-color: fade(@c-lilac, 15%)!important;
+                     }
+                  }
+                  &:last-of-type {
+                     border-radius: 0 0 3px 3px;
+                  }
+               }
+               & + ul {
+                  border-top: 13px solid #e6e6e6!important;
+               }
+            }
+         }
+      }
+   }
+}

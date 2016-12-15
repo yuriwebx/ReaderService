@@ -1,0 +1,58 @@
+@import '../base.less';
+
+@url: 'images';
+
+.night-theme-template {
+
+   .popup-login {
+
+      .sw-menuSection {
+
+         &:nth-of-type(1) {
+
+            p {
+               color: @c-white;
+            }
+         }
+
+         &:nth-of-type(n) {
+
+            button {
+
+               &:first-of-type {
+
+                  &:before {
+                     @bg-position: -8px -5px;
+                     @bg-size: auto;
+                     @name: 'back_login_icon_night.png';
+                    .datauri(@url, @name, @bg-size, @bg-position);
+                    
+                  }
+               }
+
+               &:last-of-type {
+                  background: @c-white;
+                  color: @c-black;
+               }
+            }
+         }
+
+         &.login-form-section {
+            border: 1px solid @c-grayDark4;
+            background: @c-white;
+
+            label {
+               display: block;
+
+               &:first-child {
+                  border-bottom: 1px solid @c-grayLight4;
+               }
+
+               span {
+                  color: @c-white;
+               }
+            }
+         }
+      }
+   }
+}

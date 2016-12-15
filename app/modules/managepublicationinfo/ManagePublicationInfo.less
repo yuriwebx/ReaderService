@@ -1,0 +1,110 @@
+@import '../base.less';
+
+.manage-publication-info {
+   .flex-display;
+   .box-sizing;
+   overflow: hidden;
+   padding: 0 10px;
+   .column {
+      &:nth-of-type(1) {
+         width: 150px;
+         min-width: 150px;
+         padding-top: 15px;
+         .img-block {
+            position: relative;
+            margin: 0 0 17px;
+            img {
+               width: 152px;
+               height: auto;
+               min-height: 200px;
+            }
+         }
+      }
+      &:nth-of-type(2) {
+         .flex-display;
+         .flex-direction(column);
+         .flex-grow(1);
+         overflow: hidden;
+         padding: 15px 0 0 20px;
+         .manage-publication-title-block {
+            min-height: 60px;
+            p {
+               font-size: 18px;
+               padding: 0 0 10px;
+               color: @c-gray;
+               &:nth-of-type(2) {
+                  font-weight: 300;
+               }
+            }
+         }
+         .manage-publication-content-block {
+            .flex-display;
+            .flex-direction(column);
+            > ul {
+               .flex-display;
+               margin-bottom: 10px;
+               box-shadow: inset 0 -1px @c-orangedeep1;
+               > li {
+                  width: 50%;
+                  cursor: pointer;
+                  &.active {
+                     background: transparent;
+                     box-shadow: inset 0 -3px @c-orangedeep1;
+                     span {
+                        color: @c-orangedeep1;
+                     }
+                  }
+                  span {
+                     font-size: 16px;
+                     line-height: 44px;
+                     display: block;
+                     overflow: hidden;
+                     width: 100%;
+                     cursor: pointer;
+                     text-align: center;
+                     text-decoration: none;
+                     text-overflow: ellipsis;
+                     color: @c-lilac;
+                  }
+               }
+            }
+            .manage-publication-content-wrapper {
+               .flex-grow(1);
+            }
+         }
+      }
+   }
+}
+.present-publication-summary {
+   position: relative;
+   p {
+      font-size: 16px;
+      color: @c-gray;
+      &:nth-last-of-type(1) {
+         padding-top: 1.6em;
+      }
+      &:nth-of-type(2) {
+         line-height: 1.3em;
+      }
+      > span {
+         &:nth-of-type(1),
+         &:nth-of-type(3) {
+            font-weight: 300;
+         }
+         &.publication-category {
+            display: block;
+            &:first-letter {
+               text-transform: uppercase;
+            }
+         }
+      }
+   }
+}
+.manage-publication-info-popup {
+   width: 720px;
+   height: 800px;
+
+   .app-admin & {
+      position: fixed;
+   }
+}

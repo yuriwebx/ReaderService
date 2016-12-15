@@ -1,0 +1,28 @@
+<div class="popup-about-content">
+  <div class="popup-about-content-wrapper">
+    <div class="logo-block">
+      <div class="logo"></div>
+      <span class="title">{{brand}}</span>
+    </div>
+    <div class="text-block">
+      <p class="info-about-app" sw-localize="App.GetSystemAboutInfo.contentPart1.text"></p>
+      <p class="info-about-app" sw-localize="App.GetSystemAboutInfo.contentPart2.text"></p>
+      <p class="info-about-app" sw-localize="App.GetSystemAboutInfo.contentPart3.text"></p>
+      <p class="info-about-app" sw-localize="App.GetSystemAboutInfo.linkText.text"></p>
+      <p class="info-about-app"><a target="_blank" href="{{libraryLink}}">{{libraryLink}}</a></p>
+      <p class="info-version" data-ng-repeat="item in systemInfo">
+          <span>
+            <b>{{item[0]}}:</b>
+            <span data-ng-bind="item[1]"></span>
+          </span>
+          <span ng-if="::booksCount"
+                sw-localize="PopupAbout.content.booksCount.text"
+                sw-data="{
+                    popupAboutBooksCount:booksCount,
+                    popupAboutAudioBooksCount:audioBooksCount
+                }"
+          ></span>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+define([
+
+   './ManageStudyGuideInfo'
+
+], function(){});

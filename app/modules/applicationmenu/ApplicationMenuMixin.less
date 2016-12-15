@@ -1,0 +1,49 @@
+.application-menu(@color-1, @color-2, @color-3, @color-4, @color-5, @color-6) {
+   .sw-menuPopup {
+      border-bottom: 1px solid @color-1;
+      background: @color-2;
+      .menuItemWrap {
+         &:first-child {
+            border-top: 10px solid @color-1;
+         }
+      }
+      .login-proposition-text {
+         color: @color-3;
+      }
+      .sw-menuSection {
+         .sw-menuItem {
+            color: @color-3;
+            background: transparent;
+            &:hover {
+               color: @color-4;
+               background: fade(@color-5, 30%);
+            }
+         }
+         &:first-of-type {
+            .menuItemWrap {
+               &:first-child {
+                  a {
+                     color: @color-6;
+                     background: @color-3;
+                  }
+               }
+            }
+         }
+      }
+      .logged-user-info {
+         .columns-layout {
+            .column {
+               &:nth-of-type(2) {
+                  p {
+                     color: @color-3;
+                  }
+               }
+            }
+         }
+      }
+   }
+   .sw-input-button {
+      color: @color-3;
+      border-color: @color-3;
+   }
+}

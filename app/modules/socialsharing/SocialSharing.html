@@ -1,0 +1,8 @@
+<div class="social-sharing">
+   <a ng-repeat="button in buttons"
+      ng-if="button.visible"
+      ng-bind="button.title"
+      ng-class="button.className"
+      ng-click="button.shareFn($event)"
+      ng-href="{{button.shareUrl}}"></a>
+</div>

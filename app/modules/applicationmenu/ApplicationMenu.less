@@ -1,0 +1,677 @@
+@import '../base.less';
+@import 'ApplicationMenuMixin.less';
+
+@url: 'images';
+@url_general: '../../../app/style/images/menu-icons';
+
+@repeat: no-repeat;
+
+@profile: 'profile.svg';
+@admin: 'collections.svg';
+@logout: 'logout.svg';
+@librarycontenteditor: 'librarycontenteditor.svg';
+@about: 'book_info.svg';
+@settings: 'gears.svg';
+@edit: 'edit.svg';
+
+@library: 'library.svg';
+@reports: 'user_report.png';
+@reader: 'OpenInDaReader.svg';
+@explore: 'search.svg';
+@dictionary: 'dictionary.svg';
+@flashcards: 'collections.svg';
+@newStudyProject: 'newcourse.svg';
+@CreateNewCourseSyllabus: 'newcourse.svg';
+
+@profile-night: 'profile_night.svg';
+@admin-night: 'collections_night.svg';
+@logout-night: 'logout_night.svg';
+@librarycontenteditor-night: 'librarycontenteditor_night.svg';
+@about-night: 'book_info_night.svg';
+@settings-night: 'gears_night.svg';
+@edit-night: 'edit_wire_night.svg';
+
+@library-night: 'library_night.svg';
+@reports-night: 'user_report_night.png';
+@reader-night: 'OpenInDaReader_night.svg';
+@explore-night: 'search_night.svg';
+@dictionary-night: 'dictionary_night.svg';
+@flashcards-night: 'collections_night.svg';
+@newStudyProject-night: 'newcourse_night.svg';
+@CreateNewCourseSyllabus-night: 'newcourse_night.svg';
+
+
+@assessments   : 'studyproject.svg';
+@personalmess  : 'chat.svg';
+
+
+.app-menu {
+   .box-sizing;
+   position: fixed;
+   z-index: 10000;
+   top: 57px;
+   left: 5px;
+   overflow-x: hidden;
+   overflow-y: auto;
+   width: 320px;
+   border-bottom: 1px solid @c-grayLight4;
+   border-radius: 7px;
+   border-top-left-radius: 3px;
+   background: @c-white;
+   box-shadow: 0 0 13px 0 @c-grayMiddle;
+   &.login-popup {
+      &:before {
+         .app-portal & {
+            left: 55px;
+         }
+      }
+   }
+   .app-portal & {
+      top: 62px;
+   }
+   .sw-menuSection {
+      &:nth-of-type(1) {
+         .menuSection_content {
+            .menuItemWrap {
+               &:first-of-type {
+                  .app-portal &,
+                  .app-admin & {
+                     border: none;
+                  }
+               }
+            }
+         }
+      }
+      .menuSection_content {
+         .menuItemWrap {
+            position: relative;
+            border-top: 1px solid  fade(@c-black, 6%);/*@c-graylightyellow*/
+            &:hover {
+               border-top-color: transparent;
+               & + .menuItemWrap {
+                  &:not(.m-menuItem__Logout) {
+                     border-top-color: transparent;
+                  }
+               }
+            }
+            &:after {
+               position: absolute;
+               top: -1px;
+               left: 0;
+               display: block;
+               width: 63px;
+               height: 1px;
+               content: '';
+               box-shadow: inset 0 1px  @c-white;
+            }
+            &:first-of-type {
+               border-top: 10px solid fade(@c-black, 6%); /*fade(@c-graylightyellow, 70%)*/
+               &:after {
+                  display: none;
+               }
+            }
+            @media @narrow {
+               &:first-of-type .sw-menuItem {
+                  border-top-left-radius: 5px;
+                  border-top-right-radius: 5px;
+               }
+
+               &:last-of-type .sw-menuItem {
+                  border-bottom-right-radius: 5px;
+                  border-bottom-left-radius: 5px;
+               }
+            }
+         }
+      }
+      &:nth-of-type(2) {
+         .menuSection_content {
+            .menuItemWrap {
+               &.m-menuItem__Overview {
+                  @media @media-size-m-alt {
+                     display: none;
+                  }
+               }
+               // &.m-menuItem__Extras {
+               //    @media @media-size-m-alt {
+               //       border-top: 10px solid fade(@c-black, 6%);
+               //       &:after {
+               //          display: none;
+               //       }
+               //    }
+               // }
+               &:first-of-type {
+                  @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+                     border: none;
+                  }
+                  .app-portal & {
+                     border-top: 10px solid fade(@c-black, 6%);
+                  }
+               }
+            }
+         }
+      }
+      .app-reader &:nth-of-type(2) {
+         @media @media-size-l-alt, @media-size-xl {
+            display: none;
+         }
+      }
+      &:nth-of-type(3) {
+         .menuSection_content {
+            .menuItemWrap {
+               &:first-of-type {
+                  @media @media-size-l-alt, @media-size-xl {
+                     border: none;
+                  }
+                  .app-portal &,
+                  .app-admin & {
+                     border-top: 10px solid fade(@c-black, 6%);
+                  }
+               }
+            }
+         }
+      }
+      &:last-of-type {
+         .menuSection_content {
+            .menuItemWrap {
+               &:last-of-type {
+                  border-top: 10px solid fade(@c-black, 6%); /*fade(@c-graylightyellow, 70%)*/
+                  &:after {
+                     display: none;
+                  }
+               }
+            }
+         }
+      }
+   }
+   .sw-menuItem {
+      .user-select;
+      font-size: 1.2em;
+      font-weight: normal;
+      position: relative;
+      display: block;
+      padding: 12px 23px 12px 61px;
+      cursor: pointer;
+      text-decoration: none;
+      color: @c-black;
+
+      -webkit-tap-highlight-color: fade(@c-black, 0%);
+      &:hover {
+         color: @c-black;
+         background-color: fade(@c-lilac, 15%);
+      }
+      @media @narrow {
+         padding: 12px 23px 12px 61px;
+      }
+      @media @normal_portrait {
+         padding: 12px 23px 12px 61px;
+      }
+      @media @normal_landscape {
+         padding: 12px 23px 12px 61px;
+      }
+   }
+   a {
+      &.sw-focus {
+         box-shadow: none;
+      }
+   }
+   a.sw-Profile {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @profile, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @profile, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-Admin {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @admin, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @admin, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-LibraryContentEditor {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @librarycontenteditor, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @librarycontenteditor, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         border-bottom-right-radius: 6px;
+         border-bottom-left-radius: 6px;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-Logout {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @logout, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @logout, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         border-bottom-right-radius: 6px;
+         border-bottom-left-radius: 6px;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-About {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @about, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @about, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-Library {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @library, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @library, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-Reports {
+      @position: ~"22px center";
+      .icon(@url_general, @reports, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon(@url_general, @reports, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-Reader {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @reader, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @reader, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-ResumeReading {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @reader, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @reader, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-Explore {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @explore, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @explore, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-Dictionary {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @dictionary, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @dictionary, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-CreateNewCourseSyllabus {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @CreateNewCourseSyllabus, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @CreateNewCourseSyllabus, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-Flashcards {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @flashcards, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @flashcards, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-NewStudyProject {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @newStudyProject, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @newStudyProject, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-Overview {
+      .user-select;
+      display: block;
+      background: data-uri('image/svg+xml;base64', '../../../app/style/images/menu-icons/studyproject.svg') no-repeat ~"22px center";
+      background-size: 26px auto;
+      &:hover {
+         .user-select;
+         display: block;
+         border-radius: 0;
+         background: data-uri('image/svg+xml;base64', '../../../app/style/images/menu-icons/studyproject.svg') no-repeat ~"22px center";
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-Extras {
+      .user-select;
+      display: block;
+      background: data-uri('image/svg+xml;base64', '../../../app/modules/applicationtoolbar/images/contents.svg') no-repeat ~"22px center";
+      background-size: 26px auto;
+      &:hover {
+         .user-select;
+         display: block;
+         border-radius: 0;
+         background: data-uri('image/svg+xml;base64', '../../../app/modules/applicationtoolbar/images/contents.svg') no-repeat ~"22px center";
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-Assessments {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @assessments, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @assessments, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-PersonalMess {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @personalmess, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @personalmess, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-ReadModeSettings {
+      .user-select;
+      display: block;
+      background: data-uri('image/svg+xml;base64', '../../../app/style/images/menu-icons/reading_settings.svg') no-repeat ~"22px center";
+      background-size: 26px auto;
+      &:hover {
+         .user-select;
+         display: block;
+         border-radius: 0;
+         background: data-uri('image/svg+xml;base64', '../../../app/style/images/menu-icons/reading_settings.svg') no-repeat ~"22px center";
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-AdminApp {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @settings, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @settings, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+   a.sw-EditorApp {
+      @position: ~"22px center";
+      .icon_svg(@url_general, @edit, @repeat, @position);
+      display: block;
+      background-size: 26px auto;
+      &:hover {
+         @position: ~"22px center";
+         .icon_svg(@url_general, @edit, @repeat, @position);
+         display: block;
+         border-radius: 0;
+         background-color: fade(@c-lilac, 15%);
+         background-size: 26px auto;
+      }
+   }
+}
+
+.sw-menuPopup {
+   top: 75px;
+   background: @c-white;
+   &.main-menu {
+      left: 7px;
+   }
+   @media @narrow {
+      width: 225px;
+   }
+   .menuPop_arrow {
+      left: 0;
+   }
+   .logged-user-info {
+      padding: 20px;
+      .columns-layout {
+         .column {
+            .image-wrap {
+               overflow: hidden;
+               width: 40px;
+               height: 40px;
+               margin: 5px 0 0;
+               border-radius: 60px;
+               img {
+                  position: relative;
+                  top: -1px;
+                  left: -1px;
+                  width: 42px;
+                  height: 42px;
+                  border: none;
+                  outline: none;
+                  background: lighten(fade(@c-lilac, 80%), 30%);
+                  &.no_image {
+                     @bg-position: 2px 2px;
+                     @bg-size: auto;
+                     @name: 'userpic-placeholder.png';
+                     .datauri(@url, @name, @bg-size, @bg-position);
+                  }
+               }
+            }
+            &:nth-of-type(1) {
+               width: 25%;
+               text-align: left;
+            }
+            &:nth-of-type(2) {
+               width: 75%;
+               p {
+                  text-align: left;
+                  color: @c-black;
+                  &.user-profile-title {
+                     font-size: 1.2em;
+                     line-height: 1.6;
+                  }
+                  &.user-profile-info {
+                     font-size: 1.1em;
+                  }
+               }
+            }
+         }
+      }
+   }
+   .sw-menuSection {
+      border: none;
+      background: transparent;
+      .menuItemWrap {
+         border-top: 1px solid @c-graylightyellow;
+         &:first-child {
+            border-top: 10px solid fade(@c-graylightyellow, 70%);
+         }
+      }
+      &:first-of-type {
+         .menuItemWrap {
+            &:first-child {
+               border-top: none;
+               a {
+                  font-size: 1.2em;
+                  margin: 20px;
+                  padding: 11px 23px;
+                  text-align: center;
+                  color: @c-white;
+                  background: @c-lilac;
+                  .menuItem_icon {
+                     display: none;
+                  }
+               }
+            }
+         }
+         .sw-menuItem {
+            &:hover {
+               color: inherit;
+               background: inherit;
+            }
+         }
+      }
+      &:last-of-type {
+         .menuItemWrap {
+            &:last-child {
+               .sw-menuItem {
+                  &:hover {
+                     border-bottom-right-radius: 6px;
+                     border-bottom-left-radius: 6px;
+                  }
+               }
+            }
+         }
+         .menuSection_content {
+            // overflow: hidden;
+            border-bottom-right-radius: 6px;
+            border-bottom-left-radius: 6px;
+         }
+      }
+      .sw-menuItem {
+         .user-select;
+         font-size: 1.2em;
+         font-weight: normal;
+         position: relative;
+         display: block;
+         padding: 12px 23px 12px 61px;
+         cursor: pointer;
+         text-decoration: none;
+         color: @c-black;
+
+         -webkit-tap-highlight-color: fade(@c-black, 0%);
+         &:hover {
+            color: @c-white;
+            background: lighten(fade(@c-lilac, 80%), 30%);
+         }
+      }
+   }
+   .menuItem_icon {
+      position: absolute;
+      top: 50%;
+      left: 21px;
+      width: 30px;
+      height: 30px;
+      margin-top: -15px;
+   }
+   .sw-input-button {
+      color: @c-lilac;
+      border-color: @c-lilac;
+   }
+}
+
+.sepia-theme-template {
+   @color-1: @c-orangelight6;
+   @color-2: @c-orangelight1;
+   @color-3: @c-orangedeep2;
+   @color-4: @c-green1;
+   @color-5: @c-brown;
+   @color-6: @c-white;
+   .application-menu(@color-1, @color-2, @color-3, @color-4, @color-5, @color-6);
+}
+
+.night-theme-template {
+   @color-1: @c-grayDark4;
+   @color-2: @c-gray;
+   @color-3: @c-white;
+   @color-4: @c-white;
+   @color-5: @c-white;
+   @color-6: @c-black;
+   .application-menu(@color-1, @color-2, @color-3, @color-4, @color-5, @color-6);
+}

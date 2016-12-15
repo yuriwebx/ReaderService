@@ -1,0 +1,211 @@
+@import '../base.less';
+
+@url_general: '../../../app/style/images/menu-icons';
+@url: 'images';
+
+.app-login {
+   width: 100%;
+   .app-login-background {
+      .icon(@url, 'applogin_bg.png');
+      position: fixed;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: @c-orangelight11;
+      background-attachment: fixed;
+      background-position: center top;
+   }
+   .app-login-wrapper {
+      .flex-display;
+      .flex-direction(column);
+      .justify-content(center);
+      .flex-grow(1);
+      .flex-shrink(0);
+      .app-login-logo {
+         text-align: center;
+         i {
+            @name: 'logo.svg';
+            @bg-size: 87px auto;
+            @bg-position: center top;
+            .datauri_svg(@url, @name, @bg-size, @bg-position);
+            display: block;
+            width: 86px;
+            height: 87px;
+            margin: 0 auto;
+         }
+         span {
+            font-size: 14px;
+            font-weight: 300;
+            display: block;
+            padding-top: 7px;
+            text-transform: uppercase;
+            color: @c-lilac;
+         }
+      }
+   }
+   .app-login-fields {
+      .flex-display;
+      .justify-content(space-between);
+      .flex-wrap(wrap);
+      width: 520px;
+      margin: 53px auto 0;
+      @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+         .flex-wrap(wrap);
+         width: 320px;
+      }
+      input {
+         .box-sizing;
+         font-size: 1.231em;
+         font-weight: 400;
+         width: 250px;
+         height: 37px;
+         margin: 10px 0;
+         padding: 0 15px;
+         border: 1px solid #e4e4e4;
+         background: @c-white;
+         @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+            width: 100%;
+         }
+         &:focus {
+            border: 1px solid @c-lilac;
+            box-shadow: 0 0 7px fade(@c-lilac, 75%);
+         }
+      }
+      span {
+         width: 100%;
+         text-align: center;
+      }
+   }
+   .acc-links {
+      .flex-display;
+      .flex-direction(column);
+      .align-items(center);
+      font-size: 16px;
+      width: 300px;
+      margin: 0 auto 10px;
+      span {
+         margin-top: 40px;
+         cursor: pointer;
+         color: @c-lilac;
+         &:hover {
+            .transition(all .3s ease);
+            opacity: .8;
+         }
+      }
+   }
+   .app-login-bttn {
+      width: 520px;
+      margin: 0 auto;
+      padding-top: 10px;
+      @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+         width: 320px;
+      }
+      button {
+         .box-sizing;
+         font-size: 1.231em;
+         font-weight: 300;
+         width: 100%;
+         height: 40px;
+         padding: 0 15px;
+         color: @c-white;
+         border: 0;
+         background: @c-lilac;
+         &:hover {
+            opacity: .8;
+         }
+      }
+   }
+   .alternate-login {
+      .flex-display;
+      .justify-content(space-between);
+      .flex-wrap(wrap);
+      width: 520px;
+      margin: 0 auto;
+      @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+         width: 320px;
+      }
+      > span {
+         font-size: 1.231em;
+         line-height: 20px;
+         position: relative;
+         display: block;
+         width: 100%;
+         margin-bottom: 15px;
+         text-align: center;
+         color: #868686;
+      }
+      a {
+         .box-sizing;
+         font-size: 16px;
+         line-height: 39px;
+         position: relative;
+         overflow: hidden;
+         width: 160px;
+         height: 39px;
+         text-align: center;
+         text-decoration: none;
+         color: @c-white;
+         border-radius: 5px;
+         @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+            width: 93px;
+         }
+         &:before {
+            width: 21px;
+            height: 39px;
+            margin-right: 5px;
+            content: '';
+            vertical-align: middle;
+            @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+               margin: 0;
+            }
+         }
+         &#facebook {
+            background-color: #354f88;
+            &:before {
+               .icon(@url_general, 'ico_facbook.png');
+            }
+         }
+         &#twitter {
+            background-color: #40a2d1;
+            &:before {
+               .icon(@url_general, 'ico_twitter.png');
+            }
+         }
+         &#google {
+            background-color: #ce3e26;
+            &:before {
+               .icon(@url_general, 'ico_googlep.png');
+            }
+         }
+         &:hover {
+            -webkit-transition: all .4s ease;
+               -moz-transition: all .4s ease;
+                -ms-transition: all .4s ease;
+                 -o-transition: all .4s ease;
+                    transition: all .4s ease;
+            opacity: .8;
+         }
+         span {
+            @media @media-size-xs, @media-size-s-alt, @media-size-m-alt {
+               display: none;
+            }
+         }
+      }
+   }
+   .app-login-version {
+      .flex-display;
+      .justify-content(center);
+      .align-items(flex-end);
+      .flex-shrink(0);
+      .box-sizing;
+      font-size: 16px;
+      font-weight: 300;
+      min-height: 44px;
+      padding: 10px 0;
+      text-align: center;
+      color: @c-dusty-gray2;
+
+   }
+}

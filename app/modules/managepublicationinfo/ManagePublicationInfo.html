@@ -1,0 +1,27 @@
+<div class="manage-publication-info">
+   <div class="column">
+      <div class="img-block"><img ng-src="{{publication.book.cover}}" alt=""/></div>
+   </div>
+   <div class="column" sw-custom-scroll="{options: {height: '100%'}}">
+      <div class="manage-publication-title-block">
+         <p ng-bind="::publication.book.name"></p>
+         <p ng-bind="::publication.book.author"></p>
+      </div>
+      <div class="manage-publication-content-block">
+         <ul>
+            <li ng-repeat="infoTab in infoTabsMap" ng-class="{'active': infoTab.active}">
+               <span ng-bind="::infoTab.title" ng-click="::infoTab.activateFn($index)"></span>
+            </li>
+         </ul>
+         <div ng-show="isMainInfo" class="manage-publication-content-wrapper">
+            <sw-present-publication-summary publication="publication.book"></sw-present-publication-summary>
+         </div>
+         <div ng-show="!isMainInfo" ng-class="{'active': isMainInfo}" class="manage-publication-content-wrapper">
+            <sw-manage-book-info ng-if="publicationTypes.book" publication="publication"></sw-manage-book-info>
+            <sw-manage-study-guide-info ng-if="publicationTypes.studyGuide" publication="publication"></sw-manage-study-guide-info>
+            <sw-manage-study-course-info ng-if="publicationTypes.studyCourse" publication="publication"></sw-manage-study-course-info>
+            <sw-manage-collection-info ng-if="publicationTypes.collection" publication="publication"></sw-manage-collection-info>
+         </div>
+      </div>
+   </div>
+</div>

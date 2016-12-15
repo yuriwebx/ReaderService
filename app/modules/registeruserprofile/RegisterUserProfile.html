@@ -1,0 +1,97 @@
+<div class="app-register" ng-form="form">
+   <div class="app-register-title" ng-show="steps.registration"
+        sw-localize="RegisterUserProfile.Register.header.text"></div>
+   <div class="app-register-wrapper" ng-show="steps.registration">
+      <div class="app-register-form-block" sw-hot-key="{enter: 'registerProfile()'}">
+         <label>
+				<span>
+               <sw-input name="firstName" type="text" ng-model="registrationProfileInfo.firstName"
+                         sw-validate="validateName(registrationProfileInfo.firstName)"
+                         sw-localize-attr="{placeholder:'RegisterUserProfile.profile.firstname.label'}">
+               </sw-input>
+               <span class="error-message formRow_validationError" sw-error-for-name="'firstName'"></span>
+            </span>
+         </label>
+         <label>
+				<span>
+               <sw-input name="lastName" type="text" ng-model="registrationProfileInfo.lastName"
+                         sw-validate="validateName(registrationProfileInfo.lastName)"
+                         sw-localize-attr="{placeholder:'RegisterUserProfile.profile.lastname.label'}">
+               </sw-input>
+               <span class="error-message formRow_validationError" sw-error-for-name="'lastName'"></span>
+            </span>
+         </label>
+         <label>
+				<span>
+               <input
+               			class="sw-input-email"
+               			name="mail"
+               			type="email"
+               			ng-model="registrationProfileInfo.email"
+               			sw-validate="validateEmail(registrationProfileInfo.email)"
+               			sw-localize-attr="{placeholder:'RegisterUserProfile.profile.email.label'}"
+               />
+               <span class="error-message formRow_validationError" sw-error-for-name="'mail'"></span>
+            </span>
+         </label>
+         <label>
+				<span>
+					<sw-input name="password" class="sw-input sw-input-text" type="password"
+                         ng-model="registrationProfileInfo.password" sw-validate="validatePassword()"
+                         sw-localize-attr="{placeholder:'RegisterUserProfile.profile.password.label'}">
+               </sw-input>
+					<span class="error-message formRow_validationError" sw-error-for-name="'password'"></span>
+				</span>
+         </label>
+         <label>
+				<span>
+					<sw-input name="confirmPassword" type="password" ng-model="confirmPassword"
+                         sw-validate="validatePasswordConfirmation()"
+                         sw-localize-attr="{placeholder:'RegisterUserProfile.profile.confirmpassword.label'}">
+               </sw-input>
+					<span class="error-message formRow_validationError" sw-error-for-name="'confirmPassword'"></span>
+				</span>
+         </label>
+         <i>
+				<span>
+					<button class="sw-input sw-input-button" ng-click="registerProfile()"
+                       sw-localize="RegisterUserProfile.button.create.label"></button>
+				</span>
+         </i>
+      </div>
+   </div>
+
+   <div class="app-register-title" ng-show="steps.confirmation" sw-localize="RegisterUserProfile.Create.header.text"></div>
+   <div class="app-register-wrapper" ng-show="steps.confirmation" sw-hot-key="{enter: 'confirmTask()'}">
+      <div class="app-register-form-block">
+         <label>
+            <span>
+               <p sw-localize="RegisterUserProfile.instructions.text"></p>
+               <sw-input name="confirmTask" type="text" ng-model="registrationProfileInfo.taskConfirmationHashCode"
+                         sw-validate="validateConfirmTask(registrationProfileInfo.taskConfirmationHashCode)"></sw-input>
+               <span class="error-message formRow_validationError" sw-error-for-name="'confirmTask'"></span>
+            </span>
+         </label>
+         <i>
+            <span>
+               <br/>
+               <button class="sw-input sw-input-button" ng-click="confirmTask()"
+                    sw-localize="RegisterUserProfile.button.proceed.label"></button>
+            </span>
+         </i>
+      </div>
+   </div>
+
+   <div class="app-register-title" ng-show="steps.treatment" sw-localize="RegisterUserProfile.Create.header.text"></div>
+   <div class="app-register-wrapper" ng-show="steps.treatment">
+      <div class="app-register-form-block">
+         <label>
+            <span class="reg-thank-message">
+               <p sw-localize="RegisterUserProfile.thank.label"></p>
+               
+               <p sw-localize="RegisterUserProfile.instructions.label"></p>
+            </span>
+         </label>
+      </div>
+   </div>
+</div>

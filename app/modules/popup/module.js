@@ -1,0 +1,6 @@
+define([
+
+   './Popup'
+
+], function(){});
+

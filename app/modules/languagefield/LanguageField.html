@@ -1,0 +1,7 @@
+<div class="select-language col" data-ng-class="{'lang-rtl-wrapper': isRtl(models.currentLanguage)}" data-ng-show="langs.length != 1">
+   <div class="col-inner-wrap">
+      <form>
+         <sw-input-select ng-if="languageOption" options="languageOption" ng-model="models.currentLanguage" ng-change="onChangeLanguage()"></sw-input-select>
+      </form>
+   </div>
+</div>

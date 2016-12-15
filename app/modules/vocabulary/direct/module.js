@@ -1,0 +1,1 @@
+define(['./DirectVocabularyService'], function(){});

@@ -1,0 +1,205 @@
+<div class="search-layout {{::isSearcher ? 'search-layout-ool' : 'search-layout-of'}}">
+
+   <div class="content-list content-list-tree">
+      <div class="search-results-tooltip" ng-if="extendapi.isTooltipVisible && currentLanguage==='en'">
+         <span class="close-tooltip-popup" ng-click="extendapi.isTooltipVisible = false"></span>
+         <p class="text-title" data-sw-localize="Search.Tooltip.paragraph1.title"></p>
+         <p data-sw-localize="Search.Tooltip.paragraph1.label"></p>
+         <p class="text-list">
+           <span data-sw-localize="Search.Tooltip.paragraph2.title"></span>
+           <span data-sw-localize="Search.Tooltip.paragraph2.label"></span>
+         </p>
+         <p class="text-list">
+           <span data-sw-localize="Search.Tooltip.paragraph3.title"></span>
+           <span data-sw-localize="Search.Tooltip.paragraph3.label"></span>
+         </p>
+         <p class="text-list">
+           <span data-sw-localize="Search.Tooltip.paragraph4.title"></span>
+           <span data-sw-localize="Search.Tooltip.paragraph4.label"></span>
+         </p>
+         <p class="text-list">
+           <span data-sw-localize="Search.Tooltip.paragraph5.title"></span>
+           <span data-sw-localize="Search.Tooltip.paragraph5.label"></span>
+         </p>
+      </div>
+
+      <!--TEMP while no localization-->
+      <div class="search-results-tooltip" ng-if="extendapi.isTooltipVisible && currentLanguage==='fa'">
+         <span class="close-tooltip-popup" ng-click="extendapi.isTooltipVisible = false"></span>
+         <p>این یک جستجوی فازی نتایج مشابه به کلمات کلیدی شما فراهم خواهد کرد. در اینجا چند راهنمایی برای جستجوی قدرتمند عبارتند از:</p>
+         <p class="text-list">
+          <span>برای نتایج دقیق، استفاده از نقل قول مانند:</span>
+          <span>"بزرگترین اثبات"<br>"پنج الماس"</span>
+         </p>
+         <p class="text-list">
+          <span>به حذف نتایج، استفاده از یک خط تیره قبل یک کلمه مانند :</span>
+          <span>مشاوره صلح -فقر</span>
+         </p>
+         <p class="text-list">
+          <span>نتایج محدود به یک کتاب و یا نویسنده ، بخشی مشخص در پرانتز مانند:</span>
+          <span>اعتدال (ملوک)<br>بزرگترین اثبات (باب)<br>مروارید گرانبها (عبد)<br>مراقبه (عبد ،شوقی)</span>
+         </p>
+         <p class="text-list">
+          <span>جستجو به زبان عربی یا فارسی در زبان انگلیسی اما نوع مانند:</span>
+          <span class="ltr-in-rtl">qurban (munajat)</span>
+         </p>
+      </div>
+
+      <div class="search-results-tooltip" ng-if="extendapi.isTooltipVisible && currentLanguage==='ar'">
+         <span class="close-tooltip-popup" ng-click="extendapi.isTooltipVisible = false"></span>
+         <p>هذا وسوف يتم بحث غامض النتائج بحيث تكون مشابهة ل كلمات التي تقدمها. وهنا بعض النصائح ل بحث قوي:</p>
+         <p class="text-list">
+          <span>للحصول على نتائج دقيقة ، استخدام علامات الاقتباس مثل:</span>
+          <span>"أكبر دليل"<br>"خمسة الماس"</span>
+         </p>
+         <p class="text-list">
+          <span>استبعاد النتائج، استخدم شرطة قبل كلمة مثل:</span>
+          <span>نصيحة السلام -الفقر</span>
+         </p>
+
+         <p class="text-list">
+          <span>نتائج حد ل كتاب أو مؤلف ، يحدد الجزء بين قوسين مثل:</span>
+          <span>الاعتدال (الملوك)<br>أكبر دليل (باب)<br>لا تقدر بثمن اللؤلؤ (عبد)<br>التأمل (عبد،شوقي)</span>
+         </p>
+
+         <p class="text-list">
+          <span>بحث باللغة العربية أو الفارسية ولكن اكتب في اللغة الإنجليزية مثل :</span>
+          <span class="ltr-in-rtl">qurban (munajat)</span>
+         </p>
+      </div>
+      <!---->
+
+      <div data-ng-show="isPerformedSearch()" class="search-results-info">
+         <div id="search_results">
+           <span data-ng-show="showNotFoundResults()" class="no_results" ng-bind="noSearchResults"></span>
+           <span data-ng-show="resultsBooks.length>0" class="results" dir="auto">
+              <span>{{searchResultsInfo}}</span>
+           </span>
+         </div>
+         <div class="book-name">
+            <span ng-if="!!currentBook" ng-bind="getAuthorAndTitle(currentBook)"></span>
+         </div>
+      </div>
+
+      <div class="search-results-tree-wrapper" data-ng-class="::oneColumn() ? 'one-column' : ''">
+
+         <div class="search-results-tree">
+            <div class="tree-container-scroller" sw-custom-scroll="{options: {height: '100%'}}">
+            <ul class="tree-container books-container"
+                sw-focus-manager="{traverse: true}"
+                sw-hot-key="{'right': 'focusOnSearchResult()', 'down': 'loadNextResults(currentIndex)', 'up': 'loadPrevResults(currentIndex)'}">
+               <li class="tree-node"
+                   ng-repeat="book in resultsBooks  | limitTo:visibleBooksCount"
+                   ng-class="{'current-item': currentBook === book, 'expanded' : searchResults.length > 0 || !oneColumn(), 'no-thumbs': isSearcher}"
+                   ng-click="loadResults(book, $index, $event)">
+
+                  <p class="tree-node-container" ng-click="toggleResult(book)" ng-class="::{'no-book-cover': isSearcher}">
+                     <span class="tree-node-image" ng-if="!isSearcher">
+                        <img data-ng-src="{{::getThumbnailByBook(book)}}" class="book-cover-fake" />
+                        <i class="shadow-gen"></i>
+                     </span>
+                     <span class="tree-node-title" ng-bind="::book.title"></span>
+                     <span class="" ng-bind="::book.author"></span>
+                     <span class="" ng-bind="::book.totalResults"></span>
+                  </p>
+                  <i></i>
+
+                  <div ng-if="::oneColumn()">
+                     <ul data-ng-if="currentBook === book" class="tree-node-container">
+                        <li data-ng-repeat="searchResult in searchResults | limitTo: maxLoadResults"
+                            class="tree-node tree-sub-node"
+                            data-ng-class="{'expanded': selectedTitleIndex === $index}">
+                           <p data-ng-click="toggleParagraphVisibility($event, $index)">
+                              <span class="tree-sub-node-container">
+                                 <span data-ng-bind-html="$index === selectedTitleIndex ? searchResult.paragraph : searchResult.title"
+                                    paragraph="{{::searchResult.paragraphs}}" ng-class="{'without-paragraph': !searchResult.paragraphs}">
+                                 </span>
+
+                              </span>
+                           </p>
+                           <div class="expanded-links" ng-if="selectedTitleIndex === $index">
+                              <sw-social-sharing sharing-data="searchResult.sharingData" view-config="searchResult.viewConfig"></sw-social-sharing>
+                              <span ng-click="copyLinkToBuffer(searchResult, $event)" class="copy-to-buffer"
+                                 ng-bind-template="“{{::book.title}}”, {{::book.author}}, {{::searchResult.paragraphs}}"></span>
+                           </div>
+                        </li>
+                        <li class="load-more-box" ng-if="searchResults.length > maxLoadResults">
+                           <button class="load-more-button" ng-click="readMoreResults($event)">Load more</button>
+                        </li>
+                        <li class="tree-node tree-sub-node fake-tree-node">
+                           <p class="expanded">
+                             <span class="tree-sub-node-container fake">
+                                <span paragraph=""></span>
+                              </span>
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+            </ul>
+            </div>
+         </div>
+
+         <div data-ng-if="::!oneColumn()" class="search-results-tree extended-results-tree" sw-on-element-resize="onResizeElement(size, oldSize)">
+            <div class="tree-container" sw-custom-scroll="{options: {height: '100%'}}">
+               <div class="tree-node">
+                  <ul class="tree-node-container search-node-container"
+                      sw-hot-key="{
+                         'left' : 'focusOnResults()',
+                         'up'   : 'prevNextSearchResult(selectedTitleIndex, \'p\')',
+                         'down' : 'prevNextSearchResult(selectedTitleIndex, \'n\')',
+                         'enter': 'onNodeActivate(searchResults[selectedTitleIndex])'
+                      }"
+                      sw-focus-manager="{traverse: true}">
+                     <li data-ng-repeat="searchResult in searchResults | limitTo:visibleSearchCount"
+                         class="tree-sub-node tree-node search-result"
+                         ng-click="toggleParagraphVisibility($event, $index)"
+                         ng-class="{'expanded': selectedTitleIndex === $index}">
+                        <p>
+                          <span class="tree-sub-node-container">
+                             <span data-ng-bind-html="$index === selectedTitleIndex ? toTrusted(moreText) : searchResult.title"
+                                paragraph="{{::searchResult.paragraphs}}" ng-class="{'without-paragraph': !searchResult.paragraphs}">
+                             </span>
+                           </span>
+                        </p>
+                
+
+                        <div class="expanded-links" ng-if="selectedTitleIndex === $index && !isSearcher">
+                           <sw-social-sharing sharing-data="searchResult.sharingData" view-config="searchResult.viewConfig"></sw-social-sharing>
+                        </div>
+                        <span ng-if="isOpenablePublication() && !isSearcher" data-ng-click="onNodeActivate(searchResult, $event)" class="button-open-in-reader">
+                           <i class="icon i-openInReader"></i>
+                        </span>
+
+
+                        <span class="spec-lincs" ng-if="::isSearcher">
+                          <a href="{{oceanOfLigthsUrl}}{{::currentBook.originalPath.pdf}}" class="pdf" ng-show="!!currentBook.originalPath.pdf" target="_blank">
+                             <i class="icon i-openInReader"></i>
+                          </a>
+                          <a href="{{oceanOfLigthsUrl}}{{::currentBook.originalPath.doc}}" class="doc" ng-show="!!currentBook.originalPath.doc" target="_blank">
+                             <i class="icon i-openInReader"></i>
+                          </a>
+                          <a href="{{oceanOfLigthsUrl}}{{::currentBook.originalPath.htm}}#{{::searchResult.encodedInfo}}" class="open" ng-show="!!currentBook.originalPath.htm">
+                             <i class="icon i-openInReader"></i>
+                          </a>
+                        </span>
+
+
+                     </li>
+
+                     <li class="tree-sub-node tree-node expanded fake-tree-node">
+                        <p>
+                          <span class="tree-sub-node-container fake">
+                             <span paragraph=""></span>
+                           </span>
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         
+      </div>
+
+   </div>
+</div>

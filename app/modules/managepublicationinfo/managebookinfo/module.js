@@ -1,0 +1,6 @@
+define([
+
+   './ManageBookInfo',
+   './ManageBookInfoService'
+
+], function(){});

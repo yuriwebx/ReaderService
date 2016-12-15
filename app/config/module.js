@@ -1,0 +1,4 @@
+define([
+   './ScrollServiceConfig',
+   './ApplicationScrollConfig'
+], function(){});

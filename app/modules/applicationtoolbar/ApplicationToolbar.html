@@ -1,0 +1,23 @@
+<div class="sw-appToolbar-wrapper" sw-sticky="{alwaysStick: true, widthControl: false}" ng-mouseenter="showToolbar()" ng-mouseleave="hideToolbar()">
+   <div class="sw-appToolbar col-layout-toolbar"
+        data-ng-class="{'toolbar-invisible':isToolbarInverted, 'toolbar-visible':!isToolbarInverted, 'logged-in':loggedIn(), 'logged-out':loggedOut()}"
+        data-ng-click="toggleToolbar()">
+
+      <div class="sw-appMenu list-containing-menu col" ng-hide="hideMenuButton()">
+         <div class="sw-appMenu_inner col-inner-wrap">
+            <a ng-click="toggleMenu($event)"
+               class="sw-menuInvoker sw-popup-offset"
+               sw-tooltip-options="MainMenuTooltip">
+               <i class="icon i-logo"></i>
+               <span>{{currentAppName}}</span>
+            </a>
+
+            <div class="sw-application-menu-popup-container"></div>
+         </div>
+      </div>
+         <div class="sw-appMenu injectable-template toolbar-injectable-template col">
+      </div>
+   </div>
+
+   <div class="injectable-template parallxtoolbar-injectable-template"></div>
+</div>

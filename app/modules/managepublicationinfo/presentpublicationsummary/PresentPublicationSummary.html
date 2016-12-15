@@ -1,0 +1,7 @@
+<div class="present-publication-summary">
+   <p><span ng-bind="::publication.categoty"></span></p>
+   <p>
+	   <span sw-localize="PresentPublicationSummary.time.label"></span> <span ng-bind="::publication.readingTime | TimeDurationFilter"></span>, <span sw-localize="PresentPublicationSummary.difficulty.label"></span> <span ng-bind="::publication.difficulty"></span>
+   </p>
+   <p dir="auto" ng-bind="::publication.description"></p>
+</div>

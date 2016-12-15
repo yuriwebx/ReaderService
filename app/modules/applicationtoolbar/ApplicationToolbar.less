@@ -1,0 +1,536 @@
+@import '../base.less';
+
+@url: 'images';
+@url_general: '../../../app/style/images/menu-icons';
+
+@repeat: no-repeat;
+
+.sw-appToolbar-wrapper {
+   position: relative;
+   z-index: 10;
+   top: 0;
+   right: 0;
+   left: 0;
+   height: 44px;
+   .app-portal & {
+      height: 60px;
+   }
+   .sw-appToolbar {
+      .flex-display();
+      .transition(all .25s ease);
+      width: 100%;
+      -webkit-user-select: none;
+      background: @c-darklilac2;
+
+      will-change: opacity;
+      // &.logged-in {
+      //    background: @c-lilac;
+      // }
+      // &.logged-out {
+      //    background: @c-darklilac2;
+      // }
+      @media @narrow {
+         height: @appToolbarHeight_narrow;
+      }
+      @media @normal_wide {
+         height: @appToolbarHeight;
+      }
+      @media @normal_portrait {
+         padding: 20px 0 0;
+      }
+      @media @normal, @narrow {
+         padding: 20px 0 0;
+      }
+      &.col-layout-toolbar {
+         position: relative;
+         width: 100% !important;
+         height: 44px;
+         .col {
+            height: 44px;
+            .col-inner-wrap {
+               position: relative;
+               margin: 5px 0;
+               &:after {
+                  .clear;
+               }
+            }
+            .table-layout-toolbar {
+               .flex-display();
+               width: 100%;
+            }
+            & > div > div {
+               .flex-display();
+               .justify-content(space-between);
+               width: 100%;
+            }
+            & > div > div > div {
+               white-space: nowrap;
+            }
+            &:nth-of-type(2) {
+               .flex-grow(1);
+               overflow: hidden;
+            }
+            .app-portal & {
+               overflow: hidden;
+               height: 60px;
+            }
+            div {
+               &:nth-of-type(2) {
+                  &:not(.signed-in) {
+                     .app-portal & {
+                        @name: '../../../../app-portal/app-portal/images/horizontal_logo.png';
+                        @bg-size: auto;
+                        @bg-position: center 15px;
+                        .datauri(@url, @name, @bg-size, @bg-position);
+                     }
+                  }
+               }
+            }
+         }
+         .app-portal & {
+            height: 60px;
+         }
+      }
+      &.toolbar-invisible {
+         @media @normal, @narrow {
+            padding: 20px 0 0;
+         }
+         .default-theme-template & {
+            background: @c-white;
+         }
+         .sepia-theme-template & {
+            background: @c-orangelight5;
+         }
+         .night-theme-template & {
+            background: @c-black;
+         }
+         .sw-appMenu {
+            .sw-appMenu_inner {
+               .i-LibraryReadMode {
+                  color: @c-grayLight4;
+               }
+               .icon.i-ExtrasTableOfContents {
+                  @name: 'contents_inverted.svg';
+                  @bg-size: 20px auto;
+                  @bg-position: center;
+                  .datauri_svg(@url, @name, @bg-size, @bg-position);
+               }
+            }
+            .sw-menuInvoker {
+               border-right: 1px solid transparent;
+            }
+            .menuInvokerIcon,
+            .icon {
+               &.i-logo {
+                  @name: 'logo_inverted.svg';
+                  @bg-size: 38px auto;
+                  .datauri_svg(@url, @name, @bg-size);
+                  .sepia-theme-template & {
+                     @name: 'logo_sepia_inverted.svg';
+                     @bg-size: 38px auto;
+                     .datauri_svg(@url, @name, @bg-size);
+                  }
+                  .night-theme-template & {
+                     @name: 'logo_night_inverted.svg';
+                     @bg-size: 38px auto;
+                     .datauri_svg(@url, @name, @bg-size);
+                  }
+               }
+               &.i-SearchReadMode {
+                  @name: 'search_inverted.svg';
+                  @bg-size: 26px auto;
+                  .datauri_svg(@url_general, @name, @bg-size);
+                  pointer-events: auto;
+               }
+               &.i-SettingsReadMode {
+                  @name: 'reading_settings_inverted.svg';
+                  @bg-size: 20px auto;
+                  .datauri_svg(@url, @name, @bg-size);
+               }
+               &.i-Assessments {
+                  @name: 'assessments_inverted.svg';
+                  @bg-position: center;
+                  @bg-size: 20px auto;
+                  .box-sizing;
+                  .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                  overflow: hidden;
+                  width: 44px;
+                  height: 44px;
+                  text-indent: -9999px;
+                  color: @c-white;
+                  &.notifications-active {
+                     @name: 'assessments_inverted.svg';
+                     @bg-position: center;
+                     @bg-size: 20px auto;
+                     .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                     color: @c-white;
+                  }
+               }
+               &.i-Personalmess {
+                  @name: 'chat_inverted.svg';
+                  @bg-position: center;
+                  @bg-size: 20px auto;
+                  .box-sizing;
+                  .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                  overflow: hidden;
+                  width: 44px;
+                  height: 44px;
+                  text-indent: -9999px;
+                  color: @c-white;
+                  &.notifications-active {
+                     @name: 'chat_inverted.svg';
+                     @bg-position: center;
+                     @bg-size: 20px auto;
+                     .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                     color: @c-white;
+                     color: #266e9e;
+                  }
+               }
+            }
+            .book-title {
+               color: @c-grayLight4;
+               .sepia-theme-template & {
+                  color: #b4afaa;
+               }
+               .night-theme-template & {
+                  color: #595959;
+               }
+            }
+            &.injectable-template {
+               .sw-appMenu {
+                  .sw-appMenu_inner {
+                     .icon-wrap {
+                        pointer-events: none;
+                        &:nth-of-type(1),
+                        &:nth-of-type(2),
+                        &:nth-of-type(3) {
+                           opacity: 0;
+                        }
+                        &.assessments,
+                        &.personalmess,
+                        &.read-mode-settings-menu {
+                           @media @media-size-s-alt, @media-size-xs {
+                              display: none;
+                           }
+                        }
+                        @media @media-size-s-alt, @media-size-xs {
+                           min-width: 45px;
+                           // padding: 0;
+                        }
+                        span {
+                           text-align: center;
+                           &:nth-of-type(2) {
+                              i {
+                                 width: 20px;
+                                 height: 20px;
+                                 vertical-align: middle;
+                                 background-size: 20px;
+                              }
+                           }
+                        }
+                     }
+                     &.reader-toolbar-menu {
+                        &.left-side {
+                           pointer-events: none;
+                           opacity: 0;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+      &.toolbar-visible {
+         .transition(all .25s ease);
+         &.logged-in {
+            .app-portal & {
+               background: @c-lilac;
+               box-shadow: none;
+            }
+            &:after {
+               .app-portal & {
+                  display: none;
+               }
+            }
+         }
+         .col {
+            .app-portal & {
+               padding-left: 18px;
+            }
+         }
+         .sw-appMenu {
+            .sw-menuInvoker {
+               border-color: transparent;
+               border-right: 1px solid fade(@c-white, 50%);
+               @media @media-size-s-alt, @media-size-xs {
+                  border-color: transparent;
+               }
+               .in-library& {
+                  border-color: transparent;
+               }
+               .app-portal & {
+                  border: none;
+               }
+            }
+            .menuInvokerIcon,
+            .icon {
+               &.i-logo {
+                  @name: 'logo_night.svg';
+                  @bg-size: 38px auto;
+                  .datauri_svg(@url_general, @name, @bg-size);
+               }
+               &.i-SearchReadMode {
+                  @bg-size: 26px auto;
+                  @name: 'search_night.svg';
+                  .datauri_svg(@url_general, @name, @bg-size);
+               }
+               &.i-SettingsReadMode {
+                  @bg-size: 20px auto;
+                  @name: 'reading_settings_night.svg';
+                  .datauri_svg(@url_general, @name, @bg-size);
+               }
+               &.i-Assessments {
+                  @name: 'assessments_shadow.svg';
+                  @bg-position: center;
+                  @bg-size: 20px auto;
+                  .box-sizing;
+                  .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                  overflow: hidden;
+                  width: 44px;
+                  height: 44px;
+                  text-indent: -9999px;
+                  color: @c-white;
+                  &.notifications-active {
+                     @name: 'assessments_night_active.svg';
+                     @bg-position: center;
+                     @bg-size: 20px auto;
+                     .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                     overflow: hidden;
+                     color: @c-white;
+                  }
+               }
+               &.i-Personalmess {
+                  @name: 'chat_shadow.svg';
+                  @bg-position: center;
+                  @bg-size: 20px auto;
+                  .box-sizing;
+                  .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                  overflow: hidden;
+                  width: 44px;
+                  height: 44px;
+                  text-indent: -9999px;
+                  color: @c-white;
+                  &.notifications-active {
+                     @name: 'chat_night.svg';
+                     @bg-position: center;
+                     @bg-size: 20px auto;
+                     .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+                     overflow: hidden;
+                     color: @c-white;
+                  }
+               }
+            }
+            &.injectable-template {
+               .sw-appMenu {
+                  .sw-appMenu_inner {
+                     .i-LibraryReadMode,
+                     .i-StudyProject {
+                        color: @c-white;
+                     }
+                     .icon-wrap {
+                        color: @c-white;
+                        &:nth-of-type(1) {
+                           @media @media-size-s-alt, @media-size-xs {
+                              display: none;
+                           }
+                        }
+                        &:nth-of-type(2) {
+                           @media @media-size-s-alt, @media-size-xs {
+                              display: none;
+                           }
+                        }
+                        &.assessments,
+                        &.personalmess,
+                        &.read-mode-settings-menu {
+                           @media @media-size-s-alt, @media-size-xs {
+                              display: none;
+                           }
+                        }
+                        @media @media-size-s-alt, @media-size-xs {
+                           min-width: 45px;
+                        }
+                        span {
+                           text-align: center;
+                           &:nth-of-type(1) {
+                              //                              display: none;
+                           }
+                           &:nth-of-type(2) {
+                              width: 20px;
+                              &.i-StudyProject {
+                                 i {
+                                    background-size: 20px;
+                                 }
+                              }
+                              i {
+                                 width: 20px;
+                                 height: 20px;
+                                 vertical-align: middle;
+                                 background-size: 20px;
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+      .sw-appMenu {
+         &.list-containing-menu {
+            width: 50px;
+            min-width: 50px;
+            max-width: 50px;
+            .icon {
+               left: 2px;
+               margin-left: 0;
+            }
+            [is-editor=true] & {
+               width: 115px;
+               min-width: 115px;
+               max-width: 115px;
+            }
+         }
+         .sw-appMenu_inner {
+            .box-sizing;
+            position: relative;
+         }
+         .sw-menuInvoker {
+            .box-sizing;
+            position: relative;
+            display: block;
+            height: 44px;
+            margin: -5px 0;
+            cursor: pointer;
+
+            -webkit-tap-highlight-color: fade(@c-black, 0%);
+            .app-portal & {
+               height: 60px;
+            }
+            div[is-editor='false'] & {
+               width: 50px;
+            }
+            span {
+               font-size: 1.385em;
+               line-height: 44px;
+               display: block;
+               margin-left: 50px;
+               padding-right: 18px;
+               color: #fff;
+               div[is-editor='false'] & {
+                  padding-right: 0;
+               }
+            }
+            @media @narrow {
+               width: 114px;
+            }
+         }
+         .menuInvokerIcon,
+         .icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 44px;
+            height: 44px;
+            background-position: center center;
+            @media @narrow {
+               background-size: 80%;
+            }
+            @media @narrow, @normal_wide {
+               margin-top: -22px;
+               margin-left: -22px;
+            }
+            &.i-logo {
+               background-size: 38px auto;
+            }
+            &.i-SearchReadMode {
+               background-size: 26px auto;
+            }
+            &.i-SettingsReadMode {
+               background-size: 22px auto;
+            }
+            &.i-ExtrasTableOfContents {
+               background-size: 20px auto;
+            }
+         }
+         &.right-side {
+            float: right;
+         }
+      }
+      .sw-search {
+         .box-sizing;
+         position: relative;
+         display: block;
+         float: left;
+         width: 56px;
+         height: 100%;
+         .i-Search {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @media @narrow {
+               width: 24px;
+               height: 24px;
+               margin-top: -12px;
+               margin-left: -12px;
+               background-size: 80%;
+            }
+            @media @normal_wide {
+               width: 48px;
+               height: 48px;
+               margin-top: -24px;
+               margin-left: -24px;
+            }
+         }
+         @media @narrow {
+            width: 44px;
+            height: 100%;
+         }
+         @media @min {
+            display: none;
+         }
+      }
+      .injectable-template {
+         padding: 0 8px 0 0;
+      }
+      &.FlashCards-appToolbar,
+      &.Dictionary-appToolbar {
+         background: @c-white;
+         .sw-appMenu {
+            .icon {
+               &.i-logo {
+                  @name: 'logo.svg';
+                  @bg-position: center;
+                  @bg-size: 38px auto;
+                  .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+               }
+            }
+         }
+      }
+   }
+}
+
+// Only Web styles
+.web {
+   .sw-appToolbar-wrapper {
+      .sw-appToolbar {
+         @media @normal_portrait {
+            padding: 0;
+         }
+         @media @normal, @narrow {
+            padding: 0;
+         }
+      }
+   }
+}
+
+@import 'ApplicationToolbar.dif.less';

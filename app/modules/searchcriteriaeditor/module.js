@@ -1,0 +1,6 @@
+define([
+
+   './SearchCriteriaEditor'
+
+], function(){});
+

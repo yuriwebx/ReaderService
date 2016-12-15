@@ -1,0 +1,88 @@
+@import '../base.less';
+
+@url_general: '../../../app/style/images/menu-icons';
+
+body {
+   .sw-popup {
+      border-radius: 10px;
+      background: @c-white;
+      box-shadow: 0 0 13px 0 @c-grayMiddle;
+   }
+   .sw-popup-backdrop {
+      top: -25%;
+      left: -25%;
+      width: 150%;
+      height: 150%;
+      &.sw-popup-backdrop-visible {
+         opacity: .2;
+      }
+   }
+}
+
+.sw-messageBox {
+   .sw-touch-input-no &,
+   .sw-touch-input-yes {
+      border-radius: 8px!important;
+   }
+   .sw-popup-content {
+      .sw-popup_icon {
+         &.i-error {
+            @bg-position: center;
+            @bg-size: 100% auto;
+            @name: 'exclamation.svg';
+            .datauri_svg(@url_general, @name, @bg-size, @bg-position);
+            width: 16px;
+            height: 16px;
+            vertical-align: top;
+         }
+      }
+      // .sw-popup_text {
+      //    font-size: 1.15em;
+      //    display: inline-block;
+      //    vertical-align: middle;
+      //    white-space: normal;
+      //    @media @narrow {
+      //       padding-right: 35px;
+      //    }
+      //    @media @normal_wide {
+      //       padding-right: 45px;
+      //    }
+      //    p {
+      //       margin-top: 0.33em;
+      //    }
+      // }
+   }
+   .sw-popup-footer {
+      // border-top: 1px solid @c-mono-300;
+      text-align: center;
+      &:not(:empty) {
+         padding: 0 8px!important;
+      }
+      .sw-popup-button {
+         font-size: 16px;
+         color: @c-lilac;
+         border: none;
+         background: transparent;
+         &:hover {
+            opacity: .8;
+            background: transparent;
+         }
+         &:not(:last-child) {
+            margin-right: 8px;
+         }
+         &.sw-input-button {
+            &.m-button__action {
+               &:not(:disabled) 
+               {
+                  &:hover {
+                     background: transparent;
+                  }
+               }
+            }
+         }
+      }
+   }
+   // .sw-popup_closeBlock {
+   //    display: none;
+   // }
+}

@@ -1,0 +1,52 @@
+// Media Queries - View Modes
+
+///////////////////////////////////////////////////////////////////////
+// PLEASE REVIEW MediaDetector.js IN CASE OF ANY CHANGE IN THIS FILE //
+///////////////////////////////////////////////////////////////////////
+
+//wide
+@media-size-xl: ~"all and (min-width: 1281px)";
+
+//normal
+@media-size-l:  ~"all and (min-width: 1025px) and (max-width: 1280px)";
+@media-size-m:  ~"all and (min-width:  841px) and (max-width: 1024px)";
+
+@media-size-l-alt:  ~"all and (min-width: 1024px) and (max-width: 1280px)";
+@media-size-m-alt:  ~"all and (min-width:  701px) and (max-width: 1023px)";
+@media-size-s-alt:  ~"all and (min-width: 481px) and (max-width: 700px)";
+
+//narrow
+@media-size-s:  ~"all and (min-width:  481px) and (max-width:  840px)";
+@media-size-xs:  ~"all and (max-width:  480px)";
+
+
+@min: ~"all and (min-width: 0px) and (max-width: 400px)";
+@min_portrait: ~"all and (min-width: 0px) and (max-width: 400px) and (orientation:portrait)";
+@min_landscape: ~"all and (min-width: 0px) and (max-width: 400px) and (orientation:landscape)";
+
+@narrow: ~"all and (min-width: 0px) and (max-width: 700px)";
+@narrow_portrait: ~"all and (min-width: 0px) and (max-width: 700px) and (orientation:portrait)";
+@narrow_landscape: ~"all and (min-width: 0px) and (max-width: 700px) and (orientation:landscape)";
+
+@narrowHeight: ~"all and (min-height: 0px) and (max-height: 600px)";
+@narrowHeight_portrait: ~"all and (min-height: 0px) and (max-height: 600px) and (orientation:portrait)";
+@narrowHeight_landscape: ~"all and (min-height: 0px) and (max-height: 600px) and (orientation:landscape)";
+
+@normal: ~"all and (min-width: 701px) and (max-width: 1280px)";
+@normal_portrait: ~"all and (min-width: 701px) and (max-width: 1280px) and (orientation:portrait)";
+@normal_landscape: ~"all and (min-width: 701px) and (max-width: 1280px) and (orientation:landscape)";
+
+@wide: ~"all and (min-width: 1281px)";
+@wide_portrait: ~"all and (min-width: 1281px) and (orientation:portrait)";
+@wide_landscape: ~"all and (min-width: 1281px) and (orientation:landscape)";
+
+@narrow_normal: ~"all and (max-width: 1280px)";
+@normal_wide: ~"all and (min-width: 701px)";
+
+@retina: ~"all and (-webkit-min-device-pixel-ratio: 2)";
+
+@lowHeight: ~"all and (max-height: 600px)";
+@normalHeight: ~"all and (min-height: 601px)";
+
+
+@viewMode: default;

@@ -1,0 +1,1 @@
+define(['./SearchPublications', './SearchService'], function(){});

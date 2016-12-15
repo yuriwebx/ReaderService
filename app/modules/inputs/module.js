@@ -1,0 +1,6 @@
+define([
+
+   './Inputs'
+
+], function(){});
+

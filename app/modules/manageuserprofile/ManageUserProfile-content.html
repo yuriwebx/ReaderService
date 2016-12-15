@@ -1,0 +1,153 @@
+<div ng-form="form">
+   <div class="fields-block">
+      <div class="user-pic-block" ng-if="!isSelectImgView">
+         <span ng-class="{'img-dummy': isImageEmpty}">
+            <span class="img-centering">
+               <img ng-src="{{imgPreviewSrc}}" ng-if="!isImageEmpty" ng-class=""/>
+               <input type="file" name="file" accept="image/*" ng-blur="reset()"
+                      sw-file-reader="profile.photo = data"
+                      sw-file-reader-finish="setSelectImgView(data)"/>
+            </span>
+         </span>
+      </div>
+      <div class="preview-img-block" ng-if="isSelectImgView">
+         <div class="img-crop-block">
+            <canvas width="600" height="450" id="canvas" image-cropper image="cropped.startImg"
+                    cropped-image="cropped.resultImg" crop-width="200" crop-height="200" keep-aspect="true"
+                    touch-radius="30" crop-area-bounds="bounds"></canvas>
+         </div>
+      </div>
+      <div class="user-name-block" ng-show="!isSelectImgView">
+         <span class="error-message formRow_validationError" sw-error-for-name="'firstName'"></span>
+         <label class="formRow">
+            <span class="formRow_label" sw-label-for-name="'firstName'" sw-localize="Profile.firstname.label"></span>
+            <span class="formRow_content">
+               <sw-input type="text" name="firstName" ng-model="profile.firstName" sw-validate="validateName(profile.firstName)" maxlength="25"></sw-input>
+            </span>
+         </label>
+
+         <span class="error-message formRow_validationError" sw-error-for-name="'lastName'"></span>
+         <label class="formRow">
+            <span class="formRow_label" sw-label-for-name="'lastName'" sw-localize="Profile.lastname.label"></span>
+            <span class="formRow_content">
+               <sw-input type="text" name="lastName" ng-model="profile.lastName" sw-validate="validateName(profile.lastName)" maxlength="25"></sw-input>
+            </span>
+         </label>
+
+         <label class="formRow">
+            <span class="error-message" sw-error-for-name="'email'"></span>
+            <span class="formRow_label" sw-localize="Profile.email.label"></span>
+            <span class="formRow_content">
+               <sw-input type="text" name="email" ng-model="profile.email" sw-validate="validateEmail(profile.email)"></sw-input>
+            </span>
+         </label>
+
+         <label class="formRow" ng-show="showConfirmationBlock" sw-hot-key="{enter: 'config.save()'}">
+            <span class="formRow_label"></span>
+            <span class="formRow_content">
+               <!--Please, enter code to confirm changing of e-mail.-->
+               <span sw-localize="ManageUserProfile.emailConfirmationCode.label"></span>
+               <input class="sw-input sw-input-text" type="text" ng-model="taskConfirmationHashCode">
+            </span>
+         </label>
+      </div>
+   </div>
+
+   <div class="edit-password-block" ng-show="mode==='Personal' && !isSelectImgView">
+      <div class="edit-password-block-hide-button" data-ng-click="togglePasswordDropDown()">
+         <span sw-localize="Profile.editpassword.label"></span>
+         <i data-ng-class="{dropdown: showPasswordDropdown}"></i>
+      </div>
+      <div class="edit-password-block-hidder" ng-if="showPasswordDropdown">
+         <div ng-show="showOldPassword()">
+             <span class="error-message formRow_validationError password-pwd" sw-error-for-name="'currentPassword'"></span>
+             <label class="formRow">
+                <span class="formRow_label" sw-label-for-name="'currentPassword'" sw-localize="Profile.currentPassword.label"></span>
+                <span class="formRow_content">
+                   <sw-input type="password" name="currentPassword" sw-validate="validateCurrentPassword()"  maxlength="16" ng-model="profilePersistingInfo.passwordConfirmation"></sw-input>
+                </span>
+             </label>
+         </div>
+
+         <span class="error-message formRow_validationError" sw-error-for-name="'newPassword'"></span>
+         <label class="formRow">
+            <span class="formRow_label" sw-label-for-name="'newPassword'" sw-localize="Profile.newPassword.label"></span>
+            <span class="formRow_content">
+               <sw-input type="password" name="newPassword" sw-validate="validateNewPassword()" ng-model="profilePersistingInfo.newPassword"></sw-input>
+            </span>
+         </label>
+
+         <span class="error-message formRow_validationError confirm-pwd" sw-error-for-name="'confirmPassword'"></span>
+         <label class="formRow">
+            <span class="formRow_label" sw-label-for-name="'confirmPassword'" sw-localize="Profile.confirmPassword.label"></span>
+            <span class="formRow_content">
+               <sw-input type="password" name="confirmPassword" ng-model="newPasswordConfirmation" sw-validate="validateConfirmationPassword()"></sw-input>
+            </span>
+         </label>
+      </div>
+   </div>
+
+   <div class="statistic-block" ng-show="mode==='Personal' && !isSelectImgView">
+      <div class="statistic-block-title" data-ng-click="toggleStatisticsDropDown()">
+         <span sw-label-for-name="'Statistics'" sw-localize="Profile.statistics.label"></span>
+         <i data-ng-class="{dropdown: showStatisticsDropDown}"></i>
+      </div>
+      <div class="statistic-block-data" ng-if="showStatisticsDropDown">
+         <div class="statistic-side">
+            <label class="formRow">
+               <span class="formRow_label" sw-label-for-name="'completedBooksCount'"
+               sw-localize="Profile.completedBooksCount.label"></span>
+               <span class="formRow_content">{{userStudyStatistics.completedBooksCount}}</span>
+            </label>
+            <label class="formRow">
+               <span class="formRow_label" sw-label-for-name="'booksInProgressCount'"
+               sw-localize="Profile.booksInProgressCount.label"></span>
+               <span class="formRow_content">{{userStudyStatistics.booksInProgressCount}}</span>
+            </label>
+         </div>
+         <div class="statistic-side">
+            <label class="formRow">
+               <span class="formRow_label" sw-label-for-name="'totalReadingTime'"
+               sw-localize="Profile.totalReadingTime.label"></span>
+               <span class="formRow_content">{{userStudyStatistics.totalReadingTime | TimeDurationFilter}}</span>
+            </label>
+            <label class="formRow">
+               <span class="formRow_label" sw-label-for-name="'vocabularyAssessment'"
+               sw-localize="Profile.vocabularyAssessment.label"></span>
+               <span class="formRow_content">{{userStudyStatistics.vocabularyTermsCount}}</span>
+            </label>
+         </div>
+      </div>
+   </div>
+
+    <div class="settings-block" ng-show="mode==='Admin' && !isSelectImgView">
+        <div class="user-name-block">
+          <span class="formRow">
+            <span sw-localize="Profile.rights.label"></span>
+            <span class="formRow_content">
+             <!--  <label> -->
+                <button class="switch-rights" data-ng-class="{'active' : profile.adminRole}" data-ng-click="adminRoleSwitcher()"></button>
+                <span sw-localize="Profile.administrator.label"></span>
+              <!-- </label>
+              <label> -->
+                <button class="switch-rights" data-ng-class="{'active' : profile.editorRole}" data-ng-click="editorRoleSwitcher()"></button>
+                <span sw-localize="Profile.editor.label"></span>
+              <!-- </label> -->
+            </span>
+          </span>
+          <label class="formRow spec" ng-if="!isNewUser()">
+            <span sw-localize="Profile.resetpassword.label"></span>
+            <span class="formRow_content">
+               <button class="switch-box" data-ng-class="{'active' : profilePersistingInfo.passwordPersistingModeEnum === 'GenerateAutomatically'}" data-ng-click="passwordSwitcher()"></button>
+            </span>
+          </label>
+          <label class="formRow spec" ng-if="!isNewUser()">
+            <span sw-localize="Profile.deactivate.label"></span>
+            <span class="formRow_content">
+               <button class="switch-box" data-ng-class="{'active' : isDeactivated}" data-ng-click="activeSwitcher()"></button>
+            </span>
+          </label>
+        </div>
+    </div>
+
+</div>

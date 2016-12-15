@@ -1,0 +1,6 @@
+define([
+
+   './RegisterUserProfile'
+
+], function(){});
+
