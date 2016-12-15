@@ -1,0 +1,17 @@
+{
+  "db":{
+    "url": "https://ffa:R=mWvg2LYa4sCUcnC$NQuxPLBh@ffa.cloudant.com",
+    "local_url": "http://admin:admin@172.16.16.121:5985",
+    "name": {
+      "environment_name": "develop",
+      "database_name": "demo1"
+    }
+  },
+
+  "task_generator": {
+    "source_db_urls": [ "https://ffa:R=mWvg2LYa4sCUcnC$NQuxPLBh@ffa.cloudant.com/develop_demo1_db" ],
+    "dump": {
+      "path": "data"
+    }
+  }
+}

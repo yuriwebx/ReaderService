@@ -1,0 +1,12 @@
+<div class="sw-dateInput-popup-header sw-calendarNav">
+   <div class="sw-calendarNav-inner" ng-hide="yearsPicker">
+      <div tabindex="0" class="sw-calendarNav-back"  ng-click="monthBack()"><i class="sw-calendarNav-icon i-sys-55-arrow-left"></i></div>
+      <div tabindex="0" class="sw-calendarNav-title">{{month}}, <a class="sw-calendarNav-title-year" ng-click="initYearsPicker()">{{year}}</a></div>
+      <div tabindex="0" class="sw-calendarNav-forward" ng-click="monthForward()"><i class="sw-calendarNav-icon i-sys-54-arrow-right"></i></div>
+   </div>
+   <div class="sw-calendarNav-inner" ng-show="yearsPicker">
+      <div tabindex="0" class="sw-calendarNav-back"  ng-click="yearsBack()"><i class="sw-calendarNav-icon i-sys-55-arrow-left"></i></div>
+      <span class="sw-calendarNav-title">{{yearStart}} - {{yearEnd}}</span>
+      <div tabindex="0" class="sw-calendarNav-forward" ng-click="yearsForward()"><i class="sw-calendarNav-icon i-sys-54-arrow-right"></i></div>
+   </div>
+</div>

@@ -1,0 +1,16 @@
+{  
+   "Reader.ApplicationToolbar.createAccount.label" : "Back",
+
+   "Button.more.label": "More",
+
+   "ReaderFramework.categoryNameError.label": "Name already exists",
+
+   "SendMessage.To.input.label": "To:",
+   "SendMessage.Subject.input.label": "Subject:",
+   "SendMessage.button.Close.label": "Cancel",
+   "SendMessage.header.label": "Send mail",
+   "ViewMessage.header.label": "View message",
+   "SendMessage.button.Send.label": "Send",
+   
+   "Invite.morebutton.label": "More"
+}

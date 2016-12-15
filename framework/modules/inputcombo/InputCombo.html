@@ -1,0 +1,28 @@
+<div class="sw-input-combo sw-input-wrapper sw-popup-offset">
+   <sw-input
+      class="sw-input-combo_input"
+      ng-model="swInputComboValueHolder.text"
+      ng-change="changeText()"
+      ng-disabled="disabled"
+      ng-readonly="!isFreetextAllowed()"
+      tabindex="{{!isFreetextAllowed() ? -1 : 0}}"
+      ng-click="inputClicked($event)">
+   </sw-input>
+   <select
+           class="sw-input-combo_select"
+           ng-if="isSelectMode()"
+           ng-model="swInputComboValueHolder.item"
+           ng-change="changeItem()"
+           ng-disabled="disabled"
+           ng-options="format(item) for item in getItems() track by id(item)">
+      <option ng-if="isClearAllowed()" value="">
+   </select>
+   <div
+      class="sw-input-combo_button m-button__action sw-input-wrapper"
+      ng-show="isButtonVisible()"
+      tabindex="{{isSelectMode() ? -1 : 0}}"
+      sw-hot-key-click
+      ng-click="buttonClicked($event)">
+         <span class="sw-input-combo_arrow i-DropArrow_grey"></span>
+   </div>
+</div>

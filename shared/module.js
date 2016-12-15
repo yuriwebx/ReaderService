@@ -1,0 +1,3 @@
+define([
+   './searchUtils'
+], function(){});

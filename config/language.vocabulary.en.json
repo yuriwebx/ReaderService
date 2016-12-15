@@ -1,0 +1,27 @@
+{
+   "App.GetSystemAboutInfo.appName.label": "Vocabulary",
+
+   "Vocabulary.ApplicationToolbar.portal.label": "Portal",
+   "Vocabulary.ApplicationToolbar.vocabularyassessment.label": "Vocabulary assessment",
+   "Vocabulary.version.label": "Version: ",
+   "Vocabulary.copyright.text": "&copy; Firm Foundation Academy 2015",
+
+   "Vocabulary.startWith.label": "Start with",
+   "Vocabulary.IdontNo.label": "I don't know this word",
+
+   "Vocabulary.vocabularyAssessmentDirectAlgorithmDescription.label": "We have a dictionary with over 40,000 entries, with words arranged in order of their frequency in English speech and writing. We select a few words from the first part of the frequency scale and test the student’s ability to correctly identify definitions. Two correct answers switch the user to the next group of words. A wrong answer gives additional three words to the test. If the student can correctly identify more than three words in a group the test is said to have a “pass”, otherwise, it is a “fail”.  In this case the student’s vocabulary is rated according to the last passed group. ",
+   "Vocabulary.vocabularyAssessmentBinaryAlgorithmDescription.label": "We have a dictionary with over 40,000 entries, with words arranged in order of their frequency in English speech and writing. We select a few words from the middle of the frequency scale and test the student’s ability to correctly identify definitions. Wrong answers are selected from the definitions of other words at roughly the same place on the scale. Of a sampled five words, if the student can correctly identify more than three then the test is said to have a “pass”, otherwise, it is a “fail”. The next test is sampled from the midpoint between this test and the edge or the furthermost tested boundary. Testing in this manner proceeds until the student’s capacity is narrowed to the desired granularity.",
+   "Vocabulary.vocabularyAssessmentUpperAlgorithmDescription.label": "We have a dictionary with over 40,000 entries, with words arranged in order of their frequency in English speech and writing. The  test vocabulary is done in two steps. In the first, we pick around 40 words, stretching from the easiest to the hardest words in English. This gives us a general idea of your vocabulary level. We then present a second narrower set of words, sorted by frequency, in a range where we think you'll know all the initial ones, none of the final ones, but have a wide mix of both in the middle. By testing you in this narrower range, we can come up with a quite accurate vocabulary estimate for people of any level. (For more information see <a href=\"http://testyourvocab.com/details\"> http://testyourvocab.com/details</a>)",
+
+   "Popup.button.nextGroup.label" : "Next group",
+   "Popup.button.sendEmail.label" : "Send email",
+
+   "Player.name.label" : "Name",
+   "Player.comment.label" : "Comment",
+   "Player.nameError.label": "Name field is empty.",
+   "Player.emailResponse.label" : "Email has been sent.",
+   "Player.errorRespons.label" : "Email has not been sent.",
+   
+   "App.Slogan.text": "Vocabulary assessment",
+   "App.Theme.text": "Assess your vocabulary with one of the presented algorithms you like:"
+}

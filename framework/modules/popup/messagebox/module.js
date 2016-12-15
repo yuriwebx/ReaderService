@@ -1,0 +1,6 @@
+define([
+
+   './MessageBox'
+
+], function(){});
+

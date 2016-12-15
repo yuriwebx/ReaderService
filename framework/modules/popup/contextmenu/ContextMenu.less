@@ -1,0 +1,47 @@
+@import '../base.less';
+
+.sw-contextMenu {
+   background: @c-white;
+   overflow: hidden;
+   .box-shadow(2);
+   @{touchYes} & {
+      border-radius: @base-radius-l;
+   }
+   @{touchNo} & {
+      border-radius: @base-radius-s;
+   }
+
+   .sw-contextMenuItem {
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.8;
+      font-weight: 500;
+      &:hover {
+         background: @c-sky-50;
+      }
+      &:not(:last-child){
+         // border-bottom: 1px solid @c-mono-300;
+      }
+
+      &[disabled] {
+         color: @c-mono-400;
+      }
+      .sw-icon{
+         margin-right: 10px;
+         vertical-align: middle;
+      }
+   }
+   .sw-popup_btnBlockInner {
+      &:empty {
+         height: 6px;
+      }
+   }
+
+}
+
+.sw-popup-arrow.sw-contextMenu-arrow {
+   &:after {
+      background: @c-white;
+      .box-shadow(2);
+   }
+}

@@ -1,0 +1,6 @@
+define([
+
+   './LocalStorageService'
+
+], function(){});
+

@@ -1,0 +1,88 @@
+@import '../base.less';
+
+.radioBtn {
+   position: relative;
+   display: inline-block;
+   overflow: hidden;
+   vertical-align: middle;
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+   padding: 2px;
+   @media @narrow_normal {
+      width: 22px;
+      height: 22px;
+   }
+   @media @wide {
+      width: 16px;
+      height: 16px;
+   }
+}
+
+.radioBtn_skin {
+   display: block;
+   .box-sizing;
+   width: 100%;
+   height: 100%;
+   border: 1px solid #A2A2A2;
+   border-radius: 50%;
+   background: #fff;
+   @media @narrow_normal {
+      padding: 4px;
+   }
+   @media @wide {
+      padding: 3px;
+   }
+}
+
+.radioBtn_skin-ico {
+   display: none;
+   border-radius: 50%;
+   background: #424242;
+   width: 100%;
+   height: 100%;
+}
+
+.sw-input-radio {
+   .box-sizing;
+   position: absolute;
+   z-index: 2;
+   display: block;
+   -webkit-transform: scale(8);
+   -moz-transform: scale(8);
+   -ms-transform: scale(8);
+   -o-transform: scale(8);
+   transform: scale(8);
+   opacity: 0.0001; //small value for support Selenium WebDriver
+   padding: 0;
+   margin: 0;
+}
+
+.sw-input-radio:hover + .radioBtn_skin {
+   box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+.sw-input-radio:active + .radioBtn_skin {
+   box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+
+.sw-input-radio:checked + .radioBtn_skin {
+   .radioBtn_skin-ico {
+      display: block;
+   }
+}
+
+.sw-input-radio:checked:hover + .radioBtn_skin {
+   .radioBtn_skin-ico {
+      display: block;
+   }
+}
+
+.sw-input-radio:disabled + .radioBtn_skin {
+   border-color: #C0C0C0;
+}
+
+.sw-input-radio:checked:disabled + .radioBtn_skin {
+   .radioBtn_skin-ico {
+      display: block;
+      background: #9B9B9B;
+   }
+}

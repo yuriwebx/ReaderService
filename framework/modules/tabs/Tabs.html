@@ -1,0 +1,10 @@
+<div class="sw-tabs" sw-focus-manager="{traverse: true, keyNext: 'down, right', keyPrev: 'up, left'}">
+   <button
+      ng-repeat="tab in model.tabs"
+      class="sw-tabs-tab"
+      sw-localize="{{tab.text}}"
+      ng-click="model.click(tab)"
+      ng-class="{'sw-tabs-tab_active': model.isActive(tab), 'sw-tabs-indicator': tab.indicator}"
+      sw-tab-indicator="{{tab.indicator}}">
+   </button>
+</div>

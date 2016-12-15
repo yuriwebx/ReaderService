@@ -1,0 +1,82 @@
+{
+  "db":{
+    "url": "https://user:pass@host:port",
+    "local_url": "https://user:pass@host:port",
+    "nobody":"_nobody",
+    "name": {
+      "environment_name": "environment_name SAME AS FOR appserver",
+      "database_name": "database_name SAME AS FOR appserver",
+      "template" : {
+        "public"    : "public",
+        "private"   : "private",
+        "user"      : "user_%1",
+        "user_rw"   : "user_%1_rw",
+        "course"    : "course_%1",
+        "query"     : "query",
+        "quiz"      : "quiz"
+      }
+    }
+  },
+
+  "parent_app_path": {
+    "from": "",
+    "to": ""
+  },
+
+  "task_types": {
+    "user": ["UserProfile"],
+    "book": ["Book", "Collection", "StudyGuide", "StudyCourse", "StudyCourseItem", "Material", "studyGuideEditor", "Test", "FlashcardStudy", "EssayTask"]
+  },
+
+  "task_types_disabled": {
+    "user": ["UserProfile", "UserPublication", "UserStudy", "UserStudyStatistics", "Setting", "Material", "DictionaryTermStudy"],
+    "book": ["Book", "Supplemental", "Collection", "StudyGuide", "StudyCourse", "StudyCourseItem", "Material", "studyGuideEditor", "Test", "FlashcardStudy", "EssayTask"],
+    "course": ["StudyClass", "ClassTeacher", "ClassStudent", "ClassDiscussion", "ClassDiscussionMessage"]
+  },
+
+  "task_generator": {
+    "source_db_urls": [ "https://user:pass@host:port" ],
+    "status": {
+      "process": "processing",
+      "fail": "failed"
+    },
+    "type": {
+      "ext": "external",
+      "int": "internal"
+    },
+    "dump": {
+      "types": ["Book", "Collection", "StudyGuide", "StudyCourse"],
+      "timeout_min": 5,
+      "path": "data/"
+    },
+    "db": {
+      "prefix": {
+        "external": "ext_",
+        "internal": "int_"
+      },
+      "name": "task"
+    },
+    "change_params": {
+      "filter": "agent/task",
+      "include_docs": true
+    },
+    "priority": {
+      "UserProfile":0,
+      "Material":1,
+      "DictionaryTermStudy":1,
+      "Book":0,
+      "Collection":0,
+      "StudyGuide":0,
+      "StudyCourse":0,
+      "StudyCourseItem":1,
+      "studyGuideEditor":2,
+      "Test":1,
+      "FlashcardStudy":2,
+      "EssayTask":1
+    },
+    "heartbeat": 180000,
+    "limit": 500,
+    "process_timeout": 5000,
+    "failCountLimit": 20
+  }
+}

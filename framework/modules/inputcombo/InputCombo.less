@@ -1,0 +1,170 @@
+@import '../base.less';
+
+.sw-input-combo {
+   position: relative;
+
+   &.sw-validation-required {
+      .sw-input-combo_input {
+         border: @hl solid @c-blue;
+         box-shadow: 0 0.1em 0.2em rgba(55, 152, 210, 0.1) inset;
+      }
+      &.ng-invalid {
+         .sw-validation-messages-enabled & {
+            .sw-input-combo_input {
+               border: @hl solid #db0303;
+               box-shadow: 0 0.1em 0.2em rgba(219, 3, 3, 0.1) inset;
+            }
+         }
+      }
+   }
+
+   .sw-input-combo_input {
+      display: block;
+      padding: 0 3em 0 14px;
+   }
+   
+   .sw-input-combo_select  { // transparent
+      position: absolute;
+      z-index: 2;
+      display: block;
+      opacity: 0;
+      width: 100%;
+      top:0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      border: none;
+      padding: 0;
+      margin: 0;
+      &:hover+.sw-input-combo_button:not(:disabled) {
+         .gradient(g-hoarHover);
+      }
+   }
+
+   .sw-input-combo_button {
+      position: absolute;
+      right: 1px;
+      top: 1px;
+      bottom: 1px;
+      width: 3em;
+      border-left: 1px solid #c5c5c5;
+      cursor: pointer;
+      .box-sizing;
+      .gradient(g-hoar);
+      &:not(:disabled) {
+         &:hover {
+            .gradient(g-hoarHover);
+         }
+      }
+
+      @media @narrow_normal {
+         border-radius: 0 5px 5px 0;
+      }
+      @media @wide {
+         border-radius: 0 3px 3px 0;
+      }
+
+      .sw-input-combo_arrow {
+         position: absolute;
+         width: 1em;
+         height: 1em;
+         top: 50%;
+         margin-top: -0.5em;
+         right: 50%;
+         margin-right: -0.5em;
+         background-size: 1em;
+      }
+   }
+
+}
+
+.sw-inputComboPopup {
+   background: #ffffff;
+   .box-shadow(4);
+   overflow: hidden;
+   width: 25em;
+   @media @narrow_normal {
+      border-radius: 5px;
+   }
+   @media @wide {
+      border-radius: 3px;
+   }
+
+   .sw-popup-header {
+      padding: 0.6em;
+      border-bottom: @hl solid #ADADAD;
+   }
+
+   .sw-search {
+      position: relative;
+      .i-search {
+         position: absolute;
+         top: 50%;
+         margin-top: -12px;
+         cursor: pointer;
+         @media @narrow_normal {
+            right: 8px;
+         }
+         @media @wide {
+            right: 5px;
+            background-size: 20px;
+         }
+      }
+   }
+
+   .sw-del {
+      position: absolute;
+      height: 100%;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      @media @narrow_normal {
+         width: 45px;
+      }
+      @media @wide {
+         width: 35px;
+      }
+      .i-del {
+         .align (24px, 24px);
+         @media @wide {
+            background-size: 20px;
+         }
+      }
+   }
+
+   .sw-inputComboPopup_content{
+
+      .menuItem {
+         position: relative;
+         padding: 10px 50px 10px 10px;
+         border-top: @hl solid #bfbebe;
+         cursor: pointer;
+
+         &:first-child {
+            border-top: none;
+         }
+
+         &.checked {
+            background: @c-blueNavy;
+         }
+
+         .menuItem_content {
+            display: inline-block;
+            min-height: 1em;
+         }
+
+         .i-checked-blue {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -12px;
+         }
+      }
+
+      .notFound {
+         background: #ffffff;
+         border-radius: 5px;
+         padding: 10px;
+      }
+   }
+}

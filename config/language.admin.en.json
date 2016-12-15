@@ -1,0 +1,37 @@
+{
+   "App.GetSystemAboutInfo.appName.label": "Admin",
+
+   "ApplicationMenuItem.Admin Panel.label": "Users",
+   "ApplicationMenuItem.Reports.label": "User Reports",
+
+   "Admin.ApplicationToolbar.createAccount.label" : "Back",
+
+   "LibraryView.loadMore.label": "Load more",
+   "LibraryView.title.label": "Title",
+   "LibraryView.author.label": "Author",
+   "LibraryView.description.label": "Description",
+   "LibraryView.category.label": "Category",
+   "LibraryView.words.label": "Words",
+   "LibraryView.paragraphs.label": "Paragraphs",
+   "LibraryView.difficulty.label": "Difficulty Level",
+   "LibraryView.librarysummary.label": "Library summary in CSV",
+   "LibraryView.button.back.label": "Back",
+   "LibraryView.epubSort.text": "{{epubSortBooksLength}} books were found in {{epubSortCategory}} category",
+
+
+   "Profile.rights.label" : "Rights",
+   "Profile.administrator.label" : "Administrator",
+   "Profile.editor.label" : "Editor",
+   "Profile.resetpassword.label" : "Reset Password",
+   "Profile.deactivate.label" : "Deactivate user",
+   "Profile.editor.label" : "Editor",
+   "Profile.admin.label" : "Admin",
+   "Profile.editor.label" : "Editor",
+   "Profile.results.label" : "Results",
+   "Profile.users.label" : "users",
+   "Profile.adduser.label" : "Add User",
+   "Profile.edit.label" : "Edit",
+   "Profile.morebutton.label" : "More",
+   "Profile.decline.label" : "Decline",
+   "Profile.accept.label" : "Accept"
+}

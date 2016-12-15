@@ -1,0 +1,12 @@
+<div class="sw-search" sw-hot-key="{enter: 'selectDefault()'}">
+   <sw-input ng-model="term.value"
+             ng-change="filter()"
+             sw-focus-default
+             sw-catch-key
+             sw-localize-attr="{placeholder: i18n.placeholder}">
+   </sw-input>
+   <a class="sw-del" ng-click="resetFilter(); swFocusBody('.sw-input-combo-popup .sw-input-text')" ng-show="term.value">
+      <i class="i-del"></i>
+   </a>
+   <i class="i-search" ng-hide="term.value"></i>
+</div>

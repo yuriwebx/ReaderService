@@ -1,0 +1,6 @@
+define([
+
+   './FastClickConfig'
+
+], function(){});
+

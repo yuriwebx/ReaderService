@@ -1,0 +1,7 @@
+define([
+
+   './BodyClass',
+   './BodyClassUrl'
+
+], function(){});
+

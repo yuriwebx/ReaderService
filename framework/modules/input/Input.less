@@ -1,0 +1,147 @@
+@import '../base.less';
+
+.sw-link {
+   text-decoration: underline;
+   cursor: pointer;
+   color: @c-blue !important;
+   &[disabled] {
+      color: #bebebe !important;
+      cursor: default;
+   }
+}
+
+.sw-link_action {
+   text-decoration: underline;
+   cursor: pointer;
+   color: @c-blue;
+   &[disabled] {
+      color: #bebebe !important;
+      cursor: default;
+   }
+}
+.sw-link_actionThis {
+   display: inline-block;
+   cursor: pointer;
+   color: @c-blue;
+   border-bottom: 1px dashed @c-blue;
+   &[disabled] {
+      color: #bebebe !important;
+      cursor: default;
+   }
+}
+
+.sw-buttonLink {
+   display: inline-block;
+   text-decoration: underline;
+   cursor: pointer;
+   color: @c-blue;
+   &[disabled] {
+      color: #bebebe !important;
+      cursor: default;
+   }
+   @media @narrow_normal {
+      padding: 10px 0;
+      font-size: 1.2em;
+   }
+   @media @wide {
+      padding: 4px 0;
+      font-size: 1.2em;
+   }
+}
+
+input, select, textarea {
+   font: inherit;
+}
+
+input {
+   &::-webkit-input-placeholder {
+      color: #999;
+   }
+   &:-moz-placeholder {
+      color: #999;
+   }
+   &::-moz-placeholder {
+      color: #999;
+   }
+   &:-ms-input-placeholder {
+      color: #999;
+   }
+   &::-ms-clear {
+      display: none;
+   }
+}
+
+.sw-input-text,
+.sw-input-mask,
+.sw-input-number,
+.sw-input-password,
+.sw-input-date:not(.sw-dateInput),
+.sw-input-time:not(.sw-timeInput) {
+   &.sw-validation-required {
+      border-color:@c-blue;
+      box-shadow: 0 0.1em 0.2em rgba(55, 152, 210, 0.1) inset;
+      &.ng-invalid {
+         .sw-validation-messages-enabled & {
+            border: 0.1em solid #db0303;
+            box-shadow: 0 0.1em 0.2em rgba(219, 3, 3, 0.1) inset;
+         }
+      }
+   }
+   .box-sizing;
+   width: 100%;
+   box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.1) inset;
+   -webkit-appearance: none;
+   background: @c-white;
+   @media @narrow_normal {
+      min-width: 3.6em;
+      padding: 0 1em;
+      height: 3em;
+      border-radius: 5px;
+      border: @hl solid #bfbebe;
+   }
+   @media @wide {
+      min-width: 40px;
+      padding: 0 8px;
+      height: 27px;
+      border-radius: 3px;
+      border: 1px solid #9d9d9d;
+   }
+}
+
+.sw-input-date,
+.sw-input-time {
+   .sw-validation-required & {
+      border-color: @c-blue;
+      box-shadow: 0 0.1em 0.2em rgba(55, 152, 210, 0.1) inset;
+   }
+   .sw-validation-required.ng-invalid & {
+      .sw-validation-messages-enabled & {
+         border: 0.1em solid #db0303;
+         box-shadow: 0 0.1em 0.2em rgba(219, 3, 3, 0.1) inset;
+      }
+   }
+}
+
+.sw-input-date {
+   max-width: 140px;
+   min-width: 120px;
+   padding-right: 0;
+}
+
+.sw-input-time {
+   max-width: 110px;
+   padding-right: 0;
+}
+
+.sw-input-text:disabled,
+.sw-input-mask:disabled,
+.sw-input-password:disabled {
+   background: @c-grayLight;
+   opacity: 0.6;
+}
+
+.sw-input-date-wrapper .sw-input-date:not(.sw-dateInput) {
+   @{touchYes} & {
+      min-width: 140px;
+   }
+}

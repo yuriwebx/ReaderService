@@ -1,0 +1,7 @@
+define([
+
+   './ComponentFactory',
+   './ComponentAugmenter'
+
+], function(){});
+

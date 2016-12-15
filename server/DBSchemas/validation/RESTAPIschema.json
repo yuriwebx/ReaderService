@@ -1,0 +1,6517 @@
+{
+   "/api/rest": {
+      "get": {
+         "parameters": {},
+         "responses": {
+            "type": "object"
+         }
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/api/db": {
+      "get": {
+         "parameters": {},
+         "responses": {
+            "type": "object"
+         }
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/applicationsession": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "clientNodeContext": {
+                  "type": "object",
+                  "properties": {
+                     "userAgentInfo": {
+                        "type": "string"
+                     },
+                     "native": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "platformType": {
+                        "type": "string"
+                     },
+                     "os": {
+                        "type": "string"
+                     },
+                     "runtimeEngine": {
+                        "type": "string"
+                     },
+                     "screenWidth": {
+                        "type": "number"
+                     },
+                     "screenHeight": {
+                        "type": "number"
+                     },
+                     "devicePixelRation": {
+                        "type": "number"
+                     },
+                     "origin": {
+                        "type": "string"
+                     },
+                     "clientNodeId": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "userAgentInfo",
+                     "native",
+                     "platformType",
+                     "os",
+                     "runtimeEngine",
+                     "screenWidth",
+                     "screenHeight",
+                     "devicePixelRation",
+                     "origin",
+                     "clientNodeId"
+                  ]
+               },
+               "applicationContext": {
+                  "type": "object",
+                  "properties": {
+                     "application": {
+                        "type": "string"
+                     },
+                     "serverUrl": {
+                        "type": "string"
+                     },
+                     "applicationUrl": {
+                        "type": "string"
+                     },
+                     "applicationResourceUrl": {
+                        "type": "string"
+                     },
+                     "systemLevelNamespace": {
+                        "type": "string"
+                     },
+                     "applicationLevelNamespace": {
+                        "type": "string"
+                     },
+                     "localRepositoryAvailable": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "localRepositoryType": {
+                        "type": "string"
+                     },
+                     "localFileSystemAvailable": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "localFileSystemUrl": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "application",
+                     "serverUrl",
+                     "applicationUrl",
+                     "applicationResourceUrl",
+                     "systemLevelNamespace",
+                     "applicationLevelNamespace",
+                     "localRepositoryAvailable",
+                     "localRepositoryType",
+                     "localFileSystemAvailable",
+                     "localFileSystemUrl"
+                  ]
+               },
+               "executionContext": {
+                  "type": "object",
+                  "properties": {
+                     "systemLanguage": {
+                        "type": "string"
+                     },
+                     "runtimeParameters": {
+                        "type": "object"
+                     },
+                     "configMode": {
+                        "type": "string"
+                     },
+                     "serverUrl": {
+                        "type": "string"
+                     },
+                     "ipAddress": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "systemLanguage",
+                     "runtimeParameters",
+                     "configMode",
+                     "serverUrl",
+                     "ipAddress"
+                  ]
+               },
+               "SID": {
+                  "type": "any"
+               }
+            },
+            "required": [
+               "clientNodeContext",
+               "applicationContext",
+               "executionContext"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "runId": {
+                  "type": "string"
+               },
+               "sessionId": {
+                  "type": "string"
+               },
+               "userId": {
+                  "type": "string"
+               },
+               "clientNodeId": {
+                  "type": "string"
+               },
+               "startedAt": {
+                  "type": "string"
+               },
+               "endedAt": {
+                  "type": ["number", "string"]
+               },
+               "active": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "context": {
+                  "type": "object",
+                  "properties": {
+                     "clientNodeContext": {
+                        "type": "object"
+                     },
+                     "applicationContext": {
+                        "type": "object"
+                     }
+                  },
+                  "required": [
+                     "clientNodeContext",
+                     "applicationContext"
+                  ]
+               },
+               "type": {
+                  "type": "string"
+               },
+               "parameters": {
+                  "type": "object",
+                  "properties": {
+                     "LibraryParameters": {
+                        "type": "object"
+                     }
+                  },
+                  "required": [
+                     "LibraryParameters"
+                  ]
+               },
+               "user": {
+                  "type": "object",
+                  "properties": {
+                     "type": {
+                        "type": "string"
+                     },
+                     "email": {
+                        "type": "string"
+                     },
+                     "registeredAt": {
+                        "type": "string"
+                     },
+                     "externaluserid": {
+                        "type": "array"
+                     },
+                     "lastName": {
+                        "type": "string"
+                     },
+                     "firstName": {
+                        "type": "string"
+                     },
+                     "editorRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "adminRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "active": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "id": {
+                        "type": "string"
+                     },
+                     "userId": {
+                        "type": "string"
+                     },
+                     "password": {
+                        "type": "string"
+                     },
+                     "emailConfirmationStatus": {
+                        "type": "string"
+                     },
+                     "registredAt": {
+                        "type": "string"
+                     },
+                     "photo": {
+                        "type": [
+                           "string",
+                           "object"
+                        ]
+                     },
+                     "isPhoto": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "modifiedAt": {
+                        "type": "string"
+                     },
+                     "registeredOn": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "type",
+                     "email",
+                     "externaluserid",
+                     "lastName",
+                     "firstName",
+                     "editorRole",
+                     "adminRole",
+                     "active",
+                     "id",
+                     "userId"
+                  ]
+               },
+               "message": {
+                  "type": "string"
+               },
+               "stack": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "scope": {
+                  "type": "string"
+               },
+               "errid": {
+                  "type": "string"
+               },
+               "code": {
+                  "type": "string"
+               },
+               "errno": {
+                  "type": "string"
+               },
+               "syscall": {
+                  "type": "string"
+               },
+               "description": {
+                  "type": "string"
+               },
+               "stacktrace": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               }
+            }
+         }
+      },
+      "delete": {
+         "parameters": {},
+         "responses": {
+            "type": "object",
+            "properties": {
+               "message": {
+                  "type": "string"
+               },
+               "stack": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "scope": {
+                  "type": "string"
+               },
+               "errid": {
+                  "type": "string"
+               },
+               "code": {
+                  "type": "string"
+               },
+               "errno": {
+                  "type": "string"
+               },
+               "syscall": {
+                  "type": "string"
+               },
+               "description": {
+                  "type": "string"
+               },
+               "stacktrace": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               }
+            },
+            "required": [
+               "message",
+               "stack",
+               "name",
+               "scope",
+               "errid",
+               "code",
+               "errno",
+               "syscall",
+               "description",
+               "stacktrace"
+            ]
+         }
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/contentProvider/init": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "editor": {
+                  "type": "string"
+               },
+               "publicationId": {
+                  "type": "string"
+               },
+               "classId": {
+                  "type": "string"
+               },
+               "range": {
+                  "type": "string"
+               },
+               "isDownloaded": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "editor",
+               "publicationId"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "details": {
+                  "type": "object",
+                  "properties": {
+                     "_id": {
+                        "type": "string"
+                     },
+                     "hasThumbnail": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "author": {
+                        "type": "string"
+                     },
+                     "description": {
+                        "type": "string"
+                     },
+                     "category": {
+                        "type": "string"
+                     },
+                     "audio" : {
+                        "type" : "boolean"
+                     },
+                     "wordsPerMinute" : {
+                        "type" : "number"
+                     },
+                     "bitRate" : {
+                        "type" : "number"
+                     },
+                     "toc": {
+                        "type": "array"
+                     },
+                     "sourceURL": {
+                        "type": "string"
+                     },
+                     "weight": {
+                        "type": "number"
+                     },
+                     "readingTime": {
+                        "type": "number"
+                     },
+                     "wordsCount": {
+                        "type": "number"
+                     },
+                     "difficulty": {
+                        "type": "number"
+                     },
+                     "bookVocabularyLevel": {
+                        "type": "number"
+                     },
+                     "paraCount": {
+                        "type": "number"
+                     },
+                     "totalSize": {
+                        "type": "number"
+                     },
+                     "mediaSize": {
+                        "type": "number"
+                     },
+                     "bookSize": {
+                        "type": "number"
+                     },
+                     "cover": {
+                        "type": "string"
+                     },
+                     "language": {
+                        "type": "string"
+                     },
+                     "status": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "name": {
+                        "type": "string"
+                     },
+                     "type": {
+                        "type": "string"
+                     },
+                     "readingProgress": {
+                        "type": "number"
+                     },
+                     "readingDuration": {
+                        "type": "number"
+                     },
+                     "collection": {
+                        "type": "string"
+                     },
+                     "prevItemId": {
+                        "type": "string"
+                     },
+                     "nextItemId": {
+                        "type": "string"
+                     },
+                     "bookId": {
+                        "type": "string"
+                     },
+                     "userIds": {
+                        "type": "array"
+                     },
+                     "exercises": {
+                        "type": "object"
+                     },
+                     "book": {
+                        "type": "object"
+                     },
+                     "editors": {
+                        "type": "array"
+                     },
+                     "userId": {
+                        "type": "string"
+                     },
+                     "notes": {
+                        "type": "number"
+                     },
+                     "paragraphSummary": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     }
+                  },
+                  "required": [
+                     "_id",
+                     "hasThumbnail",
+                     "author",
+                     "category",
+                     "toc",
+                     "sourceURL",
+                     "weight",
+                     "readingTime",
+                     "wordsCount",
+                     "difficulty",
+                     "bookVocabularyLevel",
+                     "paraCount",
+                     "totalSize",
+                     "mediaSize",
+                     "bookSize",
+                     "cover",
+                     "language",
+                     "status",
+                     "name",
+                     "type"
+                  ]
+               },
+               "content": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               },
+               "materials": {
+                  "type": "object",
+                  "properties": {
+                     "annotations": {
+                        "type": "array"
+                     },
+                     "bookmarks": {
+                        "type": "array"
+                     },
+                     "comments": {
+                        "type": "array"
+                     },
+                     "categories": {
+                        "type": "array"
+                     },
+                     "paraSize": {
+                        "type": "string"
+                     },
+                     "test": {
+                        "type": "array"
+                     },
+                     "essayTask": {
+                        "type": "array"
+                     },
+                     "discussionTasks": {
+                        "type": "array"
+                     },
+                     "classDiscussions": {
+                        "type": "array"
+                     }
+                  },
+                  "required": [
+                     "annotations",
+                     "bookmarks",
+                     "comments",
+                     "categories",
+                     "paraSize",
+                     "test",
+                     "essayTask"
+                  ]
+               }
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor",
+         "searcher"
+      ]
+   },
+   "/contentProvider/audioIndex": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "id"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "array"
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/dict/definition": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "termName": {
+                  "type": "string"
+               },
+               "useDict": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "termName",
+               "useDict"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "definitions": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "definition": {
+                           "type": "array"
+                        }
+                     },
+                     "required": [
+                        "definition"
+                     ]
+                  }
+               },
+               "term": {
+                  "type": "string"
+               },
+               "message": {
+                  "type": "string"
+               },
+               "stack": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "scope": {
+                  "type": "string"
+               },
+               "errid": {
+                  "type": "string"
+               },
+               "code": {
+                  "type": "string"
+               },
+               "errno": {
+                  "type": "string"
+               },
+               "syscall": {
+                  "type": "string"
+               },
+               "description": {
+                  "type": "string"
+               },
+               "stacktrace": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               }
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/dict/search": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "criteria": {
+                  "type": "string"
+               },
+               "numberTerms": {
+                  "type": "string"
+               },
+               "useDicts": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "criteria",
+               "numberTerms",
+               "useDicts"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "termNames": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               }
+            },
+            "required": [
+               "termNames"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/discussion/persistClassDiscussion": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "_id": {
+                  "type": "string"
+               },
+               "discussionTaskId": {
+                  "type": "string"
+               },
+               "classId": {
+                  "type": "string"
+               },
+               "bookId": {
+                  "type": "string"
+               },
+               "locator": {
+                  "type": "string"
+               },
+               "topic": {
+                  "type": "string"
+               },
+               "description": {
+                  "type": "string"
+               },
+               "createdAt": {
+                  "type": "number"
+               },
+               "messages": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "messageId": {
+                           "type": "string"
+                        },
+                        "registeredAt": {
+                           "type": "number"
+                        },
+                        "text": {
+                           "type": "string"
+                        },
+                        "userProfile": {
+                           "type": "object"
+                        },
+                        "parentMessageId": {
+                           "type": "string"
+                        },
+                        "level": {
+                           "type": "number"
+                        },
+                        "classDiscussionId": {
+                           "type": "string"
+                        },
+                        "userId": {
+                           "type": "string"
+                        }
+                     },
+                     "required": [
+                        "messageId",
+                        "registeredAt",
+                        "text",
+                        "userProfile"
+                     ]
+                  }
+               },
+               "modifiedAt": {
+                  "type": "number"
+               },
+               "frozen": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "frozenedAt": {
+                  "type": "number"
+               }
+            },
+            "required": [
+               "_id",
+               "classId",
+               "bookId",
+               "locator",
+               "topic",
+               "description",
+               "createdAt",
+               "modifiedAt"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/discussion/persistDiscussionMessage": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "messageId": {
+                  "type": "string"
+               },
+               "parentMessageId": {
+                  "type": "string"
+               },
+               "level": {
+                  "type": "number"
+               },
+               "classDiscussionId": {
+                  "type": "string"
+               },
+               "userId": {
+                  "type": "string"
+               },
+               "registeredAt": {
+                  "type": "number"
+               },
+               "text": {
+                  "type": "string"
+               },
+               "userRole": {
+                  "type": "string"
+               },
+               "userProfile": {
+                  "type": "object",
+                  "properties": {
+                     "firstName": {
+                        "type": "string"
+                     },
+                     "lastName": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "firstName",
+                     "lastName"
+                  ]
+               }
+            },
+            "required": [
+               "messageId",
+               "parentMessageId",
+               "level",
+               "classDiscussionId",
+               "userId",
+               "registeredAt",
+               "text",
+               "userProfile"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/discussion/updateUserDiscussionMessagesState": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "classDiscussions": {
+                  "type": "array"
+               },
+               "userId": {
+                  "type": "string"
+               },
+               "reviewed": {
+                  "type": "boolean",
+                  "required": true
+               }
+            },
+            "required": [
+               "classDiscussions",
+               "userId",
+               "reviewed"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/discussion/searchClassDiscussions": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "classId": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "classId"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "_id": {
+                     "type": "string"
+                  },
+                  "discussionTaskId": {
+                     "type": "string"
+                  },
+                  "classId": {
+                     "type": "string"
+                  },
+                  "bookId": {
+                     "type": "string"
+                  },
+                  "locator": {
+                     "type": "string"
+                  },
+                  "topic": {
+                     "type": "string"
+                  },
+                  "description": {
+                     "type": "string"
+                  },
+                  "createdAt": {
+                     "type": "number"
+                  },
+                  "messages": {
+                     "type": "array"
+                  }
+               },
+               "required": [
+                  "_id",
+                  "discussionTaskId",
+                  "classId",
+                  "bookId",
+                  "locator",
+                  "topic",
+                  "description",
+                  "createdAt",
+                  "messages"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/discussion/setClassDiscussionState": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "classDiscussionId": {
+                  "type": "string"
+               },
+               "frozen": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               }
+            },
+            "required": [
+               "classDiscussionId",
+               "frozen"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/discussion/removeClassDiscussion": {
+      "delete": {
+         "parameters": {},
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/info": {
+      "get": {
+         "parameters": {},
+         "responses": {}
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/manageEssayTask/persistEssayTask": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "publicationId": {
+                  "type": "string"
+               },
+               "locator": {
+                  "type": "object",
+                  "properties": {
+                     "type": {
+                        "type": "string"
+                     },
+                     "paragraphId": {
+                        "type": "string"
+                     },
+                     "index": {
+                        "type": "number"
+                     }
+                  },
+                  "required": [
+                     "type",
+                     "paragraphId",
+                     "index"
+                  ]
+               },
+               "topic": {
+                  "type": "string"
+               },
+               "wordsLimit": {
+                  "type": "string"
+               },
+               "comment": {
+                  "type": "string"
+               },
+               "_id": {
+                  "type": "string"
+               },
+               "modifiedAt": {
+                  "type": "number"
+               },
+               "createdAt": {
+                  "type": "number"
+               }
+            },
+            "required": [
+               "publicationId",
+               "locator",
+               "topic",
+               "wordsLimit",
+               "comment",
+               "_id"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor"
+      ]
+   },
+   "/manageTests/getFile": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "fileId": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "fileId"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin",
+         "all"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/manageTests/getTest": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "id"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "_id": {
+                  "type": "string"
+               },
+               "_rev": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "description": {
+                  "type": "string"
+               },
+               "testType": {
+                  "type": "string"
+               },
+               "locator": {
+                  "type": "string"
+               },
+               "publicationId": {
+                  "type": "string"
+               },
+               "modifiedAt": {
+                  "type": "number"
+               },
+               "createdAt": {
+                  "type": "number"
+               },
+               "type": {
+                  "type": "string"
+               },
+               "testQuestionsCount": {
+                  "type": "number"
+               },
+               "testQuestions": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "_id": {
+                           "type": "string"
+                        },
+                        "_rev": {
+                           "type": "string"
+                        },
+                        "question": {
+                           "type": "string"
+                        },
+                        "answer": {
+                           "type": "string"
+                        },
+                        "incorrectAnswers": {
+                           "type": "object"
+                        },
+                        "type": {
+                           "type": "string"
+                        },
+                        "testId": {
+                           "type": "string"
+                        }
+                     },
+                     "required": [
+                        "_id",
+                        "_rev",
+                        "question",
+                        "answer",
+                        "incorrectAnswers",
+                        "type",
+                        "testId"
+                     ]
+                  }
+               }
+            },
+            "required": [
+               "_id",
+               "_rev",
+               "name",
+               "description",
+               "testType",
+               "locator",
+               "publicationId",
+               "modifiedAt",
+               "createdAt",
+               "type",
+               "testQuestionsCount",
+               "testQuestions"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/manageTests/persistTest": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "testType": {
+                  "type": "string"
+               },
+               "locator": {
+                  "type": "string"
+               },
+               "publicationId": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "description": {
+                  "type": "string"
+               },
+               "testQuestions": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "question": {
+                           "type": "string"
+                        },
+                        "answer": {
+                           "type": "string"
+                        },
+                        "incorrectAnswers": {
+                           "type": "object"
+                        },
+                        "type": {
+                           "type": "string"
+                        },
+                        "testId": {
+                           "type": "string"
+                        }
+                     },
+                     "required": [
+                        "question",
+                        "answer",
+                        "incorrectAnswers",
+                        "type",
+                        "testId"
+                     ]
+                  }
+               },
+               "_id": {
+                  "type": "string"
+               },
+               "_rev": {
+                  "type": "string"
+               },
+               "modifiedAt": {
+                  "type": "number"
+               },
+               "createdAt": {
+                  "type": "number"
+               },
+               "type": {
+                  "type": "string"
+               },
+               "testQuestionsCount": {
+                  "type": "number"
+               }
+            },
+            "required": [
+               "testType",
+               "locator",
+               "publicationId",
+               "name",
+               "description",
+               "testQuestions",
+               "_id"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor"
+      ]
+   },
+   "/manageTests/removeTests": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "id"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor"
+      ]
+   },
+   "/manageTests/searchTests": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "criteria": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "criteria"
+            ]
+         },
+         "responses": {
+            "type": "object"
+         }
+      },
+      "acl": [
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor"
+      ]
+   },
+   "/manageTests/uploadAttachment": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "fileType": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "fileType"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "fileHash": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "fileHash"
+            ]
+         }
+      },
+      "acl": [
+         "all"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/materials/export": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "format": {
+                  "type": "string"
+               },
+               "id": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "format",
+               "id"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "_id": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "author": {
+                  "type": "string"
+               },
+               "description": {
+                  "type": "string"
+               },
+               "category": {
+                  "type": "string"
+               },
+               "cover": {
+                  "type": "string"
+               },
+               "annotations": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "id": {
+                           "type": "string"
+                        },
+                        "category": {
+                           "type": "string"
+                        },
+                        "start": {
+                           "type": "object"
+                        },
+                        "end": {
+                           "type": "object"
+                        },
+                        "note": {
+                           "type": "string"
+                        },
+                        "createdAt": {
+                           "type": "number"
+                        },
+                        "modifiedAt": {
+                           "type": "number"
+                        },
+                        "studyGuide": {
+                           "type": [
+                              "string",
+                              "boolean"
+                           ]
+                        }
+                     },
+                     "required": [
+                        "id",
+                        "category",
+                        "start",
+                        "end",
+                        "note",
+                        "createdAt",
+                        "modifiedAt",
+                        "studyGuide"
+                     ]
+                  }
+               },
+               "bookmarks": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "id": {
+                           "type": "string"
+                        },
+                        "paragraphId": {
+                           "type": "string"
+                        },
+                        "position": {
+                           "type": "string"
+                        },
+                        "createdAt": {
+                           "type": "number"
+                        },
+                        "modifiedAt": {
+                           "type": "number"
+                        },
+                        "studyGuide": {
+                           "type": [
+                              "string",
+                              "boolean"
+                           ]
+                        }
+                     },
+                     "required": [
+                        "id",
+                        "paragraphId",
+                        "position",
+                        "createdAt",
+                        "modifiedAt",
+                        "studyGuide"
+                     ]
+                  }
+               },
+               "comments": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "id": {
+                           "type": "string"
+                        },
+                        "category": {
+                           "type": "string"
+                        },
+                        "paragraphId": {
+                           "type": "string"
+                        },
+                        "note": {
+                           "type": "string"
+                        },
+                        "position": {
+                           "type": "string"
+                        },
+                        "createdAt": {
+                           "type": "number"
+                        },
+                        "modifiedAt": {
+                           "type": "number"
+                        },
+                        "studyGuide": {
+                           "type": [
+                              "string",
+                              "boolean"
+                           ]
+                        }
+                     },
+                     "required": [
+                        "id",
+                        "category",
+                        "paragraphId",
+                        "note",
+                        "position",
+                        "createdAt",
+                        "modifiedAt",
+                        "studyGuide"
+                     ]
+                  }
+               },
+               "categories": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "color": {
+                           "type": "string"
+                        },
+                        "name": {
+                           "type": "string"
+                        },
+                        "firstUserCategory": {
+                           "type": [
+                              "string",
+                              "boolean"
+                           ]
+                        }
+                     },
+                     "required": [
+                        "color",
+                        "name",
+                        "firstUserCategory"
+                     ]
+                  }
+               },
+               "paraSize": {
+                  "type": "string"
+               },
+               "tests": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "_id": {
+                           "type": "string"
+                        },
+                        "name": {
+                           "type": "string"
+                        },
+                        "description": {
+                           "type": "string"
+                        },
+                        "testType": {
+                           "type": "string"
+                        },
+                        "locator": {
+                           "type": "string"
+                        },
+                        "modifiedAt": {
+                           "type": "number"
+                        },
+                        "createdAt": {
+                           "type": "number"
+                        },
+                        "type": {
+                           "type": "string"
+                        },
+                        "testQuestionsCount": {
+                           "type": "number"
+                        },
+                        "testQuestions": {
+                           "type": "array"
+                        }
+                     },
+                     "required": [
+                        "_id",
+                        "name",
+                        "description",
+                        "testType",
+                        "locator",
+                        "modifiedAt",
+                        "createdAt",
+                        "type",
+                        "testQuestionsCount",
+                        "testQuestions"
+                     ]
+                  }
+               },
+               "essays": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "locator": {
+                           "type": "object"
+                        },
+                        "topic": {
+                           "type": "string"
+                        },
+                        "wordsLimit": {
+                           "type": "string"
+                        },
+                        "comment": {
+                           "type": "string"
+                        }
+                     },
+                     "required": [
+                        "locator",
+                        "topic",
+                        "wordsLimit",
+                        "comment"
+                     ]
+                  }
+               },
+               "discussionTasks": {
+                  "type": "array"
+               }
+            }
+         }
+      },
+      "acl": [
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor"
+      ]
+   },
+   "/materials/import": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string"
+               },
+               "format": {
+                  "type": "string"
+               },
+               "data": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "id",
+               "format",
+               "data"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor"
+      ]
+   },
+   "/materials/update": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "bookId": {
+                  "type": "string"
+               },
+               "editor": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "studyGuide": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "materials": {
+                  "type": "object",
+                  "properties": {
+                     "bookmarks": {
+                        "type": "array"
+                     },
+                     "annotations": {
+                        "type": "array"
+                     },
+                     "categories": {
+                        "type": "array"
+                     },
+                     "comments": {
+                        "type": "array"
+                     },
+                     "essayTask": {
+                        "type": "array"
+                     },
+                     "paraSize": {
+                        "type": [
+                           "number",
+                           "string"
+                        ]
+                     },
+                     "publicationId": {
+                        "type": "string"
+                     },
+                     "testType": {
+                        "type": "string"
+                     },
+                     "discussionTasks": {
+                        "type": "array"
+                     }
+                  }
+               }
+            },
+            "required": [
+               "bookId",
+               "editor",
+               "studyGuide",
+               "materials"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/message": {
+      "put": {
+         "parameters": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "type": {
+                     "type": "string"
+                  },
+                  "text": {
+                     "type": "string"
+                  },
+                  "params": {
+                     "type": "object"
+                  },
+                  "timestamp": {
+                     "type": "number"
+                  },
+                  "runId": {
+                     "type": "string"
+                  }
+               },
+               "required": [
+                  "type",
+                  "text",
+                  "params",
+                  "timestamp",
+                  "runId"
+               ]
+            }
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "message": {
+                  "type": "string"
+               },
+               "stack": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "scope": {
+                  "type": "string"
+               },
+               "errid": {
+                  "type": "string"
+               },
+               "code": {
+                  "type": "string"
+               },
+               "errno": {
+                  "type": "string"
+               },
+               "syscall": {
+                  "type": "string"
+               },
+               "description": {
+                  "type": "string"
+               },
+               "stacktrace": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               }
+            }
+         }
+      },
+      "options": {
+         "parameters": {},
+         "responses": {}
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/notification/usernotification": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "flashcards": {
+                  "type": "object"
+               },
+               "messages": {
+                  "type": "object"
+               },
+               "activitymonitor": {
+                  "type": "object"
+               },
+               "discussions": {
+                  "type": "object"
+               },
+               "searchUsersWithActivity": {
+                  "type": "object"
+               },
+               "countUsersWithActivity": {
+                  "type": "object"
+               }
+            }
+         },
+         "responses": {
+            "type": ["array", "object"],
+            "items": {
+               "type": "object",
+               "properties": {
+                  "name": {
+                     "type": "string"
+                  },
+                  "data": {
+                     "type": "any"
+                  }
+               },
+               "required": [
+                  "name",
+                  "data"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/oauth": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "provider": {
+                  "type": "string"
+               },
+               "returnURI": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "provider",
+               "returnURI"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/personalmessage/search": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "reviewed": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "reviewed"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "_id": {
+                     "type": "string"
+                  },
+                  "registeredAt": {
+                     "type": "number"
+                  },
+                  "fromUserId": {
+                     "type": "string"
+                  },
+                  "toUserId": {
+                     "type": "string"
+                  },
+                  "text": {
+                     "type": "string"
+                  },
+                  "subject": {
+                     "type": "string"
+                  },
+                  "reviewed": {
+                     "type": [
+                        "string",
+                        "boolean"
+                     ]
+                  },
+                  "classId": {
+                     "type": "string"
+                  },
+                  "studentConfirmationStatus": {
+                     "type": "string"
+                  },
+                  "studyGuideId": {
+                     "type": "string"
+                  },
+                  "status": {
+                     "type": "string"
+                  }
+               },
+               "required": [
+                  "_id",
+                  "registeredAt",
+                  "fromUserId",
+                  "toUserId",
+                  "text",
+                  "subject",
+                  "reviewed"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/personalmessage/updatestate": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "userId": {
+                  "type": "string"
+               },
+               "messageIds": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               },
+               "reviewed": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               }
+            },
+            "required": [
+               "userId",
+               "messageIds",
+               "reviewed"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "status": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "status"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/personalmessage/persist": {
+      "post": {
+         "parameters": {},
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor",
+         "reader"
+      ]
+   },
+   "/publications/details": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "id"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "_id": {
+                  "type": "string"
+               },
+               "_rev": {
+                  "type": "string"
+               },
+               "hasThumbnail": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "author": {
+                  "type": "string"
+               },
+               "description": {
+                  "type": "string"
+               },
+               "category": {
+                  "type": "string"
+               },
+               "toc": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "text": {
+                           "type": "string"
+                        },
+                        "children": {
+                           "type": "array"
+                        },
+                        "id": {
+                           "type": "string"
+                        }
+                     },
+                     "required": [
+                        "text",
+                        "children",
+                        "id"
+                     ]
+                  }
+               },
+               "sourceURL": {
+                  "type": "string"
+               },
+               "weight": {
+                  "type": "number"
+               },
+               "readingTime": {
+                  "type": "number"
+               },
+               "wordsCount": {
+                  "type": "number"
+               },
+               "difficulty": {
+                  "type": "number"
+               },
+               "bookVocabularyLevel": {
+                  "type": "number"
+               },
+               "paraCount": {
+                  "type": "number"
+               },
+               "totalSize": {
+                  "type": "number"
+               },
+               "mediaSize": {
+                  "type": "number"
+               },
+               "bookSize": {
+                  "type": "number"
+               },
+               "cover": {
+                  "type": "string"
+               },
+               "language": {
+                  "type": "string"
+               },
+               "status": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "name": {
+                  "type": "string"
+               },
+               "type": {
+                  "type": "string"
+               },
+               "bookId": {
+                  "type": "string"
+               },
+               "userId": {
+                  "type": "string"
+               },
+               "exercises": {
+                  "type": "object",
+                  "properties": {
+                     "numberExercises": {
+                        "type": "number"
+                     },
+                     "numberQuizQusetions": {
+                        "type": "number"
+                     },
+                     "flashcards": {
+                        "type": "number"
+                     },
+                     "essaysWordLimit": {
+                        "type": "number"
+                     },
+                     "microJournaling": {
+                        "type": "number"
+                     }
+                  },
+                  "required": [
+                     "numberExercises",
+                     "numberQuizQusetions",
+                     "flashcards",
+                     "essaysWordLimit",
+                     "microJournaling"
+                  ]
+               },
+               "notes": {
+                  "type": "number"
+               },
+               "paragraphSummary": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "book": {
+                  "type": "object",
+                  "properties": {
+                     "_id": {
+                        "type": "string"
+                     },
+                     "_rev": {
+                        "type": "string"
+                     },
+                     "hasThumbnail": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "author": {
+                        "type": "string"
+                     },
+                     "description": {
+                        "type": "string"
+                     },
+                     "category": {
+                        "type": "string"
+                     },
+                     "toc": {
+                        "type": "array"
+                     },
+                     "sourceURL": {
+                        "type": "string"
+                     },
+                     "weight": {
+                        "type": "number"
+                     },
+                     "readingTime": {
+                        "type": "number"
+                     },
+                     "wordsCount": {
+                        "type": "number"
+                     },
+                     "difficulty": {
+                        "type": "number"
+                     },
+                     "bookVocabularyLevel": {
+                        "type": "number"
+                     },
+                     "paraCount": {
+                        "type": "number"
+                     },
+                     "totalSize": {
+                        "type": "number"
+                     },
+                     "mediaSize": {
+                        "type": "number"
+                     },
+                     "bookSize": {
+                        "type": "number"
+                     },
+                     "cover": {
+                        "type": "string"
+                     },
+                     "language": {
+                        "type": "string"
+                     },
+                     "status": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "name": {
+                        "type": "string"
+                     },
+                     "type": {
+                        "type": "string"
+                     },
+                     "collection": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "_id",
+                     "_rev",
+                     "hasThumbnail",
+                     "author",
+                     "category",
+                     "toc",
+                     "sourceURL",
+                     "weight",
+                     "readingTime",
+                     "wordsCount",
+                     "difficulty",
+                     "bookVocabularyLevel",
+                     "paraCount",
+                     "totalSize",
+                     "mediaSize",
+                     "bookSize",
+                     "cover",
+                     "language",
+                     "status",
+                     "name",
+                     "type"
+                  ]
+               },
+               "userIds": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               },
+               "readingProgress": {
+                  "type": "number"
+               },
+               "readingDuration": {
+                  "type": "number"
+               }
+            },
+            "required": [
+               "_id",
+               "_rev",
+               "hasThumbnail",
+               "author",
+               "category",
+               "toc",
+               "sourceURL",
+               "weight",
+               "readingTime",
+               "wordsCount",
+               "difficulty",
+               "bookVocabularyLevel",
+               "paraCount",
+               "totalSize",
+               "mediaSize",
+               "bookSize",
+               "cover",
+               "language",
+               "status",
+               "name",
+               "type"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/publications/getBookInfo": {
+      "get": {
+         "parameters": {},
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor",
+         "admin"
+      ]
+   },
+   "/publications/getRelatedPublications": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "includeThisPublication": {
+                  "type": "string"
+               },
+               "publicationId": {
+                  "type": "string"
+               },
+               "isStudyGuide": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "includeThisPublication",
+               "publicationId"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "id": {
+                     "type": "string"
+                  },
+                  "name": {
+                     "type": "string"
+                  },
+                  "author": {
+                     "type": "string"
+                  },
+                  "category": {
+                     "type": "string"
+                  },
+                  "description": {
+                     "type": "string"
+                  },
+                  "wordsCount": {
+                     "type": "number"
+                  },
+                  "cover": {
+                     "type": "string"
+                  },
+                  "difficulty": {
+                     "type": "number"
+                  },
+                  "readingTime": {
+                     "type": "number"
+                  },
+                  "exercises": {
+                     "type": "object"
+                  }
+               },
+               "required": [
+                  "id",
+                  "name",
+                  "author",
+                  "category",
+                  "description",
+                  "wordsCount",
+                  "cover",
+                  "difficulty",
+                  "readingTime",
+                  "exercises"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/publications/persistCurrentStudyGuide": {
+      "post": {
+         "parameters": {},
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor",
+         "reader"
+      ]
+   },
+   "/publications/persistDefaultStudyGuide": {
+      "post": {
+         "parameters": {},
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor",
+         "reader"
+      ]
+   },
+   "/publications/savestudyguide": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "publicationData": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "publicationData"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string"
+               },
+               "book": {
+                  "type": "string"
+               },
+               "currentStudyGuideId": {
+                  "type": "string"
+               },
+               "defaultStudyGuideId": {
+                  "type": "string"
+               },
+               "relatedStudyGuides": {
+                  "type": "array"
+               },
+               "tableOfContents": {
+                  "type": "array"
+               }
+            },
+            "required": [
+               "id",
+               "book",
+               "currentStudyGuideId",
+               "defaultStudyGuideId",
+               "relatedStudyGuides",
+               "tableOfContents"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/publications/search": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "categories": {
+                  "type": "string"
+               },
+               "contentType": {
+                  "type": "string"
+               },
+               "filter": {
+                  "type": "string"
+               },
+               "itemsCount": {
+                  "type": "string"
+               },
+               "language": {
+                  "type": "string"
+               },
+               "personalPublications": {
+                  "type": "string"
+               },
+               "collectionId": {
+                  "type": "string"
+               }
+            }
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "data": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "id": {
+                           "type": "string"
+                        },
+                        "author": {
+                           "type": "string"
+                        },
+                        "name": {
+                           "type": "string"
+                        },
+                        "cover": {
+                           "type": "string"
+                        },
+                        "category": {
+                           "type": "string"
+                        },
+                        "type": {
+                           "type": "string"
+                        },
+                        "description": {
+                           "type": "string"
+                        },
+                        "wordsCount": {
+                           "type": [
+                              "number",
+                              "null"
+                           ]
+                        },
+                        "readingTime": {
+                           "type": "number"
+                        },
+                        "difficulty": {
+                           "type": [
+                              "number",
+                              "string"
+                           ]
+                        },
+                        "personal": {
+                           "type": [
+                              "string",
+                              "boolean"
+                           ]
+                        },
+                        "readingProgress": {
+                           "type": "number"
+                        },
+                        "readingDuration": {
+                           "type": "number"
+                        },
+                        "matches": {
+                           "type": "number"
+                        },
+                        "bookAuthor": {
+                           "type": "string"
+                        },
+                        "bookTitle": {
+                           "type": "string"
+                        },
+                        "bookCover": {
+                           "type": "string"
+                        },
+                        "bookId": {
+                           "type": "string"
+                        },
+                        "exercises": {
+                           "type": "object"
+                        },
+                        "userId": {
+                           "type": "string"
+                        },
+                        "audio" : {
+                           "type" : "boolean"
+                        },
+                        "wordsPerMinute" : {
+                           "type" : "number"
+                        },
+                        "bitRate" : {
+                           "type" : "number"
+                        },
+                        "mediaSize" : {
+                           "type" : "number"
+                        }
+                     },
+                     "required": [
+                        "id",
+                        "author",
+                        "name",
+                        "category",
+                        "type",
+                        "readingTime",
+                        "difficulty",
+                        "personal",
+                        "readingProgress",
+                        "readingDuration"
+                     ]
+                  }
+               },
+               "status": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "data",
+               "status"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor",
+         "admin"
+      ]
+   },
+   "/publications/info": {
+      "get": {
+         "parameters": {},
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor",
+         "admin"
+      ]
+   },
+   "/session": {
+      "delete": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "SID": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "SID"
+            ]
+         },
+         "responses": {}
+      },
+      "options": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "SID": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "SID"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/session/email": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "userName": {
+                  "type": "string"
+               },
+               "password": {
+                  "type": "string"
+               },
+               "configInfo": {
+                  "type": "object",
+                  "properties": {
+                     "environmentSuffix": {
+                        "type": "string"
+                     },
+                     "environmentPrefix": {
+                        "type": "string"
+                     },
+                     "buildID": {
+                        "type": "string"
+                     },
+                     "revision": {
+                        "type": "string"
+                     },
+                     "processorCommit": {
+                        "type": "string"
+                     },
+                     "sourcesCommit": {
+                        "type": "string"
+                     },
+                     "appCommit": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "environmentSuffix",
+                     "environmentPrefix",
+                     "buildID",
+                     "revision",
+                     "processorCommit",
+                     "sourcesCommit",
+                     "appCommit"
+                  ]
+               }
+            },
+            "required": [
+               "userName",
+               "password",
+               "configInfo"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "runId": {
+                  "type": "string"
+               },
+               "sessionId": {
+                  "type": "string"
+               },
+               "userId": {
+                  "type": "string"
+               },
+               "clientNodeId": {
+                  "type": "string"
+               },
+               "startedAt": {
+                  "type": "string"
+               },
+               "endedAt": {
+                  "type": "string"
+               },
+               "active": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "context": {
+                  "type": "object",
+                  "properties": {
+                     "clientNodeContext": {
+                        "type": "object"
+                     },
+                     "applicationContext": {
+                        "type": "object"
+                     }
+                  }
+               },
+               "type": {
+                  "type": "string"
+               },
+               "_revs_info": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "rev": {
+                           "type": "string"
+                        },
+                        "status": {
+                           "type": "string"
+                        }
+                     },
+                     "required": [
+                        "rev",
+                        "status"
+                     ]
+                  }
+               },
+               "user": {
+                  "type": "object",
+                  "properties": {
+                     "type": {
+                        "type": "string"
+                     },
+                     "email": {
+                        "type": "string"
+                     },
+                     "registeredAt": {
+                        "type": "string"
+                     },
+                     "externaluserid": {
+                        "type": "array"
+                     },
+                     "lastName": {
+                        "type": "string"
+                     },
+                     "firstName": {
+                        "type": "string"
+                     },
+                     "editorRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "adminRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "active": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "id": {
+                        "type": "string"
+                     },
+                     "userId": {
+                        "type": "string"
+                     },
+                     "password": {
+                        "type": "string"
+                     },
+                     "emailConfirmationStatus": {
+                        "type": "string"
+                     },
+                     "registeredOn": {
+                        "type": "string"
+                     },
+                     "photo": {
+                        "type": "string"
+                     },
+                     "isPhoto": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "modifiedAt": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "type",
+                     "email",
+                     "externaluserid",
+                     "lastName",
+                     "firstName",
+                     "editorRole",
+                     "adminRole",
+                     "active",
+                     "id",
+                     "userId"
+                  ]
+               }
+            }
+         }
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/session/hashcode": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "configInfo": {
+                  "type": "object",
+                  "appCommit": {
+                     "type": "string"
+                  },
+                  "buildID": {
+                     "type": "string"
+                  },
+                  "environmentPrefix": {
+                     "type": "string"
+                  },
+                  "environmentSuffix": {
+                     "type": "string"
+                  },
+                  "processorCommit": {
+                     "type": "string"
+                  },
+                  "revision": {
+                     "type": "string"
+                  },
+                  "sourcesCommit": {
+                     "type": "string"
+                  }
+               },
+               "taskConfirmationHashCode": {
+                  "type": "string"
+               }
+            }
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "runId": {
+                  "type": "string"
+               },
+               "sessionId": {
+                  "type": "string"
+               },
+               "userId": {
+                  "type": "string"
+               },
+               "clientNodeId": {
+                  "type": "string"
+               },
+               "startedAt": {
+                  "type": "string"
+               },
+               "endedAt": {
+                  "type": "number"
+               },
+               "active": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "context": {
+                  "type": "object",
+                  "properties": {
+                     "clientNodeContext": {
+                        "type": "object"
+                     },
+                     "applicationContext": {
+                        "type": "object"
+                     }
+                  },
+                  "required": [
+                     "clientNodeContext",
+                     "applicationContext"
+                  ]
+               },
+               "type": {
+                  "type": "string"
+               },
+               "_revs_info": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "rev": {
+                           "type": "string"
+                        },
+                        "status": {
+                           "type": "string"
+                        }
+                     },
+                     "required": [
+                        "rev",
+                        "status"
+                     ]
+                  }
+               },
+               "user": {
+                  "type": "object",
+                  "properties": {
+                     "active": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "adminRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "editorRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "registredAt": {
+                        "type": "string"
+                     },
+                     "lastName": {
+                        "type": "string"
+                     },
+                     "firstName": {
+                        "type": "string"
+                     },
+                     "photo": {
+                        "type": "object"
+                     },
+                     "email": {
+                        "type": "string"
+                     },
+                     "externaluserid": {
+                        "type": "array"
+                     },
+                     "type": {
+                        "type": "string"
+                     },
+                     "id": {
+                        "type": "string"
+                     },
+                     "userId": {
+                        "type": "string"
+                     },
+                     "isPhoto": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "emailConfirmationStatus": {
+                        "type": "string"
+                     },
+                     "modifiedAt": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "active",
+                     "adminRole",
+                     "editorRole",
+                     "registredAt",
+                     "lastName",
+                     "firstName",
+                     "email",
+                     "externaluserid",
+                     "type",
+                     "id",
+                     "userId"
+                  ]
+               }
+            },
+            "required": [
+               "runId",
+               "sessionId",
+               "userId",
+               "clientNodeId",
+               "startedAt",
+               "endedAt",
+               "active",
+               "context",
+               "type",
+               "_revs_info",
+               "user"
+            ]
+         }
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/session/oauth": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "state": {
+                  "type": "string"
+               },
+               "access_token": {
+                  "type": "string"
+               },
+               "expires_in": {
+                  "type": "string"
+               },
+               "configInfo": {
+                  "type": "object",
+                  "properties": {
+                     "environmentSuffix": {
+                        "type": "string"
+                     },
+                     "environmentPrefix": {
+                        "type": "string"
+                     },
+                     "buildID": {
+                        "type": "string"
+                     },
+                     "revision": {
+                        "type": "string"
+                     },
+                     "processorCommit": {
+                        "type": "string"
+                     },
+                     "sourcesCommit": {
+                        "type": "string"
+                     },
+                     "appCommit": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "environmentSuffix",
+                     "environmentPrefix",
+                     "buildID",
+                     "revision",
+                     "processorCommit",
+                     "sourcesCommit",
+                     "appCommit"
+                  ]
+               },
+               "token_type": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "state",
+               "access_token",
+               "expires_in",
+               "configInfo"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "runId": {
+                  "type": "string"
+               },
+               "sessionId": {
+                  "type": "string"
+               },
+               "userId": {
+                  "type": "string"
+               },
+               "clientNodeId": {
+                  "type": "string"
+               },
+               "startedAt": {
+                  "type": "string"
+               },
+               "endedAt": {
+                  "type": "number"
+               },
+               "active": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "context": {
+                  "type": "object",
+                  "properties": {
+                     "clientNodeContext": {
+                        "type": "object"
+                     },
+                     "applicationContext": {
+                        "type": "object"
+                     }
+                  },
+                  "required": [
+                     "clientNodeContext",
+                     "applicationContext"
+                  ]
+               },
+               "type": {
+                  "type": "string"
+               },
+               "_revs_info": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "rev": {
+                           "type": "string"
+                        },
+                        "status": {
+                           "type": "string"
+                        }
+                     },
+                     "required": [
+                        "rev",
+                        "status"
+                     ]
+                  }
+               },
+               "user": {
+                  "type": "object",
+                  "properties": {
+                     "active": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "adminRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "editorRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "registredAt": {
+                        "type": "string"
+                     },
+                     "lastName": {
+                        "type": "string"
+                     },
+                     "firstName": {
+                        "type": "string"
+                     },
+                     "photo": {
+                        "type": [
+                           "object",
+                           "string",
+                           "null"
+                        ]
+                     },
+                     "email": {
+                        "type": "string"
+                     },
+                     "externaluserid": {
+                        "type": "array"
+                     },
+                     "type": {
+                        "type": "string"
+                     },
+                     "id": {
+                        "type": "string"
+                     },
+                     "userId": {
+                        "type": "string"
+                     },
+                     "isPhoto": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "emailConfirmationStatus": {
+                        "type": "string"
+                     },
+                     "modifiedAt": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "active",
+                     "adminRole",
+                     "editorRole",
+                     "registredAt",
+                     "lastName",
+                     "firstName",
+                     "email",
+                     "externaluserid",
+                     "type",
+                     "id",
+                     "userId"
+                  ]
+               }
+            },
+            "required": [
+               "runId",
+               "sessionId",
+               "userId",
+               "clientNodeId",
+               "startedAt",
+               "endedAt",
+               "active",
+               "context",
+               "type",
+               "_revs_info",
+               "user"
+            ]
+         }
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/settings": {
+      "get": {
+         "parameters": {},
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "_id": {
+                     "type": "string"
+                  },
+                  "_rev": {
+                     "type": "string"
+                  },
+                  "group": {
+                     "type": "string"
+                  },
+                  "name": {
+                     "type": "string"
+                  },
+                  "value": {
+                     "type": "any"
+                  },
+                  "setAt": {
+                     "type": "string"
+                  },
+                  "version": {
+                     "type": "number"
+                  },
+                  "userId": {
+                     "type": "string"
+                  },
+                  "type": {
+                     "type": "string"
+                  }
+               },
+               "required": [
+                  "_id",
+                  "_rev",
+                  "group",
+                  "name",
+                  "value",
+                  "setAt",
+                  "version",
+                  "userId",
+                  "type"
+               ]
+            }
+         }
+      },
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "group": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "value": {
+                  "type": "any"
+               },
+               "setAt": {
+                  "type": "number"
+               },
+               "version": {
+                  "type": "number"
+               },
+               "userId": {
+                  "type": "string"
+               },
+               "type": {
+                  "type": "string"
+               },
+               "_id": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "group",
+               "name",
+               "value",
+               "setAt",
+               "version"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "_id": {
+                  "type": "string"
+               },
+               "_rev": {
+                  "type": "string"
+               },
+               "group": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "value": {
+                  "type": "any"
+               },
+               "setAt": {
+                  "type": "string"
+               },
+               "version": {
+                  "type": "number"
+               },
+               "userId": {
+                  "type": "string"
+               },
+               "type": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "_id",
+               "group",
+               "name",
+               "value",
+               "setAt",
+               "version",
+               "userId",
+               "type"
+            ]
+         }
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/studyCourses": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "studyCourse": {
+                  "type": "object",
+                  "properties": {
+                     "_id": {
+                        "type": "string"
+                     },
+                     "author": {
+                        "type": "string"
+                     },
+                     "name": {
+                        "type": "string"
+                     },
+                     "description": {
+                        "type": "string"
+                     },
+                     "wordsCount": {
+                        "type": "number"
+                     },
+                     "difficulty": {
+                        "type": "number"
+                     },
+                     "readingTime": {
+                        "type": "number"
+                     },
+                     "type": {
+                        "type": "string"
+                     },
+                     "category": {
+                        "type": "string"
+                     },
+                     "studyCourseItems": {
+                        "type": "array"
+                     },
+                     "disabled": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     }
+                  }
+               }
+            },
+            "required": [
+               "studyCourse"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/studyCourses/calcBookRangeProperties": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "bookId": {
+                  "type": "string"
+               },
+               "paragraphRange": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "bookId",
+               "paragraphRange"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "wordsCount": {
+                  "type": "number"
+               },
+               "readingTime": {
+                  "type": "number"
+               },
+               "difficulty": {
+                  "type": "number"
+               }
+            },
+            "required": [
+               "wordsCount",
+               "readingTime",
+               "difficulty"
+            ]
+         }
+      },
+      "acl": [
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor"
+      ]
+   },
+   "/studyCourses/get": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "collapseCourses": {
+                  "type": "string"
+               },
+               "id": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "id"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "_id": {
+                  "type": "string"
+               },
+               "author": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "description": {
+                  "type": "string"
+               },
+               "wordsCount": {
+                  "type": "number"
+               },
+               "difficulty": {
+                  "type": "number"
+               },
+               "readingTime": {
+                  "type": "number"
+               },
+               "type": {
+                  "type": "string"
+               },
+               "category": {
+                  "type": "string"
+               },
+               "studyCourseItems": {
+                  "type": "array"
+               }
+            },
+            "required": [
+               "studyCourseItems"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/studyFlashcards/activate": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "testId": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "testId"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "string"
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/studyFlashcards/add": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "dictionaryId": {
+                  "type": "string"
+               },
+               "dictionaryTermName": {
+                  "type": "string"
+               },
+               "partOfSpeech": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "dictionaryId",
+               "dictionaryTermName",
+               "partOfSpeech"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor",
+         "reader"
+      ]
+   },
+   "/studyFlashcards/initiate": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "flashcardStudyIds": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               }
+            },
+            "required": [
+               "flashcardStudyIds"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "_id": {
+                     "type": "string"
+                  },
+                  "_rev": {
+                     "type": "string"
+                  },
+                  "question": {
+                     "type": "string"
+                  },
+                  "answer": {
+                     "type": "string"
+                  },
+                  "incorrectAnswers": {
+                     "type": "object"
+                  },
+                  "image": {
+                     "type": "string"
+                  },
+                  "audio": {
+                     "type": "string"
+                  },
+                  "type": {
+                     "type": "string"
+                  },
+                  "testId": {
+                     "type": "string"
+                  }
+               },
+               "required": [
+                  "_id",
+                  "_rev",
+                  "question",
+                  "answer",
+                  "incorrectAnswers",
+                  "image",
+                  "audio",
+                  "type",
+                  "testId"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/studyFlashcards/searchAssignedFlashcards": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "itemsCount": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "itemsCount"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "_id": {
+                     "type": "string"
+                  },
+                  "_rev": {
+                     "type": "string"
+                  },
+                  "userId": {
+                     "type": "string"
+                  },
+                  "type": {
+                     "type": "string"
+                  },
+                  "mastered": {
+                     "type": [
+                        "string",
+                        "boolean"
+                     ]
+                  },
+                  "correctAnswersCount": {
+                     "type": "number"
+                  },
+                  "createdAt": {
+                     "type": "number"
+                  },
+                  "nextRunAt": {
+                     "type": "number"
+                  },
+                  "testQuestionId": {
+                     "type": "string"
+                  },
+                  "lastRunAt": {
+                     "type": "number"
+                  },
+                  "question": {
+                     "type": "string"
+                  },
+                  "answer": {
+                     "type": "string"
+                  },
+                  "termName": {
+                     "type": "string"
+                  },
+                  "partOfSpeech": {
+                     "type": "string"
+                  },
+                  "dictionaryId": {
+                     "type": "string"
+                  }
+               },
+               "required": [
+                  "_id",
+                  "_rev",
+                  "userId",
+                  "type",
+                  "mastered",
+                  "correctAnswersCount",
+                  "createdAt",
+                  "nextRunAt",
+                  "question",
+                  "answer"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/studyFlashcards/searchStudies": {
+      "get": {
+         "parameters": {},
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": [
+                  "object",
+                  "string"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/studyFlashcards/update": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "flashcardStudyId": {
+                  "type": "string"
+               },
+               "passed": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               }
+            },
+            "required": [
+               "flashcardStudyId",
+               "passed"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor",
+         "reader"
+      ]
+   },
+   "/studyGuide/persistEditorsStatus": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "studyGuideId": {
+                  "type": "string"
+               },
+               "editorIds": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               },
+               "status": {
+                  "type": "string"
+               },
+               "comment": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "studyGuideId",
+               "editorIds",
+               "status",
+               "comment"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "status": {
+                     "type": "string"
+                  }
+               },
+               "required": [
+                  "status"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor"
+      ]
+   },
+   "/studyGuide/searchEditors": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "filter": {
+                  "type": "string"
+               },
+               "itemsCount": {
+                  "type": "string"
+               },
+               "studyGuideId": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "filter",
+               "itemsCount",
+               "studyGuideId"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "user": {
+                     "type": "object"
+                  },
+                  "alreadyInvited": {
+                     "type": [
+                        "string",
+                        "boolean"
+                     ]
+                  }
+               },
+               "required": [
+                  "user",
+                  "alreadyInvited"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor"
+      ]
+   },
+   "/studyclass/info": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "classId": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "classId"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "teachers": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "email": {
+                           "type": "string"
+                        },
+                        "lastName": {
+                           "type": "string"
+                        },
+                        "firstName": {
+                           "type": "string"
+                        },
+                        "active": {
+                           "type": [
+                              "string",
+                              "boolean"
+                           ]
+                        },
+                        "userId": {
+                           "type": "string"
+                        }
+                     },
+                     "required": [
+                        "email",
+                        "lastName",
+                        "firstName",
+                        "active",
+                        "userId"
+                     ]
+                  }
+               },
+               "userRole": {
+                  "type": "string"
+               },
+               "summary": {
+                  "type": "object",
+                  "properties": {
+                     "numberOfStudents": {
+                        "type": "number"
+                     },
+                     "numberOfInvitedStudents": {
+                        "type": "number"
+                     },
+                     "numberOfRequestedStudents": {
+                        "type": "number"
+                     }
+                  },
+                  "required": [
+                     "numberOfStudents",
+                     "numberOfInvitedStudents",
+                     "numberOfRequestedStudents"
+                  ]
+               },
+               "class": {
+                  "type": "object",
+                  "properties": {
+                     "_id": {
+                        "type": "string"
+                     },
+                     "_rev": {
+                        "type": "string"
+                     },
+                     "classId": {
+                        "type": "string"
+                     },
+                     "publicationId": {
+                        "type": "string"
+                     },
+                     "publicationType": {
+                        "type": "string"
+                     },
+                     "registeredAt": {
+                        "type": "number"
+                     },
+                     "classType": {
+                        "type": "string"
+                     },
+                     "name": {
+                        "type": "string"
+                     },
+                     "description": {
+                        "type": "string"
+                     },
+                     "scheduledAt": {
+                        "type": "number"
+                     },
+                     "expectedDailyWork": {
+                        "type": "number"
+                     },
+                     "joinEndDate": {
+                        "type": "number"
+                     },
+                     "studyWeekDays": {
+                        "type": "array"
+                     },
+                     "cover": {
+                        "type": "string"
+                     },
+                     "modifiedAt": {
+                        "type": "number"
+                     },
+                     "expectedDuration": {
+                        "type": "number"
+                     },
+                     "type": {
+                        "type": "string"
+                     },
+                     "studyClassType": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "_id",
+                     "_rev",
+                     "classId",
+                     "publicationId",
+                     "publicationType",
+                     "registeredAt",
+                     "classType",
+                     "name",
+                     "description",
+                     "scheduledAt",
+                     "expectedDailyWork",
+                     "joinEndDate",
+                     "studyWeekDays",
+                     "cover",
+                     "modifiedAt",
+                     "expectedDuration",
+                     "type",
+                     "studyClassType"
+                  ]
+               },
+               "studyCourseInfo": {
+                  "type": "object",
+                  "properties": {
+                     "details": {
+                        "type": "array"
+                     },
+                     "course": {
+                        "type": "object"
+                     }
+                  },
+                  "required": [
+                     "details",
+                     "course"
+                  ]
+               }
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/studyclass/invitestudents": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "classId": {
+                  "type": "string"
+               },
+               "userIds": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               },
+               "comment": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "classId",
+               "userIds",
+               "comment"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "status": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "status"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/studyclass/persist": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "studyClass": {
+                  "type": "object",
+                  "properties": {
+                     "classId": {
+                        "type": "string"
+                     },
+                     "publicationId": {
+                        "type": "string"
+                     },
+                     "publicationType": {
+                        "type": "string"
+                     },
+                     "registeredAt": {
+                        "type": "number"
+                     },
+                     "classType": {
+                        "type": "string"
+                     },
+                     "name": {
+                        "type": "string"
+                     },
+                     "description": {
+                        "type": "string"
+                     },
+                     "scheduledAt": {
+                        "type": "number"
+                     },
+                     "expectedDailyWork": {
+                        "type": "number"
+                     },
+                     "joinEndDate": {
+                        "type": "number"
+                     },
+                     "studyWeekDays": {
+                        "type": "array"
+                     },
+                     "_id": {
+                        "type": "string"
+                     },
+                     "cover": {
+                        "type": "string"
+                     },
+                     "modifiedAt": {
+                        "type": "number"
+                     },
+                     "expectedDuration": {
+                        "type": "number"
+                     },
+                     "type": {
+                        "type": "string"
+                     },
+                     "studyClassType": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "classId",
+                     "publicationId",
+                     "publicationType",
+                     "registeredAt",
+                     "classType",
+                     "name",
+                     "description",
+                     "expectedDailyWork",
+                     "studyWeekDays",
+                     "cover",
+                     "modifiedAt",
+                     "expectedDuration",
+                     "type",
+                     "studyClassType"
+                  ]
+               },
+               "type": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "studyClass",
+               "type"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "classId": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "classId"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/studyclass/persiststudentstatus": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "userId": {
+                  "type": "string"
+               },
+               "classId": {
+                  "type": "string"
+               },
+               "studentIds": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               },
+               "status": {
+                  "type": "string"
+               },
+               "comment": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "userId",
+               "classId",
+               "studentIds",
+               "status",
+               "comment"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "status": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "status"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/studyclass/searchbypublication": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "filter": {
+                  "type": "string"
+               },
+               "itemsCount": {
+                  "type": "string"
+               },
+               "publicationId": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "filter",
+               "itemsCount",
+               "publicationId"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object"
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/studyclass/searchstudents": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "classId": {
+                  "type": "string"
+               },
+               "filter": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "classId",
+               "filter"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "registeredAt": {
+                     "type": "number"
+                  },
+                  "modifiedAt": {
+                     "type": "number"
+                  },
+                  "studyClassType": {
+                     "type": "string"
+                  },
+                  "userId": {
+                     "type": "string"
+                  },
+                  "email": {
+                     "type": "string"
+                  },
+                  "lastName": {
+                     "type": "string"
+                  },
+                  "firstName": {
+                     "type": "string"
+                  }
+               },
+               "required": [
+                  "registeredAt",
+                  "modifiedAt",
+                  "studyClassType",
+                  "userId",
+                  "email",
+                  "lastName",
+                  "firstName"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/studyclass/searchstudentsforclass": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "classId": {
+                  "type": "string"
+               },
+               "filter": {
+                  "type": "string"
+               },
+               "itemsCount": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "classId",
+               "filter",
+               "itemsCount"
+            ]
+         },
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "userId": {
+                     "type": "string"
+                  },
+                  "email": {
+                     "type": "string"
+                  },
+                  "lastName": {
+                     "type": "string"
+                  },
+                  "firstName": {
+                     "type": "string"
+                  },
+                  "photo": {
+                     "type": [
+                        "string",
+                        "object",
+                        "null"
+                     ]
+                  },
+                  "alreadyInClass": {
+                     "type": [
+                        "string",
+                        "boolean"
+                     ]
+                  }
+               },
+               "required": [
+                  "userId",
+                  "email",
+                  "lastName",
+                  "firstName",
+                  "alreadyInClass"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/studyclass/searchstudyclasses": {
+      "get": {
+         "parameters": {},
+         "responses": {
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "membership": {
+                     "type": "array"
+                  },
+                  "role": {
+                     "type": "string"
+                  },
+                  "teachers": {
+                     "type": "array"
+                  },
+                  "course": {
+                     "type": "object"
+                  },
+                  "class": {
+                     "type": "object"
+                  }
+               },
+               "required": [
+                  "membership",
+                  "role",
+                  "teachers",
+                  "course",
+                  "class"
+               ]
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/user/registeremail": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "applicationUrl": {
+                  "type": "string"
+               },
+               "taskType": {
+                  "type": "string"
+               },
+               "userEmail": {
+                  "type": "string"
+               },
+               "required": [
+                  "applicationUrl",
+                  "taskType",
+                  "userEmail"
+               ]
+            }
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "status": {
+                  "type": "string"
+               },
+               "data": {
+                  "taskHashCode": {
+                     "type": "string"
+                  }
+               }
+            },
+            "required": [
+               "status",
+               "data"
+            ]
+         }
+      },
+      "acl": ["all"],
+      "appAcl": ["any"]
+   },
+   "/user/resetpassword": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "password": {
+               "type": "string"
+            },
+            "taskConfirmationHashCode": {
+               "type": "string"
+            },
+            "required": [
+               "password",
+               "taskConfirmationHashCode"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "status": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "status"
+            ]
+         }
+      },
+      "acl": [
+         "all",
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/user/confirm": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "confirm": {
+                  "type": ["boolean", "string"]
+               },
+               "taskConfirmationHashCode": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "confirm",
+               "taskConfirmationHashCode"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "status": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "status"
+            ]
+         }
+      },
+      "acl": ["all"],
+      "appAcl": ["any"]
+   },
+   "/user/userregistration": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "confirm": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "email": {
+                  "type": "string"
+               },
+               "firstName": {
+                  "type": "string"
+               },
+               "lastName": {
+                  "type": "string"
+               },
+               "password": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "email",
+               "firstName",
+               "lastName",
+               "password"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "status": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "status"
+            ]
+         }
+      },
+      "acl": ["all"],
+      "appAcl": ["any"]
+   },
+   "/user/persistuserprofile": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "profile": {
+                  "type": "object",
+                  "properties": {
+                     "adminRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "editorRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "active": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "firstName": {
+                        "type": "string"
+                     },
+                     "lastName": {
+                        "type": "string"
+                     },
+                     "email": {
+                        "type": "string"
+                     },
+                     "registeredAt": {
+                        "type": "string"
+                     },
+                     "password": {
+                        "type": "string"
+                     },
+                     "passwordSalt": {
+                        "type": "string"
+                     },
+                     "passwordHash": {
+                        "type": "string"
+                     },
+                     "passwordEncodingMethod": {
+                        "type": "string"
+                     },
+                     "emailConfirmationStatus": {
+                        "type": "string"
+                     },
+                     "externaluserid": {
+                        "type": "array"
+                     },
+                     "type": {
+                        "type": "string"
+                     },
+                     "newUser": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "brandName": {
+                        "type": "string"
+                     },
+                     "brandFullName": {
+                        "type": "string"
+                     },
+                     "photo": {
+                        "type": ["string", "object"]
+                     },
+                     "isPhoto": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "userId": {
+                        "type": "string"
+                     },
+                     "_id": {
+                        "type": "string"
+                     },
+                     "_rev": {
+                        "type": "string"
+                     },
+                     "registredAt": {
+                        "type": "string"
+                     },
+                     "_revs_info": {
+                        "type": "array"
+                     },
+                     "modifiedAt": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "adminRole",
+                     "editorRole",
+                     "active",
+                     "firstName",
+                     "lastName",
+                     "email",
+                     "emailConfirmationStatus",
+                     "externaluserid",
+                     "type"
+                  ]
+               },
+               "profilePersistingInfo": {
+                  "type": "object",
+                  "properties": {
+                     "newUser": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "passwordPersistingModeEnum": {
+                        "type": "string"
+                     },
+                     "passwordConfirmation": {
+                        "type": "string"
+                     },
+                     "newPassword": {
+                        "type": "string"
+                     },
+                     "changeEmail": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     }
+                  },
+                  "required": [
+                     "newUser",
+                     "passwordPersistingModeEnum",
+                     "passwordConfirmation",
+                     "newPassword",
+                     "changeEmail"
+                  ]
+               }
+            },
+            "required": [
+               "profile",
+               "profilePersistingInfo"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "status": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "status"
+            ]
+         }
+      },
+      "acl": [
+         "admin",
+         "editor",
+         "user"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/user": {
+      "delete": {
+         "parameters": {},
+         "responses": {}
+      },
+      "acl": ["admin"],
+      "appAcl": ["admin"]
+   },
+   "/user/profile": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "id"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "userProfileInfo": {
+                  "type": "object",
+                  "properties": {
+                     "id": {
+                        "type": "string"
+                     },
+                     "email": {
+                        "type": "string"
+                     },
+                     "lastName": {
+                        "type": "string"
+                     },
+                     "firstName": {
+                        "type": "string"
+                     },
+                     "editorRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "adminRole": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "active": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "photo": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "id",
+                     "email",
+                     "lastName",
+                     "firstName",
+                     "editorRole",
+                     "adminRole",
+                     "active",
+                     "photo"
+                  ]
+               },
+               "userProfileStatus": {
+                  "type": "object",
+                  "properties": {
+                     "hasExternalProfile": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "hasPassword": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "hasNotConfirmedEmail": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     }
+                  },
+                  "required": [
+                     "hasExternalProfile",
+                     "hasNotConfirmedEmail"
+                  ]
+               },
+               "userStudyStatistics": {
+                  "type": "object",
+                  "properties": {
+                     "_id": {
+                        "type": "string"
+                     },
+                     "_rev": {
+                        "type": "string"
+                     },
+                     "booksInProgressCount": {
+                        "type": "number"
+                     },
+                     "completedBooksCount": {
+                        "type": "number"
+                     },
+                     "vocabularyTermsCount": {
+                        "type": "number"
+                     },
+                     "totalReadingTime": {
+                        "type": "number"
+                     },
+                     "completedQuizzesCount": {
+                        "type": "number"
+                     },
+                     "pendingQuizzesCount": {
+                        "type": "number"
+                     },
+                     "masteredFlashcardsCount": {
+                        "type": "number"
+                     },
+                     "pendingFlashcardsCount": {
+                        "type": "number"
+                     },
+                     "userId": {
+                        "type": "string"
+                     },
+                     "type": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "booksInProgressCount",
+                     "completedBooksCount",
+                     "vocabularyTermsCount",
+                     "totalReadingTime",
+                     "completedQuizzesCount",
+                     "pendingQuizzesCount",
+                     "masteredFlashcardsCount",
+                     "pendingFlashcardsCount"
+                  ]
+               }
+            },
+            "required": [
+               "userProfileInfo",
+               "userProfileStatus",
+               "userStudyStatistics"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "any"
+      ]
+   },
+   "/user/search": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "category": {
+                  "type": "string"
+               },
+               "filter": {
+                  "type": "string"
+               },
+               "itemsCount": {
+                  "type": "number"
+               },
+               "include_docs": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               }
+            },
+            "required": [
+               "category",
+               "filter",
+               "itemsCount"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "totalResults": {
+                  "type": "number"
+               },
+               "result": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "_id": {
+                           "type": "string"
+                        },
+                        "_rev": {
+                           "type": "string"
+                        },
+                        "type": {
+                           "type": "string"
+                        },
+                        "email": {
+                           "type": "string"
+                        },
+                        "registeredAt": {
+                           "type": "string"
+                        },
+                        "externaluserid": {
+                           "type": "array"
+                        },
+                        "passwordHash": {
+                           "type": "string"
+                        },
+                        "passwordSalt": {
+                           "type": "string"
+                        },
+                        "passwordEncodingMethod": {
+                           "type": "string"
+                        },
+                        "lastName": {
+                           "type": "string"
+                        },
+                        "firstName": {
+                           "type": "string"
+                        },
+                        "editorRole": {
+                           "type": [
+                              "string",
+                              "boolean"
+                           ]
+                        },
+                        "adminRole": {
+                           "type": [
+                              "string",
+                              "boolean"
+                           ]
+                        },
+                        "active": {
+                           "type": [
+                              "string",
+                              "boolean"
+                           ]
+                        },
+                        "id": {
+                           "type": "string"
+                        },
+                        "registredAt": {
+                           "type": "string"
+                        },
+                        "photo": {
+                           "type": [
+                              "string",
+                              "object",
+                              "null"
+                           ]
+                        }
+                     },
+                     "required": [
+                        "_id",
+                        "_rev",
+                        "type",
+                        "email",
+                        "externaluserid",
+                        "lastName",
+                        "firstName",
+                        "editorRole",
+                        "adminRole",
+                        "active",
+                        "id"
+                     ]
+                  }
+               }
+            }
+         }
+      },
+      "acl": [
+         "admin"
+      ],
+      "appAcl": [
+         "admin"
+      ]
+   },
+   "/user/getFile": {
+      "get": {
+         "parameters": {},
+         "responses": {}
+      },
+      "acl": ["user", "editor", "admin", "all"],
+      "appAcl": ["reader", "editor", "admin", "any"]
+   },
+   "/userpublications/getRecentBooks": {
+      "get": {
+         "parameters": {},
+         "responses": {
+            "type": "object",
+            "properties": {
+               "books": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "_id": {
+                           "type": "string"
+                        },
+                        "name": {
+                           "type": "string"
+                        },
+                        "author": {
+                           "type": "string"
+                        },
+                        "cover": {
+                           "type": "string"
+                        },
+                        "type": {
+                           "type": "string"
+                        },
+                        "difficulty": {
+                           "type": "number"
+                        },
+                        "progress": {
+                           "type": "number"
+                        },
+                        "readingTime": {
+                           "type": "number"
+                        },
+                        "lastReadingTime": {
+                           "type": "number"
+                        },
+                        "publicationType": {
+                           "type": "string"
+                        }
+                     },
+                     "required": [
+                        "_id",
+                        "name",
+                        "author",
+                        "cover",
+                        "type",
+                        "difficulty",
+                        "progress",
+                        "readingTime",
+                        "lastReadingTime",
+                        "publicationType"
+                     ]
+                  }
+               },
+               "studyActivities": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "_id": {
+                           "type": "string"
+                        },
+                        "name": {
+                           "type": "string"
+                        },
+                        "author": {
+                           "type": "string"
+                        },
+                        "cover": {
+                           "type": "string"
+                        },
+                        "type": {
+                           "type": "string"
+                        },
+                        "progress": {
+                           "type": "number"
+                        },
+                        "readingTime": {
+                           "type": "number"
+                        },
+                        "lastReadingTime": {
+                           "type": "number"
+                        },
+                        "classId": {
+                           "type": "string"
+                        },
+                        "currentStudyItemId": {
+                           "type": "string"
+                        },
+                        "publicationType": {
+                           "type": "string"
+                        },
+                        "participant": {
+                           "type": "number"
+                        },
+                        "progressNum": {
+                           "type": "number"
+                        },
+                        "currentStudyItem": {
+                           "type": "object"
+                        }
+                     },
+                     "required": [
+                        "_id",
+                        "name",
+                        "author",
+                        "cover",
+                        "type",
+                        "progress",
+                        "readingTime",
+                        "lastReadingTime",
+                        "classId",
+                        "currentStudyItemId",
+                        "publicationType",
+                        "participant",
+                        "progressNum",
+                        "currentStudyItem"
+                     ]
+                  }
+               },
+               "lastItem": {
+                  "type": "object",
+                  "properties": {
+                     "_id": {
+                        "type": "string"
+                     },
+                     "name": {
+                        "type": "string"
+                     },
+                     "author": {
+                        "type": "string"
+                     },
+                     "cover": {
+                        "type": "string"
+                     },
+                     "type": {
+                        "type": "string"
+                     },
+                     "difficulty": {
+                        "type": "number"
+                     },
+                     "progress": {
+                        "type": "number"
+                     },
+                     "readingTime": {
+                        "type": "number"
+                     },
+                     "lastReadingTime": {
+                        "type": "number"
+                     },
+                     "publicationType": {
+                        "type": "string"
+                     },
+                     "studyGuide": {
+                        "type": "string"
+                     },
+                     "classId": {
+                        "type": "string"
+                     },
+                     "currentStudyItemId": {
+                        "type": "string"
+                     },
+                     "participant": {
+                        "type": "number"
+                     },
+                     "progressNum": {
+                        "type": "number"
+                     },
+                     "currentStudyItem": {
+                        "type": "object"
+                     },
+                     "collection": {
+                        "type": "string"
+                     }
+                  }
+               }
+            },
+            "required": [
+               "books",
+               "studyActivities",
+               "lastItem"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/userReports":{
+      "get":{
+         "parameters": {},
+         "responses": {
+            "type": "object"
+         }
+      },
+      "post":{
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "data": {"type": "object"}
+            }
+         },
+         "responses": {
+            "type": "string"
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor",
+         "admin"
+      ]
+   },
+   "/userpublications/update": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "userPublication": {
+                  "type": "object",
+                  "properties": {
+                     "publicationId": {
+                        "type": "string"
+                     },
+                     "publicationType": {
+                        "type": "string"
+                     },
+                     "lastOpenedAt": {
+                        "type": "number"
+                     },
+                     "personal": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "userId": {
+                        "type": "string"
+                     },
+                     "firstOpenedAt": {
+                        "type": "number"
+                     },
+                     "readingDuration": {
+                        "type": "number"
+                     },
+                     "readingProgress": {
+                        "type": "number"
+                     },
+                     "completed": {
+                        "type": [
+                           "string",
+                           "boolean"
+                        ]
+                     },
+                     "type": {
+                        "type": "string"
+                     },
+                     "_id": {
+                        "type": "string"
+                     },
+                     "_rev": {
+                        "type": "string"
+                     },
+                     "currentStudyItem": {
+                        "type": "string"
+                     },
+                     "readingPosition": {
+                        "type": "object",
+                        "properties": {
+                           "fragmentId": {
+                              "type" : "string"
+                           }
+                        }
+                     },
+                     "currentStudyItemId": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "publicationId",
+                     "publicationType",
+                     "lastOpenedAt",
+                     "personal",
+                     "userId",
+                     "firstOpenedAt",
+                     "readingDuration",
+                     "readingProgress",
+                     "completed",
+                     "type"
+                  ]
+               },
+               "isEditor": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               }
+            },
+            "required": [
+               "userPublication",
+               "isEditor"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "_id": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "author": {
+                  "type": "string"
+               },
+               "cover": {
+                  "type": "string"
+               },
+               "type": {
+                  "type": "string"
+               },
+               "difficulty": {
+                  "type": "number"
+               },
+               "progress": {
+                  "type": "number"
+               },
+               "readingTime": {
+                  "type": "number"
+               },
+               "lastReadingTime": {
+                  "type": "number"
+               },
+               "publicationType": {
+                  "type": "string"
+               },
+               "studyGuide": {
+                  "type": "string"
+               },
+               "classId": {
+                  "type": "string"
+               },
+               "currentStudyItemId": {
+                  "type": "string"
+               },
+               "participant": {
+                  "type": "number"
+               },
+               "progressNum": {
+                  "type": "number"
+               },
+               "currentStudyItem": {
+                  "type": [
+                     "object",
+                     "string"
+                  ],
+                  "properties": {
+                     "author": {
+                        "type": "string"
+                     },
+                     "name": {
+                        "type": "string"
+                     }
+                  },
+                  "required": [
+                     "author",
+                     "name"
+                  ]
+               },
+               "collection": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "_id",
+               "name",
+               "author",
+               "type",
+               "progress",
+               "lastReadingTime",
+               "publicationType"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/userstudy/readingprogresstracking": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "progressData" : {
+               "data" : {
+                  "paragraphLocator" : {
+                      "type": "string"
+                  },
+                  "wordsCount" : {
+                    "type": [
+                      "string",
+                      "number"
+                   ]
+                  }
+               }
+            },
+            "progressType" : {
+               "type": "string"
+            },
+            "studyId" : {
+               "type": "string"
+            }
+         },
+        "responses": {
+           "type": "object",
+           "properties": {
+              "message": {
+                 "type": "string"
+              },
+              "stack": {
+                 "type": "string"
+              },
+              "arguments": {
+                 "type": "array",
+                 "items": {
+                    "type": "string"
+                 }
+              },
+              "type": {
+                 "type": "string"
+              }
+           }
+        }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/userstudy/initiate": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "mode": {
+                  "type": "string"
+               },
+               "publicationId": {
+                  "type": "string"
+               },
+               "classId": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "mode",
+               "classId"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "userId": {
+                  "type": "string"
+               },
+               "type": {
+                  "type": "string"
+               },
+               "publicationId": {
+                  "type": "string"
+               },
+               "firstOpenedAt": {
+                  "type": "number"
+               },
+               "lastTouchedAt": {
+                  "type": "number"
+               },
+               "completed": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "readingDuration": {
+                  "type": "number"
+               },
+               "readingProgress": {
+                  "type": "number"
+               },
+               "readingWordNumber": {
+                  "type": "number"
+               },
+               "studyItems": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "id": {
+                           "type": "string"
+                        },
+                        "completed": {
+                           "type": [
+                              "string",
+                              "boolean"
+                           ]
+                        },
+                        "firstOpenedAt": {
+                           "type": "number"
+                        },
+                        "lastOpenedAt": {
+                           "type": "number"
+                        }
+                     },
+                     "required": [
+                        "id",
+                        "completed",
+                        "firstOpenedAt",
+                        "lastOpenedAt"
+                     ]
+                  }
+               },
+               "currentStudyItemId": {
+                  "type": "string"
+               },
+               "_id": {
+                  "type": "string"
+               },
+               "_rev": {
+                  "type": "string"
+               },
+               "readingPosition": {
+                  "type": "object",
+                  "properties": {
+                     "fragmentId": {
+                        "type": "string"
+                     }
+                  }
+               },
+               "classId": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "userId",
+               "type",
+               "publicationId",
+               "firstOpenedAt",
+               "lastTouchedAt",
+               "completed",
+               "readingDuration",
+               "readingProgress",
+               "readingWordNumber",
+               "studyItems",
+               "currentStudyItemId",
+               "_id"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/userstudy/persistEssay": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "essayId": {
+                  "type": "string"
+               },
+               "text": {
+                  "type": "string"
+               },
+               "comleted": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "studyId": {
+                  "type": "string"
+               },
+               "publicationId": {
+                  "type": "string"
+               },
+               "studyItemId": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "essayId",
+               "text",
+               "comleted",
+               "studyId",
+               "publicationId",
+               "studyItemId"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/userstudy/persistTest": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string"
+               },
+               "active": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "locator": {
+                  "type": "string"
+               },
+               "testType": {
+                  "type": "string"
+               },
+               "type": {
+                  "type": "string"
+               },
+               "studyId": {
+                  "type": "string"
+               },
+               "publicationId": {
+                  "type": "string"
+               },
+               "studyItemId": {
+                  "type": "string"
+               },
+               "correctAnswersCount": {
+                  "type": "number"
+               },
+               "totalAnswersCount": {
+                  "type": "number"
+               }
+            },
+            "required": [
+               "id",
+               "locator",
+               "type",
+               "studyId",
+               "publicationId",
+               "studyItemId"
+            ]
+         },
+         "responses": {}
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/userstudy/persistprogress": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "publicationId": {
+                  "type": "string"
+               },
+               "recordedAt": {
+                  "type": "number"
+               },
+               "readingProgress": {
+                  "type": "number"
+               },
+               "currentStudyItemId": {
+                  "type": "string"
+               },
+               "readingPosition": {
+                  "type": [
+                     "object",
+                     "null"
+                  ],
+                  "properties": {
+                     "fragmentId": {
+                        "type": "string"
+                     }
+                  }
+               },
+               "readingDuration": {
+                  "type": "number"
+               },
+               "readingWordNumber": {
+                  "type": "number"
+               },
+               "completed": {
+                  "type": [
+                     "string",
+                     "boolean"
+                  ]
+               },
+               "classId": {
+                  "type": "string"
+               },
+               "type": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "recordedAt",
+               "readingProgress",
+               "readingPosition",
+               "readingDuration",
+               "readingWordNumber",
+               "completed",
+               "classId",
+               "type"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "message": {
+                  "type": "string"
+               },
+               "stack": {
+                  "type": "string"
+               },
+               "arguments": {
+                  "type": "array",
+                  "items": {
+                     "type": "string"
+                  }
+               },
+               "type": {
+                  "type": "string"
+               }
+            }
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "editor",
+         "reader"
+      ]
+   },
+   "/userstudy/searchuserstudy": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "classId": {
+                  "type": "string"
+               },
+               "filter": {
+                  "type": "string"
+               },
+               "category": {
+                  "type": "string"
+               },
+               "interval": {
+                  "type": "number"
+               },
+               "itemsCount": {
+                  "type": "number"
+               }
+            },
+            "required": [
+               "classId",
+               "filter",
+               "category",
+               "interval",
+               "itemsCount"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "usersProgress": {
+                  "type": "array"
+               },
+               "middleParams": {
+                  "type": "object",
+                  "properties": {
+                     "readingDuration": {
+                        "type": "number"
+                     },
+                     "readingWord": {
+                        "type": "number"
+                     },
+                     "expectedTotalReadingTime": {
+                        "type": "number"
+                     }
+                  },
+                  "required": [
+                     "readingDuration",
+                     "readingWord",
+                     "expectedTotalReadingTime"
+                  ]
+               }
+            },
+            "required": [
+               "usersProgress",
+               "middleParams"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader",
+         "editor"
+      ]
+   },
+   "/vocabulary/getQuestions": {
+      "get": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "lowerBound": {
+                  "type": "string"
+               },
+               "numberIncorrectAnswers": {
+                  "type": "string"
+               },
+               "numberQuestion": {
+                  "type": "string"
+               },
+               "upperBound": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "lowerBound",
+               "numberIncorrectAnswers",
+               "numberQuestion",
+               "upperBound"
+            ]
+         },
+         "responses": {
+            "type": "object",
+            "properties": {
+               "data": {
+                  "type": "object",
+                  "properties": {
+                     "questions": {
+                        "type": "array"
+                     }
+                  },
+                  "required": [
+                     "questions"
+                  ]
+               },
+               "status": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "data",
+               "status"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin",
+         "all"
+      ],
+      "appAcl": [
+         "vocabulary",
+         "reader"
+      ]
+   },
+   "/vocabulary/saveVocabulary": {
+      "post": {
+         "parameters": {
+            "type": "object",
+            "properties": {
+               "vocabularyTermsCount": {
+                  "type": "number"
+               }
+            },
+            "required": [
+               "vocabularyTermsCount"
+            ]
+         },
+         "responses": {
+            "type": "object"
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "vocabulary"
+      ]
+   },
+   "/vocabulary/vocabularyResults": {
+      "get": {
+         "parameters": {},
+         "responses": {
+            "type": "object",
+            "properties": {
+               "_id": {
+                  "type": "string"
+               },
+               "_rev": {
+                  "type": "string"
+               },
+               "booksInProgressCount": {
+                  "type": "number"
+               },
+               "completedBooksCount": {
+                  "type": "number"
+               },
+               "vocabularyTermsCount": {
+                  "type": "number"
+               },
+               "totalReadingTime": {
+                  "type": "number"
+               },
+               "completedQuizzesCount": {
+                  "type": "number"
+               },
+               "pendingQuizzesCount": {
+                  "type": "number"
+               },
+               "masteredFlashcardsCount": {
+                  "type": "number"
+               },
+               "pendingFlashcardsCount": {
+                  "type": "number"
+               },
+               "userId": {
+                  "type": "string"
+               },
+               "type": {
+                  "type": "string"
+               }
+            },
+            "required": [
+               "booksInProgressCount",
+               "completedBooksCount",
+               "vocabularyTermsCount",
+               "totalReadingTime",
+               "completedQuizzesCount",
+               "pendingQuizzesCount",
+               "masteredFlashcardsCount",
+               "pendingFlashcardsCount"
+            ]
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "vocabulary",
+         "reader"
+      ]
+   },
+   "/vocabulary/createFlashcards": {
+      "post": {
+         "parameters": {
+            "type": "array"
+         },
+         "responses": {
+            "type": "array"
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   },
+   "/invite": {
+      "post": {
+         "parameters": {
+            "type": "object"
+         },
+         "responses": {
+            "type": "string"
+         }
+      },
+      "acl": [
+         "user",
+         "editor",
+         "admin"
+      ],
+      "appAcl": [
+         "reader"
+      ]
+   }
+}

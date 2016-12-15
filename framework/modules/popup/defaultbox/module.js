@@ -1,0 +1,6 @@
+define([
+
+   './DefaultBox'
+
+], function(){});
+

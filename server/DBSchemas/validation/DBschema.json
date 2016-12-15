@@ -1,0 +1,2513 @@
+{
+  "ApplicationSession": {
+    "type": "object",
+    "properties": {
+      "runId": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "sessionId": {"type": "string"},
+      "userId": {"type": "string"},
+      "clientNodeId": {
+        "required": true,
+        "type": "string"
+      },
+      "startedAt": {
+        "required": true
+      },
+      "endedAt": {
+        "type": "any"
+      },
+      "active": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "context": {
+        "required": true,
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientNodeContext": {
+            "required": true,
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "userAgentInfo": {
+                "required": true,
+                "type": "string"
+              },
+              "native": {
+                "required": true,
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              },
+              "platformType": {
+                "required": true,
+                "type": "string"
+              },
+              "os": {
+                "required": true,
+                "type": "string"
+              },
+              "runtimeEngine": {
+                "required": true,
+                "type": "string"
+              },
+              "screenWidth": {
+                "required": true,
+                "type": "number"
+              },
+              "screenHeight": {
+                "required": true,
+                "type": "number"
+              },
+              "devicePixelRation": {
+                "required": true,
+                "type": "number"
+              },
+              "origin": {
+                "required": true,
+                "type": "string"
+              },
+              "clientNodeId": {
+                "required": true,
+                "type": "string"
+              }
+            }
+          },
+          "applicationContext": {
+            "required": true,
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "application": {
+                "required": true,
+                "type": "string"
+              },
+              "serverUrl": {
+                "required": true,
+                "type": "string"
+              },
+              "applicationUrl": {
+                "required": true,
+                "type": "string"
+              },
+              "applicationResourceUrl": {
+                "required": true,
+                "type": "string"
+              },
+              "systemLevelNamespace": {
+                "required": true,
+                "type": "string"
+              },
+              "applicationLevelNamespace": {
+                "required": true,
+                "type": "string"
+              },
+              "localRepositoryAvailable": {
+                "required": true,
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              },
+              "localRepositoryType": {
+                "required": true,
+                "type": "string"
+              },
+              "localFileSystemAvailable": {
+                "required": true,
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              },
+              "localFileSystemUrl": {
+                "required": true,
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "status": {
+        "type": "object",
+        "properties": {
+          "online": {
+            "type": "boolean",
+            "required": true
+          },
+          "activities": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "required": true
+          },
+          "lastStatusNotification": {
+            "type": "number",
+            "required": true
+          }
+        }
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "attachment": {
+    "type": "object",
+    "properties": {
+      "_attachments": {
+        "type": "object"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "Book": {
+    "type": "object",
+    "properties": {
+      "hasThumbnail": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "author": {
+        "required": true,
+        "type": "string"
+      },
+      "description": {
+        "required": true,
+        "type": "string"
+      },
+      "category": {
+        "required": true,
+        "type": "string"
+      },
+      "toc": {
+        "required": true,
+        "type": "array",
+        "items": {
+          "required": true,
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "text": {
+              "required": true,
+              "type": "string"
+            },
+            "children": {
+              "required": true,
+              "type": "array",
+              "items": {"type": "object"}
+            },
+            "id": {
+              "required": true,
+              "type": "string"
+            }
+          }
+        }
+      },
+      "sourceURL": {
+        "required": true,
+        "type": "string"
+      },
+      "weight": {
+        "required": true,
+        "type": "number"
+      },
+      "collection": {"type": "string"},
+      "readingTime": {
+        "required": true,
+        "type": "number"
+      },
+      "wordsCount": {
+        "required": true,
+        "type": "number"
+      },
+      "difficulty": {
+        "required": true,
+        "type": "number"
+      },
+      "bookVocabularyLevel": {
+        "required": true,
+        "type": "number"
+      },
+      "paraCount": {
+        "required": true,
+        "type": "number"
+      },
+      "totalSize": {
+        "required": true,
+        "type": "number"
+      },
+      "mediaSize": {
+        "required": true,
+        "type": "number"
+      },
+      "bookSize": {
+        "required": true,
+        "type": "number"
+      },
+      "cover": {
+        "required": true,
+        "type": "string"
+      },
+      "language": {
+        "required": true,
+        "type": "string"
+      },
+      "status": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "audio": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "wordsPerMinute" : {
+         "type" : "number"
+      },
+      "bitRate" : {
+         "type" : "number"
+      },
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "Activity" : {
+    "userId":{
+      "required": true,
+      "type": "string"
+    },
+    "studyId":{
+      "required": true,
+      "type": "string"
+    },
+    "wordsCount":{
+      "required": true,
+      "type": "number"
+    },
+    "paragraphLocator":{
+      "type": "string"
+    },
+    "from":{
+      "type": "string"
+    },
+    "to":{
+      "type": "string"
+    },
+    "createdAt":{
+      "required": true,
+      "type": "number"
+    },
+    "type":{
+      "required": true,
+      "type": "string"
+    },
+    "progressType":{
+      "required": true,
+      "type": "string"
+    }
+  },
+  "Collection": {
+    "type": "object",
+    "properties": {
+      "author": {
+        "required": true,
+        "type": "string"
+      },
+      "hasThumbnail": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "language": {
+        "required": true,
+        "type": "string"
+      },
+      "category": {
+        "required": true,
+        "type": "string"
+      },
+      "description": {
+        "required": true,
+        "type": "string"
+      },
+      "items": {
+        "required": true,
+        "type": "array",
+        "items": {
+          "required": true,
+          "type": "string"
+        }
+      },
+      "priority": {
+        "required": true,
+        "type": "number"
+      },
+      "weight": {
+        "required": true,
+        "type": "number"
+      },
+      "wordsCount": {
+        "required": true,
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "difficulty": {
+        "required": true,
+        "type": "number"
+      },
+      "readingTime": {
+        "required": true,
+        "type": "number"
+      },
+      "toc": {
+        "required": true,
+        "type": "array",
+        "items":{
+          "type":"object"
+        }
+      },
+      "paraCount": {
+        "required": true,
+        "type": "number"
+      },
+      "cover": {
+        "required": true,
+        "type": "string"
+      },
+      "status": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "audio": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "wordsPerMinute" : {
+         "type" : "number"
+      },
+      "bitRate" : {
+         "type" : "number"
+      },
+      "toc": {
+        "required": true,
+        "type": "array",
+        "items": {
+          "required": true,
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "text": {
+              "required": true,
+              "type": "string"
+            },
+            "children": {
+              "required": true,
+              "type": "array",
+              "items": {"type": "object"}
+            },
+            "id": {
+              "required": true,
+              "type": "string"
+            }
+          }
+        }
+      },
+      "paraCount": {
+        "required": true,
+        "type": "number"
+      },
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "Dictionary": {
+    "type": "object",
+    "properties": {
+      "hasThumbnail": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "author": {
+        "required": true,
+        "type": "string"
+      },
+      "category": {
+        "required": true,
+        "type": "string"
+      },
+      "totalSize": {
+        "required": true,
+        "type": "number"
+      },
+      "bookSize": {
+        "required": true,
+        "type": "number"
+      },
+      "description": {
+        "required": true,
+        "type": "string"
+      },
+      "weight": {
+        "required": true,
+        "type": "number"
+      },
+      "cover": {
+        "required": true,
+        "type": "string"
+      },
+      "language": {
+        "required": true,
+        "type": "string"
+      },
+      "status": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "difficulty": {
+        "required": true,
+        "type": "number"
+      },
+      "readingTime": {
+        "required": true,
+        "type": "number"
+      },
+      "toc": {
+        "required": true,
+        "type": "array",
+        "items":{
+          "type":"object"
+        }
+      },
+      "wordsCount": {
+        "required": true,
+        "type": "number"
+      },
+      "paraCount": {
+        "required": true,
+        "type": "number"
+      },
+      "audio": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "wordsPerMinute" : {
+         "type" : "number"
+      },
+      "bitRate" : {
+         "type" : "number"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "DictionaryTermStudy": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "required": true,
+        "type": "string"
+      },
+      "mastered": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "correctAnswersCount": {
+        "required": true,
+        "type": "number"
+      },
+      "createdAt": {
+        "required": true,
+        "type": "number"
+      },
+      "nextRunAt": {
+        "required": true,
+        "type": "number"
+      },
+      "termName": {
+        "required": true,
+        "type": "string"
+      },
+      "partOfSpeech": {
+        "required": true,
+        "type": "string"
+      },
+      "dictionaryId": {
+        "required": true,
+        "type": "string"
+      },
+      "lastRunAt": {"type": ["number", "string"]},
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "EmailAuthorizedTask": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "required": true,
+        "type": "string"
+      },
+      "taskHashCode": {
+        "required": true,
+        "type": "string"
+      },
+      "taskConfirmationHashCode": {
+        "required": true,
+        "type": "string"
+      },
+      "email": {
+        "required": true,
+        "type": "string"
+      },
+      "registeredAt": {
+        "required": true,
+        "type": "number"
+      },
+      "expiredAt": {
+        "required": true,
+        "type": "number"
+      },
+      "status": {
+        "required": true,
+        "type": "string"
+      },
+      "taskType": {
+        "required": true,
+        "type": "string"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "EssayTask": {
+    "type": "object",
+    "properties": {
+      "modifiedAt": {
+        "required": true,
+        "type": "number"
+      },
+      "publicationId": {
+        "required": true,
+        "type": "string"
+      },
+      "locator": {
+        "required": true,
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "required": true,
+            "type": "string"
+          },
+          "paragraphId": {
+            "required": true,
+            "type": "string"
+          },
+          "index": {
+            "required": true,
+            "type": "number"
+          }
+        }
+      },
+      "topic": {
+        "required": true,
+        "type": "string"
+      },
+      "wordsLimit": {
+        "required": true,
+        "type": "string"
+      },
+      "comment": {
+        "type": "string"
+      },
+      "createdAt": {
+        "required": true,
+        "type": "number"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "flashcardstudy": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "required": true,
+        "type": "string"
+      },
+      "mastered": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "correctAnswersCount": {
+        "required": true,
+        "type": "number"
+      },
+      "createdAt": {
+        "required": true,
+        "type": "number"
+      },
+      "nextRunAt": {
+        "required": true,
+        "type": "number"
+      },
+      "testQuestionId": {
+        "required": true,
+        "type": "string"
+      },
+      "lastRunAt": {
+        "required": true,
+        "type": "number"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "Material": {
+    "type": "object",
+    "properties": {
+      "annotations": {
+        "type": "array",
+        "items": {
+          "id": {
+            "required": true,
+            "type": "string"
+          },
+          "start": {
+            "required": true,
+            "type": "string"
+          },
+          "end": {
+            "required": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "required": true,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "required": true,
+            "type": "string"
+          },
+          "category": {
+            "required": true,
+            "type": "string"
+          },
+          "studyGuide": {
+            "required": true,
+            "type": "string"
+          }
+        }
+      },
+      "bookmarks": {
+        "type": "array",
+        "items": {
+          "id": {
+            "required": true,
+            "type": "string"
+          },
+          "paragraphId": {
+            "required": true,
+            "type": "string"
+          },
+          "position": {
+            "required": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "required": true,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "required": true,
+            "type": "string"
+          },
+          "studyGuide": {"type": "string"}
+        }
+      },
+      "comments": {
+        "type": "array",
+        "items": {
+          "id": {
+            "required": true,
+            "type": "string"
+          },
+          "paragraphId": {
+            "required": true,
+            "type": "string"
+          },
+          "position": {
+            "required": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "required": true,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "required": true,
+            "type": "string"
+          },
+          "category": {
+            "required": true,
+            "type": "string"
+          },
+          "note": {
+            "required": true,
+            "type": "string"
+          },
+          "studyGuide": {"type": "string"}
+        }
+      },
+      "categories": {
+        "type": "array",
+        "items": {
+          "name": {
+            "required": true,
+            "type": "string"
+          },
+          "color": {
+            "required": true,
+            "type": "string"
+          },
+          "preset": {
+            "required": true,
+            "type": [
+              "boolean",
+              "string"
+            ]
+          }
+        }
+      },
+      "discussionTasks": {
+        "type": "array",
+        "items": {
+          "id": {
+            "required": true,
+            "type": "string"
+          },
+          "locator": {
+            "required": true,
+            "type": "string"
+          },
+          "topic": {
+            "required": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "createdAt": {
+            "required": true,
+            "type": "numer"
+          },
+          "modifiedAt": {
+            "type": "numer"
+          }
+        }
+      },
+      "paraSize": {
+        "type": [
+          "string",
+          "number"
+        ]
+      },
+      "bookId": {
+        "required": true,
+        "type": "string"
+      },
+      "userIds": {
+        "required": true,
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "editor": {
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "PersonalMessage": {
+    "type": "object",
+    "properties": {
+      "registeredAt": {
+        "required": true,
+        "type": "number"
+      },
+      "fromUserId": {
+        "required": true,
+        "type": "string"
+      },
+      "toUserId": {
+        "required": true,
+        "type": "string"
+      },
+      "text": {
+        "required": true,
+        "type": "string"
+      },
+      "subject": {
+        "required": true,
+        "type": "string"
+      },
+      "reviewed": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "classId": {
+        "type": "string"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "Session": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "required": true,
+        "type": "string"
+      },
+      "clientNodeId": {
+        "required": true,
+        "type": "string"
+      },
+      "startedAt": {
+        "required": true,
+        "type": "any"
+      },
+      "endedAt": {
+        "type": "any"
+      },
+      "active": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "Setting": {
+    "type": "object",
+    "properties": {
+      "group": {
+        "required": true,
+        "type": "string"
+      },
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "value": {
+        "required": true,
+        "type": [
+          "string",
+          "object"
+        ]
+      },
+      "setAt": {
+        "required": true,
+        "format": "date"
+      },
+      "version": {
+        "required": true,
+        "type": "number"
+      },
+      "userId": {
+        "required": true,
+        "type": "string"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "StudyClass": {
+    "type": "object",
+    "properties": {
+      "classId": {
+        "required": true,
+        "type": "string"
+      },
+      "publicationType": {
+        "required": true,
+        "type": "string"
+      },
+      "cover": {
+        "type": "string"
+      },
+      "publicationId": {
+         "required": true,
+         "type": "string"
+      },
+      "registeredAt": {
+        "required": true,
+        "type": "number"
+      },
+      "modifiedAt": {
+        "required": true,
+        "type": "number"
+      },
+      "classType": {
+        "required": true,
+        "type": "string"
+      },
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "description": {
+        "required": true,
+        "type": "string"
+      },
+      "status": {
+        "required": true,
+        "type": "string"
+      },
+      "studyWeekDays": {
+        "required": true,
+        "type": "array",
+        "items": {
+          "type": ["string","number"]
+        }
+      },
+      "scheduledAt": {
+        "type": "number"
+      },
+      "joinEndDate": {
+        "type": ["number", "null"]
+      },
+      "expectedDailyWork": {
+        "type": ["number", "null"]
+      },
+      "expectedDuration": {
+        "type": "number"
+      },
+      "studyClassStatus": {
+        "type": "string"
+      },
+      "allowDiscussions": {
+        "type": "boolean"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "studyClassStatus": {
+       "required": true,
+       "type": "string"
+    },
+    "additionalProperties": false
+  },
+
+  "StudyCourse": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "category": {
+        "required": true,
+        "type": "string"
+      },
+      "audio": {
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "wordsPerMinute" : {
+         "type" : "number"
+      },
+      "bitRate" : {
+         "type" : "number"
+      },
+      "status": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "language": {
+        "required": true,
+        "type": "string"
+      },
+      "readingTime": {
+        "required": true,
+        "type": "number"
+      },
+      "wordsCount": {
+        "required": true,
+        "type": "number"
+      },
+      "difficulty": {
+        "required": true,
+        "type": "number"
+      },
+      "author": {
+        "required": true,
+        "type": "string"
+      },
+      "description": {
+        "required": true,
+        "type": "string"
+      },
+      "userId": {
+        "required": true,
+        "type": "string"
+      },
+      "type": {"type": "string"},
+      "toc": {
+        "type": "array",
+        "items": {}
+      },
+      "paraCount": {
+        "type": "number"
+      },
+       "items": [{
+       "type": "object",
+       "additionalProperties": false,
+       "properties": {
+          "type": {
+             "type": "string",
+             "enum": [
+                "Book",
+                "section item",
+                "StudyCourse",
+                "StudyGuide",
+                "vocabulary assessment item"
+             ]
+          },
+          "id": {
+             "type": "string"
+          },
+          "bookId": {
+             "type": "string"
+          },
+          "studyGuideId": {
+             "type": "string"
+          },
+          "paragraphId": {
+             "type": "string"
+          },
+          "finishingParagraphId": {
+             "type": "string"
+          },
+          "title": {
+             "type": "string"
+          },
+          "description": {
+             "type": "string"
+          },
+          "difficulty": {
+             "type": "number"
+          },
+          "sub": {
+             "type": [
+                "boolean",
+                "string"
+             ]
+          },
+          "index": {
+             "type": "number"
+          },
+          "readingTime": {
+             "type": "number"
+          },
+          "cumulativeTime": {
+             "type": "number"
+          },
+          "name": {
+             "type": "string"
+          },
+          "author": {
+             "type": "string"
+          },
+          "text": {
+             "type": "string"
+          }
+       }
+      }],
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "StudyCourseItem": {
+    "type": "object",
+    "properties": {
+      "publicationId": {
+        "required": true,
+        "type": "string"
+      },
+      "studyCourseItems": {
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Book",
+                  "section item",
+                  "StudyCourse",
+                  "StudyGuide",
+                  "vocabulary assessment item"
+                ]
+              },
+              "id": {"type": "string"},
+              "bookId": {"type": "string"},
+              "studyGuideId": {"type": "string"},
+              "paragraphId": {"type": "string"},
+              "finishingParagraphId": {"type": "string"},
+              "title": {"type": "string"},
+              "description": {"type": "string"},
+              "difficulty": {"type": "number"},
+              "wordsCount": {"type": "number"},
+              "sub": {
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              },
+              "index": {"type": "number"},
+              "readingTime": {"type": "number"},
+              "cumulativeTime": {"type": "number"},
+              "name": {"type": "string"},
+              "author": {"type": "string"},
+              "text": {"type": "string"}
+            }
+          }
+        ]
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "StudyGuide": {
+    "type": "object",
+    "properties": {
+      "hasThumbnail": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "author": {
+        "required": true,
+        "type": "string"
+      },
+      "description": {
+        "required": true,
+        "type": "string"
+      },
+      "category": {
+        "required": true,
+        "type": "string"
+      },
+      "toc": {
+        "required": true,
+        "type": "array",
+        "items": {
+          "required": true,
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "text": {
+              "required": true,
+              "type": "string"
+            },
+            "children": {
+              "required": true,
+              "type": "array",
+              "items": {"type": "object"}
+            },
+            "id": {
+              "required": true,
+              "type": "string"
+            }
+          }
+        }
+      },
+      "sourceURL": {
+        "required": true,
+        "type": "string"
+      },
+      "weight": {
+        "required": true,
+        "type": "number"
+      },
+      "readingTime": {
+        "required": true,
+        "type": "number"
+      },
+      "wordsCount": {
+        "required": true,
+        "type": "number"
+      },
+      "difficulty": {
+        "required": true,
+        "type": "number"
+      },
+      "bookVocabularyLevel": {
+        "required": true,
+        "type": "number"
+      },
+      "paraCount": {
+        "required": true,
+        "type": "number"
+      },
+      "totalSize": {
+        "required": true,
+        "type": "number"
+      },
+      "mediaSize": {
+        "required": true,
+        "type": "number"
+      },
+      "bookSize": {
+        "required": true,
+        "type": "number"
+      },
+      "cover": {
+        "required": true,
+        "type": "string"
+      },
+      "language": {
+        "required": true,
+        "type": "string"
+      },
+      "status": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "bookId": {
+        "required": true,
+        "type": "string"
+      },
+      "audio": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "wordsPerMinute" : {
+         "type" : "number"
+      },
+      "bitRate" : {
+         "type" : "number"
+      },
+      "userIds": {
+        "required": true,
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "exercises": {
+        "required": true,
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "numberExercises": {
+            "required": true,
+            "type": "number"
+          },
+          "numberQuizQusetions": {
+            "required": true,
+            "type": "number"
+          },
+          "flashcards": {
+            "required": true,
+            "type": "number"
+          },
+          "essaysWordLimit": {
+            "required": true,
+            "type": "number"
+          },
+          "microJournaling": {
+            "required": true,
+            "type": "number"
+          }
+        }
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "Supplemental": {
+    "type": "object",
+    "properties": {
+      "hasThumbnail": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "author": {
+        "required": true,
+        "type": "string"
+      },
+      "category": {
+        "required": true,
+        "type": "string"
+      },
+      "sourceURL": {
+        "required": true,
+        "type": "string"
+      },
+      "weight": {
+        "required": true,
+        "type": "number"
+      },
+      "readingTime": {
+        "required": true,
+        "type": "number"
+      },
+      "difficulty": {
+        "required": true,
+        "type": "number"
+      },
+      "toc": {
+        "required": true,
+        "type": "array",
+        "items": {
+          "required": true,
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "text": {
+              "required": true,
+              "type": "string"
+            },
+            "children": {
+              "required": true,
+              "type": "array",
+              "items": {"type": "object"}
+            },
+            "id": {
+              "required": true,
+              "type": "string"
+            }
+          }
+        }
+      },
+      "bookVocabularyLevel": {
+        "required": true,
+        "type": "number"
+      },
+      "bookVocabularyLevel": {
+        "required": true,
+        "type": "number"
+      },
+      "totalSize": {
+        "required": true,
+        "type": "number"
+      },
+      "mediaSize": {
+        "required": true,
+        "type": "number"
+      },
+      "wordsCount": {
+        "required": true,
+        "type": "number"
+      },
+      "paraCount": {
+        "required": true,
+        "type": "number"
+      },
+      "bookSize": {
+        "required": true,
+        "type": "number"
+      },
+      "cover": {
+        "required": true,
+        "type": "string"
+      },
+      "language": {
+        "required": true,
+        "type": "string"
+      },
+      "status": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "description": {
+        "required": true,
+        "type": "string"
+      },
+      "audio": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "wordsPerMinute" : {
+         "type" : "number"
+      },
+      "bitRate" : {
+         "type" : "number"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "Test": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "description": {
+        "required": true,
+        "type": "string"
+      },
+      "testType": {
+        "required": true,
+        "type": "string"
+      },
+      "locator": {
+        "required": true,
+        "type": "string"
+      },
+      "publicationId": {
+        "required": true,
+        "type": "string"
+      },
+      "modifiedAt": {
+        "required": true,
+        "type": "number"
+      },
+      "createdAt": {
+        "required": true,
+        "type": "number"
+      },
+      "testQuestionsCount": {
+        "required": true,
+        "type": "number"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "TestQuestion": {
+    "type": "object",
+    "properties": {
+      "question": {
+        "required": true,
+        "type": "string"
+      },
+      "answer": {
+        "required": true,
+        "type": "string"
+      },
+      "incorrectAnswers": {
+        "required": true,
+        "type": "object",
+        "properties": {
+          "0": {
+            "required": true,
+            "type": "string"
+          },
+          "1": {
+            "required": true,
+            "type": "string"
+          },
+          "2": {
+            "required": true,
+            "type": "string"
+          }
+        }
+      },
+      "testId": {
+        "required": true,
+        "type": "string"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "UserProfile": {
+    "type": "object",
+    "properties": {
+      "email": {
+        "required": true,
+        "type": "string"
+      },
+      "sync": {
+        "required": false,
+        "type": "object"
+      },
+      "registeredAt": {
+        "required": true,
+        "type": "string"
+      },
+      "modifiedAt": {
+        "required": true,
+        "type": "string"
+      },
+      "externaluserid": {
+        "required": true,
+        "type": "array",
+        "items": {
+          "required": true,
+          "type": "object",
+          "properties": {
+            "authorizationProvider": {
+              "required": true,
+              "type": "string"
+            },
+            "idFromAuthorizationProvider": {
+              "required": true,
+              "type": [
+                "string",
+                "number"
+              ]
+            }
+          }
+        }
+      },
+      "emailConfirmationStatus" : {
+        "type": "string"
+      },
+      "passwordHash": {
+        "type": "string"
+      },
+      "passwordSalt": {
+        "type": "string"
+      },
+      "passwordEncodingMethod": {
+        "type": "string"
+      },
+      "lastName": {
+        "required": true,
+        "type": "string"
+      },
+      "firstName": {
+        "required": true,
+        "type": "string"
+      },
+      "editorRole": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "adminRole": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "active": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "photo": {
+        "type": [
+          "object",
+          "string"
+        ]
+      },
+      "isPhoto": {
+        "type": [
+          "string",
+          "boolean"
+        ]
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "UserPublication": {
+    "type": "object",
+    "properties": {
+      "publicationId": {
+        "required": true,
+        "type": "string"
+      },
+      "userId": {
+        "required": true,
+        "type": "string"
+      },
+      "currentStudyItemId": {
+        "type": "string"
+      },
+      "currentStudyGuideId": {
+        "type": "string"
+      },
+      "readingProgress": {
+        "required": true,
+        "type": "number"
+      },
+      "publicationType": {
+        "required": true,
+        "type": "string"
+      },
+      "lastOpenedAt": {
+        "required": true,
+        "type": "number"
+      },
+      "personal": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "firstOpenedAt": {
+        "required": true,
+        "type": "number"
+      },
+      "readingDuration": {
+        "required": true,
+        "type": "number"
+      },
+      "completed": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "testActivation": {
+        "type": [
+          "string",
+          "null",
+          "object"
+        ]
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "UserReport": {
+    "type": "object",
+    "properties": {
+      "type":{
+        "type":"string",
+        "required": true
+      },
+      "userId":{
+        "type":"string",
+        "required": true
+      },
+      "userName":{
+        "type":"string"
+      },
+      "userEmail":{
+        "type":"string"
+      },
+      "added":{
+        "type":"number",
+        "required": true
+      },
+      "data":{
+        "type":"object",
+        "required": true
+      }
+    },
+    "additionalProperties": false
+  },
+  "UserStudy": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "required": true,
+        "type": "string"
+      },
+      "publicationId": {
+        "required": true,
+        "type": "string"
+      },
+      "classId": {
+        "type": "string"
+      },
+      "firstOpenedAt": {
+        "required": true,
+        "type": "number"
+      },
+      "lastTouchedAt": {
+        "required": true,
+        "type": "number"
+      },
+      "completed": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "readingDuration": {
+        "required": true,
+        "type": "number"
+      },
+      "readingProgress": {
+        "required": true,
+        "type": "number"
+      },
+      "readingWordNumber": {
+        "required": true,
+        "type": "number"
+      },
+      "studyItems": {
+        "required": true,
+        "type": "array",
+        "items": {
+          "required": true,
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "required": true,
+              "type": "string"
+            },
+            "bookId" : {
+              "type": "string"
+            },
+            "completed": {
+              "type": [
+                "boolean",
+                "string"
+              ]
+            },
+            "firstOpenedAt": {
+              "required": true,
+              "type": "number"
+            },
+            "lastOpenedAt": {
+              "required": true,
+              "type": "number"
+            },
+            "readingProgress": {
+              "required": true,
+              "type": "number"
+            },
+            "studyGuideId": {
+              "type": "string"
+            },
+            "paragraphId": {
+              "type": "string"
+            },
+            "finishingParagraphId": {
+              "type": "string"
+            },
+            "flashcards": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "_id" : {
+                      "type": "string"
+                    },
+                    "testType" : {
+                      "type": "string",
+                      "enum": [
+                        "Quiz",
+                        "Flashcard"
+                      ]
+                    },
+                    "locator": {
+                      "type": "string"
+                    },
+                    "active": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            },
+            "quizzes": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "_id" : {
+                          "type": "string"
+                        },
+                        "testType" : {
+                          "type": "string",
+                          "enum": [
+                            "Quiz",
+                            "Flashcard"
+                          ]
+                        },
+                        "locator": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "Not Started",
+                            "Partial",
+                            "Completed"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "essays": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "_id" : {
+                      "type": "string"
+                    },
+                    "startedAt": {
+                      "type": "number"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "paragraphId" : {
+                      "type": "string"
+                    },
+                    "wordsNumber": {
+                      "type": "number"
+                    },
+                    "completed": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            },
+            "paragraphSummaries": {
+              "type": "object",
+              "properties": {
+                "paragraphId": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "startedAt": {
+                      "type": "number"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "wordsNumber": {
+                      "type": "number"
+                    },
+                    "completed": {
+                      "type": "number"
+                    },
+                    "completedAt": {
+                      "type": "number"
+                    },
+                    "locator": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "A",
+                            "B"
+                          ]
+                        },
+                        "paragraphId": {
+                          "type": "string"
+                        },
+                        "index": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "currentStudyItemId": {
+        "required": true,
+        "type": "string"
+      },
+      "readingPosition": {
+        "required": true,
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "fragmentId": {
+            "required": true,
+            "type": "string"
+          }
+        }
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "UserStudyProgress": {
+    "type": "object",
+    "properties": {
+      "studyId": {
+        "required": true,
+        "type": "string"
+      },
+      "date": {
+        "required": true,
+        "type": "number"
+      },
+      "startedAt": {
+        "required": true,
+        "type": "number"
+      },
+      "finishedAt": {
+        "required": true,
+        "type": "number"
+      },
+      "totalReadingDuration": {
+        "required": true,
+        "type": "number"
+      },
+      "readingDuration": {
+        "required": true,
+        "type": "number"
+      },
+      "readingWordNumber": {
+        "required": true,
+        "type": "number"
+      },
+      "writtenWordNumber": {
+        "required": true,
+        "type": "number"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "userstudystatistics": {
+    "type": "object",
+    "properties": {
+      "booksInProgressCount": {
+        "required": true,
+        "type": "number"
+      },
+      "completedBooksCount": {
+        "required": true,
+        "type": "number"
+      },
+      "vocabularyTermsCount": {
+        "required": true,
+        "type": "number"
+      },
+      "totalReadingTime": {
+        "required": true,
+        "type": "number"
+      },
+      "completedQuizzesCount": {
+        "required": true,
+        "type": "number"
+      },
+      "pendingQuizzesCount": {
+        "required": true,
+        "type": "number"
+      },
+      "masteredFlashcardsCount": {
+        "required": true,
+        "type": "number"
+      },
+      "pendingFlashcardsCount": {
+        "required": true,
+        "type": "number"
+      },
+      "userId": {
+        "required": true,
+        "type": "string"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "version": {
+    "type": "object",
+    "properties": {
+      "required": true,
+      "type": {"type": "string"},
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "required": true,
+          "type": "number"
+        }
+      },
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "Vocabulary": {
+    "type": "object",
+    "properties": {
+      "dictionaryId": {
+        "required": true,
+        "type": "string"
+      },
+      "hasThumbnail": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "author": {
+        "required": true,
+        "type": "string"
+      },
+      "category": {
+        "required": true,
+        "type": "string"
+      },
+      "totalSize": {
+        "required": true,
+        "type": "number"
+      },
+      "bookSize": {
+        "required": true,
+        "type": "number"
+      },
+      "weight": {
+        "required": true,
+        "type": "number"
+      },
+      "cover": {
+        "required": true,
+        "type": "string"
+      },
+      "language": {
+        "required": true,
+        "type": "string"
+      },
+      "status": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "audio": {
+        "required": true,
+        "type": [
+          "boolean",
+          "string"
+        ]
+      },
+      "wordsPerMinute" : {
+         "type" : "number"
+      },
+      "bitRate" : {
+         "type" : "number"
+      },
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "description": {
+        "required": true,
+        "type": "string"
+      },
+      "difficulty": {
+        "required": true,
+        "type": "number"
+      },
+      "readingTime": {
+        "required": true,
+        "type": "number"
+      },
+      "toc": {
+        "required": true,
+        "type": "array",
+        "items":{
+          "type":"object"
+        }
+      },
+      "wordsCount": {
+        "required": true,
+        "type": "number"
+      },
+      "paraCount": {
+        "required": true,
+        "type": "number"
+      },
+      "type": {"type": "string"},
+      "_rev": {"type": "string"},
+      "_id": {"type": "string"},
+      "_revs_info": {
+        "type": [
+          "string",
+          "object",
+          "array"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+   "CustomizedBook": {
+      "type": "object",
+      "properties": {
+         "bookId": {
+            "required": true,
+            "type": "string"
+         },
+         "defaultStudyGuideId": {
+            "required": true,
+            "type": "string"
+         },
+         "type": {
+            "required": true,
+            "type": "string"
+         },
+         "_rev": {
+            "type": "string"
+         },
+         "_id": {
+            "type": "string"
+         },
+         "_revs_info": {
+            "type": [
+               "string",
+               "object",
+               "array"
+            ]
+         }
+      },
+      "additionalProperties": false
+   }
+}

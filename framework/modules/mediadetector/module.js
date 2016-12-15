@@ -1,0 +1,6 @@
+define([
+
+   './MediaDetector'
+
+], function(){});
+

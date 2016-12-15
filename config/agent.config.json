@@ -1,0 +1,13 @@
+{
+   "agent":{
+      "url": "https://ffa.cloudant.com",
+      "enabled": false,
+      "dumpPath": "data/",
+      "_log_request" : true,
+      "_sync_enabled" : true,
+
+      "queryInvalidateInterval" : 120000,
+      "syncInterval" : 300000,
+      "retryInterval" : 60000
+   }
+}

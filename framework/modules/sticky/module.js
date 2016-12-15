@@ -1,0 +1,6 @@
+define([
+
+   './Sticky',
+   './StickyService'
+
+], function(){});

@@ -1,0 +1,5 @@
+<div sw-focus-manager="{keyNext: 'down', keyPrev: 'up'}">
+   <div tabindex="0" sw-hot-key-click ng-repeat="item in contextMenuItems" ng-disabled="item.disabled" class="sw-contextMenuItem sw-popup-{{item.name}}">
+      <span><i class="sw-icon {{item.icon}}"></i><span sw-localize="{{item.label || item.name}}"></span></span>
+   </div>
+</div>

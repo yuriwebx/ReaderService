@@ -1,0 +1,15 @@
+<ul class="{{getPopupListClass()}} sw-focus-manager" sw-focus-manager="{keyNext: 'down', keyPrev: 'up'}">
+   <li class="sw-input-select-item-placeholder {{getItemClass(item)}}"
+       ng-if="isClearAllowed()"
+       ng-click="selectItemFromPopup()"
+       tabindex="0" sw-hot-key-click>
+      {{placeholder}}
+   </li>
+   <li class="{{getItemClass(item)}}"
+       ng-repeat="item in getPopupItems() track by getId(item, $index)"
+       ng-hide="mode !== 's' && item.isHidden"
+       ng-click="selectItemFromPopup(item)"
+       tabindex="0" sw-hot-key-click>
+      <div sw-compile="getItemPopupTemplate(item)"></div>
+   </li>
+</ul>

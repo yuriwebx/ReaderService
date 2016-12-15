@@ -1,0 +1,10 @@
+<ul class="sw-input-select_f-list">
+   <li class="sw-input-select_f-item"
+       ng-if="!filterScope.filterResult.length && filterScope.filterModel && !showLoader">{{filterPopupPlaceholder}}</li>
+   <li class="sw-input-select_f-item"
+       ng-repeat="item in filterScope.filterResult track by getId(item, $index)" ng-click="setSelectionClick($index)"
+       ng-class="{'sw-input-select_f-item-selected' : activeIndex === $index && !isTouchInput}"
+       ng-mouseenter="setActiveIndexOnHover($index)">
+       <div sw-compile="getItemPopupTemplate(item)"></div>
+   </li>
+</ul>

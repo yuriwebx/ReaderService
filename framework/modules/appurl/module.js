@@ -1,0 +1,7 @@
+define([
+
+   './AppUrl',
+   './AppUrlConfigDefault'
+
+], function(){});
+

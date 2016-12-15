@@ -1,0 +1,7 @@
+define([
+
+  './MessageBuffer',
+  './MessageBufferImplDefault'
+
+], function(){});
+

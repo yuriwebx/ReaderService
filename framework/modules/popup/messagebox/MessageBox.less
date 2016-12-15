@@ -1,0 +1,66 @@
+@import '../base.less';
+
+.sw-messageBox {
+   background: @c-white;
+   overflow: hidden;
+   .box-shadow(2);
+   @{touchYes} & {
+      border-radius: @base-radius-l;
+   }
+   @{touchNo} & {
+      border-radius: @base-radius-s;
+   }
+
+   @media @narrow {
+      max-width: 85%;
+   }
+   @media @normal_wide {
+      max-width: 80%;
+   }
+
+   .sw-popup-content {
+      padding: 16px;
+      position: relative;
+      white-space: nowrap;
+
+      .sw-popup_icon {
+         display: inline-block;
+         vertical-align: middle;
+         margin-right: 0.5em;
+      }
+
+      .sw-popup_text {
+         font-size: 1.15em;
+         display: inline-block;
+         vertical-align: middle;
+         white-space: normal;
+         @media @narrow {
+            padding-right: 35px;
+         }
+         @media @normal_wide {
+            padding-right: 45px;
+         }
+
+         p {
+            margin-top: 0.33em;
+         }
+      }
+   }
+
+   .sw-popup-footer {
+      border-top: 1px solid @c-mono-300;
+      text-align: center;
+
+      &:not(:empty) {
+         padding: 16px 8px;
+      }
+
+      .sw-popup-button:not(:last-child) {
+         margin-right: 8px;
+      }
+   }
+
+   .sw-popup_closeBlock {
+      display: none;
+   }
+}

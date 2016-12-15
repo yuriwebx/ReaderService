@@ -1,0 +1,17 @@
+{
+  "db":{
+    "url": "http://admin:admin@172.16.16.84:5984",
+    "local_url": "http://admin:admin@172.16.16.121:5985",
+    "name": {
+      "environment_name": "develop",
+      "database_name": "demo1"
+    }
+  },
+
+  "task_generator": {
+    "source_db_urls": ["http://admin:admin@172.16.16.84:5984/develop_demo1_db"],
+    "dump": {
+      "path": "data"
+    }
+  }
+}

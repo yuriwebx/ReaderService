@@ -1,0 +1,27 @@
+@import '../base.less';
+
+.sw-standard-scroll {
+   overflow-y: auto;
+
+   .sw-user-agent-ios & {
+      -webkit-overflow-scrolling: touch !important;
+      opacity: 0.9999 !important;
+   }
+
+   & > * {
+      // This is required to work around a bug that occurs when maps is hit on iOS devices.
+      // If this is not applied the contents of the the touch overflow scrolling section the
+      // content will be clipped on scroll
+      //
+      // http://stackoverflow.com/questions/7808110/css3-property-webkit-overflow-scrollingtouch-error
+      // http://stackoverflow.com/a/7893031/238459
+
+      .sw-user-agent-ios & {
+         -webkit-transform: translate3d(0,0,0);
+         -moz-transform: translate3d(0,0,0);
+         -ms-transform: translate3d(0,0,0);
+         -o-transform: translate3d(0,0,0);
+         transform: translate3d(0,0,0);
+      }
+   }
+}

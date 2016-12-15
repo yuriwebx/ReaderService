@@ -1,0 +1,9 @@
+{
+  "extends": "../../build/ci.jshintrc",
+
+  "node": true,
+  "esnext": true,
+  "globals": {
+    "Promise": true
+  }
+}

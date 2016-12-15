@@ -1,0 +1,42 @@
+{
+  "name": "ffa-reader",
+  "version": "1.0.0",
+  "description": "FFA nodejs agent",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --fgrep [UNIT]",
+    "jshint": "jshint --verbose ./lib ./test"
+  },
+  "author": "",
+  "contributors": [
+    {
+      "name": "Krasitski Aliaksandr",
+      "email": "aliaksandr.krasitski@altoros.com"
+    },
+    {
+      "name": "Chartkou Maksim",
+      "email": "maksim.chartkou@altoros.com,"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/MaxXx1313/ffa-agent"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.3.4",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "nano": "^6.2.0",
+    "node-uuid": "^1.4.7",
+    "request-promise": "^3.0.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "assert": "^1.4.0",
+    "jshint": "^2.8.0",
+    "mocha": "^2.5.1",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-jscs-checker": "~0.8.0"
+  }
+}

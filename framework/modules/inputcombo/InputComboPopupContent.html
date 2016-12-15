@@ -1,0 +1,14 @@
+<div class="sw-inputComboPopup_content">
+   <ul ng-hide="isNotFound()">
+      <li class="menuItem"
+          ng-repeat="item in _items"
+          ng-click="select(item)"
+          tabindex="0"
+          sw-hot-key-click
+          ng-class="{'checked': isItemSelected(item)}">
+         <span class="menuItem_content">{{formatChoice(item)}}</span>
+         <i class="icon i-checked-blue" ng-show="isItemSelected(item)"></i>
+      </li>
+   </ul>
+   <div class="notFound" ng-show="isNotFound()" sw-localize="{{i18n.notFound}}"></div>
+</div>

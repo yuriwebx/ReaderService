@@ -1,0 +1,6 @@
+define([
+
+   './Phonegap',
+   './PhonegapMock'
+
+], function(){});

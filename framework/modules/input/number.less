@@ -1,0 +1,197 @@
+@import '../base.less';
+
+.sw-input-number-wrapper {
+   display: inline-block;
+   vertical-align: middle;
+   position: relative;
+   border: @hl solid #c2c1c1;
+   background: #fff;
+   .box-sizing;
+   .user-select;
+   @media @narrow_normal {
+      height: 3em;
+      width: 130px;
+   }
+   @media @narrow {
+      border-radius: 3px;
+   }
+   @media @normal {
+      border-radius: 5px;
+   }
+   @media @wide {
+      width: 80px;
+      height: 27px;
+      border-radius: 3px;
+   }
+
+   .sw-input-number-button {
+      display: block;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      position: absolute;
+      @media @narrow_normal {
+         height: 100%;
+         top: 0;
+      }
+      @media @narrow {
+         width: 24px;
+      }
+      @media @normal {
+         width: 41px;
+      }
+      @media @wide {
+         width: 21px;
+         height: 50%;
+         border-left: @hl solid #adacac;
+         right: 0;
+      }
+      &.sw-input-number-buttonDown {
+         @media @narrow_normal {
+            left: 0;
+            border-right: @hl solid #adacac;
+         }
+         @media @narrow {
+            border-radius: 2px 0 0 2px;
+         }
+         @media @normal {
+            border-radius: 4px 0 0 4px;
+         }
+         @media @wide {
+            bottom: 0;
+            border-radius: 0 0 3px 0;
+         }
+      }
+      &.sw-input-number-buttonUp {
+         @media @narrow_normal {
+            right: 0;
+            border-left: @hl solid #adacac;
+         }
+         @media @narrow {
+            border-radius: 0 2px 2px 0;
+         }
+         @media @normal {
+            border-radius: 0 4px 4px 0;
+         }
+         @media @wide {
+            top: 0;
+            border-radius: 0 3px 0 0;
+         }
+      }
+
+      .sw-input-number-icon {
+         .align(16px, 16px);
+         background: data-uri("image/png;base64", "images/spinner_sprite.png");
+         &.sw-input-number-iconDown {
+            @media @narrow_normal {
+               background-position: 0px 0px;
+            }
+            @media @wide {
+               background-position: 0px -16px;
+            }
+         }
+         &.sw-input-number-iconUp {
+            @media @narrow_normal {
+               background-position: -16px 0;
+            }
+            @media @wide {
+               background-position: -16px -16px;
+            }
+         }
+      }
+   }
+
+   &:not(.disabled) {
+      .sw-input-number-button {
+         background: rgb(241, 239, 239);
+         background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YxZWZlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNiZmJlYmUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+         background: -moz-linear-gradient(top, rgba(241, 239, 239, 1) 0%, rgba(191, 190, 190, 1) 100%);
+         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(241, 239, 239, 1)), color-stop(100%, rgba(191, 190, 190, 1)));
+         background: -webkit-linear-gradient(top, rgba(241, 239, 239, 1) 0%, rgba(191, 190, 190, 1) 100%);
+         background: -o-linear-gradient(top, rgba(241, 239, 239, 1) 0%, rgba(191, 190, 190, 1) 100%);
+         background: -ms-linear-gradient(top, rgba(241, 239, 239, 1) 0%, rgba(191, 190, 190, 1) 100%);
+         background: linear-gradient(to bottom, rgba(241, 239, 239, 1) 0%, rgba(191, 190, 190, 1) 100%);
+         cursor: pointer;
+         &:hover,
+         &:active {
+            background: rgb(249, 249, 249);
+            background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5ZjlmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjNmM2YzYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+            background: -moz-linear-gradient(top, rgba(249, 249, 249, 1) 0%, rgba(198, 198, 198, 1) 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(249, 249, 249, 1)), color-stop(100%, rgba(198, 198, 198, 1)));
+            background: -webkit-linear-gradient(top, rgba(249, 249, 249, 1) 0%, rgba(198, 198, 198, 1) 100%);
+            background: -o-linear-gradient(top, rgba(249, 249, 249, 1) 0%, rgba(198, 198, 198, 1) 100%);
+            background: -ms-linear-gradient(top, rgba(249, 249, 249, 1) 0%, rgba(198, 198, 198, 1) 100%);
+            background: linear-gradient(to bottom, rgba(249, 249, 249, 1) 0%, rgba(198, 198, 198, 1) 100%);
+         }
+         &:active {
+            box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25) inset;
+         }
+      }
+   }
+   &.disabled {
+      opacity: 0.6;
+
+      .sw-input-number-button {
+         background: #E2E2D8;
+      }
+   }
+   &.sw-validation-required {
+      border: @hl solid @c-blue;
+      .sw-input-number-valueWrapper {
+         box-shadow: 0 0.1em 0.2em rgba(55, 152, 210, 0.1) inset;
+      }
+      &.ng-invalid {
+         .sw-validation-messages-enabled & {
+            border: @hl solid #db0303;
+            .sw-input-number-valueWrapper {
+               box-shadow: 0 0.1em 0.2em rgba(219, 3, 3, 0.1) inset;
+            }
+         }
+      }
+   }
+
+   .sw-input-number-valueWrapper {
+      display: block;
+      .box-sizing;
+      position: absolute;
+      height: 100%;
+      padding: 0 5px;
+      box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.1) inset;
+      @media @narrow {
+         right: 24px;
+         left: 24px;
+      }
+      @media @normal {
+         right: 41px;
+         left: 41px;
+         padding: 0 5px;
+      }
+      @media @wide {
+         right: 21px;
+         left: 0px;
+         padding: 0 10px 0 0;
+         border-radius: 3px 0 0 3px;
+      }
+
+      .sw-input-number {
+         display: block;
+         width: 100%;
+         height: 100%;
+         min-width: 0;
+         margin: 0;
+         padding: 0;
+         border: none;
+         background: transparent;
+         box-shadow: none;
+         @media @narrow_normal {
+            text-align: center;
+         }
+         @media @wide {
+            text-align: right;
+         }
+         &:focus {
+            outline: none;
+         }
+      }
+   }
+}

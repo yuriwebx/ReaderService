@@ -1,0 +1,17 @@
+{
+    "listenPort":3000,
+    "database_url": "http://localhost:5984",
+    "database_name": "test_count",
+    "libraryDir":"c://Projects//bahai_conversion//",
+    "encodingConfig": {
+     "length": 10,
+  "method": "sha1"
+    },
+    "smtpConfig": {
+     "host": "smtp.isd.dp.ua",
+  "port": 25,
+  "ignoreTLS": false,
+  "tls": {"rejectUnauthorized": false},
+  "requiresAuth": false
+    }
+}

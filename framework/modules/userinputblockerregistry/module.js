@@ -1,0 +1,6 @@
+define([
+
+   './UserInputBlockerRegistry'
+
+], function(){});
+

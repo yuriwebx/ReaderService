@@ -1,0 +1,3 @@
+[2016-11-17 10:46:33.164] [ERROR] client - (::ffff:127.0.0.1) [hxqraglmos] [user@irls] 10:46:24:740 [app.domain.service.Publications.FilesHandling] Unknown FS Error undefined
+[2016-11-17 11:56:35.755] [WARN] client - (::1) [hgvndmbuxi] [user@irls] 11:56:30:721 [app.domain.service.Publications.FilesHandling] {}
+[2016-11-17 11:58:53.788] [WARN] client - (::1) [lnjfuejdim] [user@irls] 11:58:48:763 [app.domain.service.Publications.FilesHandling] A requested file or directory could not be found at the time an operation was processed.

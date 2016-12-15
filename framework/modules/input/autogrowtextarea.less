@@ -1,0 +1,85 @@
+@import '../base.less';
+
+.sw-input-textarea,
+.sw-input-autogrowtextarea {
+   .box-sizing;
+   display: block;
+   width: 100%;
+   box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.1) inset;
+   resize: none;
+   -webkit-appearance: none;
+   font: inherit;
+   @media @narrow_normal {
+      border: @hl solid #bfbebe;
+      border-radius: 5px;
+      padding: 11px 34px 12px 14px;
+   }
+   @media @wide {
+      border: 1px solid #9d9d9d;
+      border-radius: 3px;
+      padding: 5px 34px 5px 8px;
+   }
+   &::-webkit-input-placeholder {
+      font-weight: normal;
+   }
+   &:-moz-placeholder {
+      font-weight: normal;
+   }
+   &::-moz-placeholder {
+      font-weight: normal;
+   }
+   &:-ms-input-placeholder {
+      font-weight: normal;
+   }
+   &:disabled {
+      background: @c-grayLight;
+      opacity: 0.6;
+   }
+}
+
+.sw-input-autogrowtextarea-wrapper {
+   position: relative;
+   &.sw-validation-required {
+      .sw-input-textarea,
+      .sw-input-autogrowtextarea {
+         border: @hl solid @c-blue;
+         box-shadow: 0 0.1em 0.2em rgba(55, 152, 210, 0.1) inset;
+      }
+      &.ng-invalid {
+         .sw-validation-messages-enabled & {
+            .sw-input-textarea,
+            .sw-input-autogrowtextarea {
+               border: @hl solid #db0303;
+               box-shadow: 0 0.1em 0.2em rgba(219, 3, 3, 0.1) inset;
+            }
+         }
+      }
+   }
+
+   .sw-input-autogrowtextarea-clear {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      cursor: pointer;
+      @media @narrow_normal {
+         top: 9px;
+         right: 8px;
+      }
+      @media @wide {
+         top: 2px;
+         right: 5px;
+         background-size: 20px;
+      }
+   }
+}
+
+.sw-input-textarea {
+   &.sw-validation-required {
+      &.ng-invalid {
+         .sw-validation-messages-enabled & {
+            border: @hl solid #db0303;
+            box-shadow: 0 0.1em 0.2em rgba(219, 3, 3, 0.1) inset;
+         }
+      }
+   }
+}

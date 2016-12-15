@@ -1,0 +1,6 @@
+define([
+
+   './ClickTrace'
+
+], function(){});
+

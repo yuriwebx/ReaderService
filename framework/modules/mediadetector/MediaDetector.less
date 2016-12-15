@@ -1,0 +1,21 @@
+@import '../base.less';
+
+.sw-media-detector {
+    display: none;
+     // We use 'font-family' to transfer @media to js-code.
+     // This property is selected since it accepts arbitrary string value.
+    font-family: unknown;  
+    @media   @wide_portrait  { font-family:   wide_portrait;  }
+    @media   @wide_landscape { font-family:   wide_landscape; }
+    @media @normal_portrait  { font-family: normal_portrait;  }
+    @media @normal_landscape { font-family: normal_landscape; }
+    @media @narrow_portrait  { font-family: narrow_portrait;  }
+    @media @narrow_landscape { font-family: narrow_landscape; }
+    @media    @min_portrait  { font-family:    min_portrait;  }
+    @media    @min_landscape { font-family:    min_landscape; }
+
+    .height {
+        @media @lowHeight    { font-family:    lowHeight;}
+        @media @normalHeight { font-family: normalHeight;}
+    }
+}

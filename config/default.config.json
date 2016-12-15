@@ -1,0 +1,641 @@
+{
+   "defaultLanguage"    : "en",
+   "supportedLanguages" : ["en"],
+
+   "availableConfigModes" : [],
+
+   "EpubConfig" : {
+      "ParagraphPrefix" : "",
+      "ServerUrl"       : "../",
+
+      "FilesPath"       : "files/",
+      "SearchPath"      : "search",
+      "PublicationsPath": "rest/publications",
+      "ManifestPath"    : "book/manifest",
+      "DictPath"        : "rest/dict",
+      "VocabularyPath"  : "rest/vocabulary",
+      "MaterialsPath"   : "rest/materials",
+      "SessionPath"     : "rest/session",
+      "ManageTestsPath" : "rest/manageTests",
+      "NotificationPath": "rest/notification",
+      "StudyClassPath"  : "rest/studyclass",
+      "PerformTestsPath": "rest/performTests",
+      "PersonalMessagePath" : "rest/personalmessage",
+      "TaskPath"        : "rest/task",
+      "UsersPath"       : "rest/user",
+      "oauthPath"       : "rest/oauth",
+      "StudyCoursesPath": "rest/studyCourses",
+      "SettingsPath"    : "rest/settings",
+      "ManageEssayTaskPath"   : "rest/manageEssayTask",
+      "UserPublicationPath"   : "rest/userpublications",
+      "MyPublicationsPath"    : "rest/mypublications",
+      "ApplicationSessionPath": "rest/applicationsession",
+      "StudyFlashcardsPath"   : "rest/studyFlashcards",
+      "ContentProviderPath"    : "rest/contentProvider",
+      "UserStudyPath" : "rest/userstudy",
+      "StudyGuidePath" : "rest/studyGuide",
+      "DiscussionPath" : "rest/discussion",
+      "ReportsPath" : "rest/userReports"
+
+   },
+   "FSConfig" : {
+      "RootDirName" : "bookreader",
+      "TempDirName" : "tmp",
+      "EpubDirName" : "epub",
+      "Size" : 524288000
+   },
+   "AssessmentSettings": {
+      "vocabularySettings": {
+         "totalNumberOfWords": 36663,
+         "numberOfWords": 15289
+      },
+      "directVocabulary": {
+         "intervalLen": 917,
+         "intervaUpperBound": 917,
+         "maxNumberIncorrectAnswers": 3,
+         "maxNumberCorrectAnswers": 3,
+         "numberCorrectAnswers": 2,
+         "numberQuestionsInGroup": 5
+      },
+      "binaryVocabulary": {
+         "intervalLen": 200,
+         "intervaUpperBound": 18432,
+         "numberQuestionsInGroup": 5,
+         "numberIncorrectAnswers": 3,
+         "maxNumberIncorrectAnswers": 3
+      },
+      "upperboundVocabulary": {
+         "numberQuestionsInGroup": 1,
+         "numberIncorrectAnswers": 3,
+         "totalNumberQuestion": 40,
+         "numberGroup": 2,
+         "numberIncorrectAnswerSecondGroup": 2
+      }
+   },
+   "timeExercises" : {
+      "quizQuestion" : 45000,
+      "flashcard" : 120000,
+      "essay" : 100000,
+      "microJournaling" : 10000,
+      "vocabularyAssessment" : 1200000
+   },
+   "SettingsDefinition": {
+      "session": {
+         "$localStorage"   : true,
+         "SID"             : {
+         },
+         "profile"         : {
+         }
+      },
+
+      "LibraryFilteringSettings" : {
+         "$localStorage"   : true,
+         "$saveOnSet"      : true,
+
+         "selectedLibraryLanguage" : {
+            "$scope"       : "Shared",
+            "$defaultValue": "en"
+         },
+         "selectedPublicationGroupName" : {
+            "$scope"       : "Local",
+            "$defaultValue": ""
+         },
+         "selectedMode" : {
+            "$scope"       : "Local",
+            "$defaultValue": ""
+         },
+         "selectedFilter" : {
+            "$scope"       : "Local",
+            "$defaultValue": ""
+         }
+      },
+      "BookReadingInfo": {
+         "$localStorage": true,
+         "$saveOnSet": true,
+
+         "bookMark": {
+            "$scope": "Shared"
+         }
+      },
+      "ResizeColumnSettings" : {
+         "$localStorage"       : true,
+         "$saveOnSet"          : true,
+         "DevelopStudyCourse": {
+            "$scope"           : "local"
+         },
+         "Dictionary":         {
+            "$scope"           : "local"
+         },
+         "Explore":            {
+            "$scope"           : "local"
+         }
+      },
+      "ReaderSettings" : {
+         "$localStorage"   : true,
+         "$saveOnSet"      : true,
+
+         "fontName" : {
+            "$scope"       : "Shared",
+            "$defaultValue": "gentiumplus"
+         },
+         "fontName.en" : {
+            "$scope"       : "Shared",
+            "$defaultValue": ""
+         },
+         "fontName.fa" : {
+            "$scope"       : "Shared",
+            "$defaultValue": "helvetica"
+         },
+         "fontName.ar" : {
+            "$scope"       : "Shared",
+            "$defaultValue": "helvetica"
+         },
+         "fontSize" : {
+            "$scope"       : "Local",
+            "$defaultValue": 100
+         },
+         "readingThemeName" : {
+            "$scope"       : "Local",
+            "$defaultValue": "default-theme-template"
+         },
+         "materialCategoryName" : {
+            "$scope"       : "Shared",
+            "$defaultValue": "default"
+         },
+         "expandedMarginNotes" : {
+            "$scope"       : "Local",
+            "$defaultValue": false
+         },
+         "showReadingPosition": {
+            "$scope"       : "Local",
+            "$defaultValue": false
+         }
+      },
+
+      "ScrollSettings" : {
+         "$localStorage"   : true,
+         "$saveOnSet"      : true,
+         "$scope"          : "Local",
+         "$defaultValue"   : false,
+
+         "viewScrollBorder" : {
+
+         },
+         "snapToScrollBorder" : {
+
+         },
+         "inertialScrolling" : {
+            "$defaultValue": true
+         },
+         "inertialScrollingSpeed" : {
+            "$defaultValue": 40
+         },
+         "textScrolling" : {
+            "$defaultValue": true
+         },
+         "sideScrolling" : {
+            "$defaultValue": true
+         },
+         "sideTapping" : {
+
+         },
+         "pageLengthShift" : {
+            "$defaultValue": 0.5
+         },
+         "tapMode" : {
+            "$defaultValue": "one"
+         },
+         "audioAutoScrolling" : {
+            "$defaultValue": true
+         },
+         "readingPosition" : {
+            "$defaultValue": "Keep on Screen"
+         },
+         "keepOn" : {
+            "$defaultValue": 0.5
+         },
+         "audioSpeed" : {
+            "$defaultValue": 140
+         },
+         "reproductionType" : {
+            "$defaultValue": "Audio"
+         },
+         "useTtsWithoutAudio" : {
+
+         }
+
+      },
+
+      "LibraryParameters" : {
+         "$localStorage"   : false,
+         "$writable"       : false
+      }
+   },
+
+   "fonts": {
+      "systems": [
+         {
+            "name"   : "Helvetica Neue",
+            "family" : "sans-serif",
+            "langs"  : ["ar", "fa"]
+         },
+         {
+            "name"   : ["Helvetica", "Arial"],
+            "family" : "sans-serif",
+            "langs"  : ["ar", "fa"]
+         },
+         {
+            "name"   : "Roboto",
+            "family" : "sans-serif",
+            "langs"  : ["ar", "fa"]
+         },
+         {
+            "name"   : "Segoe UI",
+            "family" : "sans-serif",
+            "langs"  : ["ar", "fa"]
+         },
+         {
+            "name"   : "Ubuntu",
+            "family" : "sans-serif",
+            "langs"  : ["ar", "fa"]
+         }
+      ],
+      "customs": [
+         {
+            "name"   : "Gentium",
+            "langs"  : ["en"],
+            "styles" : {
+               "line-height"  : "1.45em",
+               "font-size"    : "20px"
+            },
+            "rules"  : [
+               {
+                  "url"    : "./app/style/fonts/Gentium-20160101/GentiumPlus-R.woff"
+               }, {
+                  "url"    : "./app/style/fonts/Gentium-20160101/GentiumPlus-I.woff",
+                  "options": {
+                     "style"  : "italic"
+                  }
+               }
+            ]
+         },
+
+         {
+            "name"   : "MarcoPolo",
+            "langs"  : [],
+            "rules"  : [
+               {
+                  "url"   : "./app/style/fonts/MarcoPolo-20160125/MarcoPolo.woff"
+               }
+            ]
+         },
+
+         {
+            "name"   : "Cabin",
+            "langs"  : ["en"],
+            "styles" : {
+               "line-height"  : "1.5em",
+               "font-size"    : "19.5px"
+            },
+            "rules"  : [
+               {
+                  "url"   : "./app/style/fonts/Cabin-20160101/Cabin-Regular_dot.otf"
+               }, {
+                  "options": {
+                     "style" : "italic"
+                  },
+                  "url"   : "./app/style/fonts/Cabin-20160101/Cabin-Italic_dot.otf"
+               }, {
+                  "options": {
+                     "weight": "bold"
+                  },
+                  "url"    : "./app/style/fonts/Cabin-20160101/Cabin-Bold_dot.otf"
+               }, {
+                  "options": {
+                     "style" : "italic",
+                     "weight": "bold"
+                  },
+                  "url"   : "./app/style/fonts/Cabin-20160101/Cabin-BoldItalic_dot.otf"
+               }
+            ]
+         },
+         {
+            "name"   : "Sanchez",
+            "langs"  : ["en"],
+            "styles" : {
+               "line-height"  : "1.72em",
+               "font-size"    : "16.9px"
+            },
+            "rules"  : [
+               {
+                  "url"   : "./app/style/fonts/Sanchez-20160101/Sanchez-Regular_dot.otf"
+               }, {
+                  "options": {
+                     "style" : "italic"
+                  },
+                  "url"   : "./app/style/fonts/Sanchez-20160101/Sanchez-Italic_dot.otf"
+               }
+            ]
+         },
+         {
+            "name"   : "Dyslexic",
+            "langs"  : ["en"],
+            "styles" : {
+               "line-height"  : "1.92em",
+               "font-size"    : "15.2px"
+            },
+            "rules"  : [
+               {
+                  "url"   : "./app/style/fonts/OpenDyslexic-20160101/OpenDyslexic-Regular.otf"
+               }, {
+                  "options": {
+                     "style": "italic"
+                  },
+                  "url"   : "./app/style/fonts/OpenDyslexic-20160101/OpenDyslexic-Italic.otf"
+               }, {
+                  "options": {
+                     "weight": "bold"
+                  },
+                  "url"   : "./app/style/fonts/OpenDyslexic-20160101/OpenDyslexic-Bold.otf"
+               }, {
+                  "options": {
+                     "style" : "italic",
+                     "weight": "bold"
+                  },
+                  "url"   : "./app/style/fonts/OpenDyslexic-20160101/OpenDyslexic-BoldItalic.otf"
+               }
+            ]
+         },
+         {
+            "name"   : "Typewriter",
+            "langs"  : [],
+            "styles" : {
+               "line-height"  : "1.95em",
+               "font-size"    : "15px",
+               "letter-spacing": "0.5px"
+            },
+            "rules"  : [
+               {
+                  "url"    : "./app/style/fonts/SpecialElite-Typewriter-20160315/SpecialElite-webfont.woff"
+               }
+            ]
+         },
+         {
+           "name"   : "ArnoPro",
+           "langs"  : [],
+           "rules"  : [
+             {
+               "url"   : "./app/style/fonts/ArnoPro-20160108/ArnoPro.ttf"
+             }
+           ]
+         },
+         {
+           "name"   : "Romantik",
+           "langs"  : [],
+           "rules"  : [
+             {
+               "url"   : "./app/style/fonts/Initials-20160512/Romantik.otf"
+             }
+           ]
+         },
+         {
+           "name"   : "Garamond1689",
+           "langs"  : [],
+           "rules"  : [
+             {
+               "url"   : "./app/style/fonts/Garamond1689-20160112/Garamond1689.otf"
+             }
+           ]
+         },
+         {
+           "name"   : "GoudyHandtooled",
+           "langs"  : [],
+           "rules"  : [
+             {
+               "url"   : "./app/style/fonts/GoudyHandtooled-20160112/GoudyHandtooled.otf"
+             }
+           ]
+         },
+         {
+           "name"   : "Amiri",
+           "langs"  : [],
+           "rules"  : [
+             {
+               "url"   : "./app/style/fonts/Amiri-20160615/Amiri.woff"
+             }
+           ]
+         },
+         {
+           "name"   : "FontAwesome",
+           "langs"  : [],
+           "rules"  : [
+             {
+               "url"   : "./app/style/fonts/FontAwesome-20160706/fontawesome-webfont.woff"
+             }
+           ]
+         }
+      ]
+   },
+
+   "passwordPersistingModeEnum": {
+      "withoutChanges"        : "WithoutChanges",
+      "generateAutomatically" : "GenerateAutomatically",
+      "setNew"                : "SetNew"
+   },
+
+   "ActivityMonitorParameters" : {
+      "userInactivityTimeout"  : 300000
+   },
+
+   "thumbsPathes": {
+      "small" : "96x126",
+      "medium" : "146x194",
+      "large" : "192x252",
+      "extralarge" : "304x400"
+   },
+
+   "fakePublicationsSet": {
+      "default" : "7"
+   },
+
+   "socialSharingConfig" : {
+      "facebook" : {
+         "appId"              : "1046805192010233",
+         "dialogHref"         : "https://www.facebook.com/dialog/feed?",
+         "dialogRenderMethod" : "touch"
+      },
+      "tweeter" : {
+         "dialogHref" : "http://twitter.com/share?"
+      },
+      "googlePlus" : {
+         "dialogHref" : "https://plus.google.com/share?url="
+      }
+   },
+
+   "searchConfig":{
+      "languageInXRegExp" :{
+         "en": "Latin",
+         "fa": "Arabic",
+         "ar": "Arabic"
+      },
+      "quotes" : {
+         "openQuotes" : "\u0022\u201c",
+         "closeQuotes" : "\u0022\u201d"
+      },
+      "codesAr" : {
+         "ف" : 1,"ب" : 1,
+         "خ" : 2,"ج" : 2,"ز" : 2,"ش" : 2,"ص" : 2,"ظ" : 2,"ق" : 2,"ك" : 2,
+         "ت" : 3,"ث" : 3,"د" : 3,"ذ" : 3,"ض" : 3, "ط" : 3, "س" : 3,
+         "ل" : 4,
+         "م" : 5,"ن" : 5,
+         "ر" : 6,
+         "b" : 1, "f" : 1, "p" : 1, "v" : 1,
+         "c" : 2, "g" : 2, "j" : 2, "k" : 2, "q" : 2, "s" : 2, "x" : 2, "z" : 2,
+         "d" : 3, "t" : 3,
+         "l" : 4,
+         "m" : 5, "n" : 5,
+         "r" : 6
+      }
+   },
+   "publicationConfig" : {
+      "StudyGuideEditorStatus" : {
+         "creator": "Creator",
+         "active": "Active",
+         "inactive": "Inactive"
+      },
+      "StudyGuideEditorActionTypeEnum" : {
+         "studyGuideWasCreated": "StudyGuideWasCreated",
+         "editorWasAdded": "EditorWasAdded",
+         "editorWasRemoved": "EditorWasRemoved"
+      },
+      "publicationTypeEnum" : {
+         "book" : "Book",
+         "studyGuide" : "StudyGuide",
+         "studyCourse" : "StudyCourse",
+         "collection" : "Collection"
+      }
+   },
+   "presentPublicationConfig": {
+      "foundVisibleInterval" : 120000
+   },
+   "studyProjectConfig": {
+      "studyClassTypeEnum": [
+         {
+            "type"  : "Independent Study",
+            "label" : "CreateStudyProject.wizard.step2.independentStudy.type",
+            "desc"  : "CreateStudyProject.wizard.step2.independentStudy.description"
+         },
+         {
+            "type"  : "Public",
+            "label" : "CreateStudyProject.wizard.step2.open.type",
+            "desc"  : "CreateStudyProject.wizard.step2.open.description"
+         },
+         {
+            "type"  : "Moderated",
+            "label" : "CreateStudyProject.wizard.step2.moderated.type",
+            "desc"  : "CreateStudyProject.wizard.step2.moderated.description"
+         },
+         {
+            "type"  : "Private",
+            "label" : "CreateStudyProject.wizard.step2.private.type",
+            "desc"  : "CreateStudyProject.wizard.step2.private.description"
+         },
+         {
+            "type"  : "Institutional",
+            "label" : "CreateStudyProject.wizard.step2.official.type",
+            "desc"  : "CreateStudyProject.wizard.step2.official.description"
+         }
+      ],
+      "membershipStatus":{
+         "unknown" : "Unknown",
+         "requested" : "Requested",
+         "accepted" : "Accepted",
+         "declined" : "Declined",
+         "blocked" : "Blocked"
+      },
+      "studyClassDurations" : {
+         "step" : 0.5,
+         "min"  : 0.5,
+         "max"  : 6
+      },
+      "classStudentActionTypeEnum":{
+         "classMembershipRequestedByStudent" : "ClassMembershipRequestedByStudent",
+         "classMembershipAcceptedByStudent"  : "ClassMembershipAcceptedByStudent",
+         "classMembershipDeclinedByStudent"  : "ClassMembershipDeclinedByStudent",
+         "classMembershipBlockedByStudent"   : "ClassMembershipBlockedByStudent",
+         "classMembershipRequestedByTeacher" : "ClassMembershipRequestedByTeacher",
+         "classMembershipAcceptedByTeacher"  : "ClassMembershipAcceptedByTeacher",
+         "classMembershipDeclinedByTeacher"  : "ClassMembershipDeclinedByTeacher",
+         "classMembershipBlockedByTeacher"   : "ClassMembershipBlockedByTeacher"
+      },
+      "classTeacherActionTypeEnum":{
+         "classWasCreatedByTeacher"   : "ClassWasCreatedByTeacher",
+         "teacherWasAddedToClass"     : "TeacherWasAddedToClass",
+         "teacherWasRemovedFromClass" : "TeacherWasRemovedFromClass"
+      },
+      "userRoleInStudyClass":{
+         "teacher"           : "Teacher",
+         "student"           : "Student",
+         "teacherAndStudent" : "TeacherAndStudent",
+         "studyClass"        : "StudyClass"
+      },
+      "studyClassStatus" : {
+          "active"    : "Active",
+          "cancelled" : "Cancelled"
+      },
+      "userEmailsForTestProgress" : ["user@irls"]
+   },
+   "manageStudyCourseConfig" : {
+      "menu" : {
+         "student" : {
+            "Classroom"             : "ManageStudyClass.menu.student.classroom.label",
+            "StudentsProgress"      : "ManageStudyClass.menu.student.studentsProgress.label",
+            "Membership"            : "ManageStudyClass.menu.student.membership.label",
+            "ManageClassDiscussion" : "ManageStudyClass.menu.teacher.manageClassDiscussion.label"
+         },
+         "teacher" : {
+            "Classroom"             : "ManageStudyClass.menu.teacher.classroom.label",
+            "StudentsProgress"      : "ManageStudyClass.menu.teacher.studentsProgress.label",
+            "Membership"            : "ManageStudyClass.menu.teacher.membership.label",
+            "ManageClassDiscussion" : "ManageStudyClass.menu.teacher.manageClassDiscussion.label"
+         }
+      }
+   },
+   "daysOfWeek":[
+      "DaysOfWeek.sunday.label",
+      "DaysOfWeek.monday.label",
+      "DaysOfWeek.tuesday.label",
+      "DaysOfWeek.wednesday.label",
+      "DaysOfWeek.thursday.label",
+      "DaysOfWeek.friday.label",
+      "DaysOfWeek.saturday.label"
+   ],
+   "defaultDateFormat":"MMM DD, YYYY",
+   "inputDateFormat":"YYYY-MM-DD",
+   "messageTypes" : {
+      "personal" : "PersonalMessage",
+      "studyClass" : "ClassNotificationMessage",
+      "studyGuide" : "StudyGuideNotificationMessage"
+   },
+   "appReaderRestrictedStates": ["ReviewAssignedFlashcards", "Dictionary", "Explore", "ManagePublications"],
+   "contentConfig" : {
+      "contentSource" : "content/{version}/content.html",
+      "contentIndex" : "content/{version}/index.json",
+      "contentMeta" : "content/{version}/metadata.json",
+      "audioIndex" : "alignment/{version}/alignment.dat",
+      "audioIndexDiff" : "audio/{version}/audioStructure.json",
+      "audioMeta" : "audio/{version}/metadata.json",
+      "audioSource" : "audio/{version}/",
+      "coverSource" : "cover/{version}/cover{size}",
+      "coverMeta": "cover/{version}/metadata.json",
+      "metadata" : "metadata/{version}/metadata.json"
+   },
+   "applicationSpecificConfigs": {
+      "searcher": {
+         "fonts": {
+            "customs": []
+         }
+      }
+   },
+   "dontValidateDBUpdates" : "remove this after going live in order to find troubles ;) antm"
+}

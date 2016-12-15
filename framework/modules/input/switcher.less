@@ -1,0 +1,47 @@
+@import '../base.less';
+
+@sw-input-switcher-height: 20px;
+
+.sw-input-switcher {
+   position: relative;
+   width: (@sw-input-switcher-height - @sw-input-switcher-height / 9)*2;
+   height: @sw-input-switcher-height;
+   margin-right: 3px;
+   cursor: pointer;
+   transition: background 200ms;
+   vertical-align: middle;
+   border: none;
+   border-radius: @sw-input-switcher-height/2;
+   background: @c-mono-500;
+   &:after {
+      position: absolute;
+      top: 50%;
+      left: @sw-input-switcher-height / 9;
+      display: block;
+      width: 1px;
+      height: 1px;
+      margin-top: -(@sw-input-switcher-height / 2 - @sw-input-switcher-height / 9);
+      padding: @sw-input-switcher-height / 2.7;
+      content: '';
+      transition: left 200ms;
+      border: none;
+      border-radius: 50%;
+      background: @c-mono-0;
+      box-shadow: none;
+   }
+   &.sw-input-switcher-on {
+      background: @c-lilac;
+      &:after {
+         left: @sw-input-switcher-height - @sw-input-switcher-height / 9 ;
+      }
+   }
+   &:disabled {
+      opacity: .6;
+   }
+   &.sw-focus {
+      @{touchNo} &,
+      @{touchYes} &{
+         border-radius: @sw-input-switcher-height/2;
+      }
+   }
+}

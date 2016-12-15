@@ -1,0 +1,21 @@
+@import '../base.less';
+
+.sw-tooltip {
+   padding: 0 20px;
+   line-height: 27px;
+   background: @c-orangelight5;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   box-shadow: 0 2px 5px fade(@c-mono-1000, 15%);
+   color: @c-mono-700;
+}
+
+.sw-popup-arrow.sw-tooltip-arrow {
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   &:after {
+      background: @c-orangelight5;
+   }
+}

@@ -1,0 +1,30 @@
+<div class="sw-input-wrapper sw-input sw-input-select {{getDisabledClass()}}" ng-switch="mode" sw-on-element-resize="onElementResize(size, oldSize)">
+   <div class="sw-input-select_s" ng-switch-when="s">
+      <span class="sw-input-select_s-item-selected"
+            tabindex="0"
+            ng-init="delegateHotKeyOnSelect()"
+            ng-click="showList($event)">{{selectedItemText}}</span>
+   </div>
+
+   <div class="sw-input-select_t" ng-switch-when="t">
+      <ul class="sw-input-select_t-list" sw-focus-manager="{traverse: false, keyNext: 'right', keyPrev: 'left'}">
+      </ul>
+   </div>
+
+   <div class="sw-input-select_f" ng-switch-when="f" ng-disabled="disabled">
+      <input type="text"
+             class="sw-input-select_f-input"
+             placeholder="{{placeholder}}"
+             maxlength="{{maximumInputLength}}"
+             ng-disabled="disabled"
+             ng-model="filterScope.filterModel"
+             ng-model-options="{debounce: debounce}"
+             ng-change="handleFilter()"
+             ng-click="handleFilter($event)"
+             ng-focus="focusOnFilter($event)"
+             ng-blur="blurFromFilter($event)"
+             ng-keydown="setSelection($event)"/>
+      <i class="sw-input-select_f-clear" ng-if="isClearAllowed()" ng-click="clearModel()"></i>
+      <span class="sw-input-select_f-arrow" ng-click="setFocusOnFilter($event)"></span>
+   </div>
+</div>

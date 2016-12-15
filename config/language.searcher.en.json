@@ -1,0 +1,5 @@
+{
+   "Search.BooksMatchesWereFound.en.label" : "{{sentencesTotal}} matching sentences found in {{booksTotal}} tablets",
+   "Search.BooksMatchesWereFound.fa.label" : "جملهائی مثل ان در {{sentencesTotal}} قرص پیدا شد {{booksTotal}}",
+   "Search.BooksMatchesWereFound.ar.label" : "{{sentencesTotal}} جملة الأحكام وجدت في {{booksTotal}} اللوح"
+}

@@ -1,0 +1,7 @@
+define([
+
+   './Location',
+   './Submachine'
+
+], function(){});
+

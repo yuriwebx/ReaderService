@@ -1,0 +1,3 @@
+define([
+   'less!./base'
+], function(){});

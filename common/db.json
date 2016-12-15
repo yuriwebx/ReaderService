@@ -1,0 +1,986 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "IRLS DB schema",
+    "version": "1.0.0"
+  },
+  "host": "irls.isd.dp.ua",
+  "basePath": "/v2",
+  "tags": [
+    {
+      "name": "DB",
+      "description": "Everything about DB"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "ApplicationSession": {
+      "get": {
+        "tags": [
+          "DB"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "runId",
+            "in": "body",
+            "schema": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "name": "sessionId",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "clientNodeId",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "startedAt",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true
+            }
+          },
+          {
+            "name": "endedAt",
+            "in": "body",
+            "schema": {
+              "type": "any"
+            }
+          },
+          {
+            "name": "active",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": [
+                "boolean",
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "context",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "clientNodeContext": {
+                  "required": true,
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "userAgentInfo": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "native": {
+                      "required": true,
+                      "type": [
+                        "boolean",
+                        "string"
+                      ]
+                    },
+                    "platformType": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "os": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "runtimeEngine": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "screenWidth": {
+                      "required": true,
+                      "type": "number"
+                    },
+                    "screenHeight": {
+                      "required": true,
+                      "type": "number"
+                    },
+                    "devicePixelRation": {
+                      "required": true,
+                      "type": "number"
+                    },
+                    "origin": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "clientNodeId": {
+                      "required": true,
+                      "type": "string"
+                    }
+                  }
+                },
+                "applicationContext": {
+                  "required": true,
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "application": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "serverUrl": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "applicationUrl": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "applicationResourceUrl": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "systemLevelNamespace": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "applicationLevelNamespace": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "localRepositoryAvailable": {
+                      "required": true,
+                      "type": [
+                        "boolean",
+                        "string"
+                      ]
+                    },
+                    "localRepositoryType": {
+                      "required": true,
+                      "type": "string"
+                    },
+                    "localFileSystemAvailable": {
+                      "required": true,
+                      "type": [
+                        "boolean",
+                        "string"
+                      ]
+                    },
+                    "localFileSystemUrl": {
+                      "required": true,
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "online": {
+                  "type": "boolean",
+                  "required": true
+                },
+                "activities": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "required": true
+                },
+                "lastStatusNotification": {
+                  "type": "number",
+                  "required": true
+                }
+              }
+            }
+          },
+          {
+            "name": "type",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_rev",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_id",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_revs_info",
+            "in": "body",
+            "schema": {
+              "type": [
+                "string",
+                "object",
+                "array"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "attachment": {
+      "get": {
+        "tags": [
+          "DB"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "_attachments",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "type",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_rev",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_id",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_revs_info",
+            "in": "body",
+            "schema": {
+              "type": [
+                "string",
+                "object",
+                "array"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "Book": {
+      "get": {
+        "tags": [
+          "DB"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "hasThumbnail",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": [
+                "boolean",
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "author",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "toc",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "array",
+              "items": {
+                "required": true,
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "text": {
+                    "required": true,
+                    "type": "string"
+                  },
+                  "children": {
+                    "required": true,
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "id": {
+                    "required": true,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "sourceURL",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "weight",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "collection",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "readingTime",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "wordsCount",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "difficulty",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "bookVocabularyLevel",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "paraCount",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "totalSize",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "mediaSize",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "bookSize",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "cover",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "language",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": [
+                "boolean",
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_rev",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_id",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_revs_info",
+            "in": "body",
+            "schema": {
+              "type": [
+                "string",
+                "object",
+                "array"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "Collection": {
+      "get": {
+        "tags": [
+          "DB"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "author",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "hasThumbnail",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": [
+                "boolean",
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "language",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "items",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "array",
+              "items": {
+                "required": true,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "priority",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "weight",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "wordsCount",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          {
+            "name": "difficulty",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "readingTime",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "toc",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "array",
+              "items": {
+                "required": true,
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "text": {
+                    "required": true,
+                    "type": "string"
+                  },
+                  "children": {
+                    "required": true,
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "id": {
+                    "required": true,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "paraCount",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "cover",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": [
+                "boolean",
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_rev",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_id",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_revs_info",
+            "in": "body",
+            "schema": {
+              "type": [
+                "string",
+                "object",
+                "array"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "Dictionary": {
+      "get": {
+        "tags": [
+          "DB"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "hasThumbnail",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": [
+                "boolean",
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "author",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "totalSize",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "bookSize",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "weight",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "cover",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "language",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": [
+                "boolean",
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "difficulty",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "readingTime",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "toc",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          {
+            "name": "wordsCount",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "paraCount",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "name": "type",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_rev",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_id",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_revs_info",
+            "in": "body",
+            "schema": {
+              "type": [
+                "string",
+                "object",
+                "array"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

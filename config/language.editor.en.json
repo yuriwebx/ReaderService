@@ -1,0 +1,14 @@
+{
+   "Reader.ApplicationToolbar.createAccount.label" : "Back",
+
+   "App.Login.header.text": "Firm Foundation Academy",
+   "App.Login.button.login.label": "Log in",
+   "App.Login.button.version.label": "Version",
+
+   "ValidationError.password": "Please, enter valid password",
+   "ValidationError.confirm": "Please, enter valid confirmation",
+   "ValidationError.name": "Please, enter valid name",
+
+   "CONTAINER: No such file": "This book was deleted from the library",
+   "goToLibraryButton.label": "Go to Library"
+}

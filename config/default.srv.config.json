@@ -1,0 +1,125 @@
+{
+    "listenPort":3000,
+    "database_url": "http://localhost:5984",
+    "database_name": "test_count",
+    "database_version_schema": "versions",
+    "libraryDir":"use local value here! // use trailing slash!",
+    "serverURL":"",
+    "useProxy" : true,
+    "proxyServer" : "http://proxy.isd.dp.ua:8080/",
+
+    "encodingConfig": {
+      "length": 10,
+      "method": "sha1"
+    },
+    "smtpConfig": {
+      "host": "smtp.isd.dp.ua",
+      "port": 25,
+      "ignoreTLS": false,
+      "tls": {"rejectUnauthorized": false},
+      "requiresAuth": false
+    },
+    "validationNotificationsSettings": {
+        "from": "DB Validation System <irls@isd.dp.ua>",
+        "to": "antm@isd.dp.ua, gshe@isd.dp.ua, mkov@isd.dp.ua",
+        "subject": "Validation error"
+    },
+    "oauth": {
+        "OAuthRedirectPage" : "https://irls.isd.dp.ua/portal/oauth.html",
+        "services": {
+            "google": {
+                "validate" : "https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=",
+                "getProfile": "https://www.googleapis.com/plus/v1/people/me?access_token=",
+                "getToken" : "https://accounts.google.com/o/oauth2/auth?client_id=49453656280-2nhbo5h9d28nqd5tqjlgdtsk99pdbsgv.apps.googleusercontent.com&response_type=token&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20profile&redirect_uri="
+            },
+            "facebook": {
+                "getProfile": "https://graph.facebook.com/me?access_token=",
+                "getToken"  : "https://www.facebook.com/dialog/oauth/?client_id=1545860809003993&response_type=token&scope=public_profile,email&redirect_uri="
+            },
+            "twitter": {
+                "key": "HgYyS5oEWOh2Klc4rGN5PdbZB",
+                "secret": "kaizbSsj0LZvnRAelGHXJxoVdEoFlu8rl8YWlBQfct2MQXLYQQ",
+                "requestToken": {
+                    "url": "https://api.twitter.com/oauth/request_token",
+                    "method": "POST"
+                },
+                "accessToken": {
+                    "url": "https://api.twitter.com/oauth/access_token",
+                    "method": "POST"
+                },
+                "getProfile": {
+                    "url": "https://api.twitter.com/1.1/account/verify_credentials.json",
+                    "method": "GET"
+                }
+            }
+        }
+    },
+    "businessFunctionStatus" : {
+        "ok": "OK",
+        "error": "ERROR",
+        "warning": "WARNING",
+        "fatal": "FATAL"
+    },
+    "authenticationTaskStatus": {
+        "unknown": "Unknown",
+        "register": "Register",
+        "confirm": "Confirm",
+        "declined": "Declined",
+        "expired": "Expired",
+        "processed": "Processed"
+    },
+    "emailConfirmationStatus": {
+        "notConfirmed": "NotConfirmed",
+        "confirmedByAdmin": "ConfirmedByAdmin",
+        "confirmedByUser": "ConfirmedByUser",
+        "confirmedByExternalProvider": "ConfirmedByExternalProvider",
+        "declinedByUser": "DeclinedByUser"
+    },
+    "authenticationTaskType": {
+        "resetPassword":  "ResetPassword",
+        "confirmNewEmail": "ConfirmNewEmail",
+        "registerUserProfile": "RegisterUserProfile",
+        "confirmNewEmailAndPassword": "ConfirmNewEmailAndPassword"
+    },
+    "userAccessStatusEnum" : {
+        "registered" : "Registered",
+        "approved"   : "Approved",
+        "declined"   : "Declined"
+    },
+    "handlerRejectMode": {
+        "callback" : "CallBack",
+        "callFunction" : "CallFunction"
+    },
+    "vocabularySettings": {
+        "numberGroups": 40,
+        "incorrectNum": 3,
+        "wordNumber": 5
+    },
+    "contentTypeEnum":{
+        "all": "All",
+        "studyGuide": "StudyGuide",
+        "dictionary": "Dictionary",
+        "vocabulary": "Vocabulary",
+        "fontBundle": "fontBundle"
+    },
+    "emailForVocabularyResulstLive" : "chadananda@gmail.com",
+    "emailForVocabularyResulstDevelop" : "adon@isd.dp.ua",
+    "redirectIrlsEmailPattern" : "irlstestin+[mail]@gmail.com",
+    "flashcardTypeEnum":{
+        "dictionaryTerm" : "DictionaryTermStudy",
+        "testQuestion" : "FlashcardStudy"
+    },
+    "oceanAuthorth" : ["Shoghi Effendi", "‘Abdu’l-Bahá","The Báb", "Bahá’u’lláh"],
+    "errorMessages" : {
+        "missing" : "Sorry, this book is not available for reading."
+    },
+    "applicationSessionsMonitor" : {
+        "scanInterval" : 60000,
+        "inactivityTimeout" : 600000,
+        "msgInvoked" : "Inactive Application Sessions Monitor has been invoked",
+        "msgTotal" : "Sessions marked as inactive",
+        "msgSuccess" : "Sessions were updated successfully",
+        "msgNotFound" : "No inactive sessions found"
+
+    }
+}

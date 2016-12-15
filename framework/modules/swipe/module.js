@@ -1,0 +1,6 @@
+define([
+
+   './Swipe'
+
+], function(){});
+

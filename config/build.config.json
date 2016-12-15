@@ -1,0 +1,17 @@
+ {
+    "id"                 : "com.isd.irls",
+    "apkHash"            : "",
+    "isAppCache"         : false,
+    "isDev"              : "true",
+    "isPublic"           : false,
+    "brand"              : "FFA",
+    "name"               : "IRLS",
+    "sprint"             : "2.1",
+    "version"            : "0.0.1",
+    "target"             : "web",
+    "environmentPrefix"  : "development",
+    "environmentSuffix"  : "development",
+    "revision"           : "f09q34hfq34hq394h3q4hg",
+    "HTTP_PROXY"         : "http://proxy.isd.dp.ua:8080/",
+    "platforms"          : ["web", "ios", "android"]
+ }

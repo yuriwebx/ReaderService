@@ -1,0 +1,240 @@
+@import '../base.less';
+
+.sw-dateInput {
+   position: relative;
+   display: inline-block;
+   width: 100%;
+
+   @media @narrow_normal {
+      border-radius: 5px;
+
+   }
+   @media @wide {
+      border-radius: 3px;
+   }
+
+   &[disabled="disabled"] {
+      background: #f5f5f5;
+      opacity: 0.6;
+   }
+
+   .sw-dateInput-input {
+      .box-sizing;
+      width: 100%;
+      box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.1) inset;
+      -webkit-appearance: none;
+      background: @c-white;
+      border: none;
+      @media @narrow_normal {
+         min-width: 3.6em;
+         padding: 0 3em 0 1em;
+         height: 3em;
+         border-radius: 5px;
+         border: 1px solid #bfbebe;
+      }
+      @media @wide {
+         min-width: 40px;
+         padding: 0 27px 0 8px;
+         height: 27px;
+         border-radius: 3px;
+         border: 1px solid #9d9d9d;
+      }
+   }
+   .sw-dateInput-button {
+      .box-sizing;
+      position: absolute;
+      cursor: pointer;
+      top: 1px;
+      right: 1px;
+      bottom: 1px;
+      border-left: 1px solid #9d9d9d;
+      background: #F5F5F5;
+      @media @narrow_normal {
+         width: 3em;
+         padding: 9px;
+         border-radius: 0 5px 5px 0;
+      }
+      @media @wide {
+         width: 27px;
+         padding: 3px;
+         border-radius: 0 3px 3px 0;
+      }
+
+      &:hover {
+         .sw-dateInput-icon {
+            path {
+               fill: #3798D2;
+            }
+         }
+      }
+   }
+}
+
+.sw-dateInput-popup {
+   background: #ffffff;
+   overflow: hidden;
+   font-size: 15px;
+   .user-select;
+   .box-shadow(4);
+   @media @narrow_normal {
+      border-radius: 5px;
+   }
+   @media @wide {
+      border-radius: 3px;
+   }
+
+   .sw-calendarNav {
+      display: table;
+      border-collapse: collapse;
+      width: 100%;
+      background: #3798d2;
+      color: #ffffff;
+
+      .sw-calendarNav-inner {
+         display: table-row;
+
+         .sw-calendarNav-title,
+         .sw-calendarNav-back,
+         .sw-calendarNav-forward {
+            display: table-cell;
+            text-align: center;
+            height: 36px;
+            vertical-align: middle;
+            font-weight: 400;
+            cursor: default;
+         }
+
+         .sw-calendarNav-back,
+         .sw-calendarNav-forward {
+            width: 24px;
+            cursor: pointer;
+            &:hover {
+               background: #4AA7DF;
+            }
+         }
+
+         .sw-calendarNav-icon {
+            vertical-align: middle;
+         }
+
+         .sw-calendarNav-title-year {
+            text-decoration: underline;
+            cursor: pointer;
+         }
+      }
+   }
+
+   .sw-calendar {
+      .sw-calendar-selectYear {
+         margin: 1px 0;
+         .clear;
+
+         .sw-calendar-selectYear-col {
+            float: left;
+
+            .sw-calendar-selectYear-year {
+               width: 82px;
+               height: 44px;
+               line-height: 44px;
+               border: 1px solid #ffffff;
+               text-align: center;
+               font-weight: 300;
+               color: #444444;
+               font-size: 18px;
+               cursor: pointer;
+               &:hover {
+                  background: #eff8fd;
+               }
+            }
+         }
+      }
+
+      .sw-calendar-selectMonth {
+         table-layout: fixed;
+         border-spacing: 0;
+
+         .sw-calendar-selectMonth-row {
+            .sw-calendar-selectMonth-month {
+               width: 40px;
+               height: 34px;
+               border: 1px solid #CEECFD;
+               text-align: center;
+               font-weight: 300;
+               color: #444444;
+               background: #CEECFD;
+               cursor: pointer;
+               &:hover {
+                  background: #B4D5E8;
+               }
+            }
+         }
+      }
+
+      .sw-calendar-week {
+         table-layout: fixed;
+         border-spacing: 0;
+
+         .sw-calendar-week-header {
+            cursor: default;
+         }
+
+         .sw-calendar-week-dayName,
+         .sw-calendar-week-day {
+            text-align: center;
+            vertical-align: middle;
+            width: 34px;
+            height: 34px;
+            color: #444444;
+            border: 1px solid #ffffff;
+         }
+
+         .sw-calendar-week-dayName {
+            font-weight: 400;
+            color: #454545;
+         }
+
+         .sw-calendar-week-day {
+            cursor: pointer;
+            font-weight: 300;
+            &:hover {
+               background: #eff8fd;
+            }
+
+            &.sw-calendar-week-adjacentMonth {
+               color: #a7a7a7;
+            }
+            &.sw-calendar-week-currentDate {
+               color: #3798d2;
+               font-weight: 400;
+            }
+            &.sw-calendar-week-selectedDate {
+               background: #40c17a;
+               color: #ffffff;
+               font-weight: 500;
+            }
+         }
+      }
+   }
+
+   .sw-calendarAct {
+      border-top: 1px solid #d0d0d0;
+      .sw-calendarAct-button {
+         display: block;
+         color: #3798d2;
+         cursor: pointer;
+         padding: 10px 5px;
+         text-align: center;
+         cursor: pointer;
+         &:hover {
+            background: #eff8fd;
+         }
+      }
+   }
+}
+
+.sw-popup-arrow.sw-dateInput-popup-arrow {
+   &:after {
+      background: #ffffff;
+      // .box-shadow(4);
+   }
+}

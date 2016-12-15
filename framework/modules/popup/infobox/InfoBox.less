@@ -1,0 +1,48 @@
+@import '../base.less';
+
+.sw-popup.sw-infoBox {
+   background: @c-white;
+   .box-shadow(2);
+   overflow: hidden;
+   @{touchYes} & {
+      border-radius: @base-radius-l;
+   }
+   @{touchNo} & {
+      border-radius: @base-radius-s;
+   }
+
+   .sw-popup-content {
+      padding: 1.2em;
+   }
+
+   .sw-popup-header {
+      &:not(:empty) {
+         padding: 8px;
+         text-align: center;
+         opacity: 0.99999;
+         color: @c-primary-500;
+         font-size: 1.2em;
+         border-bottom: 1px solid @c-mono-300;
+      }
+   }
+
+   .sw-popup-footer {
+      &:not(:empty) {
+         padding: 8px;
+         text-align: center;
+         opacity: 0.99999;
+         border-top: 1px solid @c-mono-300;
+      }
+   }
+
+   .sw-popup_closeBlock {
+      display: block;
+   }
+}
+
+.sw-popup-arrow.sw-infoBox-arrow {
+   &:after {
+      background: @c-white;
+      .box-shadow(2);
+   }
+}

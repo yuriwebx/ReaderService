@@ -1,0 +1,7 @@
+define([
+
+   './FeatureDetector',
+   './UserAgentDetector'
+
+], function(){});
+

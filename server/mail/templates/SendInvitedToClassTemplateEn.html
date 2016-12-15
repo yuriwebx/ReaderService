@@ -1,0 +1,19 @@
+
+<body style='line-height: 10px;'>
+   <p>Dear {{firstName}} {{lastName}},</p>
+   <br><br>
+   <p>You are invited to course “{{courseName}}”</p>
+   <p>We will be excited to have you in our Course.</p>
+   <p>Look forward to seeing you in class!</p>
+   <p>{{teacher}}.</p>
+   <br><br>
+   <p>Course: {{courseName}}.</p>
+   <p>Teacher: {{teacher}}.</p>
+   {{#isJoinEndDate}}
+      <p>Start date: {{startDate}}.</p>
+   {{/isJoinEndDate}}
+   <br><br>
+   <a style="background: #51639b; padding: 10px; display: inline-block; color: #fff; text-decoration: none; border-radius: 5px;" href="{{link}}">Begin Study >></a>
+   <br><br>
+   <p>Please, do not reply on this letter.</p>
+</body>

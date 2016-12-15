@@ -1,0 +1,53 @@
+{
+  "version": 24,
+  "data": [
+    {
+      "type": "UserProfile",
+      "email": "user@irls",
+      "registeredAt": "2014-10-01 10:00:00",
+      "modifiedAt" : "",
+      "externaluserid": [],
+      "emailConfirmationStatus": "ConfirmedByAdmin",
+      "passwordHash": "password",
+      "passwordSalt": "",
+      "passwordEncodingMethod": "plain",
+      "lastName": "Test user",
+      "firstName": "John",
+      "editorRole": false,
+      "adminRole": false,
+      "active": "Approved"
+    },
+    {
+      "type": "UserProfile",
+      "email": "admin@irls",
+      "registeredAt": "2014-10-01 10:00:00",
+      "modifiedAt" : "",
+      "externaluserid": [],
+      "emailConfirmationStatus": "ConfirmedByAdmin",
+      "passwordHash": "password",
+      "passwordSalt": "",
+      "passwordEncodingMethod": "plain",
+      "lastName": "Admin",
+      "firstName": "Jack",
+      "editorRole": true,
+      "adminRole": true,
+      "active": "Approved"
+    },
+    {
+      "type": "UserProfile",
+      "email": "editor@irls",
+      "registeredAt": "2014-10-01 10:00:00",
+      "modifiedAt" : "",
+      "externaluserid": [],
+      "emailConfirmationStatus": "ConfirmedByAdmin",
+      "passwordHash": "password",
+      "passwordSalt": "",
+      "passwordEncodingMethod": "plain",
+      "lastName": "Editor",
+      "firstName": "Sarah",
+      "editorRole": true,
+      "adminRole": false,
+      "active": "Approved"
+    }
+  ]
+}
