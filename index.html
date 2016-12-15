@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport"
+	content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style"
+	content="black-translucent">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<meta http-equiv="cache-control"
+	content="no-store, no-cache, must-revalidate" />
+
+{{#if PRODUCTION}}
+	<!-- @ifdef WEB -->
+	<link rel="icon" type="image/png" href="app-icons/favicon.png" />
+
+
+	<!-- Icons -->
+
+	<!-- iOS 7 iPad (retina) -->
+	<link href="app-icons/icon-76@2x.png"
+		sizes="152x152" rel="apple-touch-icon">
+
+	<!-- iOS 6 iPad (retina) -->
+	<link href="app-icons/icon-72@2x.png"
+		sizes="144x144" rel="apple-touch-icon">
+
+	<!-- iOS 7 iPhone (retina) -->
+	<link href="app-icons/icon-60@2x.png"
+		sizes="120x120" rel="apple-touch-icon">
+
+	<!-- iOS 6 iPhone (retina) -->
+	<link href="app-icons/icon@2x.png"
+		sizes="114x114" rel="apple-touch-icon">
+
+	<!-- iOS 7 iPad -->
+	<link href="app-icons/icon-76.png"
+		sizes="76x76" rel="apple-touch-icon">
+
+	<!-- iOS 6 iPad -->
+	<link href="app-icons/icon-72.png"
+		sizes="72x72" rel="apple-touch-icon">
+
+	<!-- iOS 6 iPhone -->
+	<link href="app-icons/icon.png"
+		sizes="57x57" rel="apple-touch-icon">
+	<!-- @endif -->
+{{else}}
+	<link rel="icon" type="image/png" href="app/style/images/favicon.ico" />
+
+	<!-- Icons -->
+
+	<!-- iOS 7 iPad (retina) -->
+	<link href="pl/style/images/app-icons/apple-touch-icon-152x152.png"
+		sizes="152x152" rel="apple-touch-icon">
+
+	<!-- iOS 6 iPad (retina) -->
+	<link href="pl/style/images/app-icons/apple-touch-icon-144x144.png"
+		sizes="144x144" rel="apple-touch-icon">
+
+	<!-- iOS 7 iPhone (retina) -->
+	<link href="pl/style/images/app-icons/apple-touch-icon-120x120.png"
+		sizes="120x120" rel="apple-touch-icon">
+
+	<!-- iOS 6 iPhone (retina) -->
+	<link href="pl/style/images/app-icons/apple-touch-icon-114x114.png"
+		sizes="114x114" rel="apple-touch-icon">
+
+	<!-- iOS 7 iPad -->
+	<link href="pl/style/images/app-icons/apple-touch-icon-76x76.png"
+		sizes="76x76" rel="apple-touch-icon">
+
+	<!-- iOS 6 iPad -->
+	<link href="pl/style/images/app-icons/apple-touch-icon-72x72.png"
+		sizes="72x72" rel="apple-touch-icon">
+
+	<!-- iOS 6 iPhone -->
+	<link href="pl/style/images/app-icons/apple-touch-icon-57x57.png"
+		sizes="57x57" rel="apple-touch-icon">
+
+	<!-- @endif -->
+	<script src="framework/lib/require-2.1.5.js"></script>
+    <script>
+        window.less = {
+            useFileCache: true,
+            logLevel: 0
+        };
+    </script>
+{{/if}}
+</head>
+{{#if PRODUCTION}} 
+<body class="{{appName}} web dropcap-shifting">
+         <sw-application-frame>
+            <sw-{{appName}} is-editor={{isEditor}}></sw-{{appName}}>
+         </sw-application-frame>
+
+        {{#if NW}}
+        <script type="text/javascript">
+                window.requireNode = window.require;
+                window.isNodeWebkit = true;
+        </script>
+        {{/if}}
+
+        {{#if CORDOVA}}
+        <script src="cordova.js"></script>
+		 <script type="text/javascript">
+			 var pathToMainBuild =  "main-built-{{mainBuiltSuffix}}.js";
+			 if(window.localStorage && window.localStorage.getItem){
+				 var newPath = window.localStorage.getItem('pathToCachedJS');
+				 if(newPath){
+					 pathToMainBuild = newPath;
+				 }
+			 }
+			 var script = document.createElement('SCRIPT');
+			 script.setAttribute('type', 'text/javascript');
+			 script.setAttribute('src', pathToMainBuild);
+			 document.getElementsByTagName('head').item(0).appendChild(script);
+		 </script>
+        {{/if}}
+
+        
+
+        {{#unless CORDOVA}}
+         <script src="main-built-{{mainBuiltSuffix}}.js"></script>
+			<script src="loader-20151214-cached.js"></script>
+         <script>
+				swBootstrapLoader(
+					function () {
+						window.swLoggerFactoryConfig = {debug:''};
+						window.initIRLS();
+					},
+					function () {
+						window.location = 'UnsupportedBrowser.html';
+					}
+				);
+		</script>
+        {{/unless}}
+
+        {{#if CORDOVA}}
+        <script>
+			var tries = 100;
+           window.document.addEventListener('deviceready', function() {
+                  startIRLS();
+           }, false);
+			function startIRLS(){
+				if(window.initIRLS){
+					window.initIRLS();
+				}
+				else {
+					if(tries>0) {
+						tries--;
+						window.setTimeout(startIRLS, 100);
+					}
+					else { // error loading JS?
+						window.localStorage.removeItem('pathToCachedJS');
+						window.localStorage.removeItem('currentInstalledVersion');
+						window.location.reload();
+					}
+				}
+			}
+        </script>
+        {{/if}}
+
+        {{#if NW}}
+        <script type="text/javascript">
+                window.require = window.requireNode;
+                window.require.nodeRequire = window.requireNode;
+        </script>
+        {{/if}}
+{{else}}
+
+<body class="app-{{appName}} web {{dropcap}}">
+	<sw-application-frame>
+		<sw-app-{{appName}} is-editor={{isEditor}}></sw-app-{{appName}}>
+	</sw-application-frame>
+	<script src="framework/modules/bootstrap/loader-20151214-cached.js"></script>
+	<script>
+		swBootstrapLoader(
+			  function () {
+				  require.config({
+					  waitSeconds: 0
+				  });
+				  require(['{{mainPath}}']);
+			  },
+			  function () {
+				  window.location = 'app/modules/bootstrap/UnsupportedBrowser.html';
+			  }
+		);
+	</script>
+{{/if}}
+
+</body>
+</html>
+
