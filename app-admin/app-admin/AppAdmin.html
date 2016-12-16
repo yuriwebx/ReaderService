@@ -1,0 +1,27 @@
+<div>
+   <div sw-render="checkRanderState()" sw-render-to="'.toolbar-injectable-template'">
+      <div class="admin-top-menu-wrapper">
+         <sw-button ng-click="signIn()" sw-localize="Admin.ApplicationToolbar.createAccount.label"></sw-button>
+      </div>
+   </div>
+	<sw-application-toolbar data-ng-hide="swSubmachine.state('Login')"></sw-application-toolbar>
+	<div sw-render="swSubmachine.state('Login')">
+		<sw-app-login></sw-app-login>
+	</div>
+	<div sw-render="swSubmachine.state('ManageUsers')">
+		<sw-manage-users></sw-manage-users>
+	</div>
+	<div sw-render="swSubmachine.state('ManageReports')">
+		<sw-manage-reports></sw-manage-reports>
+	</div>
+	<div sw-render="swSubmachine.state('LibraryView')">
+		<sw-library-view></sw-library-view>
+	</div>
+
+   <div sw-render="swSubmachine.state('RegisterUserProfile')">
+       <sw-register-user-profile config="config"></sw-register-user-profile>
+   </div>
+   <div sw-render="swSubmachine.state('ResetPassword')">
+       <sw-reset-password config="config"></sw-reset-password>
+   </div>
+</div>

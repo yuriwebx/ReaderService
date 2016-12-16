@@ -1,0 +1,112 @@
+<div>
+   <div sw-render="true" sw-render-to="'.toolbar-injectable-template'" class="admin-top-menu-bar">
+      <div class="library-view-toolbar">
+         <div class="library-view-left">
+            <div class="admin-filter-select-block">
+               <sw-input ng-model="filter"
+                         data-ng-change="onFilterChange()"
+                         sw-catch-key
+                         sw-localize-attr="{placeholder: filter}">
+               </sw-input>
+               <a ng-click="filter=''; onFilterChange()" class="sw-del" ng-show="filter.length">
+                  <i class="i-ClearInputCross-white"></i>
+               </a>
+            </div>
+            <div class="epub-sort">
+               <span class="select-wrapp" ng-hide="isCollectionExpanded"
+                     sw-local="LibraryView.epubSort.text"
+                     sw-data="{
+                        epubSortBooksLength:books.length,
+                        epubSortCategory:category
+                     }"
+               ></span>
+
+               <span ng-show="isCollectionExpanded" class="select-wrapp">
+                  <span class="collection-back" ng-click="collapseCollection()"><i class="ico-back"></i><span sw=localize="LibraryView.button.back.label"></span></span>
+                  <span class="collection-name">{{collectionName}}</span>
+               </span>
+            </div>
+         </div>
+         <div class="book-list" ng-click="getAllBooks()">
+            <i></i>
+            <span sw-localize="LibraryView.librarysummary.label"></span>
+         </div>
+      </div>
+   </div>
+   <div class="book_list_page">
+      <div class="book_list_wrapper">
+
+         <div class="book-list-padd">
+            <div class="book_list">
+               <div class="container">
+
+                  <div class="book_item">
+                     <div class="pic_block" ng-click="selectSortParam(sortTypes.title)"
+                          data-ng-class="{'active_col': sortCriteria.criteria === sortTypes.title}"
+                          sw-localize="LibraryView.title.label"></div>
+                     <h3 class="book-title" ng-click="selectSortParam(sortTypes.title)"
+                         data-ng-class="{'active_col': sortCriteria.criteria === sortTypes.title, 'invert' : (reverse && sortCriteria.criteria === sortTypes.title)}"></h3>
+
+                     <h4 class="book-author" ng-click="selectSortParam(sortTypes.author)"
+                         data-ng-class="{'active_col': sortCriteria.criteria === sortTypes.author, 'invert' : (reverse && sortCriteria.criteria === sortTypes.author)}"
+                         sw-localize="LibraryView.author.label"></h4>
+
+                     <div class="book-description" ng-click="selectSortParam(sortTypes.description)"
+                          data-ng-class="{'active_col': sortCriteria.criteria === sortTypes.description, 'invert' : (reverse && sortCriteria.criteria === sortTypes.description)}"
+                          sw-localize="LibraryView.description.label"></div>
+
+                     <div class="book-language">
+                       <sw-language-field></sw-language-field>
+                     </div>
+                     <div class="book-category"
+                          data-ng-class="{'active': sortCriteria.criteria === sortTypes.category}">
+                        <form>
+                           <sw-input-select options="categoriesOptions" ng-model="currentCategory"
+                                            ng-change="selectCategory(currentCategory, sortTypes.category)"></sw-input-select>
+                        </form>
+                     </div>
+
+                     <div class="book-difflevel" ng-click="selectSortParam(sortTypes.difficulty)"
+                          data-ng-class="{'active_col': sortCriteria.criteria === sortTypes.difficulty, 'invert' : (reverse && sortCriteria.criteria === sortTypes.difficulty)}"
+                          sw-localize="LibraryView.difficulty.label"></div>
+
+                     <div class="book-words" ng-click="selectSortParam(sortTypes.wordsCount)"
+                          data-ng-class="{'active_col': sortCriteria.criteria === sortTypes.wordsCount, 'invert' : (reverse && sortCriteria.criteria === sortTypes.wordsCount)}"
+                          sw-localize="LibraryView.words.label"></div>
+
+                     <div class="book-paragraphs" ng-click="selectSortParam(sortTypes.paraCount)"
+                          data-ng-class="{'active_col': sortCriteria.criteria === sortTypes.paraCount, 'invert' : (reverse && sortCriteria.criteria === sortTypes.paraCount)}"
+                          sw-localize="LibraryView.paragraphs.label"></div>
+
+                     <div class="book_download_btn"></div>
+                  </div>
+
+                  <div class="book_item"
+                       ng-repeat="book in books | limitTo:visibleCount | orderBy: orderByFunction:reverse track by $index"
+                       ng-click="openDetails(book)">
+                     <div class="pic_block" ng-switch="book.type">
+                        <span ng-switch-when="Collection" class="collection-cover"></span>
+                        <span ng-switch-when="StudyCourse" class="studycourse-cover"></span>
+                        <img ng-switch-default ng-src="{{getThumb(book)}}" alt=""/>
+                     </div>
+                     <h3 class="book-title">{{book.name}}</h3>
+                     <h4 class="book-author">{{book.author}}</h4>
+
+                     <div class="book-description"><span>{{book.description}}</span></div>
+                     <div class="book-language">{{book.language}}</div>
+                     <div class="book-category">{{book.category}}</div>
+                     <div class="book-difflevel">{{book.difficulty}}</div>
+                     <div class="book-words">{{book.wordsCount}}</div>
+                     <div class="book-paragraphs">{{book.paraCount}}</div>
+                     <div class="book_download_btn" ng-if="book.file">
+                        <button class="download_btn" ng-click="downloadBook(book.file)"></button>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</div>

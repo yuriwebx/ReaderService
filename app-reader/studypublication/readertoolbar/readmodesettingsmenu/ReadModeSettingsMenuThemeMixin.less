@@ -1,0 +1,59 @@
+.readModeSettingsMenu(@color-1, @color-2, @color-3, @images-url, @name-img-1, @name-svg-1, @name-svg-2) {
+   .sw-menuPopup {
+
+      &.read-mode-settings-popup {
+
+         .m-menuItem__FontFamily {
+            border: 1px solid @color-1 !important;
+
+            ul {
+
+               li {
+
+                  label {
+                     color: @color-2;
+                  }
+
+                  input[type=radio]:checked + label {
+
+                     &:after {
+                        @bg-size: 60%;
+                        @bg-position: center;
+                        .datauri_svg(@images-url, @name-img-1, @bg-size, @bg-position);
+                     }
+                  }
+               }
+            }
+         }
+
+         .m-menuItem__ColumnsMode {
+
+            label {
+               color: @color-2;
+            }
+         }
+
+         .m-menuItem__VolumeMode {
+            a {
+               color: @color-2;
+            }
+         }
+
+         .i-volumeMin {
+            @bg-position: center;
+            .icon(@url, @name-svg-1, @bg-position);
+         }
+         .i-volumeMax {
+            @bg-position: center;
+            .icon(@url, @name-svg-2, @bg-position);
+         }
+      }
+
+      .sw-appMenuContent {
+
+         .menuPop_arrow {
+            border-color: transparent transparent @color-3 transparent;
+         }
+      }
+   }
+}

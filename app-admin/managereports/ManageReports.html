@@ -1,0 +1,32 @@
+<div>
+
+   <div class="wrapper-user-list">
+      <div class="report-list">
+         <div class="report-list-item" ng-repeat="report in reports track by $index">
+            <div class="report-list-item-cel cel-name">
+               <div>{{report.userName}}</div>
+               <div>{{report.userEmail}}</div>
+            </div>
+            <div class="report-list-item-cel">
+               <div class="book-name"><span>{{report.data.title}}</span>, {{report.data.author}}</div>
+               <div sw-localize="ManageReports.userComments.text"
+                    sw-data="{reportDataText:report.data.text}"></div>
+               <div>
+                  <span>§ <span>{{getParagraphsNumber(report)}}</span></span>
+                  <button ng-click="openPublication(report)">
+                     <span ng-if="activItem === report" sw-localize="ManageReports.hideDetails.text"></span>
+                     <span ng-if="activItem !== report" sw-localize="ManageReports.showDetails.text"></span>
+                  </button>
+               </div>
+               <div class="report-list-item-cel" ng-if="activItem === report" ng-bind-html="report.html"></div>
+            </div>
+            <div class="report-list-item-cel cel-date">
+               <div>{{report.added| date:'MMM dd, HH:mm'}}</div>
+            </div>
+         </div>
+      </div>
+      <div class="button-more" ng-hide="hideMoreButton">
+         <sw-button ng-click="more()" sw-localize="ManageReports.more.text"></sw-button>
+      </div>
+   </div>
+</div>

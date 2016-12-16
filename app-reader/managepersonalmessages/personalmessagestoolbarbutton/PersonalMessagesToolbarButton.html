@@ -1,0 +1,7 @@
+<a class="icon-wrap personalmess sw-popup-offset"
+	ng-show="userHasMessage()"
+	ng-click="toggleMessageMenu($event)"
+	sw-tooltip="ApplicationMenuItem.Messages.tooltip">
+   <i class="icon i-Personalmess" ng-class="{'notifications-active' : userHasUnreadMessages()}"></i>
+   <span class="button-counter" ng-show="userHasUnreadMessages()">{{getNumberMessages()}}</span>
+</a>

@@ -1,0 +1,7 @@
+<div>
+   <ul ng-model="category" class="user-type-selector">
+      <li ng-repeat="category in categories" ng-class="{'active' : $index === switchCatVal}" ng-click='switchCategory(category.type, $index)'>
+         <span ng-bind="::category.title"></span>
+      </li>
+   </ul>
+</div>

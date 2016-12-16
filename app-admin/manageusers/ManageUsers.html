@@ -1,0 +1,69 @@
+<div>
+   <div sw-render="true" sw-render-to="'.toolbar-injectable-template'" class="admin-top-menu-bar">
+      <div>
+         <div>
+            <div sw-compile="manageUsersMenuTemplate" class="admin-category-select-block tabs-view"></div>
+            <div class="admin-category-select-block drop-list-view" ng-bind="category"
+                 ng-click="openManageUsersMenu($event)"></div>
+            <div class="admin-filter-select-block">
+               <sw-input ng-model="filterModel.filter" ng-model-options="{debounce: 300}"
+                         ng-change="doFilter()" sw-catch-key sw-localize-attr="{placeholder: filter}">
+               </sw-input>
+               <a ng-click="filterModel.filter=''; doFilter()" class="sw-del" ng-show="filterModel.filter.length">
+                  <i class="i-ClearInputCross-white"></i>
+               </a>
+            </div>
+            <div class="admin-total-results">
+               <span sw-localize="Profile.results.label"></span>: {{total}} <span
+               sw-localize="Profile.users.label"></span>
+            </div>
+         </div>
+
+         <div class="admin-add-user-block">
+            <sw-button ng-click="addUser()"><span></span><span sw-localize="Profile.adduser.label" span></span>
+            </sw-button>
+         </div>
+      </div>
+   </div>
+   <div class="wrapper-user-list">
+      <div class="user-list">
+         <div class="user-list-line-block" ng-repeat="profile in profiles" ng-show="!deletedProfiles[profile._id]">
+            <!-- <div class="user-list-icon-block">icon</div> -->
+            <div class="user-list-name-block">
+               <span ng-click="deleteUser(profile._id)" ng-show="showDelete(profile)" class="delete-user">&nbsp;</span>
+               <img class="user-photo" ng-if="profile.photoLink" ng-src="{{profile.photoLink}}">
+               <i class="user-photo" ng-if="!profile.photoLink"></i>
+               <span class="user-name">{{profile.lastName}} {{profile.firstName}}</span>
+            </div>
+            <div class="user-list-email-block">{{profile.email}}</div>
+
+            <div class="user-list-wrapper" ng-show="profile.active !== 'Registered'">
+               <div class="user-list-role-block"><span ng-show="profile.adminRole"
+                                                       sw-localize="Profile.admin.label"></span></div>
+               <div class="user-list-edit-role-block"><span ng-show="profile.editorRole"
+                                                            sw-localize="Profile.editor.label"></span></div>
+               <div class="user-list-edit-profile-block">
+                  <div class="user-list-edit-profile-block-wrapper">
+                     <sw-button ng-click="edit(profile)"><span sw-localize="Profile.edit.label"></span></sw-button>
+                  </div>
+               </div>
+            </div>
+            <div class="user-list-wrapper" ng-show="profile.active === 'Registered'">
+               <div>
+                  <sw-button class="invert-button" ng-click="declineUser(profile._id)" sw-localize="Profile.decline.label"></sw-button>
+               </div>
+               <div>
+                  <sw-button ng-click="acceptUser(profile._id)" sw-localize="Profile.accept.label"></sw-button>
+               </div>
+               <div>
+                  <sw-button class="ico-letter-button" ng-click="sendEmail(profile._id)"></sw-button>
+               </div>
+            </div>
+         </div>
+
+      </div>
+      <div class="button-more" ng-hide="hideMoreButton">
+         <sw-button ng-click="more()"><span sw-localize="Profile.morebutton.label"></span></sw-button>
+      </div>
+   </div>
+</div>
