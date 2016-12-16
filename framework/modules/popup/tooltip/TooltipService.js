@@ -68,11 +68,8 @@ define([
                _leave();
             });
 
-            function _enter(event)
+            function _enter()
             {
-                event = event || window.event;
-                if(event.buttons || event.which)
-                   return;
                _leave();
                
                var text = _.result(options, 'text');

@@ -101,7 +101,6 @@ define([
 
          this.show = function(options)
          {
-            console.log("Popup show start: " + (new Date()).getSeconds() + "." + (new Date()).getMilliseconds());
             var showStartTime = swUtil.now();
             var showEndTime;
             var totalEndTime;
@@ -463,7 +462,6 @@ define([
 //                  body.css({overflow: 'hidden'});
 //               }
 
-
                var popupContainer = getContainer(options.container || popupContainerSelector);
                popupContainer.append(popupElement);
                popupContainer.append(arrowElement);
@@ -478,8 +476,6 @@ define([
                });
 
                popupElement.on('click', popupClickHandler);
-
-                console.log("Popup dom start: " + (new Date()).getSeconds() + "." + (new Date()).getMilliseconds());
 
                // Safari on iOS only allows the mouse events to bubble up if target
                // element, or any of its ancestors up to but not including the <body>,
@@ -543,7 +539,6 @@ define([
 
             scope.$on('$destroy', function()
             {
-                console.log("Popup destroy start: " + (new Date()).getSeconds() + "." + (new Date()).getMilliseconds());
                logger.trace(scope$id, 'destroy');
                swLayoutManager.unregister(scope$id);
 
@@ -615,28 +610,6 @@ define([
             var now = swUtil.now();
             logger.trace(scope$id, 'show end  ', now - showStartTime);
             showEndTime = now;
-
-
-            // var popupContainer = getContainer(options.container || popupContainerSelector);
-            // popupContainer.append(popupElement);
-            // popupContainer.append(arrowElement);
-            //
-            // var backdropContainer = getContainer(options.backdropContainer || backdropContainerSelector);
-            // backdropContainer.append(backdropElement);
-            //
-            // _layout(swLayoutManager.context());
-            // swLayoutManager.register({
-            //     layout: _layout,
-            //     id: scope$id
-            // });
-            //
-            // popupElement.on('click', popupClickHandler);
-
-
-
-
-             console.log("Popup end start: " + (new Date()).getSeconds() + "." + (new Date()).getMilliseconds());
-
 
             return popup;
          };
