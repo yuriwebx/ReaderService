@@ -2,6 +2,7 @@
 node_modules/
 
 data/
+logs/
 build/
-app/style/images/
-tests/
+tests/selenium-server-standalone-2.48.2.jar
+tests/data/
