@@ -22,7 +22,6 @@ module.exports = function (grunt) {
    grunt.loadNpmTasks('grunt-contrib-jshint');
    grunt.loadNpmTasks("grunt-jscs-checker");
 
-   grunt.registerTask('jshint', ['jshint:server']);
    grunt.registerTask('verify', ['jshint:server', 'jscs:server']);
    grunt.registerTask('build', ['verify']);
    grunt.registerTask('default', ['build']);

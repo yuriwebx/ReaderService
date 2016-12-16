@@ -2,7 +2,7 @@
     "id"                 : "com.isd.irls",
     "apkHash"            : "",
     "isAppCache"         : false,
-    "isDev"              : "true",
+    "isDev"              : "false",
     "isPublic"           : false,
     "brand"              : "FFA",
     "name"               : "IRLS",

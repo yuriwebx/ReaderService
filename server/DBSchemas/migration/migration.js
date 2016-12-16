@@ -40,21 +40,16 @@
       var step = 100;
       return q.ninvoke(db, 'get', null)
          .then(function (response) {
-             var requests = [];
-             try{
-                 var docsCount = response[0].doc_count;
-                 var chunksCount = Math.ceil(docsCount / step);
-
-                 for (var i = 0; i < chunksCount; i++) {
-                     requests.push(q.ninvoke(db, 'list', {
-                         include_docs : true,
-                         skip  : i * step,
-                         limit : step
-                     }));
-                 }
-             } catch(exception){
-                 var i =0;
-             }
+            var docsCount = response[0].doc_count;
+            var chunksCount = Math.ceil(docsCount / step);
+            var requests = [];
+            for (var i = 0; i < chunksCount; i++) {
+               requests.push(q.ninvoke(db, 'list', {
+                  include_docs : true,
+                  skip  : i * step,
+                  limit : step
+               }));
+            }
             return q.all(requests);
          })
          .then(function (responses) {
@@ -85,17 +80,12 @@
 
    var updateToVersion = function (version) {
       var updater = {}, init = q;
-      try {
-          if (fs.existsSync(__dirname + '/db') && fs.existsSync(__dirname + '/db/' + version + '.js')) {
-              updater = require(__dirname + '/db/' + version + '.js');
-              if (updater && updater.hasOwnProperty('init')) {
-                  init = updater.init;
-              }
-          }
-      } catch(exception){
-          var i =0;
+      if (fs.existsSync(__dirname + '/db') && fs.existsSync(__dirname + '/db/' + version + '.js')) {
+         updater = require(__dirname + '/db/' + version + '.js');
+         if (updater && updater.hasOwnProperty('init')) {
+            init = updater.init;
+         }
       }
-
       return init().then(function () {
          return updater && updater.hasOwnProperty('process') ? processSchema(updater.process) : null;
       });
@@ -118,7 +108,7 @@
          .then(function (response) {
             return response[0];
          }, function (err) {
-            if ((err.status_code && err.status_code !== 404) || (err.statusCode && err.statusCode !== 404)) {
+            if (err.status_code !== 404) {
                throw err;
             }
             return {type: 'version'};
@@ -171,19 +161,10 @@
                         result = migrateSchema(oldVersion, newVersion)
                            .then(function () {
                               data.version = newVersion;
-                              return q.ninvoke(db, 'get', 'version')
-                               .then(function (response) {
-                                   return response[0];
-                               }, function (err) {
-                                   if ((err.status_code && err.status_code !== 404) || (err.statusCode && err.statusCode !== 404)) {
-                                       throw err;
-                                   }
-                                   return {type: 'version'};
-                               });
+                              return q.ninvoke(db, 'get', 'version');
                            })
                            .then(function (response) {
-                               if(response.length > 0)
-                                data._rev = response[0]._rev;
+                              data._rev = response[0]._rev;
                               return q.ninvoke(db, 'insert', data);
                            })
                            .thenResolve(isDBCreated);

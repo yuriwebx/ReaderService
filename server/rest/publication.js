@@ -2,16 +2,11 @@
 /*jslint camelcase: false */
 /*jshint unused: vars*/
 (function () {
-    'use strict';
-
+   'use strict';
    var q             = require('q');
-   var _ = require('underscore');
-
-   var db = require('./dao/utils').findDB();
-
-   var utils = require('../utils/utils.js');
-
-
+   var _             = require('underscore');
+   var db            = require('./dao/utils').findDB();
+   var utils         = require('../utils/utils.js');
    var unidecode     = require('unidecode');
    var config        = require(__dirname + '/../utils/configReader.js');
    var manageUsers      = require('./manageUsers.js');

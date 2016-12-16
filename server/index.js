@@ -617,9 +617,7 @@ app.use('/admin', express.static(__dirname + '/../' + basePath));
 app.use('/editor', express.static(__dirname + '/../' + basePath));
 app.use('/portal', express.static(__dirname + '/../' + basePath));
 app.use('/vocabulary', express.static(__dirname + '/../' + basePath));
-app.use('/reader', function(){
-    express.static(__dirname + '/../' + basePath);
-});
+app.use('/reader', express.static(__dirname + '/../' + basePath));
 
 var server = app.listen(appConfig.listenPort, function(){
     logger.info('Server listen at ' + server.address().address + ':' + server.address().port);

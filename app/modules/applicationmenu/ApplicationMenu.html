@@ -1,13 +1,20 @@
 <div class="app-menu {{stateClass}}" sw-custom-scroll>
+   test
    <i class="menuPop_arrow"></i>
    <div ng-repeat="menuSection in ::menuSections" class="sw-menuSection">
+   <!--<div class="sw-menuSection">-->
       <ul class="menuSection_content">
-         <li ng-repeat="menuItem in ::menuSection" 
+         <li ng-repeat="menuItem in ::menuSection"
              class="sw-popup-close menuItemWrap m-menuItem__{{::menuItem}}" data-ng-show="::isMenuItemVisible(menuItem)">
+         <!--<li ng-repeat="menuItem in ::menuSection"-->
+             <!--class="sw-popup-close menuItemWrap m-menuItem__{{::menuItem}}" >-->
 
             <a class="sw-menuItem sw-{{::menuItem}}" tabindex="0" sw-hot-key-click ng-click="selectMenuItem(menuItem)">
                <span class="sw-value" ng-bind="::getMenuItemLocalizedName(menuItem)"></span>
             </a>
+            <!--<a class="sw-menuItem sw-{{::menuItem}}" tabindex="0" sw-hot-key-click ng-click="selectMenuItem(menuItem)">-->
+               <!--<span class="sw-value" ></span>-->
+            <!--</a>-->
          </li>
       </ul>
    </div>

@@ -5,15 +5,12 @@
    var q = require('q');
    var fs = require('fs');
    var _ = require('underscore');
-
    var logger = require('../../utils/logger.js');
-
    var validationLogger = logger.validationLogger;
    var jsonValidator = require('amanda')('json');
    var config = require(__dirname + '/../../utils/configReader.js');
-
    var nano = getNanoInstance(require('nano'), config.database_url, config.database_auth);
-   var dbNamePrefix = [config.database_name, ''];   
+   var dbNamePrefix = [config.database_name, ''];
 
    if (config.environment_name) {
       dbNamePrefix.unshift(config.environment_name);

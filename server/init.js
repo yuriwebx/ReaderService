@@ -1,10 +1,8 @@
 /*jslint node: true */
 /*jslint camelcase: false */
 'use strict';
-
 var publication = require('./rest/publication.js');
 var defaultDataFolder = __dirname + "/DBSchemas";
-
 var migrationTool = require(defaultDataFolder + '/migration/migration.js');
 var fs = require('fs');
 var _ = require('underscore');

@@ -1,0 +1,36 @@
+[2016-12-16 09:30:15.606] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:30:19.128] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:31:22.967] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:32:29.032] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:32:32.310] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:32:44.469] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:32:48.847] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:33:35.438] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:34:37.476] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:34:43.526] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:35:17.840] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:35:28.361] [ERROR] errors - (::1) [\dao\usersDao.js:20] The e-mail or password you provided is not correct. Please try again.
+[2016-12-16 09:35:37.619] [ERROR] errors - (::1) [\dao\usersDao.js:20] The e-mail or password you provided is not correct. Please try again.
+[2016-12-16 09:35:42.384] [ERROR] errors - (::1) [\dao\usersDao.js:20] The e-mail or password you provided is not correct. Please try again.
+[2016-12-16 09:35:45.641] [ERROR] errors - (::1) [\dao\usersDao.js:20] The e-mail or password you provided is not correct. Please try again.
+[2016-12-16 09:36:24.253] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:36:27.331] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:36:40.081] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:36:49.820] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:37:21.877] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:37:31.203] [ERROR] errors - (::1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:37:51.352] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:37:57.503] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:38:03.537] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:38:09.567] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:38:15.609] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:38:21.637] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:38:27.668] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:38:33.706] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:38:39.748] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:38:45.797] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:38:51.829] [ERROR] errors - (::ffff:127.0.0.1) [\dao\applicationSessionsDao.js:20] connect ECONNREFUSED 127.0.0.1:5984
+[2016-12-16 09:39:13.249] [ERROR] errors - (::ffff:127.0.0.1) [\bl\applicationSessions.js:94] Application session not active or has not found userId.
+[2016-12-16 09:47:07.577] [ERROR] errors - (::1) [\rest\userstudystatistics.js:25] Document update conflict.
+[2016-12-16 12:01:46.945] [ERROR] errors - (::1) [\bl\applicationSessions.js:94] Application session not active or has not found userId.
+[2016-12-16 14:15:46.053] [ERROR] errors - (::ffff:192.168.1.132) [\rest\userstudystatistics.js:25] Document update conflict.
