@@ -52,7 +52,7 @@ define([
             function showPopup (element) {
                var _isEditor = swApplicationToolbarService.isEditor();
                if ( !recentbooksPopup || recentbooksPopup.isHidden() ) {
-                  swLongRunningService.start();
+                  //swLongRunningService.start();
                   $scope.headerfn = {
                      selectRecentPublicationTab: function () {
                      }
@@ -64,11 +64,14 @@ define([
                      publicationList     : [],
                      studyActivitiesList : []
                   };
-                  return swUserPublicationService.getRecentBooks()
-                     .then(function (response) {
-                        swLongRunningService.end();
-                        var publicationList = _.map(response.books, addThumbnailUrl);
-                        var studyActivitiesList = _.map(response.studyActivities, addThumbnailUrl);
+                   
+                  //return swUserPublicationService.getRecentBooks()
+                  //   .then(function (response) {
+                         
+                  var recentBooksData = swUserPublicationService.getRecentBooksData();
+                        //swLongRunningService.end();
+                        var publicationList = _.map(recentBooksData.books || [], addThumbnailUrl);
+                        var studyActivitiesList = _.map(recentBooksData.studyActivities || [], addThumbnailUrl);
                         $scope.headerconfig.publicationList = publicationList;
                         $scope.headerconfig.studyActivitiesList = _isEditor ? [] : studyActivitiesList;
                         $scope.booklist = publicationList;
@@ -81,9 +84,9 @@ define([
                            content         : '<sw-recent-books headerfn="headerfn" headerconfig="headerconfig"></sw-recent-books>'
                         });
                         return recentbooksPopup;
-                     }, function () {
-                        swLongRunningService.end();
-                     });
+                     //}, function () {
+                     //   swLongRunningService.end();
+                     //});
                }
 
                function _layouter () {

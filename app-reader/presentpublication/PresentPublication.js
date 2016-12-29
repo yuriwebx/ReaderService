@@ -454,6 +454,9 @@
                      lith.handleViewportResize(true);
                      _onChangeFontName();
                   });
+
+                  // updating of "RecentBooks"
+                  swUserPublicationService.getRecentBooks();
                })
                .catch(function () {
                   swPopupService.showInfoBox({

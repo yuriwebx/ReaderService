@@ -52,6 +52,10 @@ define([
                  });
              };
 
+             this.getRecentBooksData = function () {
+                 return recentItems || {};
+             };
+
             // FIX: it can modify 'lastItem'. This is an unexpected behaviour
             this.getLastRecentItem = function (isPublicationOnly) {
                var _isEditor = swApplicationToolbarService.isEditor();
