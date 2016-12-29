@@ -193,9 +193,14 @@ define([
 
             function showPopup(options) {
                var opts = _.defaults({
-                  backdropVisible: true
+                  backdropVisible: true,
+                  isHashPopup: true
                }, options);
-               $scope.extendapi.currentPopUp = swPopupService.show(opts);
+               if (!$scope.extendapi.currentPopUp || !$scope.extendapi.currentPopUp.show) {
+                   $scope.extendapi.currentPopUp = swPopupService.show(opts);
+               } else {
+                   $scope.extendapi.currentPopUp.show();
+               }               
                return $scope.extendapi.currentPopUp.promise;
             }
 

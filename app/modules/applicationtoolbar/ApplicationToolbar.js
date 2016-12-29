@@ -118,13 +118,18 @@ define([
          {
             var element = $event.target;
 
-            menuPopup = swPopupService.show({
-               template: '<sw-application-menu></sw-application-menu>',
-               backdropVisible: true,
-               customClass: 'push-dialog',
-               pushMode: true,
-               layout: getLayouter(element)
-            });
+            if (!menuPopup || !menuPopup.show) {
+                menuPopup = swPopupService.show({
+                    template: '<sw-application-menu></sw-application-menu>',
+                    backdropVisible: true,
+                    customClass: 'push-dialog',
+                    pushMode: true,
+                    layout: getLayouter(element),
+                    isHashPopup: true,
+                });
+            } else {
+                menuPopup.show();
+            }
             return menuPopup;
          }
 

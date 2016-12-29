@@ -333,7 +333,11 @@ define([
                   popup.waitingForDestroyConfirmation = undefined;
                   if ( destroyConfirmed )
                   {
-                     scope.$destroy();
+                      if (options.isHashPopup) {
+                          _destroy();
+                      } else {
+                          scope.$destroy();
+                      }
                   }
                });
             }
@@ -446,122 +450,140 @@ define([
                }
             }
 
-            $window.setTimeout(function()
+            function _domChange()
             {
-               if ( !scope || popup.waitingForDestroyConfirmation )
-               {
-                  return;
-               }
+                if ( !scope || popup.waitingForDestroyConfirmation )
+                {
+                    return;
+                }
 
-               var domStartTime = swUtil.now();
-               logger.trace(scope$id, 'dom  start', swUtil.now() - showEndTime);
+                var domStartTime = swUtil.now();
+                logger.trace(scope$id, 'dom  start', swUtil.now() - showEndTime);
 
-//               if ( options.bodyOverflowHidden !== false )
-//               {
-//                  bodyOverflowHiddenCounter++;
-//                  body.css({overflow: 'hidden'});
-//               }
+                //               if ( options.bodyOverflowHidden !== false )
+                //               {
+                //                  bodyOverflowHiddenCounter++;
+                //                  body.css({overflow: 'hidden'});
+                //               }
 
-               var popupContainer = getContainer(options.container || popupContainerSelector);
-               popupContainer.append(popupElement);
-               popupContainer.append(arrowElement);
+                var popupContainer, backdropContainer;
 
-               var backdropContainer = getContainer(options.backdropContainer || backdropContainerSelector);
-               backdropContainer.append(backdropElement);
+                if (options.isHashPopup && popupElement.parent().length > 0) {
+                    popupElement.show();
+                    arrowElement.show();
+                    backdropElement.show();
+                } else {
+                    popupContainer = getContainer(options.container || popupContainerSelector);
+                    popupContainer.append(popupElement);
+                    popupContainer.append(arrowElement);
 
-               _layout(swLayoutManager.context());
-               swLayoutManager.register({
-                  layout: _layout,
-                  id: scope$id
-               });
+                    backdropContainer = getContainer(options.backdropContainer || backdropContainerSelector);
+                    backdropContainer.append(backdropElement);
+                }
 
-               popupElement.on('click', popupClickHandler);
+                _layout(swLayoutManager.context());
+                swLayoutManager.register({
+                    layout: _layout,
+                    id: scope$id
+                });
 
-               // Safari on iOS only allows the mouse events to bubble up if target
-               // element, or any of its ancestors up to but not including the <body>,
-               // has an explicit event handler set for any of the mouse events.
-               // See http://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-               // So, to catch all clicks in Safari we have to listen to <body> direct children.
-               // "Capture" phase is used to keep the possibility to do "stopProparation()"
-               // in client code on "Bubble" phase and not to lose events here.
-               bodyChildren = body.children();
-               _.each(bodyChildren, function(child)
-               {
-                  child.addEventListener('click', backdropClickHandler, true);
-               });
+                popupElement.on('click', popupClickHandler);
 
-               swHotKeyService.bind(popupElement, {esc: function()
-               {
-                  logger.trace(scope$id, 'escape');
+                // Safari on iOS only allows the mouse events to bubble up if target
+                // element, or any of its ancestors up to but not including the <body>,
+                // has an explicit event handler set for any of the mouse events.
+                // See http://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+                // So, to catch all clicks in Safari we have to listen to <body> direct children.
+                // "Capture" phase is used to keep the possibility to do "stopProparation()"
+                // in client code on "Bubble" phase and not to lose events here.
+                bodyChildren = body.children();
+                _.each(bodyChildren, function(child)
+                {
+                    child.addEventListener('click', backdropClickHandler, true);
+                });
 
-                  if ( !options.modal )
-                  {
-                     scope.$apply(function()
-                     {
-                        hideResolve(undefined);
-                     });
-                  }
-                  else
-                  {
-                     popupElement.find('.sw-popup-button-escape').click();
-                  }
-               }});
+                swHotKeyService.bind(popupElement, {esc: function()
+                {
+                    logger.trace(scope$id, 'escape');
 
-               $window.setTimeout(function()
-               {
-                  if ( !scope || popup.waitingForDestroyConfirmation )
-                  {
-                     return;
-                  }
+                    if ( !options.modal )
+                    {
+                        scope.$apply(function()
+                        {
+                            hideResolve(undefined);
+                        });
+                    }
+                    else
+                    {
+                        popupElement.find('.sw-popup-button-escape').click();
+                    }
+                }});
 
-                  if ( options.requestFocus !== false )
-                  {
-                     restoreFocus = swFocusManagerService.saveFocus(scope$id);
-                     swFocusManagerService.requestDefaultFocus(focusManager);
-                  }
+                $window.setTimeout(function()
+                {
+                    if ( !scope || popup.waitingForDestroyConfirmation )
+                    {
+                        return;
+                    }
 
-                  // we are ready next tick after nearest digest
-                  scope.$evalAsync(function()
-                  {
-                     $window.setTimeout(function()
-                     {
-                        readyDeferred.resolve();
-                        ready = true;
-                        logger.trace(scope$id, 'ready');
-                     });
-                  });
-               });
+                    if ( options.requestFocus !== false )
+                    {
+                        restoreFocus = swFocusManagerService.saveFocus(scope$id);
+                        swFocusManagerService.requestDefaultFocus(focusManager);
+                    }
 
-               totalEndTime = swUtil.now();
-               logger.trace(scope$id, 'dom  end  ', totalEndTime -  domStartTime);
-               logger.trace(scope$id, 'total:',     totalEndTime - showStartTime);
-            });
+                    // we are ready next tick after nearest digest
+                    scope.$evalAsync(function()
+                    {
+                        $window.setTimeout(function()
+                        {
+                            readyDeferred.resolve();
+                            ready = true;
+                            logger.trace(scope$id, 'ready');
+                        });
+                    });
+                });
 
-            scope.$on('$destroy', function()
+                totalEndTime = swUtil.now();
+                logger.trace(scope$id, 'dom  end  ', totalEndTime -  domStartTime);
+                logger.trace(scope$id, 'total:',     totalEndTime - showStartTime);
+            }
+
+            $window.setTimeout(_domChange);
+
+
+            function _destroy()
             {
-               logger.trace(scope$id, 'destroy');
-               swLayoutManager.unregister(scope$id);
+                logger.trace(scope$id, 'destroy');
+                swLayoutManager.unregister(scope$id);
 
-               _.each(bodyChildren, function(child)
-               {
-                  child.removeEventListener('click', backdropClickHandler, true);
-               });
+                _.each(bodyChildren, function (child) {
+                    child.removeEventListener('click', backdropClickHandler, true);
+                });
 
-               popupElement.remove();
-               arrowElement.remove();
-               backdropElement.remove();
+                if (options.isHashPopup) {
+                    popupElement.hide();
+                    arrowElement.hide();
+                    backdropElement.hide();
+                } else {
+                    popupElement.remove();
+                    arrowElement.remove();
+                    backdropElement.remove();
 
-//               if ( options.bodyOverflowHidden !== false && --bodyOverflowHiddenCounter === 0 )
-//               {
-//                  body.css({overflow: ''});
-//               }
+                    scope = undefined;
+                }
 
-               scope = undefined;
-               popups = _.without(popups, popup);
-               restoreFocus();
+                //               if ( options.bodyOverflowHidden !== false && --bodyOverflowHiddenCounter === 0 )
+                //               {
+                //                  body.css({overflow: ''});
+                //               }
 
-               body.removeClass(BODY_PUSH_CLASS);
-            });
+                popups = _.without(popups, popup);
+                restoreFocus();
+
+                body.removeClass(BODY_PUSH_CLASS);
+            }
+            scope.$on('$destroy', _destroy);
 
             var layoutImmediately = function()
             {
@@ -602,6 +624,10 @@ define([
                isHidden: function()
                {
                   return !scope;
+               },
+               show: function () {
+                   popups.push(this);
+                   _domChange();
                }
             };
 
