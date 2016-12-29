@@ -64,10 +64,8 @@ define([
                      publicationList     : [],
                      studyActivitiesList : []
                   };
-                   console.log("getRecentBooks start: " + (new Date()).getSeconds() + "." + (new Date()).getMilliseconds());
                   return swUserPublicationService.getRecentBooks()
                      .then(function (response) {
-                         console.log("getRecentBooks end: " + (new Date()).getSeconds() + "." + (new Date()).getMilliseconds());
                         swLongRunningService.end();
                         var publicationList = _.map(response.books, addThumbnailUrl);
                         var studyActivitiesList = _.map(response.studyActivities, addThumbnailUrl);
