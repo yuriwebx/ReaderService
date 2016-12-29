@@ -125,7 +125,7 @@ define([
                     customClass: 'push-dialog',
                     pushMode: true,
                     layout: getLayouter(element),
-                    isHashPopup: true,
+                    isCashPopup: true,
                 });
             } else {
                 menuPopup.show();

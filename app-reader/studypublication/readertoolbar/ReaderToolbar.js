@@ -194,7 +194,7 @@ define([
             function showPopup(options) {
                var opts = _.defaults({
                   backdropVisible: true,
-                  isHashPopup: true
+                  isCashPopup: true
                }, options);
                if (!$scope.extendapi.currentPopUp || !$scope.extendapi.currentPopUp.show) {
                    $scope.extendapi.currentPopUp = swPopupService.show(opts);

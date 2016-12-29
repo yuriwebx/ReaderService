@@ -333,7 +333,7 @@ define([
                   popup.waitingForDestroyConfirmation = undefined;
                   if ( destroyConfirmed )
                   {
-                      if (options.isHashPopup) {
+                      if (options.isCashPopup) {
                           _destroy();
                       } else {
                           scope.$destroy();
@@ -468,7 +468,7 @@ define([
 
                 var popupContainer, backdropContainer;
 
-                if (options.isHashPopup && popupElement.parent().length > 0) {
+                if (options.isCashPopup && popupElement.parent().length > 0) {
                     popupElement.show();
                     arrowElement.show();
                     backdropElement.show();
@@ -561,7 +561,7 @@ define([
                     child.removeEventListener('click', backdropClickHandler, true);
                 });
 
-                if (options.isHashPopup) {
+                if (options.isCashPopup) {
                     popupElement.hide();
                     arrowElement.hide();
                     backdropElement.hide();
