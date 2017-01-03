@@ -6,7 +6,10 @@
                               publication="publication"
                               is-reading-mode="true"></sw-present-publication>
    </div>
-   <sw-extras ng-if="swSubmachine.state('Extras') && isExtrasVisible"
-              publication="publication"
-              extras-api="extrasApi"></sw-extras>
+   <!--<sw-extras ng-if="swSubmachine.state('Extras') && isExtrasVisible"-->
+    <div class="sw-menuPopup extras-popup reduced-view" ng-show="swSubmachine.state('Extras') && isExtrasVisible">
+        <sw-extras ng-if="swSubmachine.state('Extras') && isExtrasAvailable"
+                   publication="publication"
+                   extras-api="extrasApi"></sw-extras>
+    </div>
 </div>

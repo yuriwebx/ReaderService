@@ -94,7 +94,8 @@ define([
          var params          = vm.swSubmachine.context().confParams();
 
          vm.swApplicationScrollType = 'VIRTUAL';
-         vm.isExtrasVisible         = isWideMedia && isEditor;
+         vm.isExtrasVisible = isWideMedia && isEditor;
+         vm.isExtrasAvailable = true;
 
          vm.swInit   = _init;
          vm.swLayout = _layout;
@@ -198,7 +199,18 @@ define([
                                swReaderService.setOpenPublicationNextFn(openPublicationNext);
                                swReaderService.setCheckPublicationNextFn(checkPublicationNext);
                             });
-                     });
+                         });
+
+                      //
+                      $window.setTimeout(function () {
+                        vm.isExtrasAvailable = true;
+                        swOpenPublicationService.openPublication(params._id,
+                            params.locator || _.get(details, 'readingPosition.fragmentId', ''), params.options);
+                        vm.swSubmachine.start('Extras');
+                      }, 100);
+                     
+                     
+                     
                   }
                   _initScrollListenerIfNeeded();
                });
